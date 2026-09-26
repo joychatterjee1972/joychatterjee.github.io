@@ -56,10 +56,10 @@ a{color:inherit}
 .page{
   --px:calc(clamp(22px,5.5vw,88px) + env(safe-area-inset-left,0px));
   position:relative;z-index:1;
-  min-height:100vh;min-height:100svh;
+  height:100vh;height:100svh;min-height:520px;overflow:hidden;
   max-width:1280px;margin:0 auto;
   padding:calc(clamp(20px,2.8vw,32px) + env(safe-area-inset-top,0px)) var(--px) calc(clamp(20px,2.8vw,32px) + env(safe-area-inset-bottom,0px));
-  display:grid;grid-template-rows:auto 1fr auto;gap:clamp(40px,6vw,72px);
+  display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:clamp(20px,3.5vh,48px);
 }
 
 header{display:flex;justify-content:space-between;align-items:center;gap:16px}
@@ -87,20 +87,20 @@ header{display:flex;justify-content:space-between;align-items:center;gap:16px}
 
 /* Statement and painting */
 .hero{
-  align-self:center;
-  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
-  gap:clamp(48px,8vw,128px);align-items:center;
+  min-height:0;height:100%;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(40px,7vw,112px);align-items:center;
 }
 .kicker{margin:0 0 22px;font-size:.8125rem;color:var(--muted)}
 h1{
   font-weight:500;font-size:clamp(2.1rem,4.2vw,3.7rem);
-  line-height:1.06;letter-spacing:-.035em;margin:0 0 22px;
+  line-height:1.06;letter-spacing:-.035em;margin:0 0 18px;
   max-width:12ch;text-wrap:balance;
 }
-.lede{margin:0 0 30px;max-width:36ch;font-size:1.0625rem;line-height:1.55;color:var(--muted);letter-spacing:-.005em}
+.lede{margin:0 0 22px;max-width:36ch;font-size:1.0625rem;line-height:1.55;color:var(--muted);letter-spacing:-.005em}
 .proof{
-  margin:0 0 36px;max-width:44ch;color:var(--muted);font-size:.875rem;line-height:1.65;
-  padding-top:18px;border-top:1px solid var(--line);
+  margin:0 0 28px;max-width:44ch;color:var(--muted);font-size:.875rem;line-height:1.6;
+  padding-top:16px;border-top:1px solid var(--line);
 }
 .proof b{font-weight:500;color:var(--ink)}
 
@@ -119,16 +119,16 @@ h1{
 .hint{font-size:.8125rem;color:var(--faint);max-width:26ch;line-height:1.45}
 
 /* The painting, hung on the wall */
-.work{margin:0;justify-self:end;width:100%;max-width:460px}
-.mat{position:relative;padding:0 4% 4.5% 0}
+.work{margin:0;justify-self:end;width:100%;height:100%;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-end}
+.mat{position:relative;padding:0 clamp(10px,1.4vw,18px) clamp(12px,1.6vw,20px) 0;flex:none}
 .mat::before{content:"";position:absolute;left:40%;top:12%;right:0;bottom:0;background:var(--block);transition:background-color .5s var(--ease)}
 .frame{z-index:1}
-.frame{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--line);isolation:isolate;touch-action:pan-y;cursor:grab}
+.frame{position:relative;width:var(--fw,360px);height:var(--fh,360px);overflow:hidden;background:transparent;isolation:isolate;touch-action:pan-y;cursor:grab;transition:width .9s var(--ease),height .9s var(--ease)}
 .frame:active{cursor:grabbing}
 .slide{position:absolute;inset:0;visibility:hidden;z-index:0}
 .slide.is-active{visibility:visible;z-index:2}
 .slide.is-leaving{visibility:visible;z-index:1}
-.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;user-select:none;-webkit-user-drag:none}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;display:block;user-select:none;-webkit-user-drag:none}
 .slide .empty{position:absolute;inset:0;display:grid;place-items:center;background:var(--line);color:var(--muted);font-size:.8125rem}
 .frame::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
 
@@ -137,14 +137,15 @@ h1{
 .progress i{position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left}
 
 /* Caption row: museum label left, controls right */
-.meta{margin-top:18px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.meta{margin-top:16px;width:var(--mw,380px);max-width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex:none;transition:width .9s var(--ease)}
 .labels{display:grid;min-width:0}
 .label{
-  grid-area:1/1;display:grid;gap:0;font-size:.875rem;line-height:1.5;color:var(--muted);
+  grid-area:1/1;display:grid;gap:2px;font-size:.8125rem;line-height:1.45;color:var(--muted);
   opacity:0;visibility:hidden;
 }
 .label.is-active{opacity:1;visibility:visible}
-.label b{font-weight:500;color:var(--ink)}
+.label b{font-weight:600;color:var(--ink)}
+.label > span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .controls{display:flex;align-items:center;gap:4px;flex:none}
 .count{font-size:.75rem;color:var(--faint);font-variant-numeric:tabular-nums;margin-right:8px}
 .count b{font-weight:500;color:var(--ink)}
@@ -171,10 +172,10 @@ h1{
 }
 
 footer{
-  border-top:1px solid var(--line);padding-top:20px;
+  border-top:1px solid var(--line);padding-top:8px;
   display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
 }
-.status{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:.875rem}
+.status{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:.875rem;min-height:44px}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
 footer nav{display:flex;flex-wrap:wrap;gap:8px 28px}
 footer nav a{
@@ -200,27 +201,35 @@ footer nav a:hover{color:var(--accent);background-size:0 1px;background-position
   @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 50%,transparent)}100%{box-shadow:0 0 0 9px transparent}}
 }
-@media (prefers-reduced-motion: reduce){body,.btn,.mat::before{transition:none}}
+@media (prefers-reduced-motion: reduce){body,.btn,.mat::before,.frame,.meta{transition:none}}
 
+/* Tablet and phone: still one screen; the painting takes whatever height is left */
 @media (max-width:860px){
-  .hero{grid-template-columns:1fr;gap:40px;align-self:start}
-  .work{order:-1;justify-self:center;max-width:min(400px,86%)}
-  h1{font-size:clamp(2.1rem,8.6vw,3rem)}
+  .hero{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:20px;align-items:stretch}
+  .work{order:-1;align-items:center}
+  .meta{margin-top:12px}
+  h1{font-size:clamp(1.75rem,7.4vw,2.6rem);margin-bottom:10px;max-width:none}
+  .lede{font-size:.9375rem;margin-bottom:12px;max-width:none}
+  .proof{font-size:.8125rem;margin-bottom:16px;padding-top:10px;max-width:none}
+  .hint{display:none}
 }
 @media (max-width:600px){
   .soon{display:none}
-  .cta{flex-direction:column;align-items:stretch;gap:12px}
-  .btn{width:100%;justify-content:center;min-height:54px}
-  .hint{max-width:none;text-align:center}
-  footer{flex-direction:column;align-items:stretch;gap:8px;padding-top:16px}
-  footer nav{flex-direction:column;gap:0}
-  footer nav a{justify-content:space-between;min-height:54px;font-size:.9375rem;background:none;border-bottom:1px solid var(--line)}
-  footer nav a:last-child{border-bottom:0}
-  footer nav a::after{content:"";width:7px;height:7px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);opacity:.45}
+  .page{gap:16px}
+  .theme{width:40px;height:40px}
+  .btn{width:100%;justify-content:center;min-height:48px}
+  .cta{display:block}
+  footer{flex-direction:column;align-items:stretch;gap:0;padding-top:4px}
+  footer nav{gap:0 20px;justify-content:space-between}
+  footer nav a{font-size:.8125rem;background:none;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+  .status{min-height:36px;font-size:.8125rem}
+  .controls .count{display:none}
+  .ctl{width:36px;height:36px}
 }
-@media (max-height:520px) and (orientation:landscape){
-  .hero{grid-template-columns:1fr 1fr}
-  .work{order:0;max-width:280px}
+/* Very short screens (phones in landscape): allow scrolling rather than squeezing */
+@media (max-height:560px){
+  .page{height:auto;min-height:100svh;overflow:visible}
+  .hero{height:auto}
 }
 </style>
 </head>
@@ -320,7 +329,7 @@ footer nav a:hover{color:var(--accent);background-size:0 1px;background-position
 })();
 </script>
 <script>
-/* Gallery: 10 slides, autoplay, swipe, arrows */
+/* Gallery: autoplay, swipe, arrows */
 (function(){
   var work=document.querySelector('.work'); if(!work) return;
   var slides=[].slice.call(work.querySelectorAll('.slide')),
@@ -385,6 +394,37 @@ footer nav a:hover{color:var(--accent);background-size:0 1px;background-position
   frame.addEventListener('pointercancel',function(){x0=null;});
 
   setPaused(paused); restart();
+})();
+</script>
+<script>
+/* Fit each painting whole (never cropped) into the space left on one screen */
+(function(){
+  var work=document.querySelector('.work'); if(!work) return;
+  var hero=document.querySelector('.hero'), text=hero.firstElementChild,
+      mat=work.querySelector('.mat'), frame=work.querySelector('.frame'),
+      meta=work.querySelector('.meta'), slides=[].slice.call(work.querySelectorAll('.slide'));
+  function ratio(slide){
+    var img=slide.querySelector('img');
+    return (img && img.naturalWidth) ? img.naturalWidth/img.naturalHeight : 1;
+  }
+  function fit(){
+    var active=work.querySelector('.slide.is-active')||slides[0];
+    var cs=getComputedStyle(mat), padR=parseFloat(cs.paddingRight), padB=parseFloat(cs.paddingBottom);
+    var stacked=getComputedStyle(hero).gridTemplateColumns.split(' ').length===1;
+    var availW=work.clientWidth-padR;
+    var availH=(stacked ? hero.clientHeight-text.offsetHeight-parseFloat(getComputedStyle(hero).rowGap||0) : hero.clientHeight)
+               -meta.offsetHeight-parseFloat(getComputedStyle(meta).marginTop)-padB;
+    availH=Math.max(availH,180);
+    var r=ratio(active), w=Math.min(availW,availH*r), h=w/r;
+    frame.style.setProperty('--fw',Math.round(w)+'px');
+    frame.style.setProperty('--fh',Math.round(h)+'px');
+    meta.style.setProperty('--mw',Math.round(w+padR)+'px');
+  }
+  slides.forEach(function(s){var img=s.querySelector('img'); if(img&&!img.complete)img.addEventListener('load',fit);});
+  new MutationObserver(fit).observe(frame,{subtree:true,attributes:true,attributeFilter:['class']});
+  window.addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  fit();
 })();
 </script>
 </body>
