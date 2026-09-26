@@ -119,7 +119,7 @@ h1{
 .hint{font-size:.8125rem;color:var(--faint);max-width:26ch;line-height:1.45}
 
 /* The painting, hung on the wall */
-.work{margin:0;justify-self:end;width:100%;height:100%;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-end}
+.work{margin:0;justify-self:stretch;width:100%;height:100%;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .mat{position:relative;padding:0 clamp(10px,1.4vw,18px) clamp(12px,1.6vw,20px) 0;flex:none}
 .mat::before{content:"";position:absolute;left:40%;top:12%;right:0;bottom:0;background:var(--block);transition:background-color .5s var(--ease)}
 .frame{z-index:1}
@@ -138,7 +138,7 @@ h1{
 
 /* Caption row: museum label left, controls right */
 .meta{margin-top:16px;width:var(--mw,380px);max-width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex:none;transition:width .9s var(--ease)}
-.labels{display:grid;min-width:0}
+.labels{display:grid;min-width:0;flex:1}
 .label{
   grid-area:1/1;display:grid;gap:2px;font-size:.8125rem;line-height:1.45;color:var(--muted);
   opacity:0;visibility:hidden;
@@ -407,18 +407,24 @@ footer nav a:hover{color:var(--accent);background-size:0 1px;background-position
     var img=slide.querySelector('img');
     return (img && img.naturalWidth) ? img.naturalWidth/img.naturalHeight : 1;
   }
+  var MIN_CAPTION=360; /* caption row never narrower than this */
   function fit(){
     var active=work.querySelector('.slide.is-active')||slides[0];
     var cs=getComputedStyle(mat), padR=parseFloat(cs.paddingRight), padB=parseFloat(cs.paddingBottom);
     var stacked=getComputedStyle(hero).gridTemplateColumns.split(' ').length===1;
-    var availW=work.clientWidth-padR;
+    var colW=work.clientWidth, availW=colW-padR, r=ratio(active);
+    /* 1. give the caption its width first, so its height is known */
+    var capW=Math.min(colW,Math.max(MIN_CAPTION,Math.min(availW,availW)));
+    meta.style.setProperty('--mw',Math.round(capW)+'px');
+    /* 2. size the painting into the height that remains */
     var availH=(stacked ? hero.clientHeight-text.offsetHeight-parseFloat(getComputedStyle(hero).rowGap||0) : hero.clientHeight)
                -meta.offsetHeight-parseFloat(getComputedStyle(meta).marginTop)-padB;
     availH=Math.max(availH,180);
-    var r=ratio(active), w=Math.min(availW,availH*r), h=w/r;
+    var w=Math.min(availW,availH*r), h=w/r;
     frame.style.setProperty('--fw',Math.round(w)+'px');
     frame.style.setProperty('--fh',Math.round(h)+'px');
-    meta.style.setProperty('--mw',Math.round(w+padR)+'px');
+    /* 3. caption matches the painting's width, but never below the minimum */
+    meta.style.setProperty('--mw',Math.round(Math.min(colW,Math.max(w+padR,MIN_CAPTION)))+'px');
   }
   slides.forEach(function(s){var img=s.querySelector('img'); if(img&&!img.complete)img.addEventListener('load',fit);});
   new MutationObserver(fit).observe(frame,{subtree:true,attributes:true,attributeFilter:['class']});
