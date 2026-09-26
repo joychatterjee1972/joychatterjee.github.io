@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Joy Chatterjee | Hyper-Realistic Portrait Artist</title>
+
+  <meta name="description" content="Joy Chatterjee — artist specializing in hyper-realistic portraiture. Over two decades of painting faces by hand.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f7f5f0;
+      color: #171717;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 6%;
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      opacity: 0.5;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px 100px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      color: #666;
+    }
+
+    h1 {
+      font-size: clamp(55px, 9vw, 120px);
+      font-weight: normal;
+      line-height: 0.95;
+      letter-spacing: -4px;
+      margin-bottom: 35px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 21px;
+      color: #444;
+    }
+
+    .scroll {
+      margin-top: 70px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #777;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 110px 7%;
+    }
+
+    .section-label {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: normal;
+      line-height: 1;
+      margin-bottom: 35px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: #171717;
+      color: #f7f5f0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .about-text {
+      font-size: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 25px;
+    }
+
+    .journey {
+      border-top: 1px solid #555;
+      padding-top: 25px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: #ccc;
+    }
+
+    /* GALLERY */
+
+    .gallery-intro {
+      max-width: 700px;
+      margin-bottom: 60px;
+      font-size: 19px;
+      color: #555;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .artwork {
+      aspect-ratio: 4 / 5;
+      background: #dedbd4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .artwork span {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #777;
+    }
+
+    .artwork:nth-child(2) {
+      margin-top: 80px;
+    }
+
+    .artwork:nth-child(4) {
+      margin-top: 80px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: #dedbd4;
+      text-align: center;
+    }
+
+    .contact-content {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .contact p {
+      font-size: 20px;
+      margin-bottom: 35px;
+    }
+
+    .contact-link {
+      display: inline-block;
+      border-bottom: 1px solid #171717;
+      padding-bottom: 5px;
+      margin: 10px 15px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #171717;
+      color: #aaa;
+      padding: 35px 7%;
+      display: flex;
+      justify-content: space-between;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 18px 5%;
+      }
+
+      nav ul {
+        gap: 14px;
+        font-size: 10px;
+      }
+
+      .logo {
+        font-size: 15px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .artwork:nth-child(2),
+      .artwork:nth-child(4) {
+        margin-top: 0;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <a href="#" class="logo">Joy Chatterjee</a>
+
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Hyper-Realistic Portraiture
+      </div>
+
+      <h1>
+        Joy<br>
+        Chatterjee
+      </h1>
+
+      <p>
+        Over two decades of painting faces by hand.
+        Every portrait begins with observation —
+        capturing the expression, character and details
+        that make a person unmistakably themselves.
+      </p>
+
+      <div class="scroll">
+        ↓ Explore the work
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- WORK -->
+
+  <section id="work">
+
+    <div class="section-label">
+      Selected Work
+    </div>
+
+    <h2>
+      Portraits
+    </h2>
+
+    <p class="gallery-intro">
+      A journey in hyper-realistic portraiture,
+      from West Bengal to India and Italy.
+    </p>
+
+    <div class="gallery">
+
+      <div class="artwork">
+        <span>Artwork 01</span>
+      </div>
+
+      <div class="artwork">
+        <span>Artwork 02</span>
+      </div>
+
+      <div class="artwork">
+        <span>Artwork 03</span>
+      </div>
+
+      <div class="artwork">
+        <span>Artwork 04</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about" class="about">
+
+    <div class="about-grid">
+
+      <div>
+        <div class="section-label">
+          The Artist
+        </div>
+
+        <h2>
+          Painting<br>
+          people.
+        </h2>
+      </div>
+
+      <div class="about-text">
+
+        <p>
+          For more than two decades, Joy Chatterjee has
+          dedicated his practice to the art of portraiture.
+        </p>
+
+        <p>
+          Working by hand, each portrait is built through
+          careful observation — studying light, expression,
+          texture and the small details that give a face
+          its identity.
+        </p>
+
+        <p>
+          His artistic journey has taken him from
+          West Bengal across India and to Italy,
+          developing a distinctive approach to
+          hyper-realistic portraiture.
+        </p>
+
+        <div class="journey">
+          WEST BENGAL · INDIA · ITALY
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="contact">
+
+    <div class="contact-content">
+
+      <div class="section-label">
+        Get in touch
+      </div>
+
+      <h2>
+        Welcome to the work.
+      </h2>
+
+      <p>
+        For portrait commissions, exhibitions,
+        collaborations or enquiries, get in touch.
+      </p>
+
+      <a class="contact-link"
+         href="mailto:studio@joychatterjee.art">
+        studio@joychatterjee.art
+      </a>
+
+      <a class="contact-link"
+         href="https://www.instagram.com/joychatterjee"
+         target="_blank">
+        Instagram
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div>
+      © 2026 Joy Chatterjee
+    </div>
+
+    <div>
+      joychatterjee.art
+    </div>
+
+  </footer>
+
+</body>
+</html>
