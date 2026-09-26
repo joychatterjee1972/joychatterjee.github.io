@@ -3,39 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Joy Chatterjee – Portrait Artist | Coming soon</title>
-<meta name="description" content="The new website of Joy Chatterjee, hyper-realist portrait artist in Kolkata, is coming soon.">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz@0,6..96;1,6..96&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F4F4F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15191E" media="(prefers-color-scheme: dark)">
+<title>Joy Chatterjee – Hyper-realist Portrait Artist | Coming soon</title>
+<meta name="description" content="The new website of Joy Chatterjee, hyper-realist portrait artist, is coming soon. Portrait commissions are open.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#F1F1EE;--ink:#27303A;--muted:#5E6873;--accent:#8A5F14}
-@media (prefers-color-scheme: dark){:root{--paper:#1B2128;--ink:#E9E7E2;--muted:#A3AAB2;--accent:#D6A650}}
+:root{--bg:#F4F4F2;--ink:#1E252D;--muted:#6B737C;--line:#D9DAD6;--accent:#A87A2A;--frame:#E6E6E2}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#15191E;--ink:#EDEBE7;--muted:#9AA1A9;--line:#2C333B;--accent:#D8AA55;--frame:#1F252C}}
+:root[data-theme="dark"]{--bg:#15191E;--ink:#EDEBE7;--muted:#9AA1A9;--line:#2C333B;--accent:#D8AA55;--frame:#1F252C}
 *{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 "Karla",system-ui,sans-serif;
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  padding:max(32px,env(safe-area-inset-top)) 24px max(32px,env(safe-area-inset-bottom))}
-main{max-width:640px}
-h1{font-family:"Bodoni Moda",Georgia,serif;font-weight:400;font-size:clamp(2.4rem,9vw,4.8rem);line-height:1.05;margin:0 0 12px}
-.role{color:var(--muted);font-size:clamp(1rem,2.5vw,1.2rem);margin:0 0 40px}
-.soon{font-family:"Bodoni Moda",Georgia,serif;font-style:italic;color:var(--accent);font-size:clamp(1.4rem,4.5vw,2rem);margin:0 0 12px}
-.note{margin:0 auto 36px;max-width:40ch}
-.links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px;font-weight:700}
-a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:4px}
-a:hover{color:var(--accent)}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{margin:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font:400 1rem/1.55 "Instrument Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;
+}
+.page{
+  min-height:100vh;min-height:100svh;
+  max-width:1200px;margin:0 auto;
+  padding:
+    calc(clamp(24px,4vw,48px) + env(safe-area-inset-top,0px))
+    calc(clamp(20px,5vw,64px) + env(safe-area-inset-right,0px))
+    calc(clamp(24px,4vw,48px) + env(safe-area-inset-bottom,0px))
+    calc(clamp(20px,5vw,64px) + env(safe-area-inset-left,0px));
+  display:grid;grid-template-rows:auto 1fr auto;gap:48px;
+}
+.name{font-weight:600;letter-spacing:-.01em}
+
+.hero{
+  align-self:center;
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(32px,6vw,96px);align-items:center;
+}
+h1{
+  font-weight:500;font-size:clamp(2.5rem,6.8vw,5.6rem);
+  line-height:1;letter-spacing:-.045em;margin:0 0 24px;
+  max-width:13ch;text-wrap:balance;
+}
+.soon{color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.3rem);margin:0}
+
+/* Image */
+.photo{margin:0;display:grid;gap:12px}
+.photo .frame{
+  position:relative;aspect-ratio:1/1;background:var(--frame);overflow:hidden;
+}
+.photo img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;display:block;
+}
+.photo .empty{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:.95rem;text-align:center;padding:16px;
+}
+.photo figcaption{color:var(--muted);font-size:.9rem}
+
+footer{
+  border-top:1px solid var(--line);padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.status{display:inline-flex;align-items:center;gap:10px;font-weight:500}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+@media (prefers-reduced-motion: no-preference){
+  .dot{animation:pulse 2.4s ease-out infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+}
+nav{display:flex;flex-wrap:wrap;gap:8px 28px}
+nav a{
+  color:var(--ink);text-decoration:none;font-weight:500;
+  display:inline-flex;align-items:center;min-height:44px;
+  border-bottom:1px solid var(--line);transition:border-color .2s,color .2s;
+}
+nav a:hover{border-color:var(--accent);color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:2px}
+
+/* Phones */
+@media (max-width:760px){
+  .page{gap:32px}
+  .hero{grid-template-columns:1fr;gap:28px;align-self:start}
+  .photo{order:-1}
+  .photo{max-width:480px}
+}
+@media (max-width:600px){
+  footer{flex-direction:column;align-items:stretch;gap:12px;padding-top:20px}
+  nav{flex-direction:column;gap:0}
+  nav a{justify-content:space-between;min-height:56px;font-size:1.0625rem}
+  nav a:last-child{border-bottom:0}
+  nav a::after{content:"";width:8px;height:8px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);opacity:.5}
+}
+@media (max-height:520px) and (orientation:landscape){
+  .hero{grid-template-columns:1fr 1fr}
+  .photo{order:0}
+  h1{font-size:clamp(2rem,5vw,3.2rem)}
+}
 </style>
 </head>
 <body>
-<main>
-  <h1>Joy Chatterjee</h1>
-  <p class="role">Hyper-realist portrait artist, Kolkata</p>
-  <p class="soon">Website coming soon.</p>
-  <p class="note">Portrait commissions are open. Get in touch to begin.</p>
-  <div class="links">
-    <a href="https://wa.me/917478743149" target="_blank" rel="noopener">WhatsApp</a>
-    <a href="mailto:joychatterjee.art@gmail.com">studio@joychatterjee.art</a>
-    <a href="https://instagram.com/joychatterjee.art" target="_blank" rel="noopener">Instagram</a>
-  </div>
-</main>
+<div class="page">
+  <header>
+    <span class="name">Joy Chatterjee</span>
+  </header>
+
+  <main class="hero">
+    <div>
+      <h1>Hyper-realist portraits, painted by hand.</h1>
+      <p class="soon">A new website is coming soon.</p>
+    </div>
+
+    <figure class="photo">
+      <div class="frame">
+        <span class="empty">Image will appear here</span>
+        <!-- IMAGE: upload your photo next to this file and name it joy-portrait.jpg -->
+        <img src="joy-portrait.jpg"
+             alt="Joy Chatterjee with a brush in his teeth, beside his hyper-realist portrait of Jamshedji Tata"
+             width="445" height="449" loading="eager" decoding="async"
+             onerror="this.remove()">
+      </div>
+      <!-- CAPTION: edit or delete this line -->
+      <figcaption>Joy with his portrait of Jamshedji Tata</figcaption>
+    </figure>
+  </main>
+
+  <footer>
+    <span class="status"><span class="dot" aria-hidden="true"></span>Portrait commissions open</span>
+    <nav aria-label="Contact">
+      <!-- Replace 91XXXXXXXXXX with Joy's WhatsApp number: country code + number, digits only -->
+      <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:joychatterjee.art@gmail.com">Email</a>
+      <a href="https://instagram.com/joychatterjee.art" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </footer>
+</div>
 </body>
 </html>
