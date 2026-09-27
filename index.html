@@ -71,9 +71,10 @@
       max-width: 100%;
     }
 
-    /* --------------------------------
-       NAV
-    -------------------------------- */
+
+    /* =========================================
+       NAVIGATION
+    ========================================= */
 
     .nav {
       position: fixed;
@@ -93,7 +94,7 @@
 
       background: color-mix(
         in srgb,
-        var(--wall) 82%,
+        var(--wall) 78%,
         transparent
       );
 
@@ -142,9 +143,10 @@
       opacity: 1;
     }
 
-    /* --------------------------------
+
+    /* =========================================
        HERO
-    -------------------------------- */
+    ========================================= */
 
     .hero {
       position: relative;
@@ -162,18 +164,107 @@
       background: var(--wall);
     }
 
+
     /*
-      Large colourful gallery light.
-      Multiple blurred gradients create the
-      feeling of coloured light falling behind
-      the artwork rather than a coloured box.
+      The colourful illumination is intentionally
+      NOT a visible shape or panel.
+
+      It is several huge, blurred light sources
+      moving slowly behind the artwork.
     */
 
     .hero-light {
       position: absolute;
 
-      width: min(92vw, 1200px);
-      height: min(92vw, 1200px);
+      inset: -25%;
+
+      z-index: 0;
+
+      pointer-events: none;
+
+      filter: blur(75px);
+
+      opacity: .72;
+
+      background:
+        radial-gradient(
+          ellipse at 48% 48%,
+          rgba(255, 235, 180, .62) 0%,
+          rgba(255, 235, 180, .18) 20%,
+          transparent 43%
+        );
+
+      animation:
+        mainLight 16s ease-in-out infinite alternate;
+    }
+
+    .hero-light::before {
+      content: "";
+
+      position: absolute;
+
+      width: 65%;
+      height: 65%;
+
+      left: 2%;
+      top: 10%;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(155, 205, 255, .38) 0%,
+          rgba(155, 205, 255, .16) 24%,
+          transparent 67%
+        );
+
+      filter: blur(80px);
+
+      animation:
+        blueLight 19s ease-in-out infinite alternate;
+    }
+
+    .hero-light::after {
+      content: "";
+
+      position: absolute;
+
+      width: 68%;
+      height: 68%;
+
+      right: -4%;
+      bottom: 2%;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255, 160, 205, .34) 0%,
+          rgba(214, 173, 255, .18) 28%,
+          transparent 68%
+        );
+
+      filter: blur(90px);
+
+      animation:
+        pinkLight 21s ease-in-out infinite alternate;
+    }
+
+
+    /* additional moving golden light */
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 55vw;
+      height: 55vw;
+
+      max-width: 850px;
+      max-height: 850px;
 
       left: 50%;
       top: 50%;
@@ -182,130 +273,145 @@
 
       border-radius: 50%;
 
-      background:
-        radial-gradient(
-          circle at 50% 48%,
-          rgba(255, 247, 218, .96) 0%,
-          rgba(255, 239, 185, .75) 16%,
-          rgba(255, 196, 180, .45) 32%,
-          rgba(214, 191, 255, .28) 48%,
-          rgba(164, 220, 255, .16) 61%,
-          rgba(255, 255, 255, 0) 76%
-        );
-
-      filter: blur(30px);
-
-      opacity: .9;
-
       pointer-events: none;
 
-      animation:
-        galleryGlow 14s ease-in-out infinite alternate;
-    }
+      z-index: 1;
 
-    .hero-light::before,
-    .hero-light::after {
-      content: "";
-
-      position: absolute;
-      inset: -15%;
-
-      border-radius: 50%;
-
-      pointer-events: none;
-    }
-
-    .hero-light::before {
       background:
         radial-gradient(
-          circle at 28% 42%,
-          rgba(179, 213, 255, .24),
-          transparent 38%
-        ),
-        radial-gradient(
-          circle at 74% 56%,
-          rgba(255, 188, 211, .23),
-          transparent 40%
-        );
-
-      filter: blur(55px);
-
-      animation:
-        colourDrift 18s ease-in-out infinite alternate;
-    }
-
-    .hero-light::after {
-      background:
-        radial-gradient(
-          circle at 52% 68%,
-          rgba(255, 215, 142, .24),
-          transparent 34%
-        ),
-        radial-gradient(
-          circle at 60% 25%,
-          rgba(195, 181, 255, .18),
-          transparent 34%
+          circle,
+          rgba(255, 246, 215, .38) 0%,
+          rgba(255, 220, 175, .14) 26%,
+          transparent 68%
         );
 
       filter: blur(65px);
 
       animation:
-        colourDrift 22s ease-in-out infinite alternate-reverse;
+        warmPulse 11s ease-in-out infinite alternate;
     }
 
-    html.dark .hero-light {
-      background:
-        radial-gradient(
-          circle at 50% 48%,
-          rgba(255, 235, 190, .25) 0%,
-          rgba(255, 180, 150, .16) 24%,
-          rgba(185, 165, 255, .13) 45%,
-          rgba(130, 205, 255, .08) 62%,
-          rgba(0,0,0,0) 76%
-        );
 
-      opacity: .95;
-    }
+    @keyframes mainLight {
 
-    @keyframes galleryGlow {
       0% {
+        transform:
+          translate(-5%, -3%)
+          scale(.92)
+          rotate(-3deg);
+      }
+
+      50% {
+        transform:
+          translate(4%, 3%)
+          scale(1.04)
+          rotate(2deg);
+      }
+
+      100% {
+        transform:
+          translate(-2%, 5%)
+          scale(.98)
+          rotate(-1deg);
+      }
+
+    }
+
+
+    @keyframes blueLight {
+
+      0% {
+        transform:
+          translate(-8%, 4%)
+          scale(.85);
+      }
+
+      50% {
+        transform:
+          translate(12%, -8%)
+          scale(1.12);
+      }
+
+      100% {
+        transform:
+          translate(4%, 12%)
+          scale(.95);
+      }
+
+    }
+
+
+    @keyframes pinkLight {
+
+      0% {
+        transform:
+          translate(8%, 7%)
+          scale(.88);
+      }
+
+      50% {
+        transform:
+          translate(-12%, -6%)
+          scale(1.12);
+      }
+
+      100% {
+        transform:
+          translate(-4%, 8%)
+          scale(.98);
+      }
+
+    }
+
+
+    @keyframes warmPulse {
+
+      0% {
+        transform:
+          translate(-50%, -50%)
+          scale(.82);
+        opacity: .45;
+      }
+
+      50% {
+        transform:
+          translate(-50%, -50%)
+          scale(1.08);
+        opacity: .75;
+      }
+
+      100% {
         transform:
           translate(-50%, -50%)
           scale(.94);
+        opacity: .55;
       }
 
-      50% {
-        transform:
-          translate(-50%, -50%)
-          scale(1.04);
-      }
-
-      100% {
-        transform:
-          translate(-50%, -50%)
-          scale(.98);
-      }
     }
 
-    @keyframes colourDrift {
-      0% {
-        transform: translate(-3%, -2%) scale(.94);
-      }
 
-      50% {
-        transform: translate(4%, 3%) scale(1.06);
-      }
+    html.dark .hero-light {
+      opacity: .52;
 
-      100% {
-        transform: translate(-1%, 4%) scale(1);
-      }
+      background:
+        radial-gradient(
+          ellipse at 48% 48%,
+          rgba(255, 215, 155, .25) 0%,
+          rgba(255, 215, 155, .07) 24%,
+          transparent 46%
+        );
     }
+
+    html.dark .hero::before {
+      opacity: .4;
+    }
+
 
     .hero-media {
       position: absolute;
       inset: 0;
 
-      z-index: 2;
+      z-index: 3;
 
       display: flex;
       align-items: center;
@@ -335,18 +441,23 @@
       -webkit-user-drag: none;
 
       filter:
-        drop-shadow(0 22px 34px rgba(0,0,0,.09));
+        drop-shadow(
+          0 24px 38px rgba(0,0,0,.09)
+        );
 
       transition:
         opacity .65s ease,
-        filter .6s ease,
-        transform 1.2s var(--ease);
+        transform 1.2s var(--ease),
+        filter .8s ease;
     }
 
     .hero-media img.is-changing {
       opacity: 0;
-      transform: scale(.985);
+
+      transform:
+        scale(.985);
     }
+
 
     .hero-meta {
       position: absolute;
@@ -371,10 +482,18 @@
 
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(24px, 3vw, 42px);
+
+      font-size: clamp(
+        24px,
+        3vw,
+        42px
+      );
+
       line-height: 1.05;
+
       letter-spacing: -.025em;
     }
+
 
     .hero-note {
       position: absolute;
@@ -387,14 +506,17 @@
       text-align: right;
 
       font-family: var(--mono);
+
       font-size: 10px;
       line-height: 1.7;
 
       letter-spacing: .06em;
+
       text-transform: uppercase;
 
       color: var(--muted);
     }
+
 
     .scroll-hint {
       position: absolute;
@@ -407,29 +529,39 @@
       z-index: 5;
 
       font-family: var(--mono);
+
       font-size: 9px;
+
       letter-spacing: .12em;
+
       text-transform: uppercase;
 
       color: var(--muted);
     }
 
-    /* --------------------------------
+
+    /* =========================================
        GENERAL
-    -------------------------------- */
+    ========================================= */
 
     section {
       position: relative;
     }
 
     .section-inner {
-      width: min(1280px, calc(100% - 64px));
+      width:
+        min(
+          1280px,
+          calc(100% - 64px)
+        );
+
       margin: 0 auto;
     }
 
-    /* --------------------------------
+
+    /* =========================================
        INTRO
-    -------------------------------- */
+    ========================================= */
 
     .intro {
       min-height: 70vh;
@@ -448,8 +580,11 @@
       margin-bottom: 28px;
 
       font-family: var(--mono);
+
       font-size: 10px;
+
       letter-spacing: .12em;
+
       text-transform: uppercase;
 
       color: var(--muted);
@@ -459,9 +594,16 @@
       margin: 0;
 
       font-family: var(--serif);
+
       font-weight: 400;
 
-      font-size: clamp(42px, 7vw, 94px);
+      font-size:
+        clamp(
+          42px,
+          7vw,
+          94px
+        );
+
       line-height: .98;
 
       letter-spacing: -.045em;
@@ -472,15 +614,22 @@
 
       margin: 42px 0 0;
 
-      font-size: clamp(17px, 1.5vw, 22px);
+      font-size:
+        clamp(
+          17px,
+          1.5vw,
+          22px
+        );
+
       line-height: 1.65;
 
       color: var(--muted);
     }
 
-    /* --------------------------------
-       WORKS
-    -------------------------------- */
+
+    /* =========================================
+       WORKS — 4 COLUMNS DESKTOP
+    ========================================= */
 
     .works {
       padding: 120px 0 160px;
@@ -494,89 +643,118 @@
       margin: 0;
 
       font-family: var(--serif);
+
       font-weight: 400;
 
-      font-size: clamp(38px, 5vw, 68px);
+      font-size:
+        clamp(
+          38px,
+          5vw,
+          68px
+        );
+
       line-height: 1;
 
       letter-spacing: -.035em;
     }
 
-    .work {
-      margin-bottom: 150px;
+
+    .works-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          minmax(0, 1fr)
+        );
+
+      column-gap: 28px;
+
+      row-gap: 90px;
     }
 
-    .work:last-child {
-      margin-bottom: 0;
+
+    .work {
+      margin: 0;
     }
+
 
     .work-image {
       width: 100%;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      overflow: visible;
+      overflow: hidden;
 
       cursor: zoom-in;
     }
 
+
     .work-image img {
       display: block;
 
-      width: auto;
+      width: 100%;
       height: auto;
 
       max-width: 100%;
-      max-height: 80vh;
 
       object-fit: contain;
       object-position: center;
 
       user-select: none;
+
       -webkit-user-drag: none;
 
       transition:
         transform .9s var(--ease);
     }
 
+
     .work-image:hover img {
-      transform: scale(1.012);
+      transform:
+        scale(1.025);
     }
+
 
     .work-info {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-
-      gap: 40px;
-
-      padding-top: 26px;
+      padding-top: 18px;
     }
+
 
     .work-title {
       font-family: var(--serif);
-      font-size: clamp(22px, 2vw, 30px);
-      line-height: 1.15;
+
+      font-size: 20px;
+
+      line-height: 1.2;
+
+      letter-spacing: -.02em;
     }
 
+
     .work-meta {
-      text-align: right;
+      margin-top: 8px;
 
       font-family: var(--mono);
-      font-size: 10px;
-      line-height: 1.7;
+
+      font-size: 9px;
+
+      line-height: 1.6;
 
       letter-spacing: .06em;
+
       text-transform: uppercase;
 
       color: var(--muted);
     }
 
-    /* --------------------------------
+
+    /* =========================================
        STATEMENT
-    -------------------------------- */
+    ========================================= */
 
     .statement {
       min-height: 75vh;
@@ -594,15 +772,22 @@
 
       font-family: var(--serif);
 
-      font-size: clamp(34px, 5.3vw, 78px);
+      font-size:
+        clamp(
+          34px,
+          5.3vw,
+          78px
+        );
+
       line-height: 1.08;
 
       letter-spacing: -.04em;
     }
 
-    /* --------------------------------
+
+    /* =========================================
        ABOUT
-    -------------------------------- */
+    ========================================= */
 
     .about {
       padding: 140px 0 170px;
@@ -611,7 +796,8 @@
     .about-grid {
       display: grid;
 
-      grid-template-columns: 1fr 1.4fr;
+      grid-template-columns:
+        1fr 1.4fr;
 
       gap: 100px;
     }
@@ -619,7 +805,13 @@
     .about-title {
       font-family: var(--serif);
 
-      font-size: clamp(38px, 4vw, 60px);
+      font-size:
+        clamp(
+          38px,
+          4vw,
+          60px
+        );
+
       line-height: 1;
 
       letter-spacing: -.035em;
@@ -629,23 +821,27 @@
       max-width: 720px;
 
       font-size: 17px;
+
       line-height: 1.8;
 
       color: var(--muted);
     }
 
     .about-copy p {
-      margin: 0 0 28px;
+      margin:
+        0 0 28px;
     }
 
     .about-copy strong {
       color: var(--ink);
+
       font-weight: 400;
     }
 
-    /* --------------------------------
+
+    /* =========================================
        CONTACT
-    -------------------------------- */
+    ========================================= */
 
     .contact {
       min-height: 80vh;
@@ -661,7 +857,13 @@
 
       font-family: var(--serif);
 
-      font-size: clamp(48px, 8vw, 110px);
+      font-size:
+        clamp(
+          48px,
+          8vw,
+          110px
+        );
+
       line-height: .94;
 
       letter-spacing: -.055em;
@@ -673,17 +875,21 @@
       margin-top: 40px;
 
       font-size: 18px;
+
       line-height: 1.7;
 
       color: var(--muted);
     }
 
+
     .contact-links {
       display: flex;
+
       align-items: center;
 
       margin-top: 60px;
     }
+
 
     .contact-links a {
       display: inline-flex;
@@ -693,9 +899,11 @@
 
       min-height: 50px;
 
-      padding: 0 28px;
+      padding:
+        0 28px;
 
       font-size: 10px;
+
       letter-spacing: .09em;
 
       text-transform: uppercase;
@@ -703,26 +911,37 @@
       transition:
         background .3s ease,
         color .3s ease,
-        border-color .3s ease,
-        transform .3s ease;
+        transform .3s ease,
+        box-shadow .3s ease;
     }
+
 
     .commission-link {
       background: var(--ink);
+
       color: var(--wall);
 
       border: 1px solid var(--ink);
     }
 
+
     .commission-link:hover {
-      transform: translateY(-2px);
+      transform:
+        translateY(-2px);
+
       opacity: .88;
+
+      box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.08);
     }
+
 
     .contact-email {
       margin-top: 24px;
 
       font-family: var(--mono);
+
       font-size: 11px;
 
       letter-spacing: .04em;
@@ -730,43 +949,55 @@
       color: var(--muted);
     }
 
+
     .contact-email a {
-      transition: color .25s ease;
+      transition:
+        color .25s ease;
     }
+
 
     .contact-email a:hover {
       color: var(--ink);
     }
 
-    /* --------------------------------
+
+    /* =========================================
        FOOTER
-    -------------------------------- */
+    ========================================= */
 
     footer {
-      padding: 40px 32px 50px;
+      padding:
+        40px 32px 50px;
 
       display: flex;
+
       align-items: flex-end;
+
       justify-content: space-between;
 
       gap: 30px;
 
       font-family: var(--mono);
+
       font-size: 9px;
+
       line-height: 1.7;
 
       letter-spacing: .08em;
+
       text-transform: uppercase;
 
       color: var(--muted);
     }
 
-    /* --------------------------------
-       VIEWER
-    -------------------------------- */
+
+    /* =========================================
+       FULLSCREEN VIEWER
+    ========================================= */
 
     .viewer {
       position: fixed;
+
       inset: 0;
 
       z-index: 100;
@@ -776,9 +1007,11 @@
       background: var(--wall);
     }
 
+
     .viewer.open {
       display: block;
     }
+
 
     .viewer-top {
       position: absolute;
@@ -792,24 +1025,32 @@
       z-index: 5;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
-      padding: 0 25px;
+      padding:
+        0 25px;
     }
+
 
     .viewer-label {
       font-family: var(--mono);
+
       font-size: 10px;
 
       letter-spacing: .08em;
+
       text-transform: uppercase;
 
       color: var(--muted);
     }
 
+
     .viewer-close {
       border: 0;
+
       background: transparent;
 
       padding: 10px;
@@ -817,25 +1058,32 @@
       cursor: pointer;
 
       font-size: 25px;
+
       line-height: 1;
 
       opacity: .7;
     }
 
+
     .viewer-close:hover {
       opacity: 1;
     }
+
 
     .viewer-image-wrap {
       width: 100%;
       height: 100%;
 
-      padding: 70px 80px;
+      padding:
+        70px 80px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
     }
+
 
     .viewer-img {
       display: block;
@@ -847,18 +1095,22 @@
       max-height: 100%;
 
       object-fit: contain;
+
       object-position: center;
 
       user-select: none;
+
       -webkit-user-drag: none;
     }
+
 
     .viewer-arrow {
       position: absolute;
 
       top: 50%;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
 
       z-index: 5;
 
@@ -866,57 +1118,70 @@
       height: 100px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       border: 0;
+
       background: transparent;
 
       cursor: pointer;
 
       font-family: var(--serif);
+
       font-size: 38px;
 
       opacity: .55;
 
-      transition: opacity .25s ease;
+      transition:
+        opacity .25s ease;
     }
+
 
     .viewer-arrow:hover {
       opacity: 1;
     }
 
+
     .viewer-prev {
       left: 0;
     }
+
 
     .viewer-next {
       right: 0;
     }
 
-    /* --------------------------------
+
+    /* =========================================
        REVEAL
-    -------------------------------- */
+    ========================================= */
 
     .reveal {
       opacity: 0;
 
-      transform: translateY(25px);
+      transform:
+        translateY(25px);
 
       transition:
         opacity .9s var(--ease),
         transform .9s var(--ease);
     }
 
+
     .reveal.visible {
       opacity: 1;
 
-      transform: translateY(0);
+      transform:
+        translateY(0);
     }
 
-    /* --------------------------------
-       MOBILE
-    -------------------------------- */
+
+    /* =========================================
+       MOBILE — 2 COLUMNS
+    ========================================= */
 
     @media (max-width: 800px) {
 
@@ -924,32 +1189,49 @@
         --nav-height: 66px;
       }
 
+
       .nav {
-        padding: 0 18px;
+        padding:
+          0 18px;
       }
+
 
       .brand {
         font-size: 18px;
       }
 
+
       .nav-right {
         gap: 14px;
       }
+
 
       .nav-links {
         display: none;
       }
 
+
       .hero {
         min-height: 600px;
       }
 
-      .hero-light {
-        width: 130vw;
-        height: 130vw;
 
-        filter: blur(24px);
+      .hero-light {
+        inset: -45%;
+
+        filter: blur(55px);
+
+        opacity: .68;
       }
+
+
+      .hero::before {
+        width: 100vw;
+        height: 100vw;
+
+        filter: blur(55px);
+      }
+
 
       .hero-media {
         padding:
@@ -958,68 +1240,98 @@
           130px;
       }
 
+
       .hero-meta {
         left: 18px;
         bottom: 25px;
       }
+
 
       .hero-note {
         right: 18px;
         bottom: 27px;
       }
 
+
       .scroll-hint {
         display: none;
       }
 
+
       .section-inner {
-        width: min(100% - 36px, 1280px);
+        width:
+          min(
+            100% - 36px,
+            1280px
+          );
       }
+
 
       .intro {
         min-height: auto;
 
-        padding: 120px 0 140px;
+        padding:
+          120px 0
+          140px;
       }
+
 
       .intro p {
         margin-top: 30px;
       }
 
+
+      /* 2 COLUMN MOBILE GALLERY */
+
       .works {
-        padding: 100px 0 120px;
+        padding:
+          100px 0
+          120px;
       }
+
 
       .section-heading {
         margin-bottom: 55px;
       }
 
-      .work {
-        margin-bottom: 100px;
+
+      .works-grid {
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0, 1fr)
+          );
+
+        column-gap: 16px;
+
+        row-gap: 55px;
       }
 
-      .work-image img {
-        max-height: 72vh;
+
+      .work-title {
+        font-size: 17px;
       }
 
-      .work-info {
-        flex-direction: column;
-        gap: 15px;
-      }
 
       .work-meta {
-        text-align: left;
+        font-size: 8px;
       }
+
 
       .statement {
         min-height: auto;
 
-        padding: 120px 0;
+        padding:
+          120px 0;
       }
 
+
       .about {
-        padding: 110px 0 130px;
+        padding:
+          110px 0
+          130px;
       }
+
 
       .about-grid {
         grid-template-columns: 1fr;
@@ -1027,37 +1339,55 @@
         gap: 45px;
       }
 
+
       .contact {
         min-height: auto;
 
-        padding: 120px 0 130px;
+        padding:
+          120px 0
+          130px;
       }
+
 
       .contact-links {
         width: 100%;
       }
 
+
       .contact-links a {
         width: 100%;
       }
 
+
       footer {
-        padding: 30px 18px 40px;
+        padding:
+          30px 18px
+          40px;
 
         flex-direction: column;
+
         align-items: flex-start;
       }
 
+
       .viewer-image-wrap {
-        padding: 65px 25px;
+        padding:
+          65px 25px;
       }
+
 
       .viewer-arrow {
         width: 45px;
 
         font-size: 30px;
       }
+
     }
+
+
+    /* =========================================
+       REDUCED MOTION
+    ========================================= */
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -1065,61 +1395,93 @@
         scroll-behavior: auto;
       }
 
+
       *,
       *::before,
       *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
+        animation-duration:
+          .01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          .01ms !important;
       }
+
     }
+
   </style>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE"></script>
+
+  <!-- GOOGLE ANALYTICS -->
+
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE">
+  </script>
 
   <script>
-    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer =
+      window.dataLayer || [];
 
     function gtag() {
       dataLayer.push(arguments);
     }
 
     gtag("js", new Date());
-    gtag("config", "G-4F3MFHFVDE");
+
+    gtag(
+      "config",
+      "G-4F3MFHFVDE"
+    );
+
   </script>
+
 </head>
 
 
 <body>
 
-  <!-- ================================
-       NAVIGATION
-  ================================= -->
+
+  <!-- =====================================
+       NAV
+  ====================================== -->
 
   <nav class="nav">
 
-    <a class="brand" href="#top">
+    <a
+      class="brand"
+      href="#top">
       Joy Chatterjee
     </a>
+
 
     <div class="nav-right">
 
       <div class="nav-links">
 
-        <a class="nav-link" href="#works">
+        <a
+          class="nav-link"
+          href="#works">
           Works
         </a>
 
-        <a class="nav-link" href="#about">
+        <a
+          class="nav-link"
+          href="#about">
           About
         </a>
 
-        <a class="nav-link" href="#contact">
+        <a
+          class="nav-link"
+          href="#contact">
           Contact
         </a>
 
       </div>
+
 
       <button
         class="nav-control"
@@ -1127,6 +1489,7 @@
         type="button">
         Sound
       </button>
+
 
       <button
         class="nav-control"
@@ -1140,15 +1503,21 @@
   </nav>
 
 
-  <!-- ================================
+  <!-- =====================================
        HERO
-  ================================= -->
+  ====================================== -->
 
   <main id="top">
 
     <section class="hero">
 
+
+      <!-- ANIMATED COLOUR LIGHT -->
+
       <div class="hero-light"></div>
+
+
+      <!-- HERO ART -->
 
       <div class="hero-media">
 
@@ -1161,6 +1530,8 @@
       </div>
 
 
+      <!-- HERO TITLE -->
+
       <div class="hero-meta">
 
         <span
@@ -1168,6 +1539,7 @@
           id="heroNumber">
           01 / 05
         </span>
+
 
         <div
           class="hero-title"
@@ -1178,11 +1550,15 @@
       </div>
 
 
+      <!-- HERO DETAILS -->
+
       <div
         class="hero-note"
         id="heroNote">
+
         Oil on Canvas<br>
         Painted by hand
+
       </div>
 
 
@@ -1193,9 +1569,9 @@
     </section>
 
 
-    <!-- ================================
+    <!-- =====================================
          INTRO
-    ================================= -->
+    ====================================== -->
 
     <section class="intro">
 
@@ -1207,9 +1583,11 @@
             Portrait Artist · India / Italy
           </div>
 
+
           <h1>
             A portrait to keep for generations.
           </h1>
+
 
           <p>
             Painted by hand from a single photograph,
@@ -1223,9 +1601,9 @@
     </section>
 
 
-    <!-- ================================
+    <!-- =====================================
          WORKS
-    ================================= -->
+    ====================================== -->
 
     <section
       class="works"
@@ -1233,11 +1611,13 @@
 
       <div class="section-inner">
 
+
         <div class="section-heading reveal">
 
           <div class="eyebrow">
             Selected Works
           </div>
+
 
           <h2>
             Works
@@ -1246,163 +1626,174 @@
         </div>
 
 
-        <!-- WORK 01 -->
+        <div class="works-grid">
 
-        <article class="work reveal">
 
-          <div class="work-image">
+          <!-- 01 -->
 
-            <img
-              src="work-01.jpg"
-              alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
-              data-index="0"
-              draggable="false">
+          <article class="work reveal">
 
-          </div>
+            <div class="work-image">
 
-          <div class="work-info">
+              <img
+                src="work-01.jpg"
+                alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
+                data-index="0"
+                draggable="false">
 
-            <div class="work-title">
-              Silverina
             </div>
 
-            <div class="work-meta">
-              Oil on Canvas<br>
-              Painted by hand
+
+            <div class="work-info">
+
+              <div class="work-title">
+                Silverina
+              </div>
+
+
+              <div class="work-meta">
+                Oil on Canvas · Painted by hand
+              </div>
+
             </div>
 
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- WORK 02 -->
+          <!-- 02 -->
 
-        <article class="work reveal">
+          <article class="work reveal">
 
-          <div class="work-image">
+            <div class="work-image">
 
-            <img
-              src="work-02.jpg"
-              alt="Silverina — The Making, portrait process by Joy Chatterjee"
-              data-index="1"
-              draggable="false">
+              <img
+                src="work-02.jpg"
+                alt="Silverina — The Making, portrait process by Joy Chatterjee"
+                data-index="1"
+                draggable="false">
 
-          </div>
-
-          <div class="work-info">
-
-            <div class="work-title">
-              Silverina — The Making
             </div>
 
-            <div class="work-meta">
-              Process<br>
-              Painted by hand
+
+            <div class="work-info">
+
+              <div class="work-title">
+                Silverina — The Making
+              </div>
+
+
+              <div class="work-meta">
+                Process · Painted by hand
+              </div>
+
             </div>
 
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- WORK 03 -->
+          <!-- 03 -->
 
-        <article class="work reveal">
+          <article class="work reveal">
 
-          <div class="work-image">
+            <div class="work-image">
 
-            <img
-              src="work-03.jpg"
-              alt="Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
-              data-index="2"
-              draggable="false">
+              <img
+                src="work-03.jpg"
+                alt="Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
+                data-index="2"
+                draggable="false">
 
-          </div>
-
-          <div class="work-info">
-
-            <div class="work-title">
-              A Special Pleader
             </div>
 
-            <div class="work-meta">
-              Charles Burton Barber<br>
-              Oil on Canvas · Replica
+
+            <div class="work-info">
+
+              <div class="work-title">
+                A Special Pleader
+              </div>
+
+
+              <div class="work-meta">
+                Oil on Canvas · Replica
+              </div>
+
             </div>
 
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- WORK 04 -->
+          <!-- 04 -->
 
-        <article class="work reveal">
+          <article class="work reveal">
 
-          <div class="work-image">
+            <div class="work-image">
 
-            <img
-              src="work-04.jpg"
-              alt="Jamshedji Tata portrait by Joy Chatterjee"
-              data-index="3"
-              draggable="false">
+              <img
+                src="work-04.jpg"
+                alt="Jamshedji Tata portrait by Joy Chatterjee"
+                data-index="3"
+                draggable="false">
 
-          </div>
-
-          <div class="work-info">
-
-            <div class="work-title">
-              Jamshedji Tata
             </div>
 
-            <div class="work-meta">
-              Oil on Canvas<br>
-              Painted by hand
+
+            <div class="work-info">
+
+              <div class="work-title">
+                Jamshedji Tata
+              </div>
+
+
+              <div class="work-meta">
+                Oil on Canvas · Painted by hand
+              </div>
+
             </div>
 
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- WORK 05 -->
+          <!-- 05 -->
 
-        <article class="work reveal">
+          <article class="work reveal">
 
-          <div class="work-image">
+            <div class="work-image">
 
-            <img
-              src="work-05.jpg"
-              alt="A Moment of Recognition, portrait by Joy Chatterjee"
-              data-index="4"
-              draggable="false">
+              <img
+                src="work-05.jpg"
+                alt="A Moment of Recognition, portrait by Joy Chatterjee"
+                data-index="4"
+                draggable="false">
 
-          </div>
-
-          <div class="work-info">
-
-            <div class="work-title">
-              A Moment of Recognition
             </div>
 
-            <div class="work-meta">
-              Portrait<br>
-              Painted by hand
+
+            <div class="work-info">
+
+              <div class="work-title">
+                A Moment of Recognition
+              </div>
+
+
+              <div class="work-meta">
+                Portrait · Painted by hand
+              </div>
+
             </div>
 
-          </div>
+          </article>
 
-        </article>
+
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- ================================
+    <!-- =====================================
          STATEMENT
-    ================================= -->
+    ====================================== -->
 
     <section class="statement">
 
@@ -1418,9 +1809,9 @@
     </section>
 
 
-    <!-- ================================
+    <!-- =====================================
          ABOUT
-    ================================= -->
+    ====================================== -->
 
     <section
       class="about"
@@ -1429,6 +1820,7 @@
       <div class="section-inner">
 
         <div class="about-grid">
+
 
           <div class="about-title reveal">
             Every face begins with observation.
@@ -1443,11 +1835,13 @@
               details that make a person unmistakably themselves.
             </p>
 
+
             <p>
               My practice has developed across
               <strong>West Bengal — India — Italy</strong>,
               with a focus on hyper-realistic portraiture.
             </p>
+
 
             <p>
               My portraits have been presented to
@@ -1465,15 +1859,16 @@
     </section>
 
 
-    <!-- ================================
+    <!-- =====================================
          CONTACT
-    ================================= -->
+    ====================================== -->
 
     <section
       class="contact"
       id="contact">
 
       <div class="section-inner">
+
 
         <div class="eyebrow reveal">
           Private Commissions
@@ -1491,7 +1886,7 @@
         </div>
 
 
-        <!-- ONE BUTTON — WHATSAPP -->
+        <!-- ONE BUTTON -->
 
         <div class="contact-links reveal">
 
@@ -1500,21 +1895,27 @@
             href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I%27d%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
             target="_blank"
             rel="noopener">
+
             Commission Art
+
           </a>
 
         </div>
 
 
-        <!-- EMAIL ONLY -->
+        <!-- EMAIL -->
 
         <div class="contact-email reveal">
 
-          <a href="mailto:studio@joychatterjee.art">
+          <a
+            href="mailto:studio@joychatterjee.art">
+
             studio@joychatterjee.art
+
           </a>
 
         </div>
+
 
       </div>
 
@@ -1523,15 +1924,16 @@
   </main>
 
 
-  <!-- ================================
+  <!-- =====================================
        FOOTER
-  ================================= -->
+  ====================================== -->
 
   <footer>
 
     <div>
       © <span id="year"></span> Joy Chatterjee
     </div>
+
 
     <div>
       Painted by hand / Seen slowly
@@ -1540,14 +1942,15 @@
   </footer>
 
 
-  <!-- ================================
+  <!-- =====================================
        FULLSCREEN VIEWER
-  ================================= -->
+  ====================================== -->
 
   <div
     class="viewer"
     id="viewer"
     aria-hidden="true">
+
 
     <div class="viewer-top">
 
@@ -1557,12 +1960,15 @@
         01 / 05
       </div>
 
+
       <button
         class="viewer-close"
         id="viewerClose"
         type="button"
         aria-label="Close">
+
         ×
+
       </button>
 
     </div>
@@ -1573,7 +1979,9 @@
       id="viewerPrev"
       type="button"
       aria-label="Previous">
+
       ‹
+
     </button>
 
 
@@ -1594,15 +2002,17 @@
       id="viewerNext"
       type="button"
       aria-label="Next">
+
       ›
+
     </button>
 
   </div>
 
 
-  <!-- ================================
+  <!-- =====================================
        AUDIO
-  ================================= -->
+  ====================================== -->
 
   <audio
     id="siteAudio"
@@ -1659,38 +2069,54 @@
 
 
     const heroImage =
-      document.getElementById("heroImage");
+      document.getElementById(
+        "heroImage"
+      );
 
     const heroTitle =
-      document.getElementById("heroTitle");
+      document.getElementById(
+        "heroTitle"
+      );
 
     const heroNumber =
-      document.getElementById("heroNumber");
+      document.getElementById(
+        "heroNumber"
+      );
 
     const heroNote =
-      document.getElementById("heroNote");
+      document.getElementById(
+        "heroNote"
+      );
 
 
     let heroIndex = 0;
 
 
-    /* PRELOAD */
+    /* PRELOAD ALL ARTWORK */
 
-    heroSlides.forEach(slide => {
+    heroSlides.forEach(
+      slide => {
 
-      const image = new Image();
+        const image =
+          new Image();
 
-      image.src = slide.src;
+        image.src =
+          slide.src;
 
-    });
+      }
+    );
 
 
-    /* HERO ROTATION */
+    /* =====================================
+       HERO ROTATION
+    ===================================== */
 
     function changeHero() {
 
       const nextIndex =
-        (heroIndex + 1) % heroSlides.length;
+        (heroIndex + 1) %
+        heroSlides.length;
+
 
       const nextSlide =
         heroSlides[nextIndex];
@@ -1701,38 +2127,48 @@
       );
 
 
-      setTimeout(() => {
+      setTimeout(
+        () => {
 
-        heroImage.src =
-          nextSlide.src;
+          heroImage.src =
+            nextSlide.src;
 
-        heroImage.alt =
-          nextSlide.alt;
+          heroImage.alt =
+            nextSlide.alt;
 
-        heroTitle.textContent =
-          nextSlide.title;
+          heroTitle.textContent =
+            nextSlide.title;
 
-        heroNumber.textContent =
-          String(nextIndex + 1).padStart(2, "0") +
-          " / 05";
+          heroNumber.textContent =
+            String(
+              nextIndex + 1
+            ).padStart(
+              2,
+              "0"
+            ) +
+            " / 05";
 
-        heroNote.innerHTML =
-          nextSlide.note;
+          heroNote.innerHTML =
+            nextSlide.note;
 
 
-        requestAnimationFrame(() => {
+          requestAnimationFrame(
+            () => {
 
-          heroImage.classList.remove(
-            "is-changing"
+              heroImage.classList.remove(
+                "is-changing"
+              );
+
+            }
           );
 
-        });
 
+          heroIndex =
+            nextIndex;
 
-        heroIndex =
-          nextIndex;
-
-      }, 650);
+        },
+        650
+      );
 
     }
 
@@ -1748,22 +2184,34 @@
     ===================================== */
 
     const viewer =
-      document.getElementById("viewer");
+      document.getElementById(
+        "viewer"
+      );
 
     const viewerImage =
-      document.getElementById("viewerImage");
+      document.getElementById(
+        "viewerImage"
+      );
 
     const viewerLabel =
-      document.getElementById("viewerLabel");
+      document.getElementById(
+        "viewerLabel"
+      );
 
     const viewerClose =
-      document.getElementById("viewerClose");
+      document.getElementById(
+        "viewerClose"
+      );
 
     const viewerPrev =
-      document.getElementById("viewerPrev");
+      document.getElementById(
+        "viewerPrev"
+      );
 
     const viewerNext =
-      document.getElementById("viewerNext");
+      document.getElementById(
+        "viewerNext"
+      );
 
 
     let viewerIndex = 0;
@@ -1772,7 +2220,9 @@
     function updateViewer() {
 
       const slide =
-        heroSlides[viewerIndex];
+        heroSlides[
+          viewerIndex
+        ];
 
 
       viewerImage.src =
@@ -1783,7 +2233,12 @@
 
 
       viewerLabel.textContent =
-        String(viewerIndex + 1).padStart(2, "0") +
+        String(
+          viewerIndex + 1
+        ).padStart(
+          2,
+          "0"
+        ) +
         " / 05";
 
     }
@@ -1794,12 +2249,14 @@
       viewerIndex =
         index;
 
+
       updateViewer();
 
 
       viewer.classList.add(
         "open"
       );
+
 
       viewer.setAttribute(
         "aria-hidden",
@@ -1820,6 +2277,7 @@
         "open"
       );
 
+
       viewer.setAttribute(
         "aria-hidden",
         "true"
@@ -1839,6 +2297,7 @@
         (viewerIndex + 1) %
         heroSlides.length;
 
+
       updateViewer();
 
     }
@@ -1847,35 +2306,43 @@
     function previousViewer() {
 
       viewerIndex =
-        (viewerIndex - 1 +
-          heroSlides.length) %
+        (
+          viewerIndex -
+          1 +
+          heroSlides.length
+        ) %
         heroSlides.length;
+
 
       updateViewer();
 
     }
 
 
-    /* WORK IMAGE CLICK */
+    /* WORK GRID CLICK */
 
     document
-      .querySelectorAll(".work-image img")
-      .forEach(image => {
+      .querySelectorAll(
+        ".work-image img"
+      )
+      .forEach(
+        image => {
 
-        image.addEventListener(
-          "click",
-          () => {
+          image.addEventListener(
+            "click",
+            () => {
 
-            openViewer(
-              Number(
-                image.dataset.index
-              )
-            );
+              openViewer(
+                Number(
+                  image.dataset.index
+                )
+              );
 
-          }
-        );
+            }
+          );
 
-      });
+        }
+      );
 
 
     /* HERO CLICK */
@@ -1926,7 +2393,8 @@
 
 
         if (
-          event.key === "Escape"
+          event.key ===
+          "Escape"
         ) {
 
           closeViewer();
@@ -1935,7 +2403,8 @@
 
 
         if (
-          event.key === "ArrowRight"
+          event.key ===
+          "ArrowRight"
         ) {
 
           nextViewer();
@@ -1944,7 +2413,8 @@
 
 
         if (
-          event.key === "ArrowLeft"
+          event.key ===
+          "ArrowLeft"
         ) {
 
           previousViewer();
@@ -1955,9 +2425,12 @@
     );
 
 
-    /* TOUCH SWIPE */
+    /* =====================================
+       TOUCH SWIPE
+    ===================================== */
 
     let touchStartX = 0;
+
     let touchEndX = 0;
 
 
@@ -1991,9 +2464,12 @@
 
 
         if (
-          Math.abs(distance) < 50
+          Math.abs(distance) <
+          50
         ) {
+
           return;
+
         }
 
 
@@ -2025,6 +2501,7 @@
         "soundToggle"
       );
 
+
     const siteAudio =
       document.getElementById(
         "siteAudio"
@@ -2044,7 +2521,9 @@
 
             await siteAudio.play();
 
+
             soundOn = true;
+
 
             soundToggle.textContent =
               "Sound On";
@@ -2060,7 +2539,9 @@
 
           siteAudio.pause();
 
+
           soundOn = false;
+
 
           soundToggle.textContent =
             "Sound";
@@ -2088,7 +2569,10 @@
       ) {
 
         document.documentElement
-          .classList.add("dark");
+          .classList.add(
+            "dark"
+          );
+
 
         localStorage.setItem(
           "joy-theme",
@@ -2098,7 +2582,10 @@
       } else {
 
         document.documentElement
-          .classList.remove("dark");
+          .classList.remove(
+            "dark"
+          );
+
 
         localStorage.setItem(
           "joy-theme",
@@ -2120,7 +2607,9 @@
       savedTheme === "dark"
     ) {
 
-      setTheme("dark");
+      setTheme(
+        "dark"
+      );
 
     }
 
@@ -2147,7 +2636,7 @@
 
 
     /* =====================================
-       REVEAL
+       SCROLL REVEAL
     ===================================== */
 
     const revealElements =
