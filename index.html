@@ -869,6 +869,162 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
   background:#111;
 }
 
+
+    /* Final gallery refinements */
+    .art-frame,
+    .artwork-frame,
+    .frame,
+    .painting-frame,
+    .work-frame,
+    .image-frame {
+      border: 0 !important;
+      box-shadow: none !important;
+      outline: 0 !important;
+      background: transparent !important;
+      padding: 0 !important;
+    }
+
+    /* Artwork itself: image as the exhibited object, without a surrounding frame */
+    .work img,
+    .artwork img,
+    .gallery-item img,
+    .painting img,
+    .hero img {
+      border: 0 !important;
+      box-shadow: none !important;
+      outline: 0 !important;
+    }
+
+    /* Slightly larger, quieter exhibition typography */
+    body {
+      font-size: 17px;
+    }
+    h1 { font-size: clamp(3.2rem, 7vw, 7rem); }
+    h2 { font-size: clamp(2rem, 4vw, 4rem); }
+    h3 { font-size: clamp(1.2rem, 1.8vw, 1.65rem); }
+    p, li, a, button, .caption, .meta, .eyebrow, .label {
+      font-size: 1.06em;
+    }
+
+    /* Section separators */
+    section {
+      border-top: 1px solid #111 !important;
+    }
+    section:first-of-type {
+      border-top: 0 !important;
+    }
+
+    /* Keep the separators elegant on the monochrome palette */
+    .dark-section {
+      border-top-color: #fff !important;
+    }
+
+    @media (max-width: 700px) {
+      body { font-size: 16px; }
+      h1 { font-size: clamp(2.5rem, 13vw, 4.5rem); }
+      h2 { font-size: clamp(1.8rem, 9vw, 3rem); }
+      section { border-top-width: 1px !important; }
+    }
+
+
+    /* Continuous single-surface gallery */
+    html,
+    body {
+      background: #fff !important;
+      color: #111 !important;
+    }
+
+    body,
+    main,
+    header,
+    footer,
+    section,
+    article,
+    .section,
+    .hero,
+    .intro,
+    .works,
+    .work,
+    .gallery,
+    .gallery-item,
+    .about,
+    .contact,
+    .dark-section,
+    .viewer,
+    .modal,
+    .overlay,
+    .card,
+    .panel,
+    .container,
+    .content,
+    .site-header,
+    .site-footer {
+      background: transparent !important;
+      background-color: transparent !important;
+      color: #111 !important;
+      border-radius: 0 !important;
+    }
+
+    /* No visual blocks */
+    .dark-section {
+      background: transparent !important;
+      color: #111 !important;
+    }
+
+    .dark-section *,
+    footer *,
+    .dark-section a,
+    footer a {
+      color: #111 !important;
+    }
+
+    /* One continuous page with restrained separators */
+    section {
+      border-top: 1px solid #111 !important;
+      border-bottom: 0 !important;
+    }
+
+    section:first-of-type {
+      border-top: 0 !important;
+    }
+
+    /* Remove cards, boxes and elevated surfaces */
+    .card,
+    .panel,
+    .work,
+    .gallery-item,
+    .art-frame,
+    .artwork-frame,
+    .frame,
+    .painting-frame,
+    .work-frame,
+    .image-frame {
+      box-shadow: none !important;
+      border: 0 !important;
+      background: transparent !important;
+    }
+
+    /* Artwork remains the visual focus */
+    img {
+      background: transparent !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+
+    /* Keep separators visible but never as blocks */
+    hr {
+      border: 0 !important;
+      border-top: 1px solid #111 !important;
+      background: transparent !important;
+    }
+
+    /* Preserve readable monochrome interaction */
+    a,
+    button {
+      color: #111 !important;
+      background: transparent !important;
+    }
+
 </style>
 
   <noscript>
