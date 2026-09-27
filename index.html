@@ -286,6 +286,353 @@ footer nav a:hover{color:var(--accent);background-size:0 1px;background-position
   footer nav a:last-child{border-bottom:0}
   footer nav a::after{content:"";width:7px;height:7px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);opacity:.45}
 }
+
+
+/* =========================================================
+   JOY CHATTERJEE — MINIMAL PREMIUM BAUHAUS UI
+   Visual layer only: gallery/music functionality preserved.
+   ========================================================= */
+
+:root{
+  --wall:#F4F1E8;
+  --ink:#111111;
+  --muted:#595852;
+  --faint:#88857D;
+  --line:#171717;
+  --accent:#D92720;
+  --blue:#1646C8;
+  --yellow:#F1C40F;
+  --block:#E8E2D5;
+  --on-ink:#F4F1E8;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --wall:#111111;--ink:#F4F1E8;--muted:#B8B4AA;--faint:#77736B;
+  --line:#F4F1E8;--accent:#FF4A42;--blue:#5278FF;--yellow:#E8BD16;
+  --block:#24231F;--on-ink:#111111;
+}}
+:root[data-theme="dark"]{
+  --wall:#111111;--ink:#F4F1E8;--muted:#B8B4AA;--faint:#77736B;
+  --line:#F4F1E8;--accent:#FF4A42;--blue:#5278FF;--yellow:#E8BD16;
+  --block:#24231F;--on-ink:#111111;
+}
+
+body{
+  background:var(--wall);
+  color:var(--ink);
+  font-size:.9rem;
+}
+
+.page{
+  max-width:1440px;
+  padding:28px clamp(24px,5vw,80px) 30px;
+  gap:clamp(42px,6vw,86px);
+}
+
+/* Header = gallery placard */
+header{
+  border-bottom:1px solid var(--line);
+  padding-bottom:16px;
+}
+.mark{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  font-weight:700;
+  font-size:1rem;
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+}
+.mark span{
+  font-size:.64rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.tools{gap:8px}
+.soon{
+  font-size:.65rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* Sound + theme controls */
+.music{
+  min-height:40px;
+  padding:0 12px;
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--ink);
+  transition:.3s var(--ease);
+}
+.music:hover{
+  background:var(--ink);
+  color:var(--wall);
+}
+.music-text{
+  font-size:.64rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.theme{
+  width:40px;
+  height:40px;
+  border:1px solid var(--line);
+  background:transparent;
+  transition:.3s var(--ease);
+}
+.theme:hover{
+  background:var(--ink);
+  color:var(--wall);
+}
+
+/* Asymmetric Bauhaus composition */
+.hero{
+  grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);
+  gap:clamp(40px,8vw,130px);
+  min-height:min(680px,68vh);
+  padding:0;
+}
+.hero>div:first-child{
+  position:relative;
+  padding-left:clamp(0px,2vw,28px);
+}
+.hero>div:first-child::before{
+  content:"01";
+  position:absolute;
+  left:0;
+  top:-42px;
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  color:var(--accent);
+}
+
+h1{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:700;
+  font-size:clamp(3rem,6.5vw,7rem);
+  line-height:.88;
+  letter-spacing:-.075em;
+  max-width:7ch;
+  margin-bottom:34px;
+}
+.lede{
+  font-size:1rem;
+  max-width:34ch;
+}
+.proof{
+  font-size:.78rem;
+  max-width:39ch;
+  padding-top:18px;
+}
+.proof b{font-weight:700}
+
+.btn{
+  min-height:50px;
+  padding:0 22px;
+  background:var(--ink);
+  color:var(--on-ink);
+  font-size:.76rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  transition:.45s var(--ease);
+}
+.btn::before{
+  background:var(--accent);
+  transform:translateX(-101%);
+}
+.btn:hover::before{transform:none}
+.hint{
+  font-size:.7rem;
+}
+
+/* Artwork = architectural object */
+.mat{
+  padding:0 0 24px 24px;
+}
+.mat::before{
+  left:0;
+  top:24px;
+  right:24px;
+  bottom:0;
+  background:var(--yellow);
+}
+.mat::after{
+  content:"";
+  position:absolute;
+  width:72px;
+  height:72px;
+  right:-8px;
+  top:-28px;
+  border-radius:50%;
+  background:var(--accent);
+  z-index:0;
+}
+.frame{
+  background:var(--wall);
+  transition:width .9s var(--ease),height .9s var(--ease);
+}
+.frame::after{
+  border:1px solid rgba(0,0,0,.12);
+}
+.progress{
+  left:24px;
+  right:24px;
+  height:3px;
+}
+.progress i{background:var(--accent)}
+
+.meta{
+  margin-top:18px;
+}
+.label{
+  font-size:.68rem;
+}
+.label b{
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+.count{
+  font-size:.62rem;
+}
+.ctl{
+  width:36px;
+  height:36px;
+}
+.ctl:hover{
+  background:var(--ink);
+  color:var(--wall);
+}
+
+/* Footer = typographic exhibition label */
+footer{
+  padding-top:15px;
+}
+.status{
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.dot{background:var(--accent)}
+footer nav{gap:6px}
+footer nav a{
+  min-height:38px;
+  padding:0 12px;
+  border:1px solid transparent;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  background:none;
+}
+footer nav a:hover{
+  border-color:var(--line);
+  background:var(--ink);
+  color:var(--wall);
+}
+
+/* Remove the old underline treatment */
+footer nav a{
+  background-image:none;
+}
+
+/* Responsive Bauhaus composition */
+@media (max-width:860px){
+  .hero{
+    grid-template-columns:minmax(0,1fr);
+    gap:52px;
+    min-height:auto;
+  }
+  .work{order:-1}
+  .hero>div:first-child{
+    padding-left:0;
+  }
+  .hero>div:first-child::before{display:none}
+  h1{
+    font-size:clamp(3.3rem,12vw,6rem);
+    max-width:7ch;
+  }
+}
+@media (max-width:600px){
+  .page{
+    padding:20px 20px 24px;
+    gap:40px;
+  }
+  header{padding-bottom:13px}
+  .mark{
+    display:grid;
+    gap:4px;
+    font-size:.9rem;
+  }
+  .mark span{font-size:.58rem}
+  .soon{display:none}
+  .music{
+    width:40px;
+    padding:0;
+  }
+  .music-text{display:none}
+  .hero{gap:42px}
+  h1{
+    font-size:clamp(3.1rem,16vw,5rem);
+    margin-bottom:26px;
+  }
+  .cta{
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+  }
+  .btn{
+    width:100%;
+    justify-content:center;
+    min-height:52px;
+  }
+  .hint{
+    max-width:none;
+    text-align:center;
+  }
+  .mat{
+    padding:0 0 16px 16px;
+  }
+  .mat::before{
+    top:16px;
+    right:16px;
+  }
+  .mat::after{
+    width:52px;
+    height:52px;
+    right:-5px;
+    top:-18px;
+  }
+  .progress{
+    left:16px;
+    right:16px;
+  }
+  .meta{margin-top:14px}
+  .controls .count{display:none}
+  footer{
+    flex-direction:column;
+    align-items:stretch;
+    gap:6px;
+    padding-top:13px;
+  }
+  footer nav{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+  }
+  footer nav a{
+    justify-content:center;
+    min-height:42px;
+    font-size:.58rem;
+    padding:0 5px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -371,7 +718,7 @@ footer nav a:hover{color:var(--accent);background-size:0 1px;background-position
           <span class="label"><b>A Moment of Recognition</b><span>A memorable moment of appreciation for the portrait, presented before an audience as a celebration of artistic craftsmanship.</span></span>
         </span>
         <span class="controls">
-          <span class="count"><b class="now">01</b> / 03</span>
+          <span class="count"><b class="now">01</b> / 05</span>
           <button class="ctl prev" type="button" aria-label="Previous portrait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
           <button class="ctl play" type="button" aria-label="Pause slideshow"><svg class="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 6.5v11M15 6.5v11"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 6.5v11l9-5.5Z"/></svg></button>
           <button class="ctl next" type="button" aria-label="Next portrait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
