@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Deployment structure: index.html / assets/images/* / assets/audio/music.mp3 -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE"></script>
   <script>
@@ -17,7 +18,7 @@
   <meta name="description" content="Hand-painted hyper-realist portraits by Joy Chatterjee, from a single photograph. Now accepting commissions.">
   <meta property="og:title" content="Joy Chatterjee – Hyper-realist Portrait Artist">
   <meta property="og:description" content="A portrait to keep for generations. Painted by hand, in such detail it's mistaken for a photograph.">
-  <meta property="og:image" content="work-01.jpg">
+  <meta property="og:image" content="assets/images/work-01.jpg">
 
   <script>
     (function(){
@@ -276,7 +277,7 @@ main{position:relative}
   min-height:90vh;border-top:1px solid var(--line);
 }
 .about-photo{
-  min-height:70vh;background:url("work-04.jpg") center/cover;
+  min-height:70vh;background:url("assets/images/work-04.jpg") center/cover;
   filter:saturate(.72);
 }
 .about-copy{
@@ -380,6 +381,326 @@ footer{
 body.cursor-ready .cursor-dot,body.cursor-ready .cursor-ring{opacity:.7}
 body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
 
+
+/* =========================================================
+   DESKTOP EXHIBITION WALL
+   The desktop presentation treats each artwork as a
+   physical painting hung on a gallery wall.
+   ========================================================= */
+@media (min-width:801px){
+
+  body{
+    background:
+      linear-gradient(90deg,rgba(0,0,0,.025),transparent 18%,transparent 82%,rgba(0,0,0,.025)),
+      var(--wall);
+  }
+
+  .site-header{
+    background:linear-gradient(to bottom,rgba(245,243,238,.96),rgba(245,243,238,0));
+    height:92px;
+  }
+
+  .hero{
+    height:100svh;
+    min-height:720px;
+    background:
+      radial-gradient(circle at 72% 34%,rgba(255,255,255,.62),transparent 30%),
+      linear-gradient(180deg,#eeeae1 0%,#e5e0d6 72%,#c9c3b7 100%);
+    overflow:hidden;
+    border-bottom:1px solid rgba(17,17,15,.16);
+  }
+
+  /* Gallery wall + floor */
+  .hero::before{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:0;height:16%;
+    background:linear-gradient(180deg,rgba(80,73,64,.08),rgba(82,76,68,.22));
+    border-top:1px solid rgba(17,17,15,.13);
+    box-shadow:inset 0 18px 32px rgba(0,0,0,.035);
+    z-index:0;
+  }
+
+  /* Subtle museum track lighting */
+  .hero::after{
+    content:"";
+    position:absolute;
+    top:28px;left:12%;right:12%;height:2px;
+    background:rgba(20,18,15,.22);
+    box-shadow:
+      12vw 0 0 -0.2px rgba(20,18,15,.22),
+      24vw 0 0 -0.2px rgba(20,18,15,.22),
+      36vw 0 0 -0.2px rgba(20,18,15,.22);
+    pointer-events:none;
+    z-index:1;
+  }
+
+  .hero-media{
+    inset:auto;
+    position:absolute;
+    z-index:2;
+    left:47%;
+    top:13%;
+    width:45%;
+    height:72%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:visible;
+  }
+
+  /* Physical frame */
+  .hero-media img{
+    width:auto;
+    height:auto;
+    max-width:84%;
+    max-height:91%;
+    object-fit:contain;
+    object-position:center;
+    padding:13px;
+    background:#171614;
+    border:1px solid #332f2a;
+    box-shadow:
+      0 3px 0 rgba(0,0,0,.24),
+      0 18px 30px rgba(0,0,0,.18),
+      0 42px 65px rgba(0,0,0,.10);
+    transform:none;
+    filter:none;
+    transition:transform 1.2s var(--ease),box-shadow 1.2s var(--ease);
+  }
+
+  .hero-media img:hover{
+    transform:translateY(-4px);
+    box-shadow:
+      0 4px 0 rgba(0,0,0,.24),
+      0 22px 34px rgba(0,0,0,.20),
+      0 48px 72px rgba(0,0,0,.12);
+  }
+
+  .hero-meta{
+    left:4vw;
+    top:132px;
+    color:var(--muted);
+    z-index:4;
+  }
+
+  .hero-meta::before{
+    content:"";
+    display:block;
+    width:46px;
+    height:1px;
+    margin-bottom:14px;
+    background:currentColor;
+  }
+
+  .hero-note{
+    right:4vw;
+    top:auto;
+    bottom:22%;
+    color:var(--muted);
+    max-width:220px;
+    z-index:4;
+  }
+
+  .hero-title{
+    left:4vw;
+    right:auto;
+    bottom:14%;
+    width:45%;
+    color:var(--ink);
+    z-index:4;
+  }
+
+  .hero-title div{
+    font:400 clamp(62px,8vw,132px)/.78 var(--serif);
+    letter-spacing:-.075em;
+    text-transform:uppercase;
+  }
+
+  .hero-title div+div{
+    margin-left:4.5vw;
+  }
+
+  /* Small wall label beside the painting */
+  .hero-title::after{
+    content:"01  /  SILVERINA  /  OIL ON CANVAS";
+    display:block;
+    margin:34px 0 0 4.7vw;
+    color:var(--muted);
+    font:8px/1.6 var(--mono);
+    letter-spacing:.13em;
+  }
+
+  .intro{
+    background:var(--wall);
+    padding-top:15vh;
+    padding-bottom:16vh;
+  }
+
+  /* Turn the selected works into a physical exhibition wall */
+  .works{
+    padding:10vh 0 15vh;
+    background:#e8e4db;
+  }
+
+  .section-head{
+    margin-bottom:8vh;
+  }
+
+  .gallery-track{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    align-items:start;
+    gap:0;
+    padding:0 5vw 2vh;
+    cursor:default;
+  }
+
+  .gallery-track.dragging{cursor:default}
+
+  .artwork{
+    width:auto;
+    position:relative;
+  }
+
+  .artwork:nth-child(1){
+    grid-column:1 / span 5;
+    margin-top:0;
+    z-index:2;
+  }
+
+  .artwork:nth-child(2){
+    grid-column:7 / span 3;
+    margin-top:13vh;
+    z-index:1;
+  }
+
+  .artwork:nth-child(3){
+    grid-column:4 / span 4;
+    margin-top:9vh;
+    z-index:3;
+  }
+
+  .artwork:nth-child(4){
+    grid-column:9 / span 4;
+    margin-top:0;
+    z-index:2;
+  }
+
+  .artwork:nth-child(5){
+    grid-column:2 / span 4;
+    margin-top:10vh;
+    z-index:1;
+  }
+
+  .art-image{
+    overflow:visible;
+    background:transparent;
+    padding:clamp(9px,1vw,16px);
+    border:1px solid rgba(17,17,15,.15);
+    box-shadow:
+      0 2px 0 rgba(0,0,0,.18),
+      0 14px 25px rgba(0,0,0,.14),
+      0 34px 55px rgba(0,0,0,.07);
+  }
+
+  .art-image img{
+    width:100%;
+    height:auto;
+    aspect-ratio:auto;
+    object-fit:contain;
+    background:#111;
+    transform:none;
+    filter:none;
+    transition:transform 1s var(--ease),filter 1s var(--ease);
+  }
+
+  .art-image:hover img{
+    transform:scale(1.012);
+    filter:contrast(1.025);
+  }
+
+  .art-image::after{
+    right:18px;
+    bottom:18px;
+  }
+
+  .art-caption{
+    margin-top:14px;
+    padding-top:12px;
+  }
+
+  .drag-note{
+    justify-content:center;
+    margin-top:5vh;
+  }
+
+  /* A quiet museum wall for the archive section */
+  .dark-section{
+    min-height:100svh;
+    padding:12vh 7vw 14vh;
+    background:#171614;
+  }
+
+  .dark-image{
+    width:auto;
+    max-width:100%;
+    max-height:74vh;
+    object-fit:contain;
+    padding:13px;
+    background:#090908;
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+  }
+
+  .dark-copy{
+    padding-left:8vw;
+  }
+
+  /* Make archive feel like a catalogue / checklist */
+  .archive{
+    background:var(--wall);
+    padding-top:14vh;
+    padding-bottom:16vh;
+  }
+
+  .archive-row{
+    transition:padding-left .45s var(--ease),background .45s var(--ease);
+  }
+
+  .archive-row:hover{
+    padding-left:10px;
+    background:rgba(17,17,15,.025);
+  }
+
+  /* Contact remains restrained and gallery-like */
+  .contact{
+    background:#ded9cf;
+  }
+
+  /* Viewer: museum lighting rather than black-box tech UI */
+  .viewer{
+    background:#151412;
+  }
+
+  .viewer-img{
+    padding:6vh 13vw 13vh;
+    object-fit:contain;
+  }
+
+  .viewer-info{
+    left:6vw;
+    right:6vw;
+  }
+
+  /* Desktop-only cursor remains understated */
+  body.cursor-hover .cursor-ring{
+    width:44px;
+    height:44px;
+    opacity:.35;
+  }
+}
+
 @media(max-width:800px){
   .site-header{height:67px;padding:0 5vw;grid-template-columns:1fr auto}
   .header-center{display:none}
@@ -427,6 +748,127 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
   html{scroll-behavior:auto}
   *,*:before,*:after{animation:none!important;transition:none!important}
 }
+
+/* =========================================================
+   BLACK / WHITE EXHIBITION EDITION
+   ========================================================= */
+:root{
+  --wall:#ffffff;
+  --ink:#080808;
+  --muted:#4d4d4d;
+  --faint:#777777;
+  --line:rgba(0,0,0,.18);
+  --block:#f2f2f2;
+  --dark:#050505;
+  --dark-text:#ffffff;
+  color-scheme:light;
+}
+
+:root[data-theme="dark"]{
+  --wall:#050505;
+  --ink:#ffffff;
+  --muted:#b5b5b5;
+  --faint:#858585;
+  --line:rgba(255,255,255,.2);
+  --block:#111111;
+  --dark:#ffffff;
+  --dark-text:#050505;
+  color-scheme:dark;
+}
+
+@media (min-width:801px){
+  body{
+    background:var(--wall);
+  }
+
+  .site-header{
+    background:linear-gradient(to bottom,
+      color-mix(in srgb,var(--wall) 96%,transparent),
+      transparent);
+  }
+
+  .hero{
+    background:#f7f7f7;
+    border-bottom:1px solid var(--line);
+  }
+
+  .hero::before{
+    background:linear-gradient(180deg,#f5f5f5 0%,#eeeeee 72%,#d7d7d7 100%);
+    border-top:1px solid rgba(0,0,0,.12);
+  }
+
+  .hero::after{
+    background:transparent;
+    box-shadow:none;
+  }
+
+  .hero-media img{
+    background:#050505;
+    border-color:#111;
+    box-shadow:
+      0 2px 0 rgba(0,0,0,.3),
+      0 18px 30px rgba(0,0,0,.18),
+      0 42px 65px rgba(0,0,0,.09);
+  }
+
+  .hero-title{
+    color:#000;
+  }
+
+  .works{
+    background:#f4f4f4;
+  }
+
+  .art-image{
+    background:#000;
+    border-color:#111;
+    box-shadow:
+      0 2px 0 rgba(0,0,0,.25),
+      0 14px 25px rgba(0,0,0,.13),
+      0 34px 55px rgba(0,0,0,.06);
+  }
+
+  .art-image img{
+    background:#000;
+  }
+
+  .dark-section{
+    background:#000;
+    color:#fff;
+  }
+
+  .dark-copy .kicker{
+    color:#aaa;
+  }
+
+  .dark-copy p{
+    color:#d0d0d0;
+  }
+
+  .contact{
+    background:#ededed;
+  }
+
+  .viewer{
+    background:#000;
+    color:#fff;
+  }
+}
+
+/* Dark theme keeps the same pure monochrome language */
+:root[data-theme="dark"] .hero{
+  background:#090909;
+}
+:root[data-theme="dark"] .hero::before{
+  background:linear-gradient(180deg,#111 0%,#0b0b0b 72%,#050505 100%);
+}
+:root[data-theme="dark"] .works{
+  background:#0a0a0a;
+}
+:root[data-theme="dark"] .contact{
+  background:#111;
+}
+
 </style>
 </head>
 
@@ -451,7 +893,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
 
 <section class="hero">
   <div class="hero-media">
-    <img id="heroImage" src="work-01.jpg" alt="Silverina, hyper-realistic portrait by Joy Chatterjee">
+    <img id="heroImage" src="assets/images/work-01.jpg" alt="Silverina, hyper-realistic portrait by Joy Chatterjee">
   </div>
   <div class="hero-meta">
     Exhibition 01<br>
@@ -484,7 +926,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
 
   <div class="gallery-track" id="galleryTrack">
     <article class="artwork reveal" data-index="0">
-      <div class="art-image"><img src="work-01.jpg" alt="Silverina"></div>
+      <div class="art-image"><img src="assets/images/work-01.jpg" alt="Silverina"></div>
       <div class="art-caption">
         <div class="art-name">Silverina</div>
         <div class="art-meta">01 / Oil on Canvas</div>
@@ -492,7 +934,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
     </article>
 
     <article class="artwork reveal" data-index="1">
-      <div class="art-image"><img src="work-02.jpg" alt="Silverina — The Making"></div>
+      <div class="art-image"><img src="assets/images/work-02.jpg" alt="Silverina — The Making"></div>
       <div class="art-caption">
         <div class="art-name">Silverina — The Making</div>
         <div class="art-meta">02 / Process</div>
@@ -500,7 +942,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
     </article>
 
     <article class="artwork reveal" data-index="2">
-      <div class="art-image"><img src="work-03.jpg" alt="Charles Burton Barber — A Special Pleader"></div>
+      <div class="art-image"><img src="assets/images/work-03.jpg" alt="Charles Burton Barber — A Special Pleader"></div>
       <div class="art-caption">
         <div class="art-name">Charles Burton Barber — A Special Pleader</div>
         <div class="art-meta">03 / Oil on Canvas / Replica</div>
@@ -508,7 +950,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
     </article>
 
     <article class="artwork reveal" data-index="3">
-      <div class="art-image"><img src="work-04.jpg" alt="Jamshedji Tata"></div>
+      <div class="art-image"><img src="assets/images/work-04.jpg" alt="Jamshedji Tata"></div>
       <div class="art-caption">
         <div class="art-name">Jamshedji Tata</div>
         <div class="art-meta">04 / Oil on Canvas</div>
@@ -516,7 +958,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
     </article>
 
     <article class="artwork reveal" data-index="4">
-      <div class="art-image"><img src="work-05.jpg" alt="A Moment of Recognition"></div>
+      <div class="art-image"><img src="assets/images/work-05.jpg" alt="A Moment of Recognition"></div>
       <div class="art-caption">
         <div class="art-name">A Moment of Recognition</div>
         <div class="art-meta">05 / Portrait</div>
@@ -527,8 +969,8 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
   <div class="drag-note"><span class="drag-line"></span> Drag / scroll through the exhibition</div>
 </section>
 
-<section class="dark-section">
-  <div><img class="dark-image" src="work-03.jpg" alt="A Special Pleader by Joy Chatterjee"></div>
+<section class="dark-section" aria-label="Featured work">
+  <div><img class="dark-image" src="assets/images/work-03.jpg" alt="A Special Pleader by Joy Chatterjee"></div>
   <div class="dark-copy reveal">
     <div class="kicker">Archive / After Charles Burton Barber</div>
     <h2>Time<br>in the<br>surface.</h2>
@@ -537,24 +979,6 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
   <div class="dark-mark">JC</div>
 </section>
 
-<section class="archive">
-  <div class="section-head reveal">
-    <h2>Archive</h2>
-    <div class="section-index">A partial record</div>
-  </div>
-  <div class="archive-grid reveal">
-    <div>
-      <div class="archive-row"><span class="archive-no">01</span><span class="archive-name">Silverina</span><span class="archive-kind">Portrait</span></div>
-      <div class="archive-row"><span class="archive-no">02</span><span class="archive-name">Silverina — The Making</span><span class="archive-kind">Process</span></div>
-      <div class="archive-row"><span class="archive-no">03</span><span class="archive-name">A Special Pleader</span><span class="archive-kind">Replica</span></div>
-    </div>
-    <div>
-      <div class="archive-row"><span class="archive-no">04</span><span class="archive-name">Jamshedji Tata</span><span class="archive-kind">Portrait</span></div>
-      <div class="archive-row"><span class="archive-no">05</span><span class="archive-name">A Moment of Recognition</span><span class="archive-kind">Portrait</span></div>
-      <div class="archive-row"><span class="archive-no">—</span><span class="archive-name">More works in the studio</span><span class="archive-kind">By request</span></div>
-    </div>
-  </div>
-</section>
 
 <section class="about" id="about">
   <div class="about-photo"></div>
@@ -604,7 +1028,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<audio id="music" src="music.mp3" loop preload="none"></audio>
+<audio id="music" src="assets/audio/music.mp3" loop preload="none"></audio>
 
 <script>
 /* Theme */
@@ -678,11 +1102,11 @@ if(window.matchMedia("(min-width:801px)").matches){
 
 /* Fullscreen artwork viewer */
 const artworks=[
-  {src:"work-01.jpg",title:"Silverina",meta:"01 / Oil on Canvas"},
-  {src:"work-02.jpg",title:"Silverina — The Making",meta:"02 / Process"},
-  {src:"work-03.jpg",title:"Charles Burton Barber — A Special Pleader",meta:"03 / Oil on Canvas / Replica painted approximately 25 years ago"},
-  {src:"work-04.jpg",title:"Jamshedji Tata",meta:"04 / Oil on Canvas"},
-  {src:"work-05.jpg",title:"A Moment of Recognition",meta:"05 / Portrait"}
+  {src:"assets/images/work-01.jpg",title:"Silverina",meta:"01 / Oil on Canvas"},
+  {src:"assets/images/work-02.jpg",title:"Silverina — The Making",meta:"02 / Process"},
+  {src:"assets/images/work-03.jpg",title:"Charles Burton Barber — A Special Pleader",meta:"03 / Oil on Canvas / Replica painted approximately 25 years ago"},
+  {src:"assets/images/work-04.jpg",title:"Jamshedji Tata",meta:"04 / Oil on Canvas"},
+  {src:"assets/images/work-05.jpg",title:"A Moment of Recognition",meta:"05 / Portrait"}
 ];
 const viewer=document.getElementById("viewer");
 const viewerImg=document.getElementById("viewerImg");
