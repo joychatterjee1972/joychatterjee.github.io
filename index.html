@@ -23,10 +23,6 @@
 
   <style>
 
-    /* =========================================================
-       ROOT
-       ========================================================= */
-
     :root {
       --wall: #f6f5f0;
       --ink: #11110f;
@@ -227,182 +223,6 @@
       justify-content: center;
 
       background: var(--wall);
-    }
-
-
-    /* =========================================================
-       HERO GLOW
-       ONLY THIS PART HAS BEEN CHANGED
-       ========================================================= */
-
-    .hero-light {
-      position: absolute;
-
-      width: 64%;
-      height: 64%;
-
-      left: 50%;
-      top: 50%;
-
-      transform: translate(-50%, -50%);
-
-      z-index: 0;
-      pointer-events: none;
-
-      background:
-        radial-gradient(
-          ellipse at center,
-          rgba(255, 248, 220, .96) 0%,
-          rgba(255, 239, 195, .62) 20%,
-          rgba(220, 210, 185, .22) 42%,
-          transparent 68%
-        );
-
-      filter: blur(38px);
-
-      opacity: 1;
-
-      animation:
-        monochromeGlow 12s ease-in-out infinite alternate;
-    }
-
-    .hero-light::before {
-      content: "";
-
-      position: absolute;
-
-      width: 54%;
-      height: 54%;
-
-      left: 23%;
-      top: 23%;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(255, 253, 235, .95) 0%,
-          rgba(255, 244, 210, .48) 30%,
-          transparent 67%
-        );
-
-      filter: blur(28px);
-
-      animation:
-        innerGlow 8s ease-in-out infinite alternate;
-    }
-
-    .hero-light::after {
-      display: none;
-    }
-
-    .hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 28vw;
-      height: 28vw;
-
-      max-width: 440px;
-      max-height: 440px;
-
-      left: 50%;
-      top: 50%;
-
-      transform: translate(-50%, -50%);
-
-      border-radius: 50%;
-
-      pointer-events: none;
-
-      z-index: 1;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(255, 250, 225, .68) 0%,
-          rgba(238, 226, 195, .24) 34%,
-          transparent 68%
-        );
-
-      filter: blur(30px);
-
-      animation:
-        centralGlow 9s ease-in-out infinite alternate;
-    }
-
-    @keyframes monochromeGlow {
-
-      0% {
-        transform:
-          translate(-50%, -50%)
-          scale(.88);
-
-        opacity: .82;
-      }
-
-      50% {
-        transform:
-          translate(-50%, -50%)
-          scale(.98);
-
-        opacity: 1;
-      }
-
-      100% {
-        transform:
-          translate(-50%, -50%)
-          scale(.91);
-
-        opacity: .9;
-      }
-    }
-
-    @keyframes innerGlow {
-
-      0% {
-        transform: scale(.88);
-        opacity: .72;
-      }
-
-      50% {
-        transform: scale(1.06);
-        opacity: 1;
-      }
-
-      100% {
-        transform: scale(.93);
-        opacity: .8;
-      }
-    }
-
-    @keyframes centralGlow {
-
-      0% {
-        transform:
-          translate(-50%, -50%)
-          scale(.84);
-
-        opacity: .62;
-      }
-
-      50% {
-        transform:
-          translate(-50%, -50%)
-          scale(1);
-
-        opacity: .9;
-      }
-
-      100% {
-        transform:
-          translate(-50%, -50%)
-          scale(.9);
-
-        opacity: .7;
-      }
     }
 
 
@@ -1162,26 +982,6 @@
         bottom: 22px;
       }
 
-      /* Only glow sizing changes on mobile */
-
-      .hero-light {
-        width: 78%;
-        height: 60%;
-
-        filter: blur(32px);
-      }
-
-      .hero-light::before {
-        filter: blur(24px);
-      }
-
-      .hero::before {
-        width: 46vw;
-        height: 46vw;
-
-        filter: blur(27px);
-      }
-
       .intro {
         padding: 105px 0;
       }
@@ -1293,16 +1093,6 @@
         font-size: 7px;
         letter-spacing: .04em;
       }
-
-      .hero-light {
-        width: 84%;
-        height: 56%;
-      }
-
-      .hero::before {
-        width: 52vw;
-        height: 52vw;
-      }
     }
 
 
@@ -1398,8 +1188,6 @@
     <section
       class="hero"
       id="hero">
-
-      <div class="hero-light"></div>
 
       <div class="hero-media">
 
@@ -1855,10 +1643,6 @@
 
   <script>
 
-    /* =========================================================
-       ARTWORK DATA
-       ========================================================= */
-
     const artworks = [
 
       {
@@ -1946,12 +1730,16 @@
 
     let heroCurrent = 0;
 
+
     function showHero(index) {
 
       heroCurrent =
-        (index + artworks.length) % artworks.length;
+        (index + artworks.length)
+        % artworks.length;
 
-      heroImage.classList.add("is-changing");
+      heroImage.classList.add(
+        "is-changing"
+      );
 
       setTimeout(() => {
 
@@ -1980,6 +1768,7 @@
       }, 400);
 
     }
+
 
     setInterval(() => {
 
@@ -2204,6 +1993,7 @@
 
     let touchStartX = 0;
     let touchEndX = 0;
+
 
     viewer.addEventListener(
       "touchstart",
