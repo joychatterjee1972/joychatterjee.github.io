@@ -257,6 +257,7 @@ dialog{border:0;padding:0;background:transparent;color:var(--warm)}
   --ease:cubic-bezier(.16,1,.3,1);
 }
 html{scroll-behavior:smooth}
+.art-meta{display:block;margin-top:.35rem;letter-spacing:.08em;text-transform:uppercase;font-size:.68rem;color:var(--dim)}
 body{
   letter-spacing:.005em;
   background:
@@ -748,11 +749,12 @@ dialog{box-shadow:0 40px 140px rgba(0,0,0,.65)}
 <script>
 window.EXHIBIT={
   art:[
-    {src:'joy-exhibition.jpg',title:'Exhibition Archive',meta:'Documentary photograph · Recognition moment',note:'A glimpse into Joy Chatterjee’s exhibition journey and the presentation of his work.',alt:'Joy Chatterjee exhibition archive photograph with a framed portrait being presented on stage',frame:'gold'},
-    {src:'joy-shivaji.jpg',title:'Chhatrapati Shivaji Maharaj',meta:'Hyper-realistic portrait · Oil on canvas',note:'A hand-painted historical portrait, built through close observation of texture, fabric, skin and expression.',alt:'Hyper-realistic oil portrait of Chhatrapati Shivaji Maharaj by Joy Chatterjee',frame:'gold'},
-    {src:'joy-child-dog.jpg',title:'A Quiet Moment',meta:'Portrait study · Oil on canvas',note:'A detailed interior scene combining human character, animal presence and the atmosphere of an old-world room.',alt:'Oil painting of a child and dog in an interior by Joy Chatterjee',frame:'walnut'},
-    {src:'joy-process-horse.jpg',title:'At Work · Silverina',meta:'Studio photograph · Joy Chatterjee',note:'Joy painting the horse portrait in the studio.',alt:'Joy Chatterjee painting the horse portrait Silverina in his studio',frame:'black'},
-    {src:'joy-process-portrait.jpg',title:'At Work · Portraiture',meta:'Studio photograph · Joy Chatterjee',note:'Joy painting a large portrait by hand in the studio.',alt:'Joy Chatterjee painting a large portrait in his studio',frame:'black'}
+    {src:'joy-exhibition.jpg',title:'EXHIBITION ARCHIVE',meta:'Documentary photograph · Exhibition presentation',note:'A documented exhibition moment from Joy Chatterjee’s artistic journey.',alt:'Joy Chatterjee exhibition presentation with a framed portrait',frame:'gold'},
+    {src:'joy-shivaji.jpg',title:'CHHATRAPATI SHIVAJI MAHARAJ',meta:'Hyper-realistic portrait · Oil on canvas',note:'A hand-painted historical portrait developed through close observation of texture, fabric, skin and expression.',alt:'Hyper-realistic oil portrait of Chhatrapati Shivaji Maharaj',frame:'gold'},
+    {src:'joy-child-dog.jpg',title:'A QUIET MOMENT',meta:'Portrait study · Oil on canvas',note:'A detailed interior scene combining human character, animal presence and the atmosphere of an old-world room.',alt:'Oil painting of a child and dog in an interior',frame:'walnut'},
+    {src:'joy-portrait-commission.jpg',title:'PORTRAIT COMMISSION',meta:'Hyper-realistic portrait · Oil on canvas',note:'A finished commissioned portrait, painted by hand with close attention to expression and character.',alt:'Finished hyper-realistic portrait painting',frame:'gold'},
+    {src:'joy-process-horse.jpg',title:'SILVERINA · IN THE STUDIO',meta:'Studio photograph · Process',note:'Joy Chatterjee painting the horse portrait in the studio.',alt:'Joy Chatterjee painting the horse portrait in his studio',frame:'black'},
+    {src:'joy-process-commission.jpg',title:'PORTRAIT COMMISSION · IN THE STUDIO',meta:'Studio photograph · Process',note:'Joy Chatterjee working by hand on a large portrait in the studio.',alt:'Joy Chatterjee painting a large portrait in his studio',frame:'black'}
   ],
   rooms:[['Entrance','Joy Chatterjee'],['Room 01','Portraits'],['Room 02','The Artist & Process'],['Room 03','Recognition & Commissions']]
 };
@@ -765,7 +767,7 @@ window.EXHIBIT={
   var wl=document.getElementById('worksList');
   E.art.forEach(function(a,i){
     var li=document.createElement('li');
-    li.innerHTML='<figure><button class="thumb" type="button" data-detail="'+i+'" aria-label="Explore '+a.title+' in detail"><img src="'+a.src+'" alt="'+a.alt+'" loading="lazy" decoding="async"></button><figcaption><b>'+a.title+'</b>'+a.meta+'</figcaption></figure>';
+    li.innerHTML='<figure><button class="thumb" type="button" data-detail="'+i+'" aria-label="Explore '+a.title+' in detail"><img src="'+a.src+'" alt="'+a.alt+'" loading="lazy" decoding="async"></button><figcaption><b>'+a.title+'</b><span class="art-meta">'+a.meta+'</span></figcaption></figure>';
     wl.appendChild(li);
   });
 
@@ -928,9 +930,10 @@ const W_SIL=hang(0,[0,2.45,0],0,3.1,{lazy:false});
 /* Room 01 */
 const W_TAG=hang(1,[-HALF+.02,2.2,-8],Math.PI/2,2.5);
 const W_RAT=hang(2,[HALF-.02,2.2,-14],-Math.PI/2,2.4);
-/* Room 02: process photographs */
+/* Room 02: named process photographs */
 const W_JAM=hang(3,[-HALF+.02,2.2,-34],Math.PI/2,2.35);
 const W_JOY=hang(4,[HALF-.02,2.2,-40],-Math.PI/2,2.35);
+const W_COM=hang(5,[-HALF+.02,2.2,-50],Math.PI/2,2.35);
 // Home branding: always return to the site's overview/home.
 document.querySelectorAll("[data-home-link]").forEach(function(a){a.addEventListener("click",function(e){
   if(location.hash === "#overview") return;
@@ -948,8 +951,8 @@ textPanel(3.0,1.85,(g,w,h)=>{
   g.font='500 42px "Manrope", sans-serif';
   g.fillText('THE PROCESS',w/2,170);
   g.font='400 68px "Space Grotesk", serif';
-  g.fillText('From photograph',w/2,270);
-  g.fillText('to original canvas',w/2,350);
+  g.fillText('FROM PHOTOGRAPH',w/2,270);
+  g.fillText('TO ORIGINAL CANVAS',w/2,350);
   g.font='400 24px "Manrope", sans-serif';
   g.fillStyle='#bdb3a4';
   g.fillText('Every portrait is painted by hand.',w/2,430);
