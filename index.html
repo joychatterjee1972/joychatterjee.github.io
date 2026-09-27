@@ -11,27 +11,28 @@
 <meta property="og:url" content="https://www.joychatterjee.art/">
 <meta property="og:title" content="Joy Chatterjee – Digital Exhibition">
 <meta property="og:description" content="Painted by hand. Made to last generations. Hand-painted hyper-realistic portraits and private commissions, India and international.">
-<meta property="og:image" content="https://www.joychatterjee.art/work-01.jpg">
+<meta property="og:image" content="https://www.joychatterjee.art/joy-exhibition.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"Person","@id":"https://www.joychatterjee.art/#joy","name":"Joy Chatterjee","jobTitle":"Hyper-realistic portrait artist","url":"https://www.joychatterjee.art/","sameAs":["https://instagram.com/joychatterjee.art"],"knowsAbout":["Portrait painting","Hyper-realistic portraits","Oil portraits","Portrait commissions"]},
- {"@type":"VisualArtwork","name":"Silverina","artMedium":"Oil on canvas","creator":{"@id":"https://www.joychatterjee.art/#joy"},"image":"https://www.joychatterjee.art/work-01.jpg"},
- {"@type":"VisualArtwork","name":"Rabindranath Tagore","dateCreated":"2026","creator":{"@id":"https://www.joychatterjee.art/#joy"},"image":"https://www.joychatterjee.art/work-03.jpg"},
- {"@type":"VisualArtwork","name":"Ratan Tata","creator":{"@id":"https://www.joychatterjee.art/#joy"},"image":"https://www.joychatterjee.art/work-04.jpg"},
- {"@type":"VisualArtwork","name":"Jamshedji Tata","creator":{"@id":"https://www.joychatterjee.art/#joy"},"image":"https://www.joychatterjee.art/work-05.jpg"}
+ {"@type":"VisualArtwork","name":"Chhatrapati Shivaji Maharaj","artMedium":"Oil on canvas","creator":{"@id":"https://www.joychatterjee.art/#joy"},"image":"https://www.joychatterjee.art/joy-shivaji.jpg"},
+ {"@type":"VisualArtwork","name":"A Quiet Moment","artMedium":"Oil on canvas","creator":{"@id":"https://www.joychatterjee.art/#joy"},"image":"https://www.joychatterjee.art/joy-child-dog.jpg"},
+ {"@type":"Photograph","name":"Exhibition Archive","creator":{"@id":"https://www.joychatterjee.art/#joy"},"image":"https://www.joychatterjee.art/joy-exhibition.jpg"},
+ {"@type":"Photograph","name":"At Work · Silverina","creator":{"@id":"https://www.joychatterjee.art/#joy"},"image":"https://www.joychatterjee.art/joy-process-horse.jpg"},
+ {"@type":"Photograph","name":"At Work · Portraiture","creator":{"@id":"https://www.joychatterjee.art/#joy"},"image":"https://www.joychatterjee.art/joy-process-portrait.jpg"}
 ]}
 </script>
-<link rel="preload" as="image" href="work-01.jpg">
+<link rel="preload" as="image" href="joy-exhibition.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js"}}</script>
 <style>
 :root{
   --black:#050505; --char:#121110; --char-2:#1B1917; --warm:#EFE8DB; --warm-2:#B9B0A2; --dim:#8A8276;
   --gold:#B8955A; --bronze:#8C6A3F; --line:rgba(239,232,219,.14);
-  --serif:"Cormorant Garamond","Times New Roman",Georgia,serif;
+  --serif:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
   --sans:"Manrope","Helvetica Neue",Helvetica,Arial,sans-serif;
   --ease:cubic-bezier(.22,.61,.36,1);
   --px:calc(clamp(20px,4vw,56px) + env(safe-area-inset-left,0px));
@@ -76,8 +77,9 @@ button{font:inherit;color:inherit}
 .hud{position:fixed;z-index:30;top:calc(env(safe-area-inset-top,0px) + 22px);left:var(--px);right:var(--px);display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;opacity:0;transition:opacity 1s var(--ease)}
 .hud.on{opacity:1}
 .hud > *{pointer-events:auto}
-.hud .where{display:grid;gap:6px}
-.hud .where b{font:400 1.25rem/1 var(--serif);font-weight:400;letter-spacing:.01em}
+.hud .where{display:grid;gap:7px}.hud .where .hud-room{font:400 .78rem/1.2 var(--sans);color:var(--warm-2);letter-spacing:.02em}
+.hud .where b{font:500 1rem/1 var(--sans);font-weight:500;letter-spacing:.16em;text-transform:uppercase}
+.hud .where b a{display:inline-block;text-decoration:none;color:inherit;transition:opacity .3s,transform .3s}.hud .where b a:hover{opacity:.65;transform:translateX(2px)}
 .hud .tools{display:flex;gap:22px;align-items:center}
 .hud .tools .textbtn{display:inline-flex;align-items:center;gap:8px}
 .menu-ico{display:inline-grid;gap:4px}
@@ -85,7 +87,7 @@ button{font:inherit;color:inherit}
 
 #intro{position:fixed;inset:0;z-index:20;display:grid;grid-template-rows:1fr auto;padding:calc(env(safe-area-inset-top,0px) + 28px) var(--px) calc(env(safe-area-inset-bottom,0px) + 44px);pointer-events:none}
 #intro .top{text-align:center;display:grid;gap:10px;align-content:start;opacity:0;transition:opacity 2.4s var(--ease)}
-#intro h1{margin:0;font:500 .8125rem/1.3 var(--sans);letter-spacing:.34em;text-transform:uppercase}
+#intro h1{margin:0;font:600 .72rem/1.3 var(--sans);letter-spacing:.28em;text-transform:uppercase}#intro h1 a{text-decoration:none;color:inherit;display:inline-block;transition:opacity .3s,transform .4s var(--ease)}#intro h1 a:hover{opacity:.65;transform:translateY(-2px)}
 #intro .bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
 #intro .statement{margin:0;font:400 clamp(2.4rem,4.4vw,4.4rem)/1.02 var(--serif);opacity:0;transform:translateY(14px);transition:opacity 2s var(--ease),transform 2s var(--ease)}
 #intro .statement em{display:block}
@@ -98,7 +100,7 @@ button{font:inherit;color:inherit}
 /* Caption that appears when the camera rests at a work */
 .stop{position:fixed;z-index:25;left:var(--px);bottom:calc(env(safe-area-inset-bottom,0px) + 40px);max-width:420px;display:grid;gap:10px;opacity:0;transform:translateY(10px);transition:opacity .9s var(--ease),transform .9s var(--ease);pointer-events:none}
 .stop.on{opacity:1;transform:none;pointer-events:auto}
-.stop h2{margin:0;font:400 clamp(1.8rem,2.6vw,2.6rem)/1.05 var(--serif)}
+.stop h2{margin:0;font:500 clamp(1.8rem,2.6vw,2.6rem)/1.02 var(--serif);letter-spacing:-.025em}
 .stop p{margin:0;color:var(--warm-2);font-size:.875rem}
 .progress{position:fixed;z-index:25;right:var(--px);bottom:calc(env(safe-area-inset-bottom,0px) + 44px);display:flex;gap:6px;opacity:0;transition:opacity 1s}
 .progress.on{opacity:1}
@@ -110,7 +112,7 @@ button{font:inherit;color:inherit}
 #focus .panel{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;opacity:0;transform:translateY(12px);transition:opacity 1.2s var(--ease) .6s,transform 1.2s var(--ease) .6s}
 #focus.on{pointer-events:auto}
 #focus.on .panel{opacity:1;transform:none}
-#focus h2{margin:0;font:400 clamp(2rem,3.4vw,3.4rem)/1 var(--serif)}
+#focus h2{margin:0;font:500 clamp(2rem,3.4vw,3.4rem)/1 var(--serif);letter-spacing:-.035em}
 #focus .meta{margin:10px 0 0;color:var(--warm-2);font-size:.875rem}
 #focus .note{margin:10px 0 0;color:var(--warm-2);font-size:.875rem;max-width:48ch}
 #focus .acts{display:flex;gap:20px;align-items:center}
@@ -153,7 +155,7 @@ button{font:inherit;color:inherit}
 .mode-lite #lite{display:block}
 .mode-lite #stage,.mode-lite #track,.mode-lite .veil,.mode-lite #intro,.mode-lite .stop,.mode-lite .progress,.mode-lite #focus,.mode-lite #end,.mode-lite #tip{display:none}
 .lite-bar{position:fixed;z-index:30;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--px) 14px;background:linear-gradient(rgba(5,5,5,.9),rgba(5,5,5,0))}
-.lite-bar b{font:500 .6875rem/1 var(--sans);letter-spacing:.26em;text-transform:uppercase}
+.lite-brand{font:600 .6875rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;text-decoration:none;transition:opacity .3s}.lite-brand:hover{opacity:.6}
 .slides{height:100vh;height:100svh;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain}
 .slide{height:100vh;height:100svh;scroll-snap-align:start;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:18px;padding:calc(env(safe-area-inset-top,0px) + 64px) var(--px) calc(env(safe-area-inset-bottom,0px) + 28px)}
 .slide .pic{display:grid;place-items:center;min-height:0;background:none;border:0;padding:0;cursor:zoom-in}
@@ -174,7 +176,7 @@ button{font:inherit;color:inherit}
 #overview{position:relative;z-index:5;background:var(--char);border-top:1px solid var(--line)}
 .ov{max-width:1200px;margin:0 auto;padding:clamp(80px,10vw,140px) var(--px)}
 .ov section + section{margin-top:clamp(80px,10vw,140px)}
-.ov h2{font:400 clamp(2.2rem,4vw,3.6rem)/1.05 var(--serif);margin:14px 0 36px;max-width:22ch}
+.ov h2{font:500 clamp(2.2rem,4vw,3.6rem)/1.02 var(--serif);letter-spacing:-.035em;margin:14px 0 36px;max-width:22ch}
 .ov h3{margin:0;font:400 1.5rem/1.2 var(--serif);font-weight:400}
 .ov p{color:var(--warm-2);max-width:62ch;margin:0 0 14px}
 .works{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:36px 28px;list-style:none;margin:0;padding:0}
@@ -539,6 +541,11 @@ dialog{box-shadow:0 40px 140px rgba(0,0,0,.65)}
 }
 @media(max-width:720px){.premium-corner{display:none}}
 
+
+/* Contemporary gallery refinements */
+.h1-3d a,.lite-brand,.hud .where b a{letter-spacing:.22em;font-weight:600}
+.h1-3d a:hover,.lite-brand:hover{opacity:.7;transform:translateY(-1px)}
+.works figcaption b{font-weight:600;letter-spacing:-.01em}
 </style>
 </head>
 <body class="mode-3d">
@@ -565,7 +572,7 @@ dialog{box-shadow:0 40px 140px rgba(0,0,0,.65)}
 
 <div id="intro">
   <div class="top">
-    <h1 class="h1-3d">Joy Chatterjee</h1>
+    <h1 class="h1-3d"><a href="#overview" data-home-link>JOY CHATTERJEE</a></h1>
     <span class="label">Hyper-realistic portrait artist</span>
   </div>
   <div class="bottom">
@@ -578,7 +585,7 @@ dialog{box-shadow:0 40px 140px rgba(0,0,0,.65)}
 </div>
 
 <div class="hud" id="hud">
-  <div class="where" aria-live="polite"><span class="label" id="roomNo">Entrance</span><b id="roomName">Joy Chatterjee</b></div>
+  <div class="where" aria-live="polite"><b><a href="#overview" data-home-link>JOY CHATTERJEE</a></b><span class="label" id="roomNo">Entrance</span><span class="hud-room" id="roomName">Joy Chatterjee</span></div>
   <div class="tools">
     <button class="textbtn" id="soundBtn" type="button" aria-pressed="false">Sound off</button>
     <a class="textbtn hide-s" href="#overview" id="exitBtn" data-cursor="Exit">Exit exhibition</a>
@@ -629,7 +636,7 @@ dialog{box-shadow:0 40px 140px rgba(0,0,0,.65)}
 
 <!-- ================= LITE EXHIBITION (phones, reduced motion, no WebGL) ================= -->
 <div id="lite" aria-label="Exhibition">
-  <div class="lite-bar"><b>Joy Chatterjee</b><a class="textbtn" href="#overview" id="liteExit">Overview</a></div>
+  <div class="lite-bar"><a class="lite-brand" href="#overview" data-home-link>JOY CHATTERJEE</a><a class="textbtn" href="#overview" id="liteExit">Overview</a></div>
   <div class="slides" id="slides">
     <section class="slide hello" aria-label="Welcome">
       <h1 style="margin:0;font:500 .75rem/1.3 var(--sans);letter-spacing:.32em;text-transform:uppercase">Joy Chatterjee</h1>
@@ -650,7 +657,7 @@ dialog{box-shadow:0 40px 140px rgba(0,0,0,.65)}
     </section>
 
     <section aria-labelledby="ov-artist">
-      <span class="label gold">Room 02 · The Artist</span>
+      <span class="label gold">Room 02 · The Artist & Process</span>
       <h2 id="ov-artist">Over two decades of painting faces by hand.</h2>
       <p>Joy Chatterjee is a hyper-realistic portrait artist. Every portrait begins with a single photograph and is painted by hand, in such detail that people mistake it for a photograph.</p>
       <p>His portraits are held in the Boroline House collection in Kolkata and by private collectors in India and Italy, and he paints private portrait commissions for clients in India and internationally.</p>
@@ -741,13 +748,13 @@ dialog{box-shadow:0 40px 140px rgba(0,0,0,.65)}
 <script>
 window.EXHIBIT={
   art:[
-    {src:'work-01.jpg',title:'Silverina',meta:'Oil on canvas · Commissioned work',note:'A study in observation and detail, from the horse’s coat and expressive eye to the leather, metal and reflected light of the bridle.',alt:'Silverina: a hyper-realistic oil painting of a dark bay horse in a blue bridle',frame:'gold'},
-    {src:'work-03.jpg',title:'Rabindranath Tagore',meta:'Commissioned by Dr. Purnendu Sarkar, 2026',note:'',alt:'Hyper-realistic portrait of Rabindranath Tagore by Joy Chatterjee',frame:'black'},
-    {src:'work-04.jpg',title:'Ratan Tata',meta:'Hyper-realistic portrait',note:'',alt:'Hyper-realistic portrait of Ratan Tata by Joy Chatterjee',frame:'walnut'},
-    {src:'work-05.jpg',title:'Jamshedji Tata',meta:'Hyper-realistic portrait',note:'',alt:'Hyper-realistic portrait of Jamshedji Tata by Joy Chatterjee',frame:'gold'},
-    {src:'work-02.jpg',title:'The making of Silverina',meta:'Joy Chatterjee at work',note:'',alt:'Joy Chatterjee at work on the painting Silverina',frame:'black'}
+    {src:'joy-exhibition.jpg',title:'Exhibition Archive',meta:'Documentary photograph · Recognition moment',note:'A glimpse into Joy Chatterjee’s exhibition journey and the presentation of his work.',alt:'Joy Chatterjee exhibition archive photograph with a framed portrait being presented on stage',frame:'gold'},
+    {src:'joy-shivaji.jpg',title:'Chhatrapati Shivaji Maharaj',meta:'Hyper-realistic portrait · Oil on canvas',note:'A hand-painted historical portrait, built through close observation of texture, fabric, skin and expression.',alt:'Hyper-realistic oil portrait of Chhatrapati Shivaji Maharaj by Joy Chatterjee',frame:'gold'},
+    {src:'joy-child-dog.jpg',title:'A Quiet Moment',meta:'Portrait study · Oil on canvas',note:'A detailed interior scene combining human character, animal presence and the atmosphere of an old-world room.',alt:'Oil painting of a child and dog in an interior by Joy Chatterjee',frame:'walnut'},
+    {src:'joy-process-horse.jpg',title:'At Work · Silverina',meta:'Studio photograph · Joy Chatterjee',note:'Joy painting the horse portrait in the studio.',alt:'Joy Chatterjee painting the horse portrait Silverina in his studio',frame:'black'},
+    {src:'joy-process-portrait.jpg',title:'At Work · Portraiture',meta:'Studio photograph · Joy Chatterjee',note:'Joy painting a large portrait by hand in the studio.',alt:'Joy Chatterjee painting a large portrait in his studio',frame:'black'}
   ],
-  rooms:[['Entrance','Joy Chatterjee'],['Room 01','Portraits'],['Room 02','Story & Recognition'],['Room 03','Process & Commissions']]
+  rooms:[['Entrance','Joy Chatterjee'],['Room 01','Portraits'],['Room 02','The Artist & Process'],['Room 03','Recognition & Commissions']]
 };
 
 /* ---------- Shared DOM behaviour: overview list, detail viewer, contact, mode choice ---------- */
@@ -896,7 +903,7 @@ const works=[]; const hits=[];
 function frameGeo(w,h,fw){const s=new THREE.Shape();s.moveTo(-w/2-fw,-h/2-fw);s.lineTo(w/2+fw,-h/2-fw);s.lineTo(w/2+fw,h/2+fw);s.lineTo(-w/2-fw,h/2+fw);s.lineTo(-w/2-fw,-h/2-fw);
   const hole=new THREE.Path();hole.moveTo(-w/2,-h/2);hole.lineTo(-w/2,h/2);hole.lineTo(w/2,h/2);hole.lineTo(w/2,-h/2);hole.lineTo(-w/2,-h/2);s.holes.push(hole);
   const g=new THREE.ExtrudeGeometry(s,{depth:.07,bevelEnabled:true,bevelThickness:.018,bevelSize:.016,bevelSegments:2,curveSegments:1});g.translate(0,0,-.02);return g;}
-function placeholderTex(title){return canvasTex(512,640,(g,w,h)=>{g.fillStyle='#1b1917';g.fillRect(0,0,w,h);g.fillStyle='#8a8276';g.font='34px "Cormorant Garamond", serif';g.textAlign='center';g.fillText(title,w/2,h/2);g.font='15px "Manrope", sans-serif';g.fillText('Image loads on the live site',w/2,h/2+34);});}
+function placeholderTex(title){return canvasTex(512,640,(g,w,h)=>{g.fillStyle='#1b1917';g.fillRect(0,0,w,h);g.fillStyle='#8a8276';g.font='34px "Space Grotesk", serif';g.textAlign='center';g.fillText(title,w/2,h/2);g.font='15px "Manrope", sans-serif';g.fillText('Image loads on the live site',w/2,h/2+34);});}
 /* opts: index into E.art, position, facing (ry), height in metres */
 function hang(i,pos,ry,height,{glow=1,lazy=true}={}){
   const a=E.art[i]; const grp=new THREE.Group(); grp.position.set(...pos); grp.rotation.y=ry; scene.add(grp);
@@ -919,11 +926,20 @@ function hang(i,pos,ry,height,{glow=1,lazy=true}={}){
 /* Entrance */
 const W_SIL=hang(0,[0,2.45,0],0,3.1,{lazy:false});
 /* Room 01 */
-const W_TAG=hang(1,[-HALF+.02,2.2,-8],Math.PI/2,2.3);
-const W_RAT=hang(2,[HALF-.02,2.2,-14],-Math.PI/2,2.3);
-const W_JAM=hang(3,[-HALF+.02,2.2,-20],Math.PI/2,2.3);
-/* Room 02: the artist */
-const W_JOY=hang(4,[HALF-.02,2.2,-34],-Math.PI/2,2.5);
+const W_TAG=hang(1,[-HALF+.02,2.2,-8],Math.PI/2,2.5);
+const W_RAT=hang(2,[HALF-.02,2.2,-14],-Math.PI/2,2.4);
+/* Room 02: process photographs */
+const W_JAM=hang(3,[-HALF+.02,2.2,-34],Math.PI/2,2.35);
+const W_JOY=hang(4,[HALF-.02,2.2,-40],-Math.PI/2,2.35);
+// Home branding: always return to the site's overview/home.
+document.querySelectorAll("[data-home-link]").forEach(function(a){a.addEventListener("click",function(e){
+  if(location.hash === "#overview") return;
+  e.preventDefault();
+  var exit=document.getElementById("exitBtn");
+  if(exit && !document.getElementById("intro")?.classList.contains("gone")){ exit.click(); }
+  setTimeout(function(){ document.getElementById("overview")?.scrollIntoView({behavior:"smooth"}); }, 80);
+});});
+
 
 /* ---------- Process room: no duplicate artwork image ---------- */
 textPanel(3.0,1.85,(g,w,h)=>{
@@ -931,7 +947,7 @@ textPanel(3.0,1.85,(g,w,h)=>{
   g.textAlign='center';
   g.font='500 42px "Manrope", sans-serif';
   g.fillText('THE PROCESS',w/2,170);
-  g.font='400 68px "Cormorant Garamond", serif';
+  g.font='400 68px "Space Grotesk", serif';
   g.fillText('From photograph',w/2,270);
   g.fillText('to original canvas',w/2,350);
   g.font='400 24px "Manrope", sans-serif';
@@ -948,7 +964,7 @@ function textPanel(w,h,draw,{plate=true,pos,ry}){
     const s=new THREE.Mesh(new THREE.PlaneGeometry(w*1.4,h*1.5),new THREE.MeshBasicMaterial({map:shadowTex,transparent:true,depthWrite:false,opacity:.6}));s.position.set(.03,-.05,-.02);grp.add(s);}
   return grp;}
 function lightPool(pos,ry,w,h){const g=new THREE.Group();g.position.set(...pos);g.rotation.y=ry;scene.add(g);const p=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:coneTex,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.32,color:0xffe2b8}));p.position.set(0,h*.22,-.01);g.add(p);}
-const SERIF='"Cormorant Garamond", Georgia, serif', SANS='"Manrope", Helvetica, Arial, sans-serif';
+const SERIF='"Space Grotesk", Georgia, serif', SANS='"Manrope", Helvetica, Arial, sans-serif';
 function wrap(g,text,x,y,maxW,lh){const words=text.split(' ');let line='';for(const wd of words){const t=line?line+' '+wd:wd;if(g.measureText(t).width>maxW&&line){g.fillText(line,x,y);line=wd;y+=lh;}else line=t;}g.fillText(line,x,y);return y;}
 function plaque(year,title,sub,pos,ry){lightPool(pos,ry,2.4,2.6);return textPanel(1.45,.94,(g,w,h)=>{g.textAlign='left';g.fillStyle='#b8955a';g.font='96px '+SERIF;g.fillText(year,64,150);g.fillStyle='#efe8db';g.font='44px '+SANS;let y=wrap(g,title,64,250,w-128,56);g.fillStyle='#a99f90';g.font='34px '+SANS;wrap(g,sub,64,y+64,w-128,46);},{pos,ry});}
 function listPlaque(head,items,pos,ry,hgt=1.3){lightPool(pos,ry,2.8,3.2);return textPanel(1.5,hgt*1.15,(g,w,h)=>{g.textAlign='left';g.fillStyle='#b8955a';g.font='500 30px '+SANS;g.fillText(head.toUpperCase(),64,110);let y=200;for(const [t,s] of items){g.fillStyle='#efe8db';g.font='58px '+SERIF;y=wrap(g,t,64,y,w-128,64);g.fillStyle='#a99f90';g.font='30px '+SANS;y=wrap(g,s,64,y+46,w-128,40)+90;}},{pos,ry});}
@@ -957,23 +973,26 @@ function roomSign(no,name,z,pos,ry=0){wallText([[no.toUpperCase(),'500 34px '+SA
 
 const L=Math.PI/2, R=-Math.PI/2;
 async function buildText(){
-  try{await Promise.all([document.fonts.load('92px "Cormorant Garamond"'),document.fonts.load('44px "Manrope"')]);}catch(e){}
+  try{await Promise.all([document.fonts.load('92px "Space Grotesk"'),document.fonts.load('44px "Manrope"')]);}catch(e){}
   /* Three compact chapters: Portraits / Story / Process + Commissions */
   roomSign('Room 01','Portraits',0,[-HALF+.02,3.9,-3.2],L);
-  roomSign('Room 02','Story & Recognition',-24);
-  roomSign('Room 03','Process & Commissions',-52);
-  [[W_TAG,-8,L,'Rabindranath Tagore','Commissioned by Dr. Purnendu Sarkar, 2026'],[W_RAT,-14,R,'Ratan Tata','Hyper-realistic portrait'],[W_JAM,-20,L,'Jamshedji Tata','Hyper-realistic portrait']].forEach(([w,z,ry,t,s])=>{
+  textPanel(.72,.42,(g,cw,ch)=>{g.fillStyle='#efe8db';g.font='44px '+SERIF;g.fillText('EXHIBITION ARCHIVE',30,105);g.fillStyle='#a99f90';g.font='24px '+SANS;g.fillText('A moment from Joy’s journey as an artist.',30,150);},{pos:[-1.7,1.05,1.1],ry:L});
+  roomSign('Room 02','The Artist & Process',-24);
+  roomSign('Room 03','Recognition & Commissions',-52);
+  [[W_TAG,-8,L,'Chhatrapati Shivaji Maharaj','Hyper-realistic portrait · Oil on canvas'],[W_RAT,-14,R,'A Quiet Moment','Child and dog · Oil on canvas']].forEach(([w,z,ry,t,s])=>{
     const x=ry===L?-HALF+.03:HALF-.03, dz=(ry===L?-1:1)*((w.w||1.9)/2+.9);
     textPanel(.5,.26,(g,cw,ch)=>{g.fillStyle='#efe8db';g.font='70px '+SERIF;g.fillText(t,50,150);g.fillStyle='#a99f90';g.font='34px '+SANS;wrap(g,s,50,230,cw-100,44);},{pos:[x,1.45,z+dz],ry});
   });
-  /* Story: artist + condensed recognition archive in one room */
-  wallText([['JOY CHATTERJEE','500 30px '+SANS,'#b8955a',40],['Over two decades of painting faces by hand.','88px '+SERIF,'#efe8db',120],['Every portrait begins with a photograph and is painted by hand, in detail.','32px '+SANS,'#b9b0a2',80]],3.2,1.8,[-HALF+.02,3.15,-34],L);
+  /* Story: artist + documentary studio photographs, with no repeated artwork */
+  wallText([['JOY CHATTERJEE','500 30px '+SANS,'#b8955a',40],['Over two decades of painting faces by hand.','88px '+SERIF,'#efe8db',120],['The studio is where observation becomes paint — one layer, one detail, one portrait at a time.','32px '+SANS,'#b9b0a2',80]],3.2,1.8,[-HALF+.02,3.15,-28],L);
   plaque('20+','Years of portraiture','Hand-painted portraits',[-HALF+.02,1.25,-31],L);
+  wallText([['IN THE STUDIO','500 26px '+SANS,'#b8955a',34],['Painting is the process.','70px '+SERIF,'#efe8db',90],['From the first marks to the final details.','30px '+SANS,'#b9b0a2',62]],2.5,1.35,[0,4.35,-37],0,'center');
+
   plaque('8','Works in the Boroline House','Collection, Kolkata',[HALF-.02,1.25,-31],R);
   plaque('2002–2026','Exhibitions & portraits','Birla Academy · Gallery 360° · Academy of Fine Arts · ICCR · portraits presented to Kapil Dev, Sourav Ganguly & Shah Rukh Khan',[HALF-.02,2.0,-39],R);
   listPlaque('Collections',[['The Boroline House, Kolkata','Eight works, including portraits of Mother Teresa and Rabindranath Tagore'],['Private collections','India and Italy'],['Tata Metaliks','Collection of Mr. H. K. Jhaa']],[-HALF+.02,2.0,-43],L,1.45);
   /* Process + commissions become the final immersive room */
-  wallText([['THE PROCESS','500 30px '+SANS,'#b8955a',40],['From photograph to original canvas.','84px '+SERIF,'#efe8db',110],['Watch Joy at work as the photograph transforms into Silverina.','32px '+SANS,'#b9b0a2',76]],2.8,1.5,[-HALF+.02,2.6,-61.5],L);
+  wallText([['THE PROCESS','500 30px '+SANS,'#b8955a',40],['From photograph to original canvas.','84px '+SERIF,'#efe8db',110],['Two decades of hand-painted portraiture, documented from the studio floor.','32px '+SANS,'#b9b0a2',76]],2.8,1.5,[-HALF+.02,2.6,-61.5],L);
   wallText([['COMMISSIONS','500 26px '+SANS,'#b8955a',40],['Your portrait could begin here.','82px '+SERIF,'#efe8db',125]],6.5,1.15,[0,4.7,Z1+.02],0,'center');
   const st=[['01','Send a photograph','Share the photo. Joy will tell you whether it has enough detail.',L,-67],['02','Discuss the portrait','Choose the size; receive a written quote and timeline.',R,-68.5],['03','Watch it take shape','Progress photos as the portrait develops.',L,-72],['04','Receive the original','Collected, delivered, or carefully packed and shipped.',R,-73.5]];
   st.forEach(([n,t,s,ry,z])=>plaque(n,t,s,[ry===L?-HALF+.02:HALF-.02,1.9,z],ry));
@@ -998,10 +1017,10 @@ const KF=[
   {p:V(-1.3,1.75,-8),l:V(-5,2.15,-8),room:1,work:W_TAG,w:1.15},
   {p:V(1.3,1.75,-14),l:V(5,2.15,-14),room:1,work:W_RAT,w:1.15},
   {p:V(-1.3,1.75,-20),l:V(-5,2.15,-20),room:1,work:W_JAM,w:1.15},
-  {p:V(0,1.8,-25),l:V(0,2.0,-38),room:2},
-  {p:V(1.2,1.75,-34),l:V(5,2.15,-34),room:2,work:W_JOY,w:1.1},
-  {p:V(-1.4,1.8,-39),l:V(-5,2,-40),room:2,w:1.15},
-  {p:V(1.4,1.8,-44),l:V(5,2,-44),room:2,w:1.15},
+  {p:V(0,1.8,-25),l:V(0,2.0,-34),room:2},
+  {p:V(-1.2,1.75,-34),l:V(-5,2.15,-34),room:2,work:W_JAM,w:1.1},
+  {p:V(1.2,1.75,-40),l:V(5,2.15,-40),room:2,work:W_JOY,w:1.1},
+  {p:V(0,1.8,-45),l:V(0,2,-48),room:2,w:1.15},
   {p:V(-.6,1.8,-62),l:V(5,2.25,-62),room:3,w:1.5},
   {p:V(0,1.8,-65),l:V(0,2.3,-74),room:3},
   {p:V(0,1.85,-70),l:V(0,2.5,-76),room:3},
