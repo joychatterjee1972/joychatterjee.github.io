@@ -5,14 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Joy Chatterjee — Portrait Artist</title>
-  <meta name="description" content="Joy Chatterjee — hyper-realistic portrait artist. Painted by hand / Seen slowly.">
+
+  <meta
+    name="description"
+    content="Joy Chatterjee — hyper-realistic portrait artist. Painted by hand."
+  >
+
   <meta name="theme-color" content="#f6f5f0">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500&family=Playfair+Display:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
+
+    /* =====================================================
+       ROOT
+    ===================================================== */
+
     :root {
       --wall: #f6f5f0;
       --ink: #11110f;
@@ -45,12 +59,18 @@
 
     body {
       margin: 0;
+
       background: var(--wall);
       color: var(--ink);
+
       font-family: var(--sans);
       font-weight: 400;
+
       -webkit-font-smoothing: antialiased;
-      transition: background .5s ease, color .5s ease;
+
+      transition:
+        background .5s ease,
+        color .5s ease;
     }
 
     body.viewer-open {
@@ -72,12 +92,14 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        NAVIGATION
-    ========================================= */
+       COMPLETELY TRANSPARENT
+    ===================================================== */
 
     .nav {
       position: fixed;
+
       top: 0;
       left: 0;
       right: 0;
@@ -92,50 +114,67 @@
 
       padding: 0 32px;
 
-      background: color-mix(
-        in srgb,
-        var(--wall) 78%,
-        transparent
-      );
+      /*
+        Completely transparent.
+        No background.
+        No blur.
+        No glass effect.
+      */
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: transparent;
+
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
 
     .brand {
       font-family: var(--serif);
+
       font-size: 20px;
+
       letter-spacing: -.02em;
+
       white-space: nowrap;
     }
 
     .nav-right {
       display: flex;
+
       align-items: center;
+
       gap: 28px;
     }
 
     .nav-links {
       display: flex;
+
       align-items: center;
+
       gap: 26px;
     }
 
     .nav-link,
     .nav-control {
       border: 0;
+
       background: transparent;
+
       padding: 0;
 
       font-family: var(--mono);
+
       font-size: 10px;
+
       letter-spacing: .08em;
+
       text-transform: uppercase;
 
       cursor: pointer;
+
       opacity: .72;
 
-      transition: opacity .25s ease;
+      transition:
+        opacity .25s ease;
     }
 
     .nav-link:hover,
@@ -144,18 +183,21 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        HERO
-    ========================================= */
+    ===================================================== */
 
     .hero {
       position: relative;
 
       width: 100%;
+
       height: 100svh;
+
       min-height: 620px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -165,13 +207,10 @@
     }
 
 
-    /*
-      The colourful illumination is intentionally
-      NOT a visible shape or panel.
-
-      It is several huge, blurred light sources
-      moving slowly behind the artwork.
-    */
+    /* =====================================================
+       ANIMATED COLOUR LIGHT
+       No visible background shape.
+    ===================================================== */
 
     .hero-light {
       position: absolute;
@@ -197,6 +236,7 @@
       animation:
         mainLight 16s ease-in-out infinite alternate;
     }
+
 
     .hero-light::before {
       content: "";
@@ -224,6 +264,7 @@
       animation:
         blueLight 19s ease-in-out infinite alternate;
     }
+
 
     .hero-light::after {
       content: "";
@@ -253,8 +294,6 @@
     }
 
 
-    /* additional moving golden light */
-
     .hero::before {
       content: "";
 
@@ -269,7 +308,8 @@
       left: 50%;
       top: 50%;
 
-      transform: translate(-50%, -50%);
+      transform:
+        translate(-50%, -50%);
 
       border-radius: 50%;
 
@@ -370,6 +410,7 @@
         transform:
           translate(-50%, -50%)
           scale(.82);
+
         opacity: .45;
       }
 
@@ -377,6 +418,7 @@
         transform:
           translate(-50%, -50%)
           scale(1.08);
+
         opacity: .75;
       }
 
@@ -384,6 +426,7 @@
         transform:
           translate(-50%, -50%)
           scale(.94);
+
         opacity: .55;
       }
 
@@ -407,13 +450,19 @@
     }
 
 
+    /* =====================================================
+       HERO ART
+    ===================================================== */
+
     .hero-media {
       position: absolute;
+
       inset: 0;
 
       z-index: 3;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -422,6 +471,7 @@
         30px
         100px;
     }
+
 
     .hero-media img {
       display: block;
@@ -438,6 +488,7 @@
       cursor: zoom-in;
 
       user-select: none;
+
       -webkit-user-drag: none;
 
       filter:
@@ -451,6 +502,7 @@
         filter .8s ease;
     }
 
+
     .hero-media img.is-changing {
       opacity: 0;
 
@@ -458,6 +510,10 @@
         scale(.985);
     }
 
+
+    /* =====================================================
+       HERO INFORMATION
+    ===================================================== */
 
     .hero-meta {
       position: absolute;
@@ -468,26 +524,31 @@
       z-index: 5;
     }
 
+
     .hero-number {
       display: block;
 
       margin-bottom: 8px;
 
       font-family: var(--mono);
+
       font-size: 10px;
+
       letter-spacing: .1em;
 
       color: var(--muted);
     }
 
+
     .hero-title {
       font-family: var(--serif);
 
-      font-size: clamp(
-        24px,
-        3vw,
-        42px
-      );
+      font-size:
+        clamp(
+          24px,
+          3vw,
+          42px
+        );
 
       line-height: 1.05;
 
@@ -508,6 +569,7 @@
       font-family: var(--mono);
 
       font-size: 10px;
+
       line-height: 1.7;
 
       letter-spacing: .06em;
@@ -522,9 +584,11 @@
       position: absolute;
 
       bottom: 32px;
+
       left: 50%;
 
-      transform: translateX(-50%);
+      transform:
+        translateX(-50%);
 
       z-index: 5;
 
@@ -540,13 +604,14 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        GENERAL
-    ========================================= */
+    ===================================================== */
 
     section {
       position: relative;
     }
+
 
     .section-inner {
       width:
@@ -559,22 +624,30 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        INTRO
-    ========================================= */
+    ===================================================== */
 
     .intro {
       min-height: 70vh;
 
       display: flex;
+
       align-items: center;
 
-      padding: 150px 0;
+      padding:
+        150px 0;
     }
 
+
     .intro-copy {
-      width: min(850px, 100%);
+      width:
+        min(
+          850px,
+          100%
+        );
     }
+
 
     .eyebrow {
       margin-bottom: 28px;
@@ -589,6 +662,7 @@
 
       color: var(--muted);
     }
+
 
     .intro h1 {
       margin: 0;
@@ -609,10 +683,16 @@
       letter-spacing: -.045em;
     }
 
-    .intro p {
-      width: min(650px, 100%);
 
-      margin: 42px 0 0;
+    .intro p {
+      width:
+        min(
+          650px,
+          100%
+        );
+
+      margin:
+        42px 0 0;
 
       font-size:
         clamp(
@@ -627,17 +707,23 @@
     }
 
 
-    /* =========================================
-       WORKS — 4 COLUMNS DESKTOP
-    ========================================= */
+    /* =====================================================
+       WORKS — GALLERY
+       4 COLUMNS DESKTOP
+       2 COLUMNS MOBILE
+    ===================================================== */
 
     .works {
-      padding: 120px 0 160px;
+      padding:
+        120px 0
+        160px;
     }
+
 
     .section-heading {
       margin-bottom: 80px;
     }
+
 
     .section-heading h2 {
       margin: 0;
@@ -697,11 +783,13 @@
       display: block;
 
       width: 100%;
+
       height: auto;
 
       max-width: 100%;
 
       object-fit: contain;
+
       object-position: center;
 
       user-select: none;
@@ -752,18 +840,21 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        STATEMENT
-    ========================================= */
+    ===================================================== */
 
     .statement {
       min-height: 75vh;
 
       display: flex;
+
       align-items: center;
 
-      padding: 150px 0;
+      padding:
+        150px 0;
     }
+
 
     .statement p {
       max-width: 1050px;
@@ -785,13 +876,16 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        ABOUT
-    ========================================= */
+    ===================================================== */
 
     .about {
-      padding: 140px 0 170px;
+      padding:
+        140px 0
+        170px;
     }
+
 
     .about-grid {
       display: grid;
@@ -801,6 +895,7 @@
 
       gap: 100px;
     }
+
 
     .about-title {
       font-family: var(--serif);
@@ -817,6 +912,7 @@
       letter-spacing: -.035em;
     }
 
+
     .about-copy {
       max-width: 720px;
 
@@ -827,10 +923,12 @@
       color: var(--muted);
     }
 
+
     .about-copy p {
       margin:
         0 0 28px;
     }
+
 
     .about-copy strong {
       color: var(--ink);
@@ -839,18 +937,21 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        CONTACT
-    ========================================= */
+    ===================================================== */
 
     .contact {
       min-height: 80vh;
 
       display: flex;
+
       align-items: center;
 
-      padding: 150px 0;
+      padding:
+        150px 0;
     }
+
 
     .contact-title {
       max-width: 900px;
@@ -868,6 +969,7 @@
 
       letter-spacing: -.055em;
     }
+
 
     .contact-copy {
       max-width: 620px;
@@ -895,6 +997,7 @@
       display: inline-flex;
 
       align-items: center;
+
       justify-content: center;
 
       min-height: 50px;
@@ -921,7 +1024,8 @@
 
       color: var(--wall);
 
-      border: 1px solid var(--ink);
+      border:
+        1px solid var(--ink);
     }
 
 
@@ -961,13 +1065,14 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        FOOTER
-    ========================================= */
+    ===================================================== */
 
     footer {
       padding:
-        40px 32px 50px;
+        40px 32px
+        50px;
 
       display: flex;
 
@@ -991,9 +1096,9 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        FULLSCREEN VIEWER
-    ========================================= */
+    ===================================================== */
 
     .viewer {
       position: fixed;
@@ -1072,6 +1177,7 @@
 
     .viewer-image-wrap {
       width: 100%;
+
       height: 100%;
 
       padding:
@@ -1089,9 +1195,11 @@
       display: block;
 
       width: auto;
+
       height: auto;
 
       max-width: 100%;
+
       max-height: 100%;
 
       object-fit: contain;
@@ -1115,6 +1223,7 @@
       z-index: 5;
 
       width: 60px;
+
       height: 100px;
 
       display: flex;
@@ -1155,9 +1264,9 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        REVEAL
-    ========================================= */
+    ===================================================== */
 
     .reveal {
       opacity: 0;
@@ -1179,9 +1288,10 @@
     }
 
 
-    /* =========================================
-       MOBILE — 2 COLUMNS
-    ========================================= */
+    /* =====================================================
+       MOBILE
+       2 COLUMN GALLERY
+    ===================================================== */
 
     @media (max-width: 800px) {
 
@@ -1190,9 +1300,17 @@
       }
 
 
+      /* TRANSPARENT MOBILE NAV */
+
       .nav {
         padding:
           0 18px;
+
+        background: transparent;
+
+        backdrop-filter: none;
+
+        -webkit-backdrop-filter: none;
       }
 
 
@@ -1227,6 +1345,7 @@
 
       .hero::before {
         width: 100vw;
+
         height: 100vw;
 
         filter: blur(55px);
@@ -1243,12 +1362,14 @@
 
       .hero-meta {
         left: 18px;
+
         bottom: 25px;
       }
 
 
       .hero-note {
         right: 18px;
+
         bottom: 27px;
       }
 
@@ -1261,7 +1382,7 @@
       .section-inner {
         width:
           min(
-            100% - 36px,
+            calc(100% - 36px),
             1280px
           );
       }
@@ -1281,7 +1402,9 @@
       }
 
 
-      /* 2 COLUMN MOBILE GALLERY */
+      /* =================================
+         2 COLUMN MOBILE GALLERY
+      ================================= */
 
       .works {
         padding:
@@ -1385,9 +1508,9 @@
     }
 
 
-    /* =========================================
+    /* =====================================================
        REDUCED MOTION
-    ========================================= */
+    ===================================================== */
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -1414,7 +1537,9 @@
   </style>
 
 
-  <!-- GOOGLE ANALYTICS -->
+  <!-- =====================================================
+       GOOGLE ANALYTICS
+  ===================================================== -->
 
   <script
     async
@@ -1430,7 +1555,10 @@
       dataLayer.push(arguments);
     }
 
-    gtag("js", new Date());
+    gtag(
+      "js",
+      new Date()
+    );
 
     gtag(
       "config",
@@ -1445,39 +1573,50 @@
 <body>
 
 
-  <!-- =====================================
-       NAV
-  ====================================== -->
+  <!-- =====================================================
+       NAVIGATION
+  ===================================================== -->
 
   <nav class="nav">
 
     <a
       class="brand"
       href="#top">
+
       Joy Chatterjee
+
     </a>
 
 
     <div class="nav-right">
+
 
       <div class="nav-links">
 
         <a
           class="nav-link"
           href="#works">
+
           Works
+
         </a>
+
 
         <a
           class="nav-link"
           href="#about">
+
           About
+
         </a>
+
 
         <a
           class="nav-link"
           href="#contact">
+
           Contact
+
         </a>
 
       </div>
@@ -1487,7 +1626,9 @@
         class="nav-control"
         id="soundToggle"
         type="button">
+
         Sound
+
       </button>
 
 
@@ -1495,29 +1636,33 @@
         class="nav-control"
         id="themeToggle"
         type="button">
+
         Theme
+
       </button>
+
 
     </div>
 
   </nav>
 
 
-  <!-- =====================================
-       HERO
-  ====================================== -->
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
 
   <main id="top">
+
+
+    <!-- ===================================================
+         HERO
+    =================================================== -->
 
     <section class="hero">
 
 
-      <!-- ANIMATED COLOUR LIGHT -->
-
       <div class="hero-light"></div>
 
-
-      <!-- HERO ART -->
 
       <div class="hero-media">
 
@@ -1530,27 +1675,27 @@
       </div>
 
 
-      <!-- HERO TITLE -->
-
       <div class="hero-meta">
 
         <span
           class="hero-number"
           id="heroNumber">
+
           01 / 05
+
         </span>
 
 
         <div
           class="hero-title"
           id="heroTitle">
+
           Silverina
+
         </div>
 
       </div>
 
-
-      <!-- HERO DETAILS -->
 
       <div
         class="hero-note"
@@ -1563,15 +1708,18 @@
 
 
       <div class="scroll-hint">
+
         Scroll to enter
+
       </div>
+
 
     </section>
 
 
-    <!-- =====================================
+    <!-- ===================================================
          INTRO
-    ====================================== -->
+    =================================================== -->
 
     <section class="intro">
 
@@ -1579,20 +1727,28 @@
 
         <div class="intro-copy reveal">
 
+
           <div class="eyebrow">
+
             Portrait Artist · India / Italy
+
           </div>
 
 
           <h1>
+
             A portrait to keep for generations.
+
           </h1>
 
 
           <p>
+
             Painted by hand from a single photograph,
             in such detail that people mistake it for one.
+
           </p>
+
 
         </div>
 
@@ -1601,9 +1757,9 @@
     </section>
 
 
-    <!-- =====================================
+    <!-- ===================================================
          WORKS
-    ====================================== -->
+    =================================================== -->
 
     <section
       class="works"
@@ -1615,12 +1771,16 @@
         <div class="section-heading reveal">
 
           <div class="eyebrow">
+
             Selected Works
+
           </div>
 
 
           <h2>
+
             Works
+
           </h2>
 
         </div>
@@ -1629,7 +1789,7 @@
         <div class="works-grid">
 
 
-          <!-- 01 -->
+          <!-- WORK 01 -->
 
           <article class="work reveal">
 
@@ -1647,12 +1807,16 @@
             <div class="work-info">
 
               <div class="work-title">
+
                 Silverina
+
               </div>
 
 
               <div class="work-meta">
+
                 Oil on Canvas · Painted by hand
+
               </div>
 
             </div>
@@ -1660,7 +1824,7 @@
           </article>
 
 
-          <!-- 02 -->
+          <!-- WORK 02 -->
 
           <article class="work reveal">
 
@@ -1678,12 +1842,16 @@
             <div class="work-info">
 
               <div class="work-title">
+
                 Silverina — The Making
+
               </div>
 
 
               <div class="work-meta">
+
                 Process · Painted by hand
+
               </div>
 
             </div>
@@ -1691,7 +1859,7 @@
           </article>
 
 
-          <!-- 03 -->
+          <!-- WORK 03 -->
 
           <article class="work reveal">
 
@@ -1709,12 +1877,16 @@
             <div class="work-info">
 
               <div class="work-title">
+
                 A Special Pleader
+
               </div>
 
 
               <div class="work-meta">
+
                 Oil on Canvas · Replica
+
               </div>
 
             </div>
@@ -1722,7 +1894,7 @@
           </article>
 
 
-          <!-- 04 -->
+          <!-- WORK 04 -->
 
           <article class="work reveal">
 
@@ -1740,12 +1912,16 @@
             <div class="work-info">
 
               <div class="work-title">
+
                 Jamshedji Tata
+
               </div>
 
 
               <div class="work-meta">
+
                 Oil on Canvas · Painted by hand
+
               </div>
 
             </div>
@@ -1753,7 +1929,7 @@
           </article>
 
 
-          <!-- 05 -->
+          <!-- WORK 05 -->
 
           <article class="work reveal">
 
@@ -1771,12 +1947,16 @@
             <div class="work-info">
 
               <div class="work-title">
+
                 A Moment of Recognition
+
               </div>
 
 
               <div class="work-meta">
+
                 Portrait · Painted by hand
+
               </div>
 
             </div>
@@ -1791,17 +1971,19 @@
     </section>
 
 
-    <!-- =====================================
+    <!-- ===================================================
          STATEMENT
-    ====================================== -->
+    =================================================== -->
 
     <section class="statement">
 
       <div class="section-inner">
 
         <p class="reveal">
+
           Every face begins with observation.
           The painting begins where the photograph ends.
+
         </p>
 
       </div>
@@ -1809,9 +1991,9 @@
     </section>
 
 
-    <!-- =====================================
+    <!-- ===================================================
          ABOUT
-    ====================================== -->
+    =================================================== -->
 
     <section
       class="about"
@@ -1823,32 +2005,42 @@
 
 
           <div class="about-title reveal">
+
             Every face begins with observation.
+
           </div>
 
 
           <div class="about-copy reveal">
 
+
             <p>
+
               For over two decades, I have painted faces by hand —
               studying expression, character, light and the smallest
               details that make a person unmistakably themselves.
+
             </p>
 
 
             <p>
+
               My practice has developed across
               <strong>West Bengal — India — Italy</strong>,
               with a focus on hyper-realistic portraiture.
+
             </p>
 
 
             <p>
+
               My portraits have been presented to
               <strong>Kapil Dev, Sourav Ganguly and Shah Rukh Khan</strong>.
               The work is held in the <strong>Boroline House</strong>
               collection and by private collectors in India and Italy.
+
             </p>
+
 
           </div>
 
@@ -1859,9 +2051,9 @@
     </section>
 
 
-    <!-- =====================================
+    <!-- ===================================================
          CONTACT
-    ====================================== -->
+    =================================================== -->
 
     <section
       class="contact"
@@ -1871,24 +2063,29 @@
 
 
         <div class="eyebrow reveal">
+
           Private Commissions
+
         </div>
 
 
         <div class="contact-title reveal">
+
           Begin a portrait.
+
         </div>
 
 
         <div class="contact-copy reveal">
+
           A portrait painted by hand, from your photograph,
           created to remain in your family for generations.
+
         </div>
 
 
-        <!-- ONE BUTTON -->
-
         <div class="contact-links reveal">
+
 
           <a
             class="commission-link"
@@ -1900,10 +2097,9 @@
 
           </a>
 
+
         </div>
 
-
-        <!-- EMAIL -->
 
         <div class="contact-email reveal">
 
@@ -1921,30 +2117,38 @@
 
     </section>
 
+
   </main>
 
 
-  <!-- =====================================
+  <!-- =====================================================
        FOOTER
-  ====================================== -->
+  ===================================================== -->
 
   <footer>
 
+
     <div>
-      © <span id="year"></span> Joy Chatterjee
+
+      © <span id="year"></span>
+      Joy Chatterjee
+
     </div>
 
 
     <div>
+
       Painted by hand / Seen slowly
+
     </div>
+
 
   </footer>
 
 
-  <!-- =====================================
-       FULLSCREEN VIEWER
-  ====================================== -->
+  <!-- =====================================================
+       FULLSCREEN ARTWORK VIEWER
+  ===================================================== -->
 
   <div
     class="viewer"
@@ -1954,10 +2158,13 @@
 
     <div class="viewer-top">
 
+
       <div
         class="viewer-label"
         id="viewerLabel">
+
         01 / 05
+
       </div>
 
 
@@ -1970,6 +2177,7 @@
         ×
 
       </button>
+
 
     </div>
 
@@ -1987,12 +2195,14 @@
 
     <div class="viewer-image-wrap">
 
+
       <img
         class="viewer-img"
         id="viewerImage"
         src=""
         alt=""
         draggable="false">
+
 
     </div>
 
@@ -2007,12 +2217,13 @@
 
     </button>
 
+
   </div>
 
 
-  <!-- =====================================
+  <!-- =====================================================
        AUDIO
-  ====================================== -->
+  ===================================================== -->
 
   <audio
     id="siteAudio"
@@ -2024,9 +2235,9 @@
 
   <script>
 
-    /* =====================================
+    /* =====================================================
        HERO SLIDES
-    ===================================== */
+    ===================================================== */
 
     const heroSlides = [
 
@@ -2073,15 +2284,18 @@
         "heroImage"
       );
 
+
     const heroTitle =
       document.getElementById(
         "heroTitle"
       );
 
+
     const heroNumber =
       document.getElementById(
         "heroNumber"
       );
+
 
     const heroNote =
       document.getElementById(
@@ -2092,7 +2306,7 @@
     let heroIndex = 0;
 
 
-    /* PRELOAD ALL ARTWORK */
+    /* PRELOAD */
 
     heroSlides.forEach(
       slide => {
@@ -2107,9 +2321,9 @@
     );
 
 
-    /* =====================================
+    /* =====================================================
        HERO ROTATION
-    ===================================== */
+    ===================================================== */
 
     function changeHero() {
 
@@ -2133,11 +2347,14 @@
           heroImage.src =
             nextSlide.src;
 
+
           heroImage.alt =
             nextSlide.alt;
 
+
           heroTitle.textContent =
             nextSlide.title;
+
 
           heroNumber.textContent =
             String(
@@ -2147,6 +2364,7 @@
               "0"
             ) +
             " / 05";
+
 
           heroNote.innerHTML =
             nextSlide.note;
@@ -2179,34 +2397,39 @@
     );
 
 
-    /* =====================================
-       VIEWER
-    ===================================== */
+    /* =====================================================
+       FULLSCREEN VIEWER
+    ===================================================== */
 
     const viewer =
       document.getElementById(
         "viewer"
       );
 
+
     const viewerImage =
       document.getElementById(
         "viewerImage"
       );
+
 
     const viewerLabel =
       document.getElementById(
         "viewerLabel"
       );
 
+
     const viewerClose =
       document.getElementById(
         "viewerClose"
       );
 
+
     const viewerPrev =
       document.getElementById(
         "viewerPrev"
       );
+
 
     const viewerNext =
       document.getElementById(
@@ -2227,6 +2450,7 @@
 
       viewerImage.src =
         slide.src;
+
 
       viewerImage.alt =
         slide.alt;
@@ -2319,7 +2543,7 @@
     }
 
 
-    /* WORK GRID CLICK */
+    /* WORK IMAGE CLICK */
 
     document
       .querySelectorAll(
@@ -2345,7 +2569,7 @@
       );
 
 
-    /* HERO CLICK */
+    /* HERO IMAGE CLICK */
 
     heroImage.addEventListener(
       "click",
@@ -2377,7 +2601,9 @@
     );
 
 
-    /* KEYBOARD */
+    /* =====================================================
+       KEYBOARD
+    ===================================================== */
 
     document.addEventListener(
       "keydown",
@@ -2388,7 +2614,9 @@
             "open"
           )
         ) {
+
           return;
+
         }
 
 
@@ -2425,9 +2653,9 @@
     );
 
 
-    /* =====================================
+    /* =====================================================
        TOUCH SWIPE
-    ===================================== */
+    ===================================================== */
 
     let touchStartX = 0;
 
@@ -2492,9 +2720,9 @@
     );
 
 
-    /* =====================================
+    /* =====================================================
        SOUND
-    ===================================== */
+    ===================================================== */
 
     const soundToggle =
       document.getElementById(
@@ -2552,9 +2780,9 @@
     );
 
 
-    /* =====================================
+    /* =====================================================
        THEME
-    ===================================== */
+    ===================================================== */
 
     const themeToggle =
       document.getElementById(
@@ -2635,9 +2863,9 @@
     );
 
 
-    /* =====================================
+    /* =====================================================
        SCROLL REVEAL
-    ===================================== */
+    ===================================================== */
 
     const revealElements =
       document.querySelectorAll(
@@ -2688,9 +2916,9 @@
     );
 
 
-    /* =====================================
+    /* =====================================================
        YEAR
-    ===================================== */
+    ===================================================== */
 
     document.getElementById(
       "year"
