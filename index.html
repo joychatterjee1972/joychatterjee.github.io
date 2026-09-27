@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Joy Chatterjee — Portraits, Painted by Hand</title>
+
   <meta
     name="description"
     content="Joy Chatterjee creates hyper-realistic portraits painted by hand from photographs. A portrait practice spanning West Bengal, India and Italy."
@@ -12,6 +13,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap"
     rel="stylesheet"
@@ -64,7 +66,9 @@
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      transition: background-color .5s ease, color .5s ease;
+      transition:
+        background-color .5s ease,
+        color .5s ease;
     }
 
     body.is-locked {
@@ -90,16 +94,18 @@
       color: var(--wall);
     }
 
-    /* ------------------------------
+    /* =================================
        NAVIGATION
-    ------------------------------ */
+    ================================= */
 
     .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
+
       height: var(--nav-height);
+
       z-index: 50;
 
       display: flex;
@@ -109,6 +115,7 @@
       padding: 0 32px;
 
       background: transparent;
+
       pointer-events: none;
     }
 
@@ -136,6 +143,7 @@
       line-height: 1;
       letter-spacing: .05em;
       text-transform: uppercase;
+
       transition: opacity .3s ease;
     }
 
@@ -144,8 +152,6 @@
     }
 
     .nav-link {
-      position: relative;
-
       font-family: var(--mono);
       font-size: 9px;
       line-height: 1;
@@ -153,6 +159,7 @@
       text-transform: uppercase;
 
       opacity: .68;
+
       transition: opacity .3s ease;
     }
 
@@ -160,7 +167,9 @@
       opacity: 1;
     }
 
-    /* Sound */
+    /* =================================
+       SOUND ICON
+    ================================= */
 
     .sound-toggle {
       position: relative;
@@ -179,8 +188,8 @@
       justify-content: center;
 
       cursor: pointer;
-      color: currentColor;
 
+      color: currentColor;
       opacity: .62;
 
       transition:
@@ -216,6 +225,7 @@
       height: 5px;
 
       background: currentColor;
+
       opacity: .9;
 
       transform-origin: center;
@@ -264,9 +274,13 @@
       100% { height: 9px; }
     }
 
-    /* Theme */
+    /* =================================
+       THEME ICON
+    ================================= */
 
     .theme-toggle {
+      position: relative;
+
       width: 30px;
       height: 30px;
 
@@ -282,6 +296,7 @@
 
       cursor: pointer;
 
+      color: currentColor;
       opacity: .62;
 
       transition:
@@ -291,7 +306,7 @@
 
     .theme-toggle:hover {
       opacity: 1;
-      transform: rotate(12deg);
+      transform: scale(1.06);
     }
 
     .theme-toggle:focus-visible {
@@ -299,41 +314,94 @@
       outline-offset: 5px;
     }
 
+    /*
+      Minimal sun / moon symbol.
+      Light mode = moon icon.
+      Dark mode = sun icon.
+    */
+
     .theme-icon {
       position: relative;
 
-      width: 13px;
-      height: 13px;
+      width: 14px;
+      height: 14px;
 
       display: block;
 
       border: 1px solid currentColor;
       border-radius: 50%;
 
-      overflow: hidden;
+      transition:
+        transform .55s var(--ease),
+        border-color .35s ease;
     }
+
+    /* Moon cut */
+
+    .theme-icon::before {
+      content: "";
+
+      position: absolute;
+
+      width: 12px;
+      height: 12px;
+
+      top: -3px;
+      right: -3px;
+
+      border-radius: 50%;
+
+      background: var(--wall);
+
+      transition:
+        opacity .35s ease,
+        transform .45s var(--ease);
+    }
+
+    /* Sun rays */
 
     .theme-icon::after {
       content: "";
 
       position: absolute;
-      top: -2px;
-      right: -2px;
 
-      width: 10px;
-      height: 10px;
+      inset: -5px;
 
-      background: var(--wall);
-      border-radius: 50%;
+      background:
+        linear-gradient(currentColor, currentColor)
+          center top / 1px 3px no-repeat,
+        linear-gradient(currentColor, currentColor)
+          center bottom / 1px 3px no-repeat,
+        linear-gradient(currentColor, currentColor)
+          left center / 3px 1px no-repeat,
+        linear-gradient(currentColor, currentColor)
+          right center / 3px 1px no-repeat;
+
+      opacity: 0;
+
+      transform: rotate(0deg);
+
+      transition:
+        opacity .35s ease,
+        transform .55s var(--ease);
+    }
+
+    html.dark .theme-icon {
+      transform: rotate(45deg);
+    }
+
+    html.dark .theme-icon::before {
+      opacity: 0;
     }
 
     html.dark .theme-icon::after {
-      background: var(--wall);
+      opacity: .9;
+      transform: rotate(-45deg);
     }
 
-    /* ------------------------------
+    /* =================================
        COMMON
-    ------------------------------ */
+    ================================= */
 
     .section-inner {
       width: min(1240px, calc(100% - 64px));
@@ -349,9 +417,9 @@
       color: var(--muted);
     }
 
-    /* ------------------------------
+    /* =================================
        HERO
-    ------------------------------ */
+    ================================= */
 
     .hero {
       position: relative;
@@ -371,6 +439,7 @@
     .hero-media {
       position: absolute;
       inset: 0;
+
       z-index: 3;
 
       display: flex;
@@ -400,7 +469,10 @@
       user-select: none;
       -webkit-user-drag: none;
 
-      filter: drop-shadow(0 24px 38px rgba(0, 0, 0, .09));
+      filter:
+        drop-shadow(
+          0 24px 38px rgba(0, 0, 0, .09)
+        );
 
       transition:
         opacity .65s ease,
@@ -415,6 +487,7 @@
 
     .hero-caption {
       position: absolute;
+
       z-index: 5;
 
       left: 32px;
@@ -425,8 +498,10 @@
 
     .hero-caption-title {
       font-family: var(--serif);
+
       font-size: 17px;
       line-height: 1.2;
+
       letter-spacing: -.02em;
     }
 
@@ -434,6 +509,7 @@
       margin-top: 7px;
 
       font-family: var(--mono);
+
       font-size: 8px;
       line-height: 1.5;
 
@@ -445,6 +521,7 @@
 
     .hero-counter {
       position: absolute;
+
       right: 32px;
       bottom: 30px;
 
@@ -459,9 +536,9 @@
       pointer-events: none;
     }
 
-    /* ------------------------------
+    /* =================================
        INTRO
-    ------------------------------ */
+    ================================= */
 
     .intro {
       padding: 180px 0 150px;
@@ -481,6 +558,7 @@
 
       font-size: clamp(48px, 7vw, 96px);
       line-height: .98;
+
       letter-spacing: -.045em;
     }
 
@@ -495,9 +573,9 @@
       color: var(--muted);
     }
 
-    /* ------------------------------
+    /* =================================
        WORKS
-    ------------------------------ */
+    ================================= */
 
     .works {
       padding: 120px 0 160px;
@@ -522,7 +600,8 @@
     .works-grid {
       display: grid;
 
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
 
       column-gap: 28px;
       row-gap: 90px;
@@ -562,7 +641,8 @@
       user-select: none;
       -webkit-user-drag: none;
 
-      transition: transform .9s var(--ease);
+      transition:
+        transform .9s var(--ease);
     }
 
     .work-image:hover img {
@@ -575,8 +655,10 @@
 
     .work-title {
       font-family: var(--serif);
+
       font-size: 20px;
       line-height: 1.2;
+
       letter-spacing: -.02em;
     }
 
@@ -584,6 +666,7 @@
       margin-top: 8px;
 
       font-family: var(--mono);
+
       font-size: 9px;
       line-height: 1.6;
 
@@ -593,9 +676,9 @@
       color: var(--muted);
     }
 
-    /* ------------------------------
+    /* =================================
        STATEMENT
-    ------------------------------ */
+    ================================= */
 
     .statement {
       padding: 80px 0 180px;
@@ -613,9 +696,9 @@
       letter-spacing: -.04em;
     }
 
-    /* ------------------------------
+    /* =================================
        ABOUT
-    ------------------------------ */
+    ================================= */
 
     .about {
       padding: 140px 0 170px;
@@ -660,6 +743,7 @@
       margin-top: 55px;
 
       font-family: var(--mono);
+
       font-size: 9px;
       letter-spacing: .08em;
 
@@ -668,9 +752,9 @@
       color: var(--soft);
     }
 
-    /* ------------------------------
+    /* =================================
        CONTACT
-    ------------------------------ */
+    ================================= */
 
     .contact {
       padding: 120px 0 170px;
@@ -712,9 +796,10 @@
       border-bottom: 1px solid currentColor;
 
       font-family: var(--mono);
-      font-size: 10px;
 
+      font-size: 10px;
       letter-spacing: .08em;
+
       text-transform: uppercase;
 
       transition:
@@ -733,21 +818,23 @@
 
     .contact-email a {
       font-family: var(--mono);
+
       font-size: 10px;
       letter-spacing: .05em;
 
       color: var(--muted);
 
-      transition: color .3s ease;
+      transition:
+        color .3s ease;
     }
 
     .contact-email a:hover {
       color: var(--ink);
     }
 
-    /* ------------------------------
+    /* =================================
        FOOTER
-    ------------------------------ */
+    ================================= */
 
     footer {
       padding: 0 0 32px;
@@ -759,6 +846,7 @@
       justify-content: space-between;
 
       font-family: var(--mono);
+
       font-size: 8px;
       line-height: 1.5;
 
@@ -768,9 +856,9 @@
       color: var(--soft);
     }
 
-    /* ------------------------------
+    /* =================================
        FULLSCREEN VIEWER
-    ------------------------------ */
+    ================================= */
 
     .viewer {
       position: fixed;
@@ -824,7 +912,9 @@
       user-select: none;
       -webkit-user-drag: none;
 
-      transition: opacity .35s ease, transform .45s var(--ease);
+      transition:
+        opacity .35s ease,
+        transform .45s var(--ease);
     }
 
     .viewer.is-switching .viewer-image {
@@ -944,6 +1034,7 @@
 
     .viewer-caption-title {
       font-family: var(--serif);
+
       font-size: 17px;
       line-height: 1.2;
     }
@@ -952,6 +1043,7 @@
       margin-top: 7px;
 
       font-family: var(--mono);
+
       font-size: 8px;
 
       letter-spacing: .06em;
@@ -969,16 +1061,16 @@
       z-index: 3;
 
       font-family: var(--mono);
-      font-size: 8px;
 
+      font-size: 8px;
       letter-spacing: .08em;
 
       color: var(--muted);
     }
 
-    /* ------------------------------
+    /* =================================
        REVEALS
-    ------------------------------ */
+    ================================= */
 
     .reveal {
       opacity: 0;
@@ -994,11 +1086,12 @@
       transform: translateY(0);
     }
 
-    /* ------------------------------
+    /* =================================
        RESPONSIVE
-    ------------------------------ */
+    ================================= */
 
     @media (max-width: 900px) {
+
       :root {
         --nav-height: 66px;
       }
@@ -1053,7 +1146,9 @@
       }
 
       .works-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
         column-gap: 16px;
         row-gap: 55px;
       }
@@ -1111,6 +1206,7 @@
     }
 
     @media (max-width: 560px) {
+
       .nav-name {
         font-size: 9px;
       }
@@ -1180,6 +1276,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       html {
         scroll-behavior: auto;
       }
@@ -1202,9 +1299,9 @@
 
 <body id="top">
 
-  <!-- ==============================
+  <!-- =================================
        NAVIGATION
-  =============================== -->
+  ================================= -->
 
   <nav class="nav" aria-label="Main navigation">
 
@@ -1252,34 +1349,48 @@
       </button>
 
     </div>
+
   </nav>
 
 
-  <!-- ==============================
+  <!-- =================================
        HERO
-  =============================== -->
+  ================================= -->
 
   <header class="hero" aria-label="Featured portrait">
 
     <div class="hero-media">
+
       <img
         id="heroImage"
         src="work-01.jpg"
         alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
       />
+
     </div>
 
     <div class="hero-caption">
-      <div class="hero-caption-title" id="heroTitle">
+
+      <div
+        class="hero-caption-title"
+        id="heroTitle"
+      >
         Silverina
       </div>
 
-      <div class="hero-caption-meta" id="heroMeta">
+      <div
+        class="hero-caption-meta"
+        id="heroMeta"
+      >
         Oil on Canvas · Painted by hand
       </div>
+
     </div>
 
-    <div class="hero-counter" id="heroCounter">
+    <div
+      class="hero-counter"
+      id="heroCounter"
+    >
       01 / 05
     </div>
 
@@ -1288,11 +1399,12 @@
 
   <main>
 
-    <!-- ==============================
+    <!-- =================================
          INTRO
-    =============================== -->
+    ================================= -->
 
     <section class="intro">
+
       <div class="section-inner intro-inner reveal">
 
         <div class="eyebrow">
@@ -1311,14 +1423,18 @@
         </p>
 
       </div>
+
     </section>
 
 
-    <!-- ==============================
+    <!-- =================================
          WORKS
-    =============================== -->
+    ================================= -->
 
-    <section class="works" id="works">
+    <section
+      class="works"
+      id="works"
+    >
 
       <div class="section-inner">
 
@@ -1337,8 +1453,6 @@
 
         <div class="works-grid">
 
-          <!-- Work 01 -->
-
           <article class="work reveal">
 
             <div
@@ -1348,11 +1462,13 @@
               tabindex="0"
               aria-label="View Silverina fullscreen"
             >
+
               <img
                 src="work-01.jpg"
                 alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
                 loading="lazy"
               />
+
             </div>
 
             <div class="work-info">
@@ -1370,8 +1486,6 @@
           </article>
 
 
-          <!-- Work 02 -->
-
           <article class="work reveal">
 
             <div
@@ -1381,11 +1495,13 @@
               tabindex="0"
               aria-label="View Silverina — The Making fullscreen"
             >
+
               <img
                 src="work-02.jpg"
                 alt="Silverina — The Making, portrait painting process by Joy Chatterjee"
                 loading="lazy"
               />
+
             </div>
 
             <div class="work-info">
@@ -1403,8 +1519,6 @@
           </article>
 
 
-          <!-- Work 03 -->
-
           <article class="work reveal">
 
             <div
@@ -1414,11 +1528,13 @@
               tabindex="0"
               aria-label="View A Special Pleader fullscreen"
             >
+
               <img
                 src="work-03.jpg"
                 alt="A Special Pleader, oil portrait by Joy Chatterjee"
                 loading="lazy"
               />
+
             </div>
 
             <div class="work-info">
@@ -1436,8 +1552,6 @@
           </article>
 
 
-          <!-- Work 04 -->
-
           <article class="work reveal">
 
             <div
@@ -1447,11 +1561,13 @@
               tabindex="0"
               aria-label="View Jamshedji Tata fullscreen"
             >
+
               <img
                 src="work-04.jpg"
                 alt="Jamshedji Tata, oil portrait by Joy Chatterjee"
                 loading="lazy"
               />
+
             </div>
 
             <div class="work-info">
@@ -1469,8 +1585,6 @@
           </article>
 
 
-          <!-- Work 05 -->
-
           <article class="work reveal">
 
             <div
@@ -1480,11 +1594,13 @@
               tabindex="0"
               aria-label="View A Moment of Recognition fullscreen"
             >
+
               <img
                 src="work-05.jpg"
                 alt="A Moment of Recognition, portrait by Joy Chatterjee"
                 loading="lazy"
               />
+
             </div>
 
             <div class="work-info">
@@ -1504,12 +1620,13 @@
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- ==============================
+    <!-- =================================
          STATEMENT
-    =============================== -->
+    ================================= -->
 
     <section class="statement">
 
@@ -1525,11 +1642,14 @@
     </section>
 
 
-    <!-- ==============================
+    <!-- =================================
          ABOUT
-    =============================== -->
+    ================================= -->
 
-    <section class="about" id="about">
+    <section
+      class="about"
+      id="about"
+    >
 
       <div class="section-inner about-grid">
 
@@ -1576,11 +1696,14 @@
     </section>
 
 
-    <!-- ==============================
-         CONTACT / COMMISSION
-    =============================== -->
+    <!-- =================================
+         COMMISSION
+    ================================= -->
 
-    <section class="contact" id="contact">
+    <section
+      class="contact"
+      id="contact"
+    >
 
       <div class="section-inner">
 
@@ -1612,9 +1735,11 @@
         </div>
 
         <div class="contact-email reveal">
+
           <a href="mailto:studio@joychatterjee.art">
             studio@joychatterjee.art
           </a>
+
         </div>
 
       </div>
@@ -1624,9 +1749,9 @@
   </main>
 
 
-  <!-- ==============================
+  <!-- =================================
        FOOTER
-  =============================== -->
+  ================================= -->
 
   <footer>
 
@@ -1645,9 +1770,9 @@
   </footer>
 
 
-  <!-- ==============================
+  <!-- =================================
        FULLSCREEN VIEWER
-  =============================== -->
+  ================================= -->
 
   <div
     class="viewer"
@@ -1712,9 +1837,9 @@
   </div>
 
 
-  <!-- ==============================
+  <!-- =================================
        AUDIO
-  =============================== -->
+  ================================= -->
 
   <audio
     id="ambientAudio"
@@ -1725,9 +1850,10 @@
 
 
   <script>
-    /* --------------------------------
+
+    /* =================================
        ARTWORK DATA
-    -------------------------------- */
+    ================================= */
 
     const artworks = [
       {
@@ -1763,17 +1889,17 @@
     ];
 
 
-    /* --------------------------------
+    /* =================================
        YEAR
-    -------------------------------- */
+    ================================= */
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
 
-    /* --------------------------------
+    /* =================================
        HERO SLIDESHOW
-    -------------------------------- */
+    ================================= */
 
     const heroImage =
       document.getElementById("heroImage");
@@ -1789,47 +1915,64 @@
 
     let heroIndex = 0;
 
+
     function updateHero(index) {
 
       heroImage.classList.add("is-changing");
 
       setTimeout(() => {
 
-        const artwork = artworks[index];
+        const artwork =
+          artworks[index];
 
-        heroImage.src = artwork.src;
-        heroImage.alt = artwork.alt;
+        heroImage.src =
+          artwork.src;
 
-        heroTitle.textContent = artwork.title;
-        heroMeta.textContent = artwork.meta;
+        heroImage.alt =
+          artwork.alt;
+
+        heroTitle.textContent =
+          artwork.title;
+
+        heroMeta.textContent =
+          artwork.meta;
 
         heroCounter.textContent =
           String(index + 1).padStart(2, "0") +
           " / " +
           String(artworks.length).padStart(2, "0");
 
+
         requestAnimationFrame(() => {
+
           requestAnimationFrame(() => {
-            heroImage.classList.remove("is-changing");
+
+            heroImage.classList.remove(
+              "is-changing"
+            );
+
           });
+
         });
 
       }, 420);
     }
 
+
     setInterval(() => {
 
       heroIndex =
-        (heroIndex + 1) % artworks.length;
+        (heroIndex + 1) %
+        artworks.length;
 
       updateHero(heroIndex);
 
     }, 5000);
 
 
-    /* --------------------------------
+    /* =================================
        FULLSCREEN VIEWER
-    -------------------------------- */
+    ================================= */
 
     const viewer =
       document.getElementById("viewer");
@@ -1861,17 +2004,24 @@
     function showViewerImage(index) {
 
       viewerIndex =
-        (index + artworks.length) % artworks.length;
+        (index + artworks.length) %
+        artworks.length;
 
       const artwork =
         artworks[viewerIndex];
 
-      viewer.classList.add("is-switching");
+      viewer.classList.add(
+        "is-switching"
+      );
+
 
       setTimeout(() => {
 
-        viewerImage.src = artwork.src;
-        viewerImage.alt = artwork.alt;
+        viewerImage.src =
+          artwork.src;
+
+        viewerImage.alt =
+          artwork.alt;
 
         viewerTitle.textContent =
           artwork.title;
@@ -1884,10 +2034,17 @@
           " / " +
           String(artworks.length).padStart(2, "0");
 
+
         requestAnimationFrame(() => {
+
           requestAnimationFrame(() => {
-            viewer.classList.remove("is-switching");
+
+            viewer.classList.remove(
+              "is-switching"
+            );
+
           });
+
         });
 
       }, 180);
@@ -1899,18 +2056,30 @@
       showViewerImage(index);
 
       viewer.classList.add("open");
-      viewer.setAttribute("aria-hidden", "false");
 
-      document.body.classList.add("is-locked");
+      viewer.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.classList.add(
+        "is-locked"
+      );
     }
 
 
     function closeViewer() {
 
       viewer.classList.remove("open");
-      viewer.setAttribute("aria-hidden", "true");
 
-      document.body.classList.remove("is-locked");
+      viewer.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.classList.remove(
+        "is-locked"
+      );
     }
 
 
@@ -1918,24 +2087,35 @@
       .querySelectorAll(".work-image")
       .forEach((element) => {
 
-        element.addEventListener("click", () => {
-          openViewer(Number(element.dataset.index));
-        });
-
-        element.addEventListener("keydown", (event) => {
-
-          if (
-            event.key === "Enter" ||
-            event.key === " "
-          ) {
-            event.preventDefault();
-
+        element.addEventListener(
+          "click",
+          () => {
             openViewer(
               Number(element.dataset.index)
             );
           }
+        );
 
-        });
+
+        element.addEventListener(
+          "keydown",
+          (event) => {
+
+            if (
+              event.key === "Enter" ||
+              event.key === " "
+            ) {
+
+              event.preventDefault();
+
+              openViewer(
+                Number(element.dataset.index)
+              );
+
+            }
+
+          }
+        );
 
       });
 
@@ -1949,7 +2129,9 @@
     viewerPrev.addEventListener(
       "click",
       () => {
-        showViewerImage(viewerIndex - 1);
+        showViewerImage(
+          viewerIndex - 1
+        );
       }
     );
 
@@ -1957,7 +2139,9 @@
     viewerNext.addEventListener(
       "click",
       () => {
-        showViewerImage(viewerIndex + 1);
+        showViewerImage(
+          viewerIndex + 1
+        );
       }
     );
 
@@ -1969,7 +2153,9 @@
         if (
           event.target === viewer ||
           event.target ===
-            document.querySelector(".viewer-image-wrap")
+            document.querySelector(
+              ".viewer-image-wrap"
+            )
         ) {
           closeViewer();
         }
@@ -1977,47 +2163,63 @@
       }
     );
 
+
+    /* =================================
+       KEYBOARD CONTROLS
+    ================================= */
 
     document.addEventListener(
       "keydown",
       (event) => {
 
-        if (!viewer.classList.contains("open")) {
+        if (
+          !viewer.classList.contains("open")
+        ) {
           return;
         }
+
 
         if (event.key === "Escape") {
           closeViewer();
         }
 
+
         if (
           event.key === "ArrowLeft"
         ) {
-          showViewerImage(viewerIndex - 1);
+          showViewerImage(
+            viewerIndex - 1
+          );
         }
+
 
         if (
           event.key === "ArrowRight"
         ) {
-          showViewerImage(viewerIndex + 1);
+          showViewerImage(
+            viewerIndex + 1
+          );
         }
 
       }
     );
 
 
-    /* --------------------------------
+    /* =================================
        TOUCH SWIPE
-    -------------------------------- */
+    ================================= */
 
     let touchStartX = 0;
     let touchStartY = 0;
+
 
     viewer.addEventListener(
       "touchstart",
       (event) => {
 
-        if (!event.touches.length) {
+        if (
+          !event.touches.length
+        ) {
           return;
         }
 
@@ -2028,7 +2230,9 @@
           event.touches[0].clientY;
 
       },
-      { passive: true }
+      {
+        passive: true
+      }
     );
 
 
@@ -2036,9 +2240,12 @@
       "touchend",
       (event) => {
 
-        if (!event.changedTouches.length) {
+        if (
+          !event.changedTouches.length
+        ) {
           return;
         }
+
 
         const touchEndX =
           event.changedTouches[0].clientX;
@@ -2052,43 +2259,70 @@
         const deltaY =
           touchEndY - touchStartY;
 
+
         if (
           Math.abs(deltaX) > 50 &&
-          Math.abs(deltaX) > Math.abs(deltaY)
+          Math.abs(deltaX) >
+            Math.abs(deltaY)
         ) {
 
           if (deltaX < 0) {
-            showViewerImage(viewerIndex + 1);
+
+            showViewerImage(
+              viewerIndex + 1
+            );
+
           } else {
-            showViewerImage(viewerIndex - 1);
+
+            showViewerImage(
+              viewerIndex - 1
+            );
+
           }
 
         }
 
       },
-      { passive: true }
+      {
+        passive: true
+      }
     );
 
 
-    /* --------------------------------
+    /* =================================
        THEME
-    -------------------------------- */
+    ================================= */
 
     const themeToggle =
-      document.getElementById("themeToggle");
+      document.getElementById(
+        "themeToggle"
+      );
+
 
     const savedTheme =
-      localStorage.getItem("joy-theme");
+      localStorage.getItem(
+        "joy-theme"
+      );
 
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
+
+    if (
+      savedTheme === "dark"
+    ) {
+
+      document.documentElement
+        .classList
+        .add("dark");
+
     }
 
 
     function updateThemeLabel() {
 
       const isDark =
-        document.documentElement.classList.contains("dark");
+        document.documentElement
+          .classList
+          .contains("dark");
+
 
       themeToggle.setAttribute(
         "aria-label",
@@ -2099,6 +2333,7 @@
 
     }
 
+
     updateThemeLabel();
 
 
@@ -2106,15 +2341,24 @@
       "click",
       () => {
 
-        document.documentElement.classList.toggle("dark");
+        document.documentElement
+          .classList
+          .toggle("dark");
+
 
         const isDark =
-          document.documentElement.classList.contains("dark");
+          document.documentElement
+            .classList
+            .contains("dark");
+
 
         localStorage.setItem(
           "joy-theme",
-          isDark ? "dark" : "light"
+          isDark
+            ? "dark"
+            : "light"
         );
+
 
         updateThemeLabel();
 
@@ -2122,15 +2366,19 @@
     );
 
 
-    /* --------------------------------
+    /* =================================
        AMBIENT SOUND
-    -------------------------------- */
+    ================================= */
 
     const ambientAudio =
-      document.getElementById("ambientAudio");
+      document.getElementById(
+        "ambientAudio"
+      );
 
     const soundToggle =
-      document.getElementById("soundToggle");
+      document.getElementById(
+        "soundToggle"
+      );
 
     let soundPlaying = false;
 
@@ -2149,7 +2397,9 @@
 
             soundPlaying = true;
 
-            soundToggle.classList.add("playing");
+            soundToggle.classList.add(
+              "playing"
+            );
 
             soundToggle.setAttribute(
               "aria-label",
@@ -2164,19 +2414,29 @@
 
             let volume = 0;
 
+
             const fadeIn =
               setInterval(() => {
 
                 volume += .04;
 
                 ambientAudio.volume =
-                  Math.min(volume, .72);
+                  Math.min(
+                    volume,
+                    .72
+                  );
 
-                if (volume >= .72) {
-                  clearInterval(fadeIn);
+
+                if (
+                  volume >= .72
+                ) {
+                  clearInterval(
+                    fadeIn
+                  );
                 }
 
               }, 45);
+
 
           } else {
 
@@ -2193,16 +2453,25 @@
                 volume -= .05;
 
                 ambientAudio.volume =
-                  Math.max(volume, 0);
+                  Math.max(
+                    volume,
+                    0
+                  );
 
-                if (volume <= 0) {
 
-                  clearInterval(fadeOut);
+                if (
+                  volume <= 0
+                ) {
+
+                  clearInterval(
+                    fadeOut
+                  );
 
                   ambientAudio.pause();
 
                   ambientAudio.volume =
                     startingVolume;
+
                 }
 
               }, 40);
@@ -2239,12 +2508,14 @@
     );
 
 
-    /* --------------------------------
+    /* =================================
        REVEAL ANIMATIONS
-    -------------------------------- */
+    ================================= */
 
     const revealElements =
-      document.querySelectorAll(".reveal");
+      document.querySelectorAll(
+        ".reveal"
+      );
 
 
     if (
@@ -2255,45 +2526,62 @@
         new IntersectionObserver(
           (entries, observer) => {
 
-            entries.forEach((entry) => {
+            entries.forEach(
+              (entry) => {
 
-              if (!entry.isIntersecting) {
-                return;
+                if (
+                  !entry.isIntersecting
+                ) {
+                  return;
+                }
+
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+
+                observer.unobserve(
+                  entry.target
+                );
+
               }
-
-              entry.target.classList.add(
-                "visible"
-              );
-
-              observer.unobserve(
-                entry.target
-              );
-
-            });
+            );
 
           },
           {
             threshold: .12,
-            rootMargin: "0px 0px -40px 0px"
+            rootMargin:
+              "0px 0px -40px 0px"
           }
         );
 
 
       revealElements.forEach(
         (element) => {
-          revealObserver.observe(element);
+
+          revealObserver.observe(
+            element
+          );
+
         }
       );
+
 
     } else {
 
       revealElements.forEach(
         (element) => {
-          element.classList.add("visible");
+
+          element.classList.add(
+            "visible"
+          );
+
         }
       );
 
     }
+
   </script>
 
 </body>
