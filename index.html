@@ -2,42 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Joy Chatterjee — portrait artist. Hand-painted hyper-realistic portraits from West Bengal, India and Italy."
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Joy Chatterjee — Portrait Artist</title>
+  <meta name="description" content="Joy Chatterjee — hyper-realistic portrait artist. Painted by hand / Seen slowly.">
+  <meta name="theme-color" content="#f6f5f0">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-
-    /* ========================================
-       ROOT
-    ======================================== */
-
     :root {
       --wall: #f6f5f0;
       --ink: #11110f;
       --muted: #77756f;
       --soft: #aaa8a1;
 
-      --ease: cubic-bezier(.2,.65,.25,1);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Inter", Arial, sans-serif;
+      --mono: "DM Mono", monospace;
 
       --nav-height: 76px;
+      --ease: cubic-bezier(.22, .61, .36, 1);
     }
 
     html.dark {
@@ -49,128 +36,120 @@
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
       scroll-behavior: smooth;
+      background: var(--wall);
     }
 
     body {
+      margin: 0;
       background: var(--wall);
       color: var(--ink);
-
-      font-family: "Inter", sans-serif;
+      font-family: var(--sans);
       font-weight: 400;
-
-      line-height: 1.5;
-
-      overflow-x: hidden;
-
-      transition:
-        background-color .5s ease,
-        color .5s ease;
+      -webkit-font-smoothing: antialiased;
+      transition: background .5s ease, color .5s ease;
     }
 
-    a,
-    button {
-      color: inherit;
+    body.viewer-open {
+      overflow: hidden;
     }
 
     a {
+      color: inherit;
       text-decoration: none;
     }
 
     button {
+      color: inherit;
       font: inherit;
-      background: none;
-      border: 0;
-      cursor: pointer;
     }
 
     img {
       max-width: 100%;
     }
 
-
-    /* ========================================
-       NAVIGATION
-    ======================================== */
+    /* --------------------------------
+       NAV
+    -------------------------------- */
 
     .nav {
       position: fixed;
-
-      z-index: 100;
-
       top: 0;
       left: 0;
+      right: 0;
 
-      width: 100%;
       height: var(--nav-height);
+
+      z-index: 50;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      padding: 0 34px;
+      padding: 0 32px;
 
-      background: transparent;
+      background: color-mix(
+        in srgb,
+        var(--wall) 82%,
+        transparent
+      );
 
-      pointer-events: none;
-    }
-
-    .nav > * {
-      pointer-events: auto;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
     .brand {
-      font-size: 14px;
-      font-weight: 500;
+      font-family: var(--serif);
+      font-size: 20px;
       letter-spacing: -.02em;
+      white-space: nowrap;
     }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 28px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 25px;
+      gap: 26px;
     }
 
-    .nav-links a,
-    .nav-button {
-      font-size: 11px;
+    .nav-link,
+    .nav-control {
+      border: 0;
+      background: transparent;
+      padding: 0;
 
+      font-family: var(--mono);
+      font-size: 10px;
       letter-spacing: .08em;
-
       text-transform: uppercase;
 
-      color: var(--muted);
+      cursor: pointer;
+      opacity: .72;
 
-      transition:
-        color .3s ease;
+      transition: opacity .25s ease;
     }
 
-    .nav-links a:hover,
-    .nav-button:hover {
-      color: var(--ink);
+    .nav-link:hover,
+    .nav-control:hover {
+      opacity: 1;
     }
 
-
-    /* ========================================
+    /* --------------------------------
        HERO
-    ======================================== */
+    -------------------------------- */
 
     .hero {
       position: relative;
 
       width: 100%;
-
       height: 100svh;
       min-height: 620px;
 
@@ -183,99 +162,147 @@
       background: var(--wall);
     }
 
-
     /*
-      Soft gallery illumination behind the painting.
+      Large colourful gallery light.
+      Multiple blurred gradients create the
+      feeling of coloured light falling behind
+      the artwork rather than a coloured box.
     */
 
     .hero-light {
       position: absolute;
 
-      width: min(72vw, 900px);
-      height: min(72vw, 900px);
+      width: min(92vw, 1200px);
+      height: min(92vw, 1200px);
 
       left: 50%;
       top: 50%;
 
-      transform:
-        translate(-50%, -50%);
+      transform: translate(-50%, -50%);
 
       border-radius: 50%;
 
       background:
         radial-gradient(
-          circle,
-
-          rgba(255,255,255,.95) 0%,
-          rgba(255,255,255,.72) 28%,
-          rgba(255,255,255,.32) 52%,
-          rgba(255,255,255,0) 74%
+          circle at 50% 48%,
+          rgba(255, 247, 218, .96) 0%,
+          rgba(255, 239, 185, .75) 16%,
+          rgba(255, 196, 180, .45) 32%,
+          rgba(214, 191, 255, .28) 48%,
+          rgba(164, 220, 255, .16) 61%,
+          rgba(255, 255, 255, 0) 76%
         );
 
-      filter: blur(22px);
+      filter: blur(30px);
 
-      opacity: .95;
+      opacity: .9;
 
       pointer-events: none;
 
-      transition:
-        opacity .6s ease,
-        transform 1s var(--ease);
+      animation:
+        galleryGlow 14s ease-in-out infinite alternate;
+    }
+
+    .hero-light::before,
+    .hero-light::after {
+      content: "";
+
+      position: absolute;
+      inset: -15%;
+
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .hero-light::before {
+      background:
+        radial-gradient(
+          circle at 28% 42%,
+          rgba(179, 213, 255, .24),
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 74% 56%,
+          rgba(255, 188, 211, .23),
+          transparent 40%
+        );
+
+      filter: blur(55px);
+
+      animation:
+        colourDrift 18s ease-in-out infinite alternate;
+    }
+
+    .hero-light::after {
+      background:
+        radial-gradient(
+          circle at 52% 68%,
+          rgba(255, 215, 142, .24),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 60% 25%,
+          rgba(195, 181, 255, .18),
+          transparent 34%
+        );
+
+      filter: blur(65px);
+
+      animation:
+        colourDrift 22s ease-in-out infinite alternate-reverse;
     }
 
     html.dark .hero-light {
       background:
         radial-gradient(
-          circle,
-
-          rgba(255,250,230,.22) 0%,
-          rgba(255,245,220,.12) 30%,
-          rgba(255,245,220,.05) 52%,
-          rgba(255,245,220,0) 74%
+          circle at 50% 48%,
+          rgba(255, 235, 190, .25) 0%,
+          rgba(255, 180, 150, .16) 24%,
+          rgba(185, 165, 255, .13) 45%,
+          rgba(130, 205, 255, .08) 62%,
+          rgba(0,0,0,0) 76%
         );
 
-      opacity: 1;
+      opacity: .95;
     }
 
-    .hero-light::after {
-      content: "";
+    @keyframes galleryGlow {
+      0% {
+        transform:
+          translate(-50%, -50%)
+          scale(.94);
+      }
 
-      position: absolute;
+      50% {
+        transform:
+          translate(-50%, -50%)
+          scale(1.04);
+      }
 
-      width: 45%;
-      height: 45%;
-
-      left: 50%;
-      top: 50%;
-
-      transform:
-        translate(-50%, -50%);
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,255,255,.95),
-          rgba(255,255,255,0) 72%
-        );
-
-      filter: blur(25px);
+      100% {
+        transform:
+          translate(-50%, -50%)
+          scale(.98);
+      }
     }
 
-    html.dark .hero-light::after {
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,245,220,.13),
-          rgba(255,245,220,0) 72%
-        );
-    }
+    @keyframes colourDrift {
+      0% {
+        transform: translate(-3%, -2%) scale(.94);
+      }
 
+      50% {
+        transform: translate(4%, 3%) scale(1.06);
+      }
+
+      100% {
+        transform: translate(-1%, 4%) scale(1);
+      }
+    }
 
     .hero-media {
       position: absolute;
-
       inset: 0;
 
       z-index: 2;
@@ -308,9 +335,7 @@
       -webkit-user-drag: none;
 
       filter:
-        drop-shadow(
-          0 22px 34px rgba(0,0,0,.08)
-        );
+        drop-shadow(0 22px 34px rgba(0,0,0,.09));
 
       transition:
         opacity .65s ease,
@@ -318,90 +343,93 @@
         transform 1.2s var(--ease);
     }
 
-    html.dark .hero-media img {
-      filter:
-        drop-shadow(
-          0 24px 38px rgba(0,0,0,.45)
-        );
-    }
-
     .hero-media img.is-changing {
       opacity: 0;
-
-      transform:
-        scale(.985);
+      transform: scale(.985);
     }
-
 
     .hero-meta {
       position: absolute;
 
+      left: 32px;
+      bottom: 30px;
+
       z-index: 5;
-
-      left: 34px;
-      bottom: 32px;
-
-      display: flex;
-      align-items: flex-end;
-
-      gap: 28px;
-
-      pointer-events: none;
     }
 
     .hero-number {
-      font-family: "DM Mono", monospace;
+      display: block;
 
+      margin-bottom: 8px;
+
+      font-family: var(--mono);
       font-size: 10px;
-
-      letter-spacing: .08em;
+      letter-spacing: .1em;
 
       color: var(--muted);
-
-      white-space: nowrap;
     }
 
     .hero-title {
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(
-        19px,
-        2vw,
-        27px
-      );
-
-      font-weight: 400;
-
-      line-height: 1.1;
+      font-family: var(--serif);
+      font-size: clamp(24px, 3vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -.025em;
     }
 
     .hero-note {
       position: absolute;
 
-      z-index: 5;
-
-      right: 34px;
+      right: 32px;
       bottom: 32px;
 
-      font-family: "DM Mono", monospace;
-
-      font-size: 9px;
-
-      line-height: 1.65;
+      z-index: 5;
 
       text-align: right;
 
+      font-family: var(--mono);
+      font-size: 10px;
+      line-height: 1.7;
+
+      letter-spacing: .06em;
+      text-transform: uppercase;
+
       color: var(--muted);
-
-      letter-spacing: .04em;
-
-      pointer-events: none;
     }
 
+    .scroll-hint {
+      position: absolute;
 
-    /* ========================================
+      bottom: 32px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      z-index: 5;
+
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+    /* --------------------------------
+       GENERAL
+    -------------------------------- */
+
+    section {
+      position: relative;
+    }
+
+    .section-inner {
+      width: min(1280px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    /* --------------------------------
        INTRO
-    ======================================== */
+    -------------------------------- */
 
     .intro {
       min-height: 70vh;
@@ -409,116 +437,83 @@
       display: flex;
       align-items: center;
 
-      padding:
-        15vh
-        8vw;
+      padding: 150px 0;
     }
 
-    .intro-inner {
-      max-width: 980px;
+    .intro-copy {
+      width: min(850px, 100%);
     }
 
     .eyebrow {
-      margin-bottom: 32px;
+      margin-bottom: 28px;
 
-      font-family: "DM Mono", monospace;
-
-      font-size: 9px;
-
-      letter-spacing: .1em;
-
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
       text-transform: uppercase;
 
       color: var(--muted);
     }
 
     .intro h1 {
-      max-width: 900px;
+      margin: 0;
 
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(
-        42px,
-        7vw,
-        92px
-      );
-
+      font-family: var(--serif);
       font-weight: 400;
 
+      font-size: clamp(42px, 7vw, 94px);
       line-height: .98;
 
       letter-spacing: -.045em;
     }
 
     .intro p {
-      max-width: 590px;
+      width: min(650px, 100%);
 
-      margin-top: 38px;
+      margin: 42px 0 0;
 
-      font-size: 16px;
-
-      line-height: 1.75;
+      font-size: clamp(17px, 1.5vw, 22px);
+      line-height: 1.65;
 
       color: var(--muted);
     }
 
-
-    /* ========================================
+    /* --------------------------------
        WORKS
-    ======================================== */
+    -------------------------------- */
 
     .works {
-      padding:
-        8vw
-        6vw
-        15vw;
+      padding: 120px 0 160px;
     }
 
-    .section-label {
-      display: flex;
-
-      justify-content: space-between;
-      align-items: baseline;
-
-      margin-bottom: 70px;
+    .section-heading {
+      margin-bottom: 80px;
     }
 
-    .section-label span {
-      font-family: "DM Mono", monospace;
+    .section-heading h2 {
+      margin: 0;
 
-      font-size: 9px;
+      font-family: var(--serif);
+      font-weight: 400;
 
-      letter-spacing: .1em;
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 1;
 
-      text-transform: uppercase;
-
-      color: var(--muted);
-    }
-
-    .works-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      column-gap: 7vw;
-
-      row-gap: 14vw;
+      letter-spacing: -.035em;
     }
 
     .work {
-      min-width: 0;
+      margin-bottom: 150px;
     }
 
-    .work:nth-child(even) {
-      margin-top: 13vw;
+    .work:last-child {
+      margin-bottom: 0;
     }
 
     .work-image {
       width: 100%;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -546,208 +541,146 @@
         transform .9s var(--ease);
     }
 
-    .work:hover .work-image img {
-      transform: scale(1.015);
+    .work-image:hover img {
+      transform: scale(1.012);
     }
 
     .work-info {
-      margin-top: 22px;
-
       display: flex;
-
-      justify-content: space-between;
       align-items: flex-start;
+      justify-content: space-between;
 
-      gap: 20px;
+      gap: 40px;
+
+      padding-top: 26px;
     }
 
     .work-title {
-      font-family: "Playfair Display", serif;
-
-      font-size: 20px;
-
-      line-height: 1.2;
-
-      font-weight: 400;
+      font-family: var(--serif);
+      font-size: clamp(22px, 2vw, 30px);
+      line-height: 1.15;
     }
 
-    .work-type {
-      padding-top: 4px;
-
-      font-family: "DM Mono", monospace;
-
-      font-size: 9px;
-
-      line-height: 1.5;
-
+    .work-meta {
       text-align: right;
 
-      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      line-height: 1.7;
 
-      white-space: nowrap;
-    }
-
-
-    /* ========================================
-       STATEMENT
-    ======================================== */
-
-    .statement {
-      padding:
-        12vw 8vw
-        14vw;
-    }
-
-    .statement p {
-      max-width: 1100px;
-
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(
-        34px,
-        5vw,
-        70px
-      );
-
-      line-height: 1.05;
-
-      letter-spacing: -.035em;
-
-      font-weight: 400;
-    }
-
-    .statement p em {
-      font-style: italic;
-    }
-
-
-    /* ========================================
-       ABOUT
-    ======================================== */
-
-    .about {
-      padding: 8vw;
-
-      display: grid;
-
-      grid-template-columns:
-        minmax(180px, .65fr)
-        minmax(300px, 1.35fr);
-
-      gap: 8vw;
-    }
-
-    .about-label {
-      font-family: "DM Mono", monospace;
-
-      font-size: 9px;
-
-      letter-spacing: .1em;
-
+      letter-spacing: .06em;
       text-transform: uppercase;
 
       color: var(--muted);
     }
 
-    .about-copy {
-      max-width: 760px;
+    /* --------------------------------
+       STATEMENT
+    -------------------------------- */
+
+    .statement {
+      min-height: 75vh;
+
+      display: flex;
+      align-items: center;
+
+      padding: 150px 0;
     }
 
-    .about-copy h2 {
-      font-family: "Playfair Display", serif;
+    .statement p {
+      max-width: 1050px;
 
-      font-size: clamp(
-        34px,
-        4.5vw,
-        64px
-      );
+      margin: 0;
 
-      font-weight: 400;
+      font-family: var(--serif);
 
+      font-size: clamp(34px, 5.3vw, 78px);
+      line-height: 1.08;
+
+      letter-spacing: -.04em;
+    }
+
+    /* --------------------------------
+       ABOUT
+    -------------------------------- */
+
+    .about {
+      padding: 140px 0 170px;
+    }
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1.4fr;
+
+      gap: 100px;
+    }
+
+    .about-title {
+      font-family: var(--serif);
+
+      font-size: clamp(38px, 4vw, 60px);
       line-height: 1;
 
       letter-spacing: -.035em;
-
-      margin-bottom: 42px;
     }
 
-    .about-copy p {
-      max-width: 650px;
+    .about-copy {
+      max-width: 720px;
 
-      font-size: 16px;
-
+      font-size: 17px;
       line-height: 1.8;
 
       color: var(--muted);
-
-      margin-bottom: 24px;
     }
 
+    .about-copy p {
+      margin: 0 0 28px;
+    }
 
-    /* ========================================
+    .about-copy strong {
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* --------------------------------
        CONTACT
-    ======================================== */
+    -------------------------------- */
 
     .contact {
       min-height: 80vh;
 
       display: flex;
+      align-items: center;
 
-      flex-direction: column;
-
-      justify-content: center;
-
-      padding:
-        12vw 8vw;
+      padding: 150px 0;
     }
 
-    .contact-label {
-      font-family: "DM Mono", monospace;
+    .contact-title {
+      max-width: 900px;
 
-      font-size: 9px;
+      font-family: var(--serif);
 
-      letter-spacing: .1em;
+      font-size: clamp(48px, 8vw, 110px);
+      line-height: .94;
 
-      text-transform: uppercase;
+      letter-spacing: -.055em;
+    }
+
+    .contact-copy {
+      max-width: 620px;
+
+      margin-top: 40px;
+
+      font-size: 18px;
+      line-height: 1.7;
 
       color: var(--muted);
-
-      margin-bottom: 34px;
     }
-
-    .contact h2 {
-      max-width: 1000px;
-
-      font-family: "Playfair Display", serif;
-
-      font-size: clamp(
-        48px,
-        8vw,
-        110px
-      );
-
-      font-weight: 400;
-
-      line-height: .92;
-
-      letter-spacing: -.05em;
-    }
-
-
-    /*
-      Separate CTA buttons:
-      Commission Art = primary
-      WhatsApp = secondary direct contact
-    */
 
     .contact-links {
       display: flex;
-
       align-items: center;
-
-      flex-wrap: wrap;
-
-      gap: 14px;
 
       margin-top: 60px;
     }
@@ -758,13 +691,11 @@
       align-items: center;
       justify-content: center;
 
-      min-height: 48px;
+      min-height: 50px;
 
-      padding:
-        0 25px;
+      padding: 0 28px;
 
       font-size: 10px;
-
       letter-spacing: .09em;
 
       text-transform: uppercase;
@@ -776,12 +707,8 @@
         transform .3s ease;
     }
 
-
-    /* Primary CTA */
-
     .commission-link {
       background: var(--ink);
-
       color: var(--wall);
 
       border: 1px solid var(--ink);
@@ -789,111 +716,123 @@
 
     .commission-link:hover {
       transform: translateY(-2px);
-
       opacity: .88;
     }
 
+    .contact-email {
+      margin-top: 24px;
 
-    /* WhatsApp CTA */
+      font-family: var(--mono);
+      font-size: 11px;
 
-    .whatsapp-link {
-      color: var(--ink);
-
-      border: 1px solid var(--soft);
-
-      background: transparent;
-    }
-
-    .whatsapp-link:hover {
-      background: var(--ink);
-
-      color: var(--wall);
-
-      border-color: var(--ink);
-
-      transform: translateY(-2px);
-    }
-
-
-    /* ========================================
-       FOOTER
-    ======================================== */
-
-    footer {
-      padding:
-        30px 34px 38px;
-
-      display: flex;
-
-      justify-content: space-between;
-      align-items: center;
+      letter-spacing: .04em;
 
       color: var(--muted);
     }
 
-    footer span {
-      font-family: "DM Mono", monospace;
-
-      font-size: 8px;
-
-      letter-spacing: .08em;
-
-      text-transform: uppercase;
+    .contact-email a {
+      transition: color .25s ease;
     }
 
+    .contact-email a:hover {
+      color: var(--ink);
+    }
 
-    /* ========================================
-       FULLSCREEN VIEWER
-    ======================================== */
+    /* --------------------------------
+       FOOTER
+    -------------------------------- */
+
+    footer {
+      padding: 40px 32px 50px;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 30px;
+
+      font-family: var(--mono);
+      font-size: 9px;
+      line-height: 1.7;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+    /* --------------------------------
+       VIEWER
+    -------------------------------- */
 
     .viewer {
       position: fixed;
-
       inset: 0;
 
-      z-index: 1000;
+      z-index: 100;
 
       display: none;
 
       background: var(--wall);
     }
 
-    .viewer.active {
+    .viewer.open {
       display: block;
     }
 
-    .viewer-close {
+    .viewer-top {
       position: absolute;
 
-      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
 
-      top: 25px;
-      right: 30px;
+      height: 70px;
 
-      width: 42px;
-      height: 42px;
+      z-index: 5;
 
       display: flex;
-
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
 
-      color: var(--ink);
+      padding: 0 25px;
+    }
+
+    .viewer-label {
+      font-family: var(--mono);
+      font-size: 10px;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+    .viewer-close {
+      border: 0;
+      background: transparent;
+
+      padding: 10px;
+
+      cursor: pointer;
 
       font-size: 25px;
+      line-height: 1;
 
-      font-weight: 300;
+      opacity: .7;
+    }
+
+    .viewer-close:hover {
+      opacity: 1;
     }
 
     .viewer-image-wrap {
       width: 100%;
       height: 100%;
 
-      padding:
-        70px 80px;
+      padding: 70px 80px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
     }
@@ -914,115 +853,70 @@
       -webkit-user-drag: none;
     }
 
-    .viewer-prev,
-    .viewer-next {
+    .viewer-arrow {
       position: absolute;
 
       top: 50%;
 
-      transform:
-        translateY(-50%);
+      transform: translateY(-50%);
 
-      z-index: 20;
+      z-index: 5;
 
       width: 60px;
       height: 100px;
 
-      font-size: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      color: var(--muted);
+      border: 0;
+      background: transparent;
 
-      transition:
-        color .3s ease;
+      cursor: pointer;
+
+      font-family: var(--serif);
+      font-size: 38px;
+
+      opacity: .55;
+
+      transition: opacity .25s ease;
+    }
+
+    .viewer-arrow:hover {
+      opacity: 1;
     }
 
     .viewer-prev {
-      left: 10px;
+      left: 0;
     }
 
     .viewer-next {
-      right: 10px;
+      right: 0;
     }
 
-    .viewer-prev:hover,
-    .viewer-next:hover {
-      color: var(--ink);
-    }
-
-    .viewer-caption {
-      position: absolute;
-
-      left: 30px;
-      bottom: 25px;
-
-      font-family: "DM Mono", monospace;
-
-      font-size: 9px;
-
-      color: var(--muted);
-
-      letter-spacing: .04em;
-    }
-
-
-    /* ========================================
-       SOUND
-    ======================================== */
-
-    .sound-indicator {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 7px;
-    }
-
-    .sound-dot {
-      width: 5px;
-      height: 5px;
-
-      border-radius: 50%;
-
-      background: var(--muted);
-
-      transition:
-        transform .3s ease,
-        background .3s ease;
-    }
-
-    .sound-indicator.playing .sound-dot {
-      transform: scale(1.7);
-
-      background: var(--ink);
-    }
-
-
-    /* ========================================
+    /* --------------------------------
        REVEAL
-    ======================================== */
+    -------------------------------- */
 
     .reveal {
       opacity: 0;
 
-      transform:
-        translateY(25px);
+      transform: translateY(25px);
 
       transition:
-        opacity 1s ease,
-        transform 1s var(--ease);
+        opacity .9s var(--ease),
+        transform .9s var(--ease);
     }
 
     .reveal.visible {
       opacity: 1;
 
-      transform:
-        translateY(0);
+      transform: translateY(0);
     }
 
-
-    /* ========================================
+    /* --------------------------------
        MOBILE
-    ======================================== */
+    -------------------------------- */
 
     @media (max-width: 800px) {
 
@@ -1034,320 +928,211 @@
         padding: 0 18px;
       }
 
-      .nav-right {
-        gap: 15px;
+      .brand {
+        font-size: 18px;
       }
 
-      .nav-links {
+      .nav-right {
         gap: 14px;
       }
 
-      .nav-links a {
-        font-size: 9px;
-      }
-
-      .nav-button {
-        font-size: 9px;
+      .nav-links {
+        display: none;
       }
 
       .hero {
         min-height: 600px;
       }
 
+      .hero-light {
+        width: 130vw;
+        height: 130vw;
+
+        filter: blur(24px);
+      }
+
       .hero-media {
         padding:
-          80px 18px
-          90px;
-      }
-
-      .hero-media img {
-        max-width: 100%;
-        max-height: 100%;
-      }
-
-      .hero-light {
-        width: 110vw;
-        height: 110vw;
-
-        filter: blur(18px);
+          calc(var(--nav-height) + 20px)
+          18px
+          130px;
       }
 
       .hero-meta {
         left: 18px;
-        bottom: 20px;
-
-        gap: 14px;
-      }
-
-      .hero-title {
-        font-size: 17px;
-      }
-
-      .hero-number {
-        font-size: 8px;
+        bottom: 25px;
       }
 
       .hero-note {
         right: 18px;
-        bottom: 20px;
-
-        font-size: 7px;
+        bottom: 27px;
       }
 
+      .scroll-hint {
+        display: none;
+      }
+
+      .section-inner {
+        width: min(100% - 36px, 1280px);
+      }
 
       .intro {
         min-height: auto;
 
-        padding:
-          30vw 8vw
-          25vw;
-      }
-
-      .intro h1 {
-        font-size: clamp(
-          40px,
-          12vw,
-          65px
-        );
+        padding: 120px 0 140px;
       }
 
       .intro p {
-        font-size: 14px;
+        margin-top: 30px;
       }
-
 
       .works {
-        padding:
-          18vw 6vw
-          25vw;
+        padding: 100px 0 120px;
       }
 
-      .section-label {
-        margin-bottom: 45px;
+      .section-heading {
+        margin-bottom: 55px;
       }
 
-      .works-grid {
-        grid-template-columns: 1fr;
-
-        row-gap: 25vw;
-      }
-
-      .work:nth-child(even) {
-        margin-top: 0;
+      .work {
+        margin-bottom: 100px;
       }
 
       .work-image img {
-        max-width: 100%;
-        max-height: 75vh;
+        max-height: 72vh;
       }
 
       .work-info {
-        display: block;
+        flex-direction: column;
+        gap: 15px;
       }
 
-      .work-title {
-        font-size: 19px;
-      }
-
-      .work-type {
+      .work-meta {
         text-align: left;
-
-        margin-top: 8px;
       }
-
 
       .statement {
-        padding:
-          20vw 8vw
-          25vw;
-      }
+        min-height: auto;
 
-      .statement p {
-        font-size: clamp(
-          33px,
-          9vw,
-          55px
-        );
+        padding: 120px 0;
       }
-
 
       .about {
-        padding:
-          18vw 8vw
-          25vw;
+        padding: 110px 0 130px;
+      }
 
+      .about-grid {
         grid-template-columns: 1fr;
 
         gap: 45px;
       }
 
-      .about-copy h2 {
-        font-size: 42px;
-      }
-
-      .about-copy p {
-        font-size: 14px;
-      }
-
-
       .contact {
-        min-height: 70vh;
+        min-height: auto;
 
-        padding:
-          20vw 8vw
-          25vw;
-      }
-
-      .contact h2 {
-        font-size: clamp(
-          48px,
-          14vw,
-          78px
-        );
+        padding: 120px 0 130px;
       }
 
       .contact-links {
-        margin-top: 45px;
-
-        gap: 10px;
+        width: 100%;
       }
 
       .contact-links a {
-        min-height: 46px;
-
-        padding:
-          0 19px;
-
-        font-size: 9px;
+        width: 100%;
       }
-
 
       footer {
-        padding:
-          25px 18px 30px;
-      }
+        padding: 30px 18px 40px;
 
-      footer span {
-        font-size: 7px;
+        flex-direction: column;
+        align-items: flex-start;
       }
-
 
       .viewer-image-wrap {
-        padding:
-          60px 18px;
+        padding: 65px 25px;
       }
 
-      .viewer-prev,
-      .viewer-next {
-        width: 40px;
-      }
+      .viewer-arrow {
+        width: 45px;
 
-      .viewer-close {
-        right: 15px;
-        top: 15px;
+        font-size: 30px;
       }
-
-      .viewer-caption {
-        left: 18px;
-        bottom: 18px;
-      }
-
     }
 
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
 
-
-  <!-- ======================================
-       GOOGLE ANALYTICS
-  ======================================= -->
-
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE">
-  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE"></script>
 
   <script>
-
-    window.dataLayer =
-      window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
     function gtag() {
       dataLayer.push(arguments);
     }
 
-    gtag(
-      "js",
-      new Date()
-    );
-
-    gtag(
-      "config",
-      "G-4F3MFHFVDE"
-    );
-
+    gtag("js", new Date());
+    gtag("config", "G-4F3MFHFVDE");
   </script>
-
 </head>
 
 
 <body>
 
-
-  <!-- ======================================
+  <!-- ================================
        NAVIGATION
-  ======================================= -->
+  ================================= -->
 
   <nav class="nav">
 
-    <a
-      href="#top"
-      class="brand">
-
+    <a class="brand" href="#top">
       Joy Chatterjee
-
     </a>
-
 
     <div class="nav-right">
 
       <div class="nav-links">
 
-        <a href="#works">
+        <a class="nav-link" href="#works">
           Works
         </a>
 
-        <a href="#about">
+        <a class="nav-link" href="#about">
           About
         </a>
 
-        <a href="#contact">
+        <a class="nav-link" href="#contact">
           Contact
         </a>
 
       </div>
 
-
       <button
-        class="nav-button sound-indicator"
-        id="soundButton"
-        aria-label="Toggle sound">
-
-        <span class="sound-dot"></span>
-
-        <span>
-          Sound
-        </span>
-
+        class="nav-control"
+        id="soundToggle"
+        type="button">
+        Sound
       </button>
 
-
       <button
-        class="nav-button"
-        id="themeButton"
-        aria-label="Toggle theme">
-
+        class="nav-control"
+        id="themeToggle"
+        type="button">
         Theme
-
       </button>
 
     </div>
@@ -1355,472 +1140,440 @@
   </nav>
 
 
-
-  <!-- ======================================
+  <!-- ================================
        HERO
-  ======================================= -->
+  ================================= -->
 
-  <section
-    class="hero"
-    id="top">
+  <main id="top">
 
-    <div class="hero-light"></div>
+    <section class="hero">
 
+      <div class="hero-light"></div>
 
-    <div class="hero-media">
+      <div class="hero-media">
 
-      <img
-        id="heroImage"
-        src="work-01.jpg"
-        alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
-        draggable="false"
-      >
-
-    </div>
-
-
-    <div class="hero-meta">
-
-      <span
-        class="hero-number"
-        id="heroNumber">
-
-        01 / 05
-
-      </span>
-
-
-      <span
-        class="hero-title"
-        id="heroTitle">
-
-        Silverina
-
-      </span>
-
-    </div>
-
-
-    <div
-      class="hero-note"
-      id="heroNote">
-
-      Oil on Canvas<br>
-      Painted by hand
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ======================================
-       INTRO
-  ======================================= -->
-
-  <section class="intro reveal">
-
-    <div class="intro-inner">
-
-      <div class="eyebrow">
-
-        Portrait artist · India · Italy
+        <img
+          id="heroImage"
+          src="work-01.jpg"
+          alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
+          draggable="false">
 
       </div>
 
 
-      <h1>
+      <div class="hero-meta">
 
-        A portrait to keep for generations.
-
-      </h1>
-
-
-      <p>
-
-        Painted by hand from a single photograph,
-        in such detail that people mistake it for one.
-
-      </p>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ======================================
-       WORKS
-  ======================================= -->
-
-  <section
-    class="works"
-    id="works">
-
-
-    <div class="section-label">
-
-      <span>
-        Selected works
-      </span>
-
-      <span>
-        2026
-      </span>
-
-    </div>
-
-
-    <div class="works-grid">
-
-
-      <!-- WORK 02 -->
-
-      <article class="work reveal">
+        <span
+          class="hero-number"
+          id="heroNumber">
+          01 / 05
+        </span>
 
         <div
-          class="work-image"
-          data-image="work-02.jpg"
-          data-title="Silverina — The Making">
+          class="hero-title"
+          id="heroTitle">
+          Silverina
+        </div>
 
-          <img
-            src="work-02.jpg"
-            alt="Silverina — The Making, portrait process by Joy Chatterjee"
-            loading="lazy"
-            draggable="false"
-          >
+      </div>
+
+
+      <div
+        class="hero-note"
+        id="heroNote">
+        Oil on Canvas<br>
+        Painted by hand
+      </div>
+
+
+      <div class="scroll-hint">
+        Scroll to enter
+      </div>
+
+    </section>
+
+
+    <!-- ================================
+         INTRO
+    ================================= -->
+
+    <section class="intro">
+
+      <div class="section-inner">
+
+        <div class="intro-copy reveal">
+
+          <div class="eyebrow">
+            Portrait Artist · India / Italy
+          </div>
+
+          <h1>
+            A portrait to keep for generations.
+          </h1>
+
+          <p>
+            Painted by hand from a single photograph,
+            in such detail that people mistake it for one.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================
+         WORKS
+    ================================= -->
+
+    <section
+      class="works"
+      id="works">
+
+      <div class="section-inner">
+
+        <div class="section-heading reveal">
+
+          <div class="eyebrow">
+            Selected Works
+          </div>
+
+          <h2>
+            Works
+          </h2>
 
         </div>
 
 
-        <div class="work-info">
+        <!-- WORK 01 -->
 
-          <h2 class="work-title">
+        <article class="work reveal">
 
-            Silverina — The Making
+          <div class="work-image">
 
-          </h2>
+            <img
+              src="work-01.jpg"
+              alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
+              data-index="0"
+              draggable="false">
+
+          </div>
+
+          <div class="work-info">
+
+            <div class="work-title">
+              Silverina
+            </div>
+
+            <div class="work-meta">
+              Oil on Canvas<br>
+              Painted by hand
+            </div>
+
+          </div>
+
+        </article>
 
 
-          <div class="work-type">
+        <!-- WORK 02 -->
 
-            Process
+        <article class="work reveal">
+
+          <div class="work-image">
+
+            <img
+              src="work-02.jpg"
+              alt="Silverina — The Making, portrait process by Joy Chatterjee"
+              data-index="1"
+              draggable="false">
+
+          </div>
+
+          <div class="work-info">
+
+            <div class="work-title">
+              Silverina — The Making
+            </div>
+
+            <div class="work-meta">
+              Process<br>
+              Painted by hand
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- WORK 03 -->
+
+        <article class="work reveal">
+
+          <div class="work-image">
+
+            <img
+              src="work-03.jpg"
+              alt="Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
+              data-index="2"
+              draggable="false">
+
+          </div>
+
+          <div class="work-info">
+
+            <div class="work-title">
+              A Special Pleader
+            </div>
+
+            <div class="work-meta">
+              Charles Burton Barber<br>
+              Oil on Canvas · Replica
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- WORK 04 -->
+
+        <article class="work reveal">
+
+          <div class="work-image">
+
+            <img
+              src="work-04.jpg"
+              alt="Jamshedji Tata portrait by Joy Chatterjee"
+              data-index="3"
+              draggable="false">
+
+          </div>
+
+          <div class="work-info">
+
+            <div class="work-title">
+              Jamshedji Tata
+            </div>
+
+            <div class="work-meta">
+              Oil on Canvas<br>
+              Painted by hand
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- WORK 05 -->
+
+        <article class="work reveal">
+
+          <div class="work-image">
+
+            <img
+              src="work-05.jpg"
+              alt="A Moment of Recognition, portrait by Joy Chatterjee"
+              data-index="4"
+              draggable="false">
+
+          </div>
+
+          <div class="work-info">
+
+            <div class="work-title">
+              A Moment of Recognition
+            </div>
+
+            <div class="work-meta">
+              Portrait<br>
+              Painted by hand
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================
+         STATEMENT
+    ================================= -->
+
+    <section class="statement">
+
+      <div class="section-inner">
+
+        <p class="reveal">
+          Every face begins with observation.
+          The painting begins where the photograph ends.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================
+         ABOUT
+    ================================= -->
+
+    <section
+      class="about"
+      id="about">
+
+      <div class="section-inner">
+
+        <div class="about-grid">
+
+          <div class="about-title reveal">
+            Every face begins with observation.
+          </div>
+
+
+          <div class="about-copy reveal">
+
+            <p>
+              For over two decades, I have painted faces by hand —
+              studying expression, character, light and the smallest
+              details that make a person unmistakably themselves.
+            </p>
+
+            <p>
+              My practice has developed across
+              <strong>West Bengal — India — Italy</strong>,
+              with a focus on hyper-realistic portraiture.
+            </p>
+
+            <p>
+              My portraits have been presented to
+              <strong>Kapil Dev, Sourav Ganguly and Shah Rukh Khan</strong>.
+              The work is held in the <strong>Boroline House</strong>
+              collection and by private collectors in India and Italy.
+            </p>
 
           </div>
 
         </div>
 
-      </article>
+      </div>
+
+    </section>
 
 
+    <!-- ================================
+         CONTACT
+    ================================= -->
 
-      <!-- WORK 03 -->
+    <section
+      class="contact"
+      id="contact">
 
-      <article class="work reveal">
+      <div class="section-inner">
 
-        <div
-          class="work-image"
-          data-image="work-03.jpg"
-          data-title="A Special Pleader">
+        <div class="eyebrow reveal">
+          Private Commissions
+        </div>
 
-          <img
-            src="work-03.jpg"
-            alt="Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
-            loading="lazy"
-            draggable="false"
-          >
+
+        <div class="contact-title reveal">
+          Begin a portrait.
+        </div>
+
+
+        <div class="contact-copy reveal">
+          A portrait painted by hand, from your photograph,
+          created to remain in your family for generations.
+        </div>
+
+
+        <!-- ONE BUTTON — WHATSAPP -->
+
+        <div class="contact-links reveal">
+
+          <a
+            class="commission-link"
+            href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I%27d%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
+            target="_blank"
+            rel="noopener">
+            Commission Art
+          </a>
 
         </div>
 
 
-        <div class="work-info">
+        <!-- EMAIL ONLY -->
 
-          <h2 class="work-title">
+        <div class="contact-email reveal">
 
-            Charles Burton Barber — A Special Pleader
-
-          </h2>
-
-
-          <div class="work-type">
-
-            Oil on Canvas<br>
-            Replica
-
-          </div>
+          <a href="mailto:studio@joychatterjee.art">
+            studio@joychatterjee.art
+          </a>
 
         </div>
 
-      </article>
+      </div>
 
+    </section>
 
+  </main>
 
-      <!-- WORK 04 -->
 
-      <article class="work reveal">
-
-        <div
-          class="work-image"
-          data-image="work-04.jpg"
-          data-title="Jamshedji Tata">
-
-          <img
-            src="work-04.jpg"
-            alt="Jamshedji Tata portrait by Joy Chatterjee"
-            loading="lazy"
-            draggable="false"
-          >
-
-        </div>
-
-
-        <div class="work-info">
-
-          <h2 class="work-title">
-
-            Jamshedji Tata
-
-          </h2>
-
-
-          <div class="work-type">
-
-            Oil on Canvas
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-
-      <!-- WORK 05 -->
-
-      <article class="work reveal">
-
-        <div
-          class="work-image"
-          data-image="work-05.jpg"
-          data-title="A Moment of Recognition">
-
-          <img
-            src="work-05.jpg"
-            alt="A Moment of Recognition, portrait by Joy Chatterjee"
-            loading="lazy"
-            draggable="false"
-          >
-
-        </div>
-
-
-        <div class="work-info">
-
-          <h2 class="work-title">
-
-            A Moment of Recognition
-
-          </h2>
-
-
-          <div class="work-type">
-
-            Portrait
-
-          </div>
-
-        </div>
-
-      </article>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ======================================
-       STATEMENT
-  ======================================= -->
-
-  <section class="statement reveal">
-
-    <p>
-
-      Every face carries a story.
-      I paint the moment when
-      <em>character becomes visible.</em>
-
-    </p>
-
-  </section>
-
-
-
-  <!-- ======================================
-       ABOUT
-  ======================================= -->
-
-  <section
-    class="about reveal"
-    id="about">
-
-
-    <div class="about-label">
-
-      About the artist
-
-    </div>
-
-
-    <div class="about-copy">
-
-      <h2>
-
-        Every face begins with observation.
-
-      </h2>
-
-
-      <p>
-
-        For over two decades, Joy Chatterjee has
-        devoted his practice to the study of faces,
-        expression and character through
-        hyper-realistic portraiture.
-
-      </p>
-
-
-      <p>
-
-        His work has travelled from West Bengal
-        across India and to Italy, combining
-        traditional hand-painted technique with
-        an obsessive attention to the smallest
-        details of a human face.
-
-      </p>
-
-
-      <p>
-
-        Presented to Kapil Dev, Sourav Ganguly
-        and Shah Rukh Khan. Held in the Boroline
-        House collection and by private collectors
-        in India and Italy.
-
-      </p>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ======================================
-       CONTACT
-  ======================================= -->
-
-  <section
-    class="contact reveal"
-    id="contact">
-
-
-    <div class="contact-label">
-
-      Commission a portrait
-
-    </div>
-
-
-    <h2>
-
-      Begin a portrait.
-
-    </h2>
-
-
-    <div class="contact-links">
-
-
-      <!-- PRIMARY COMMISSION CTA -->
-
-      <a
-        class="commission-link"
-        href="mailto:joychatterjee.art@gmail.com?subject=Portrait%20Commission%20Enquiry">
-
-        Commission Art
-
-      </a>
-
-
-      <!-- DIRECT WHATSAPP CTA -->
-
-      <a
-        class="whatsapp-link"
-        href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I%27d%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
-        target="_blank"
-        rel="noopener">
-
-        WhatsApp
-
-      </a>
-
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ======================================
+  <!-- ================================
        FOOTER
-  ======================================= -->
+  ================================= -->
 
   <footer>
 
-    <span>
-      © Joy Chatterjee
-    </span>
+    <div>
+      © <span id="year"></span> Joy Chatterjee
+    </div>
 
-
-    <span>
+    <div>
       Painted by hand / Seen slowly
-    </span>
+    </div>
 
   </footer>
 
 
-
-  <!-- ======================================
+  <!-- ================================
        FULLSCREEN VIEWER
-  ======================================= -->
+  ================================= -->
 
   <div
     class="viewer"
     id="viewer"
     aria-hidden="true">
 
+    <div class="viewer-top">
+
+      <div
+        class="viewer-label"
+        id="viewerLabel">
+        01 / 05
+      </div>
+
+      <button
+        class="viewer-close"
+        id="viewerClose"
+        type="button"
+        aria-label="Close">
+        ×
+      </button>
+
+    </div>
+
 
     <button
-      class="viewer-close"
-      id="viewerClose"
-      aria-label="Close">
-
-      ×
-
-    </button>
-
-
-    <button
-      class="viewer-prev"
+      class="viewer-arrow viewer-prev"
       id="viewerPrev"
-      aria-label="Previous image">
-
+      type="button"
+      aria-label="Previous">
       ‹
-
     </button>
 
 
@@ -1831,34 +1584,25 @@
         id="viewerImage"
         src=""
         alt=""
-        draggable="false"
-      >
+        draggable="false">
 
     </div>
 
 
     <button
-      class="viewer-next"
+      class="viewer-arrow viewer-next"
       id="viewerNext"
-      aria-label="Next image">
-
+      type="button"
+      aria-label="Next">
       ›
-
     </button>
-
-
-    <div
-      class="viewer-caption"
-      id="viewerCaption">
-    </div>
 
   </div>
 
 
-
-  <!-- ======================================
+  <!-- ================================
        AUDIO
-  ======================================= -->
+  ================================= -->
 
   <audio
     id="siteAudio"
@@ -1868,135 +1612,85 @@
   </audio>
 
 
-
   <script>
 
-
-    /* ======================================
-       HERO IMAGE LOOP
-    ====================================== */
+    /* =====================================
+       HERO SLIDES
+    ===================================== */
 
     const heroSlides = [
 
       {
         src: "work-01.jpg",
-
         title: "Silverina",
-
-        note:
-          "Oil on Canvas<br>Painted by hand",
-
-        alt:
-          "Silverina, hyper-realistic portrait by Joy Chatterjee"
+        note: "Oil on Canvas<br>Painted by hand",
+        alt: "Silverina, hyper-realistic portrait by Joy Chatterjee"
       },
-
 
       {
         src: "work-02.jpg",
-
-        title:
-          "Silverina — The Making",
-
-        note:
-          "Process<br>Painted by hand",
-
-        alt:
-          "Silverina — The Making, portrait process by Joy Chatterjee"
+        title: "Silverina — The Making",
+        note: "Process<br>Painted by hand",
+        alt: "Silverina — The Making, portrait process by Joy Chatterjee"
       },
-
 
       {
         src: "work-03.jpg",
-
-        title:
-          "A Special Pleader",
-
-        note:
-          "Oil on Canvas<br>Replica",
-
-        alt:
-          "Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
+        title: "A Special Pleader",
+        note: "Oil on Canvas<br>Replica",
+        alt: "Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
       },
-
 
       {
         src: "work-04.jpg",
-
-        title:
-          "Jamshedji Tata",
-
-        note:
-          "Oil on Canvas<br>Painted by hand",
-
-        alt:
-          "Jamshedji Tata portrait by Joy Chatterjee"
+        title: "Jamshedji Tata",
+        note: "Oil on Canvas<br>Painted by hand",
+        alt: "Jamshedji Tata portrait by Joy Chatterjee"
       },
-
 
       {
         src: "work-05.jpg",
-
-        title:
-          "A Moment of Recognition",
-
-        note:
-          "Portrait<br>Painted by hand",
-
-        alt:
-          "A Moment of Recognition, portrait by Joy Chatterjee"
+        title: "A Moment of Recognition",
+        note: "Portrait<br>Painted by hand",
+        alt: "A Moment of Recognition, portrait by Joy Chatterjee"
       }
 
     ];
 
 
     const heroImage =
-      document.getElementById(
-        "heroImage"
-      );
-
+      document.getElementById("heroImage");
 
     const heroTitle =
-      document.getElementById(
-        "heroTitle"
-      );
-
+      document.getElementById("heroTitle");
 
     const heroNumber =
-      document.getElementById(
-        "heroNumber"
-      );
-
+      document.getElementById("heroNumber");
 
     const heroNote =
-      document.getElementById(
-        "heroNote"
-      );
+      document.getElementById("heroNote");
 
 
     let heroIndex = 0;
 
 
-    /* Preload all hero images */
+    /* PRELOAD */
 
-    heroSlides.forEach(
-      slide => {
+    heroSlides.forEach(slide => {
 
-        const image =
-          new Image();
+      const image = new Image();
 
-        image.src =
-          slide.src;
+      image.src = slide.src;
 
-      }
-    );
+    });
 
+
+    /* HERO ROTATION */
 
     function changeHero() {
 
       const nextIndex =
-        (heroIndex + 1) %
-        heroSlides.length;
-
+        (heroIndex + 1) % heroSlides.length;
 
       const nextSlide =
         heroSlides[nextIndex];
@@ -2007,49 +1701,38 @@
       );
 
 
-      setTimeout(
-        () => {
+      setTimeout(() => {
 
-          heroImage.src =
-            nextSlide.src;
+        heroImage.src =
+          nextSlide.src;
 
+        heroImage.alt =
+          nextSlide.alt;
 
-          heroImage.alt =
-            nextSlide.alt;
+        heroTitle.textContent =
+          nextSlide.title;
 
+        heroNumber.textContent =
+          String(nextIndex + 1).padStart(2, "0") +
+          " / 05";
 
-          heroTitle.textContent =
-            nextSlide.title;
-
-
-          heroNumber.textContent =
-            String(
-              nextIndex + 1
-            ).padStart(2, "0") +
-            " / 05";
+        heroNote.innerHTML =
+          nextSlide.note;
 
 
-          heroNote.innerHTML =
-            nextSlide.note;
+        requestAnimationFrame(() => {
 
-
-          requestAnimationFrame(
-            () => {
-
-              heroImage.classList.remove(
-                "is-changing"
-              );
-
-            }
+          heroImage.classList.remove(
+            "is-changing"
           );
 
+        });
 
-          heroIndex =
-            nextIndex;
 
-        },
-        650
-      );
+        heroIndex =
+          nextIndex;
+
+      }, 650);
 
     }
 
@@ -2060,164 +1743,50 @@
     );
 
 
-
-    /* ======================================
-       THEME
-    ====================================== */
-
-    const themeButton =
-      document.getElementById(
-        "themeButton"
-      );
-
-
-    if (
-      localStorage.getItem(
-        "joy-theme"
-      ) === "dark"
-    ) {
-
-      document.documentElement.classList.add(
-        "dark"
-      );
-
-    }
-
-
-    themeButton.addEventListener(
-      "click",
-      () => {
-
-        document.documentElement.classList.toggle(
-          "dark"
-        );
-
-
-        localStorage.setItem(
-          "joy-theme",
-
-          document.documentElement.classList.contains(
-            "dark"
-          )
-            ? "dark"
-            : "light"
-        );
-
-      }
-    );
-
-
-
-    /* ======================================
-       SOUND
-    ====================================== */
-
-    const audio =
-      document.getElementById(
-        "siteAudio"
-      );
-
-
-    const soundButton =
-      document.getElementById(
-        "soundButton"
-      );
-
-
-    let playing = false;
-
-
-    soundButton.addEventListener(
-      "click",
-      async () => {
-
-        try {
-
-          if (!playing) {
-
-            await audio.play();
-
-            playing = true;
-
-            soundButton.classList.add(
-              "playing"
-            );
-
-          } else {
-
-            audio.pause();
-
-            playing = false;
-
-            soundButton.classList.remove(
-              "playing"
-            );
-
-          }
-
-        } catch (error) {
-
-          console.log(
-            "Audio could not start:",
-            error
-          );
-
-        }
-
-      }
-    );
-
-
-
-    /* ======================================
-       FULLSCREEN VIEWER
-    ====================================== */
+    /* =====================================
+       VIEWER
+    ===================================== */
 
     const viewer =
-      document.getElementById(
-        "viewer"
-      );
-
+      document.getElementById("viewer");
 
     const viewerImage =
-      document.getElementById(
-        "viewerImage"
-      );
+      document.getElementById("viewerImage");
 
-
-    const viewerCaption =
-      document.getElementById(
-        "viewerCaption"
-      );
-
+    const viewerLabel =
+      document.getElementById("viewerLabel");
 
     const viewerClose =
-      document.getElementById(
-        "viewerClose"
-      );
-
+      document.getElementById("viewerClose");
 
     const viewerPrev =
-      document.getElementById(
-        "viewerPrev"
-      );
-
+      document.getElementById("viewerPrev");
 
     const viewerNext =
-      document.getElementById(
-        "viewerNext"
-      );
-
-
-    const artworks =
-      Array.from(
-        document.querySelectorAll(
-          ".work-image"
-        )
-      );
+      document.getElementById("viewerNext");
 
 
     let viewerIndex = 0;
+
+
+    function updateViewer() {
+
+      const slide =
+        heroSlides[viewerIndex];
+
+
+      viewerImage.src =
+        slide.src;
+
+      viewerImage.alt =
+        slide.alt;
+
+
+      viewerLabel.textContent =
+        String(viewerIndex + 1).padStart(2, "0") +
+        " / 05";
+
+    }
 
 
     function openViewer(index) {
@@ -2225,27 +1794,12 @@
       viewerIndex =
         index;
 
-
-      const item =
-        artworks[viewerIndex];
-
-
-      viewerImage.src =
-        item.dataset.image;
-
-
-      viewerImage.alt =
-        item.dataset.title;
-
-
-      viewerCaption.textContent =
-        item.dataset.title;
+      updateViewer();
 
 
       viewer.classList.add(
-        "active"
+        "open"
       );
-
 
       viewer.setAttribute(
         "aria-hidden",
@@ -2253,8 +1807,9 @@
       );
 
 
-      document.body.style.overflow =
-        "hidden";
+      document.body.classList.add(
+        "viewer-open"
+      );
 
     }
 
@@ -2262,9 +1817,8 @@
     function closeViewer() {
 
       viewer.classList.remove(
-        "active"
+        "open"
       );
-
 
       viewer.setAttribute(
         "aria-hidden",
@@ -2272,52 +1826,66 @@
       );
 
 
-      document.body.style.overflow =
-        "";
+      document.body.classList.remove(
+        "viewer-open"
+      );
 
     }
 
 
-    function showViewerImage(index) {
+    function nextViewer() {
 
       viewerIndex =
-        (
-          index +
-          artworks.length
-        ) %
-        artworks.length;
+        (viewerIndex + 1) %
+        heroSlides.length;
 
-
-      const item =
-        artworks[viewerIndex];
-
-
-      viewerImage.src =
-        item.dataset.image;
-
-
-      viewerImage.alt =
-        item.dataset.title;
-
-
-      viewerCaption.textContent =
-        item.dataset.title;
+      updateViewer();
 
     }
 
 
-    artworks.forEach(
-      (item, index) => {
+    function previousViewer() {
 
-        item.addEventListener(
+      viewerIndex =
+        (viewerIndex - 1 +
+          heroSlides.length) %
+        heroSlides.length;
+
+      updateViewer();
+
+    }
+
+
+    /* WORK IMAGE CLICK */
+
+    document
+      .querySelectorAll(".work-image img")
+      .forEach(image => {
+
+        image.addEventListener(
           "click",
           () => {
 
             openViewer(
-              index
+              Number(
+                image.dataset.index
+              )
             );
 
           }
+        );
+
+      });
+
+
+    /* HERO CLICK */
+
+    heroImage.addEventListener(
+      "click",
+      () => {
+
+        openViewer(
+          heroIndex
         );
 
       }
@@ -2330,45 +1898,19 @@
     );
 
 
-    viewerPrev.addEventListener(
-      "click",
-      () => {
-
-        showViewerImage(
-          viewerIndex - 1
-        );
-
-      }
-    );
-
-
     viewerNext.addEventListener(
       "click",
-      () => {
-
-        showViewerImage(
-          viewerIndex + 1
-        );
-
-      }
+      nextViewer
     );
 
 
-    viewer.addEventListener(
+    viewerPrev.addEventListener(
       "click",
-      event => {
-
-        if (
-          event.target === viewer
-        ) {
-
-          closeViewer();
-
-        }
-
-      }
+      previousViewer
     );
 
+
+    /* KEYBOARD */
 
     document.addEventListener(
       "keydown",
@@ -2376,12 +1918,10 @@
 
         if (
           !viewer.classList.contains(
-            "active"
+            "open"
           )
         ) {
-
           return;
-
         }
 
 
@@ -2395,23 +1935,19 @@
 
 
         if (
-          event.key === "ArrowLeft"
+          event.key === "ArrowRight"
         ) {
 
-          showViewerImage(
-            viewerIndex - 1
-          );
+          nextViewer();
 
         }
 
 
         if (
-          event.key === "ArrowRight"
+          event.key === "ArrowLeft"
         ) {
 
-          showViewerImage(
-            viewerIndex + 1
-          );
+          previousViewer();
 
         }
 
@@ -2419,12 +1955,10 @@
     );
 
 
-
-    /* ======================================
-       MOBILE SWIPE
-    ====================================== */
+    /* TOUCH SWIPE */
 
     let touchStartX = 0;
+    let touchEndX = 0;
 
 
     viewer.addEventListener(
@@ -2446,7 +1980,7 @@
       "touchend",
       event => {
 
-        const touchEndX =
+        touchEndX =
           event.changedTouches[0]
             .screenX;
 
@@ -2459,25 +1993,19 @@
         if (
           Math.abs(distance) < 50
         ) {
-
           return;
-
         }
 
 
         if (
-          distance > 0
+          distance < 0
         ) {
 
-          showViewerImage(
-            viewerIndex - 1
-          );
+          nextViewer();
 
         } else {
 
-          showViewerImage(
-            viewerIndex + 1
-          );
+          previousViewer();
 
         }
 
@@ -2488,10 +2016,139 @@
     );
 
 
+    /* =====================================
+       SOUND
+    ===================================== */
 
-    /* ======================================
-       SCROLL REVEALS
-    ====================================== */
+    const soundToggle =
+      document.getElementById(
+        "soundToggle"
+      );
+
+    const siteAudio =
+      document.getElementById(
+        "siteAudio"
+      );
+
+
+    let soundOn = false;
+
+
+    soundToggle.addEventListener(
+      "click",
+      async () => {
+
+        if (!soundOn) {
+
+          try {
+
+            await siteAudio.play();
+
+            soundOn = true;
+
+            soundToggle.textContent =
+              "Sound On";
+
+          } catch (error) {
+
+            soundToggle.textContent =
+              "Sound";
+
+          }
+
+        } else {
+
+          siteAudio.pause();
+
+          soundOn = false;
+
+          soundToggle.textContent =
+            "Sound";
+
+        }
+
+      }
+    );
+
+
+    /* =====================================
+       THEME
+    ===================================== */
+
+    const themeToggle =
+      document.getElementById(
+        "themeToggle"
+      );
+
+
+    function setTheme(theme) {
+
+      if (
+        theme === "dark"
+      ) {
+
+        document.documentElement
+          .classList.add("dark");
+
+        localStorage.setItem(
+          "joy-theme",
+          "dark"
+        );
+
+      } else {
+
+        document.documentElement
+          .classList.remove("dark");
+
+        localStorage.setItem(
+          "joy-theme",
+          "light"
+        );
+
+      }
+
+    }
+
+
+    const savedTheme =
+      localStorage.getItem(
+        "joy-theme"
+      );
+
+
+    if (
+      savedTheme === "dark"
+    ) {
+
+      setTheme("dark");
+
+    }
+
+
+    themeToggle.addEventListener(
+      "click",
+      () => {
+
+        const isDark =
+          document.documentElement
+            .classList.contains(
+              "dark"
+            );
+
+
+        setTheme(
+          isDark
+            ? "light"
+            : "dark"
+        );
+
+      }
+    );
+
+
+    /* =====================================
+       REVEAL
+    ===================================== */
 
     const revealElements =
       document.querySelectorAll(
@@ -2540,6 +2197,16 @@
 
       }
     );
+
+
+    /* =====================================
+       YEAR
+    ===================================== */
+
+    document.getElementById(
+      "year"
+    ).textContent =
+      new Date().getFullYear();
 
   </script>
 
