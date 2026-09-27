@@ -1,638 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4F3MFHFVDE');
-</script>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FFFFFF">
-<title>Joy Chatterjee – Hyper-realist Portrait Artist</title>
-<meta name="description" content="Hand-painted hyper-realist portraits by Joy Chatterjee, from a single photograph. Now accepting commissions.">
-<!-- Exhibition ambient music: place music.mp3 beside index.html -->
-<link rel="preload" href="music.mp3" as="audio" type="audio/mpeg">
-
-<meta property="og:title" content="Joy Chatterjee – Hyper-realist Portrait Artist">
-<meta property="og:description" content="A portrait to keep for generations. Painted by hand, in such detail it's mistaken for a photograph.">
-<meta property="og:image" content="work-01.jpg">
-<script>
-/* Apply saved theme before the page paints, so it never flashes */
-(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<head><!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-4F3MFHFVDE'); </script> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> <meta name="theme-color" content="#FFFFFF"> <title>Joy Chatterjee – Hyper-realist Portrait Artist</title> <meta name="description" content="Hand-painted hyper-realist portraits by Joy Chatterjee, from a single photograph. Now accepting commissions."> <!-- Exhibition ambient music: place music.mp3 beside index.html --> <link rel="preload" href="music.mp3" as="audio" type="audio/mpeg"> <meta property="og:title" content="Joy Chatterjee – Hyper-realist Portrait Artist"> <meta property="og:description" content="A portrait to keep for generations. Painted by hand, in such detail it's mistaken for a photograph."> <meta property="og:image" content="work-01.jpg"> <script> /* Apply saved theme before the page paints, so it never flashes */ (function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})(); </script> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"> 
 <style>
-:root{
-  --wall:#FFFFFF; --ink:#111111; --muted:#555555; --faint:#8A8A8A; --line:#E6E6E6;
-  --accent:#111111; --hover:#3A3A3A; --block:#EFEFEF; --on-ink:#FFFFFF;
-  --grain:0;
-  --ease:cubic-bezier(.19,1,.22,1);
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --wall:#0E0E0E; --ink:#F2F2F2; --muted:#A8A8A8; --faint:#7A7A7A; --line:#262626;
-  --accent:#F2F2F2; --hover:#CFCFCF; --block:#1C1C1C; --on-ink:#0E0E0E;
-  --grain:0; color-scheme:dark;
-}}
-:root[data-theme="dark"]{
-  --wall:#0E0E0E; --ink:#F2F2F2; --muted:#A8A8A8; --faint:#7A7A7A; --line:#262626;
-  --accent:#F2F2F2; --hover:#CFCFCF; --block:#1C1C1C; --on-ink:#0E0E0E;
-  --grain:0; color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-html,body{margin:0}
-body{
-  background:var(--wall); color:var(--ink);
-  font:400 .9375rem/1.6 "Manrope","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-feature-settings:"kern","liga";
-  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  -webkit-tap-highlight-color:transparent;
-  transition:background-color .5s var(--ease),color .5s var(--ease);
-}
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:var(--grain);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-a{color:inherit}
-:focus-visible{outline:1.5px solid var(--accent);outline-offset:5px;border-radius:2px}
-::selection{background:var(--accent);color:var(--on-ink)}
-
-.page{
-  --px:calc(clamp(22px,5.5vw,88px) + env(safe-area-inset-left,0px));
-  position:relative;z-index:1;
-  min-height:100vh;min-height:100svh;
-  max-width:1280px;margin:0 auto;
-  padding:calc(clamp(20px,2.8vw,32px) + env(safe-area-inset-top,0px)) var(--px) calc(clamp(20px,2.8vw,32px) + env(safe-area-inset-bottom,0px));
-  display:grid;grid-template-rows:auto 1fr auto;gap:clamp(48px,6vw,88px);
-}
-
-header{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.mark{display:grid;gap:1px;font-weight:600;font-size:.9375rem;line-height:1.3;letter-spacing:-.01em;text-decoration:none}
-.mark span{font-weight:400;font-size:.875rem;letter-spacing:0;color:var(--muted)}
-.tools{display:flex;align-items:center;gap:10px}
-.soon{font-size:.8125rem;color:var(--faint)}
-
-/* Exhibition music */
-.music{
-  appearance:none;
-  border:1px solid var(--line);
-  background:transparent;
-  color:var(--ink);
-  min-height:44px;
-  padding:0 13px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  cursor:pointer;
-  transition:border-color .3s,color .3s,background-color .3s;
-}
-.music:hover{border-color:var(--ink)}
-.music-text{
-  font-size:.75rem;
-  font-weight:500;
-  letter-spacing:.02em;
-}
-.music-bars{
-  width:16px;
-  height:15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:2px;
-}
-.music-bars i{
-  display:block;
-  width:2px;
-  height:7px;
-  background:currentColor;
-  transform-origin:center;
-  opacity:.55;
-}
-.music.is-playing .music-bars i{opacity:1}
-@media (prefers-reduced-motion:no-preference){
-  .music.is-playing .music-bars i:nth-child(1){animation:musicBar .8s ease-in-out infinite alternate}
-  .music.is-playing .music-bars i:nth-child(2){animation:musicBar 1.05s ease-in-out .15s infinite alternate}
-  .music.is-playing .music-bars i:nth-child(3){animation:musicBar .72s ease-in-out .08s infinite alternate}
-  .music.is-playing .music-bars i:nth-child(4){animation:musicBar .95s ease-in-out .22s infinite alternate}
-  @keyframes musicBar{from{height:4px}to{height:14px}}
-}
-@media (max-width:600px){
-  .music{width:44px;padding:0;gap:0}
-  .music-text{display:none}
-}
-
-/* Theme toggle */
-.theme{
-  appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink);
-  width:44px;height:44px;border-radius:0;display:grid;place-items:center;cursor:pointer;
-  transition:border-color .3s,color .3s;
-}
-.theme:hover{border-color:var(--ink)}
-.theme svg{width:17px;height:17px;transition:transform .6s var(--ease)}
-.theme .sun{display:none}
-:root[data-theme="dark"] .theme .sun{display:block}
-:root[data-theme="dark"] .theme .moon{display:none}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]) .theme .sun{display:block}
-  :root:not([data-theme="light"]) .theme .moon{display:none}
-}
-.theme:active svg{transform:rotate(-30deg)}
-
-/* Statement and painting */
-.hero{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
-  gap:clamp(48px,8vw,128px);align-items:center;
-  padding:clamp(8px,2vw,24px) 0;
-}
-.kicker{margin:0 0 22px;font-size:.8125rem;color:var(--muted)}
-h1{
-  font-weight:500;font-size:clamp(2.1rem,4.2vw,3.7rem);
-  line-height:1.06;letter-spacing:-.035em;margin:0 0 26px;
-  max-width:12ch;text-wrap:balance;
-}
-.lede{margin:0 0 34px;max-width:36ch;font-size:1.0625rem;line-height:1.55;color:var(--muted);letter-spacing:-.005em}
-.proof{
-  margin:0 0 40px;max-width:44ch;color:var(--muted);font-size:.875rem;line-height:1.7;
-  padding-top:22px;border-top:1px solid var(--line);
-}
-.proof b{font-weight:500;color:var(--ink)}
-
-.cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
-.btn{
-  position:relative;overflow:hidden;isolation:isolate;
-  display:inline-flex;align-items:center;gap:12px;
-  min-height:52px;padding:0 26px 0 22px;border-radius:0;
-  background:var(--ink);color:var(--on-ink);text-decoration:none;
-  font-weight:500;font-size:.9375rem;letter-spacing:-.005em;
-  transition:background-color .5s var(--ease),color .5s var(--ease);
-}
-.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--hover);transform:translateY(101%);transition:transform .6s var(--ease)}
-.btn:hover::before{transform:none}
-.btn svg{flex:none}
-.hint{font-size:.8125rem;color:var(--faint);max-width:26ch;line-height:1.45}
-
-/* The painting, hung on the wall */
-.work{margin:0;justify-self:stretch;width:100%;min-width:0;display:flex;flex-direction:column;align-items:center}
-.mat{position:relative;padding:0 clamp(10px,1.4vw,18px) clamp(12px,1.6vw,20px) 0;flex:none}
-.mat::before{content:"";position:absolute;left:40%;top:12%;right:0;bottom:0;background:var(--block);transition:background-color .5s var(--ease)}
-.frame{z-index:1}
-.frame{position:relative;width:var(--fw,360px);height:var(--fh,360px);overflow:hidden;background:transparent;isolation:isolate;touch-action:pan-y;cursor:grab;transition:width .9s var(--ease),height .9s var(--ease)}
-.frame:active{cursor:grabbing}
-.slide{position:absolute;inset:0;visibility:hidden;z-index:0}
-.slide.is-active{visibility:visible;z-index:2}
-.slide.is-leaving{visibility:visible;z-index:1}
-.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;display:block;user-select:none;-webkit-user-drag:none}
-.slide .empty{position:absolute;inset:0;display:grid;place-items:center;background:var(--line);color:var(--muted);font-size:.8125rem}
-.frame::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
-
-/* Progress: a hairline along the bottom of the mat */
-.progress{position:absolute;left:40%;right:0;bottom:0;height:2px;background:transparent;overflow:hidden}
-.progress i{position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left}
-
-/* Caption row: museum label left, controls right */
-.meta{margin-top:22px;width:var(--mw,380px);max-width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex:none;transition:width .9s var(--ease)}
-.labels{display:grid;min-width:0;flex:1}
-.label{
-  grid-area:1/1;display:grid;gap:2px;align-content:start;font-size:.8125rem;line-height:1.45;color:var(--muted);
-  opacity:0;visibility:hidden;
-}
-.label.is-active{opacity:1;visibility:visible}
-.label b{font-weight:600;color:var(--ink)}
-
-.controls{display:flex;align-items:center;gap:4px;flex:none}
-.count{font-size:.75rem;color:var(--faint);font-variant-numeric:tabular-nums;margin-right:8px}
-.count b{font-weight:500;color:var(--ink)}
-.ctl{appearance:none;background:transparent;border:1px solid transparent;color:var(--ink);width:40px;height:40px;border-radius:0;display:grid;place-items:center;cursor:pointer;transition:border-color .3s}
-.ctl:hover{border-color:var(--line)}
-.ctl svg{width:17px;height:17px}
-.ctl .i-play{display:none}
-.work.paused .ctl .i-play{display:block}
-.work.paused .ctl .i-pause{display:none}
-
-@media (prefers-reduced-motion: no-preference){
-  /* The cool bit: each new portrait is unveiled like a cloth being lifted, then settles */
-  .slide.is-active.fwd{animation:unveilUp 1.15s var(--ease) both}
-  .slide.is-active.back{animation:unveilDown 1.15s var(--ease) both}
-  .slide.is-active img{animation:settle 1.8s var(--ease) both}
-  .slide.is-leaving img{animation:recede 1.15s var(--ease) both}
-  .label.is-active.anim{animation:labelIn .9s var(--ease) .25s both}
-  .label.is-out{visibility:visible;animation:labelOut .45s var(--ease) both}
-  @keyframes unveilUp{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
-  @keyframes unveilDown{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
-  @keyframes recede{from{transform:scale(1);filter:brightness(1)}to{transform:scale(.97);filter:brightness(.7)}}
-  @keyframes labelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  @keyframes labelOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-6px)}}
-}
-
-footer{
-  border-top:1px solid var(--line);padding-top:20px;
-  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
-}
-.status{display:inline-flex;align-items:center;gap:10px;font-weight:500;font-size:.875rem;min-height:44px}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
-footer nav{display:flex;flex-wrap:wrap;gap:8px 28px}
-footer nav a{
-  color:var(--ink);text-decoration:none;font-weight:500;font-size:.875rem;
-  display:inline-flex;align-items:center;min-height:44px;
-  background:linear-gradient(currentColor,currentColor) 0 calc(100% - 12px)/100% 1px no-repeat;
-  transition:color .3s,background-size .5s var(--ease);
-}
-footer nav a:hover{color:var(--accent);background-size:0 1px;background-position:100% calc(100% - 12px)}
-
-@media (prefers-reduced-motion: no-preference){
-  .mat{animation:hang 1.4s var(--ease) .1s both}
-  .reveal{animation:rise 1.1s var(--ease) both}
-  .reveal:nth-child(1){animation-delay:.4s}
-  .reveal:nth-child(2){animation-delay:.5s}
-  .reveal:nth-child(3){animation-delay:.6s}
-  .reveal:nth-child(4){animation-delay:.72s}
-  .reveal:nth-child(5){animation-delay:.84s}
-  .meta{animation:rise 1.1s var(--ease) 1s both}
-  .dot{animation:pulse 2.6s ease-out 1.8s infinite}
-  @keyframes hang{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-  @keyframes settle{from{transform:scale(1.06)}to{transform:scale(1)}}
-  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 50%,transparent)}100%{box-shadow:0 0 0 9px transparent}}
-}
-@media (prefers-reduced-motion: reduce){body,.btn,.mat::before,.frame,.meta{transition:none}}
-
-/* Tablet and phone: painting first, full width, then the words */
-@media (max-width:860px){
-  .page{gap:48px}
-  .hero{grid-template-columns:minmax(0,1fr);gap:48px;padding:0}
-  .work{order:-1}
-  h1{font-size:clamp(2.2rem,9vw,3.2rem);max-width:none}
-  .lede{max-width:none}
-  .proof{max-width:none}
-}
-@media (max-width:600px){
-  .soon{display:none}
-  .page{gap:40px}
-  .cta{flex-direction:column;align-items:stretch;gap:14px}
-  .btn{width:100%;justify-content:center;min-height:54px}
-  .hint{max-width:none;text-align:center}
-  .controls .count{display:none}
-  footer{flex-direction:column;align-items:stretch;gap:8px;padding-top:16px}
-  footer nav{flex-direction:column;gap:0}
-  footer nav a{justify-content:space-between;min-height:54px;font-size:.9375rem;background:none;border-bottom:1px solid var(--line)}
-  footer nav a:last-child{border-bottom:0}
-  footer nav a::after{content:"";width:7px;height:7px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);opacity:.45}
-}
-
-
-/* =========================================================
-   JOY CHATTERJEE — MINIMAL PREMIUM BAUHAUS UI
-   Visual layer only: gallery/music functionality preserved.
-   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root{
-  --wall:#F4F1E8;
-  --ink:#111111;
-  --muted:#595852;
-  --faint:#88857D;
-  --line:#171717;
-  --accent:#D92720;
-  --blue:#1646C8;
-  --yellow:#F1C40F;
-  --block:#E8E2D5;
-  --on-ink:#F4F1E8;
+  --black:#090909;--paper:#eeeae1;--white:#f6f4ee;--grey:#777;
+  --line:rgba(246,244,238,.22);--red:#ff3b30;
   --ease:cubic-bezier(.16,1,.3,1);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --wall:#111111;--ink:#F4F1E8;--muted:#B8B4AA;--faint:#77736B;
-  --line:#F4F1E8;--accent:#FF4A42;--blue:#5278FF;--yellow:#E8BD16;
-  --block:#24231F;--on-ink:#111111;
-}}
-:root[data-theme="dark"]{
-  --wall:#111111;--ink:#F4F1E8;--muted:#B8B4AA;--faint:#77736B;
-  --line:#F4F1E8;--accent:#FF4A42;--blue:#5278FF;--yellow:#E8BD16;
-  --block:#24231F;--on-ink:#111111;
-}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--black)}
 body{
-  background:var(--wall);
-  color:var(--ink);
-  font-size:.9rem;
+  margin:0;background:var(--black);color:var(--white);
+  font-family:Inter,Arial,sans-serif;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body.nav-open,body.viewer-open{overflow:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit}
+::selection{background:var(--white);color:var(--black)}
+.noise{
+  position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+}
+.floating-ui{
+  position:fixed;z-index:200;top:0;left:0;right:0;
+  height:74px;padding:18px 28px;display:grid;
+  grid-template-columns:1fr auto 1fr;align-items:start;
+  pointer-events:none;mix-blend-mode:difference;
+}
+.floating-ui>*{pointer-events:auto}
+.wordmark{display:grid;text-decoration:none;line-height:1}
+.wordmark span{font-size:.72rem;font-weight:800;letter-spacing:.04em}
+.wordmark small,.archive-code,.section-index,.hero-index,.hero-spec,.scroll-mark,.eyebrow,
+.exhibition-header,.gallery-label,.takeover-data,.about-facts,.contact-details,.archive-footer{
+  font-family:"DM Mono",monospace;
+}
+.wordmark small{font-size:.5rem;margin-top:5px;opacity:.65;letter-spacing:.05em}
+.archive-code{font-size:.48rem;line-height:1.5;text-align:center;opacity:.65}
+.sound-control,.menu-trigger{
+  border:0;background:none;cursor:pointer;justify-self:end;
+  display:flex;align-items:center;gap:8px;font-family:"DM Mono",monospace;
+  font-size:.5rem;letter-spacing:.06em;
+}
+.sound-bars{height:13px;display:flex;gap:2px;align-items:center}
+.sound-bars i{width:2px;height:5px;background:currentColor}
+.sound-control.is-playing .sound-bars i:nth-child(1){height:10px}
+.sound-control.is-playing .sound-bars i:nth-child(2){height:6px}
+.sound-control.is-playing .sound-bars i:nth-child(3){height:12px}
+.sound-control.is-playing .sound-bars i:nth-child(4){height:8px}
+.menu-trigger{margin-left:18px}
+.menu-trigger i{display:block;width:18px;height:1px;background:currentColor}
+.menu-trigger i:last-child{margin-left:-18px;transform:translateY(4px)}
+.overlay-nav{
+  position:fixed;inset:0;background:var(--black);z-index:150;
+  display:grid;grid-template-columns:1fr 2fr 1fr;padding:110px 28px 35px;
+  transform:translateY(-100%);transition:transform .8s var(--ease);
+}
+.overlay-nav.is-open{transform:none}
+.nav-number,.nav-footer{font: .55rem "DM Mono",monospace;color:#777}
+.nav-links{display:grid;align-content:center}
+.nav-links a{
+  display:flex;align-items:baseline;gap:22px;
+  text-decoration:none;font-size:clamp(3rem,7vw,8rem);
+  font-weight:800;letter-spacing:-.075em;line-height:.92;
+  transition:padding-left .5s var(--ease),color .3s;
+}
+.nav-links a span{font: .55rem "DM Mono",monospace;letter-spacing:0;color:#777}
+.nav-links a:hover{padding-left:25px;color:var(--red)}
+
+.hero-installation{
+  position:relative;height:100svh;min-height:720px;overflow:hidden;
+  background:var(--black);
+}
+.hero-image-wrap{
+  position:absolute;width:min(55vw,780px);height:92vh;
+  right:7vw;top:7vh;will-change:transform;
+}
+.hero-image-mask{
+  width:100%;height:100%;overflow:hidden;
+  clip-path:polygon(8% 0,100% 0,100% 100%,0 92%,0 14%);
+  background:#1b1b1b;
+}
+.hero-image-mask img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;transform:scale(1.05);
+}
+.hero-red-disc{
+  position:absolute;width:clamp(70px,10vw,150px);aspect-ratio:1;
+  border-radius:50%;background:var(--red);left:-5%;bottom:7%;
+  mix-blend-mode:screen;
+}
+.hero-type{
+  position:absolute;z-index:4;left:5vw;top:28vh;
+  font-size:clamp(6rem,18vw,20rem);font-weight:900;
+  line-height:.72;letter-spacing:-.105em;pointer-events:none;
+  will-change:transform;
+}
+.hero-line{white-space:nowrap}
+.hero-line-offset{margin-left:8vw}
+.hero-type .hero-line:last-child{
+  -webkit-text-stroke:1px rgba(246,244,238,.9);
+  color:transparent;
+}
+.hero-index{
+  position:absolute;z-index:5;left:28px;top:115px;font-size:.52rem;
+  line-height:1.7;color:#999;
+}
+.hero-index span{color:var(--white)}
+.hero-caption{
+  position:absolute;z-index:5;right:4vw;bottom:10vh;
+  display:grid;gap:3px;width:190px;
+  font-family:"DM Mono",monospace;font-size:.5rem;
+}
+.hero-caption span{color:#888}.hero-caption strong{font:600 .7rem Inter}
+.hero-spec{
+  position:absolute;left:28px;bottom:27px;display:flex;gap:25px;
+  font-size:.48rem;color:#777;letter-spacing:.04em;
+}
+.scroll-mark{
+  position:absolute;right:28px;bottom:27px;font-size:.48rem;color:#777;
+  display:flex;align-items:center;gap:9px;
+}
+.scroll-mark span{width:30px;height:1px;background:#777}
+
+.section-index{
+  font-size:.5rem;color:#777;letter-spacing:.04em;
+  border-top:1px solid var(--line);padding-top:10px;
+}
+.manifesto-section{
+  min-height:100vh;padding:120px 5vw 150px;
+  display:grid;grid-template-columns:1fr 2.2fr 1fr;gap:5vw;align-items:start;
+  background:var(--paper);color:var(--black);
+}
+.manifesto{padding-top:5vh}
+.eyebrow{font-size:.5rem;color:#777;margin-bottom:55px}
+.manifesto h2{
+  margin:0;font-size:clamp(4rem,10vw,11rem);
+  font-weight:900;line-height:.78;letter-spacing:-.09em;
+}
+.manifesto h2 em{font-style:normal;color:var(--red)}
+.manifesto-note{
+  align-self:end;padding-bottom:10vh;font: .68rem/1.6 Inter;color:#555;max-width:250px;
+}
+.manifesto-note span{font: .48rem "DM Mono";color:#999}
+.manifesto-note p{margin-top:15px}
+
+.exhibition-section{
+  min-height:100vh;padding:110px 0 80px;background:var(--black);
+}
+.exhibition-section>.section-index{margin:0 5vw 35px}
+.exhibition-header{
+  display:flex;justify-content:space-between;padding:0 5vw 20px;
+  font-size:.48rem;color:#777;
+}
+.horizontal-gallery{
+  overflow:hidden;cursor:grab;outline:none;
+}
+.gallery-track{
+  display:flex;gap:7vw;padding:5vh 0 8vh 17vw;
+  width:max-content;transition:transform 1s var(--ease);
+}
+.art-slide{
+  position:relative;width:min(62vw,760px);height:min(69vh,690px);
+  flex:none;overflow:hidden;cursor:pointer;background:#171717;
+  transform:scale(.88);opacity:.45;transition:transform .9s var(--ease),opacity .9s var(--ease);
+}
+.art-slide:nth-child(2n){margin-top:10vh;width:min(42vw,520px);height:min(54vh,540px)}
+.art-slide:nth-child(3n){margin-top:-4vh}
+.art-slide.is-focused{transform:scale(1);opacity:1}
+.art-slide::after{
+  content:"0" attr(data-index);position:absolute;right:14px;top:12px;
+  font: .48rem "DM Mono";color:white;opacity:.65;
+}
+.art-slide img{width:100%;height:100%;object-fit:contain;display:block;transition:transform 1.5s var(--ease)}
+.art-slide:hover img{transform:scale(1.025)}
+.gallery-interface{
+  display:flex;justify-content:space-between;align-items:end;
+  padding:0 5vw;border-top:1px solid var(--line);margin:0 5vw;padding-top:14px;
+}
+.gallery-label{display:grid;grid-template-columns:auto auto;column-gap:8px;max-width:500px;font-size:.5rem;color:#777}
+.gallery-label .gallery-current{color:var(--white)}
+.gallery-label .gallery-total::before{content:"/ "}
+.gallery-title{grid-column:1/-1;font:600 .75rem Inter;color:var(--white);margin-top:8px}
+.gallery-meta{grid-column:1/-1;margin-top:3px}
+.gallery-arrows{display:flex;gap:5px}
+.gallery-arrows button{
+  width:42px;height:32px;border:1px solid var(--line);background:none;cursor:pointer;
+}
+.gallery-arrows button:hover{background:var(--white);color:var(--black)}
+
+.portrait-takeover{
+  position:relative;height:100svh;min-height:720px;overflow:hidden;
+  background:#080808;display:grid;place-items:center;
+}
+.takeover-image{position:absolute;inset:5% 12% 0;overflow:hidden}
+.takeover-image img{width:100%;height:100%;object-fit:contain;display:block}
+.takeover-title{
+  position:absolute;z-index:2;left:4vw;bottom:10vh;
+  font-size:clamp(4rem,10vw,12rem);font-weight:900;
+  line-height:.78;letter-spacing:-.09em;
+}
+.takeover-title span{color:transparent;-webkit-text-stroke:1px var(--white)}
+.takeover-data{
+  position:absolute;right:4vw;top:16vh;font-size:.5rem;color:#777;line-height:1.7;
+}
+.takeover-cross{
+  position:absolute;right:4vw;bottom:7vh;font-size:4rem;font-weight:200;color:var(--red);
 }
 
-.page{
-  max-width:1440px;
-  padding:28px clamp(24px,5vw,80px) 30px;
-  gap:clamp(42px,6vw,86px);
+.about-section{
+  min-height:90vh;padding:120px 5vw;background:var(--paper);color:var(--black);
+  display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:5vw;
+}
+.about-title{
+  font-size:clamp(4rem,9vw,10rem);font-weight:900;line-height:.78;
+  letter-spacing:-.09em;
+}
+.about-title span{color:var(--red)}
+.about-copy{align-self:end;max-width:360px;font-size:.85rem;line-height:1.65;color:#444}
+.about-facts{border-top:1px solid #aaa;margin-top:40px;padding-top:12px;display:grid;gap:7px;font-size:.48rem;color:#777}
+
+.contact-section{
+  min-height:88vh;padding:110px 5vw 80px;
+  display:grid;grid-template-columns:1fr 2fr 1fr;gap:5vw;align-items:end;
+}
+.contact-big{
+  font-size:clamp(4rem,11vw,13rem);font-weight:900;line-height:.75;
+  letter-spacing:-.1em;
+}
+.contact-big span{
+  color:transparent;-webkit-text-stroke:1px var(--white);
+}
+.magnetic-button{
+  justify-self:end;align-self:center;width:180px;height:180px;border-radius:50%;
+  background:var(--red);color:var(--white);text-decoration:none;
+  display:grid;place-items:center;text-align:center;padding:30px;
+  font:600 .58rem "DM Mono";transition:transform .35s var(--ease);
+}
+.magnetic-button b{font-size:1.4rem;font-weight:400}
+.contact-details{
+  display:grid;gap:10px;font-size:.5rem;justify-self:end;text-align:right;
+}
+.contact-details a{text-decoration:none;border-bottom:1px solid #555;padding-bottom:3px}
+
+.archive-footer{
+  border-top:1px solid var(--line);padding:14px 28px 20px;
+  display:flex;justify-content:space-between;color:#666;font-size:.46rem;
 }
 
-/* Header = gallery placard */
-header{
-  border-bottom:1px solid var(--line);
-  padding-bottom:16px;
+/* Fullscreen artwork archive */
+.art-viewer{
+  position:fixed;inset:0;z-index:500;background:#050505;
+  opacity:0;visibility:hidden;transition:opacity .5s var(--ease);
 }
-.mark{
-  display:flex;
-  align-items:baseline;
-  gap:12px;
-  font-weight:700;
-  font-size:1rem;
-  letter-spacing:-.035em;
-  text-transform:uppercase;
+.art-viewer.is-open{opacity:1;visibility:visible}
+.viewer-image{position:absolute;inset:4vh 7vw;display:grid;place-items:center}
+.viewer-image img{max-width:100%;max-height:100%;object-fit:contain}
+.viewer-close{
+  position:absolute;right:25px;top:20px;z-index:2;
+  border:0;background:none;font-size:2rem;font-weight:200;cursor:pointer;
 }
-.mark span{
-  font-size:.64rem;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--muted);
+.viewer-data{
+  position:absolute;left:28px;bottom:25px;display:grid;gap:5px;
+  font: .55rem "DM Mono";color:#888;
 }
-.tools{gap:8px}
-.soon{
-  font-size:.65rem;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
+.viewer-data .v-title{font:600 .75rem Inter;color:var(--white);text-transform:uppercase}
 
-/* Sound + theme controls */
-.music{
-  min-height:40px;
-  padding:0 12px;
-  border:1px solid var(--line);
-  background:transparent;
-  color:var(--ink);
-  transition:.3s var(--ease);
+/* Reveal */
+.manifesto-section,.exhibition-section,.portrait-takeover,.about-section,.contact-section{
+  transition:opacity .8s var(--ease);
 }
-.music:hover{
-  background:var(--ink);
-  color:var(--wall);
-}
-.music-text{
-  font-size:.64rem;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-.theme{
-  width:40px;
-  height:40px;
-  border:1px solid var(--line);
-  background:transparent;
-  transition:.3s var(--ease);
-}
-.theme:hover{
-  background:var(--ink);
-  color:var(--wall);
-}
+.manifesto-section:not(.in-view),.about-section:not(.in-view),.contact-section:not(.in-view){opacity:.72}
 
-/* Asymmetric Bauhaus composition */
-.hero{
-  grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);
-  gap:clamp(40px,8vw,130px);
-  min-height:min(680px,68vh);
-  padding:0;
-}
-.hero>div:first-child{
-  position:relative;
-  padding-left:clamp(0px,2vw,28px);
-}
-.hero>div:first-child::before{
-  content:"01";
-  position:absolute;
-  left:0;
-  top:-42px;
-  font-size:.62rem;
-  font-weight:700;
-  letter-spacing:.14em;
-  color:var(--accent);
-}
+/* Cursor */
+.cursor{position:fixed;pointer-events:none;z-index:9000;top:0;left:0}
+.cursor-dot{width:5px;height:5px;background:var(--white);border-radius:50%;margin:-2.5px}
+.cursor-ring{width:28px;height:28px;border:1px solid rgba(255,255,255,.55);border-radius:50%;margin:-14px;transition:width .25s var(--ease),height .25s var(--ease),margin .25s var(--ease)}
+.cursor-large .cursor-ring{width:52px;height:52px;margin:-26px;border-color:var(--red)}
+@media (pointer:coarse){.cursor{display:none}}
 
-h1{
-  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-weight:700;
-  font-size:clamp(3rem,6.5vw,7rem);
-  line-height:.88;
-  letter-spacing:-.075em;
-  max-width:7ch;
-  margin-bottom:34px;
+@media(max-width:800px){
+  .floating-ui{height:62px;padding:15px 18px;grid-template-columns:1fr auto}
+  .archive-code{display:none}
+  .wordmark span{font-size:.62rem}
+  .sound-control{display:none}
+  .menu-trigger{margin-left:0}
+  .overlay-nav{grid-template-columns:1fr;padding:90px 20px 25px}
+  .nav-number,.nav-footer{display:none}
+  .hero-installation{min-height:700px}
+  .hero-image-wrap{width:78vw;height:70vh;right:-7vw;top:15vh}
+  .hero-type{left:4vw;top:33vh;font-size:clamp(5rem,22vw,11rem)}
+  .hero-line-offset{margin-left:4vw}
+  .hero-caption{right:20px;bottom:15vh}
+  .hero-spec{left:18px;bottom:20px;gap:10px;flex-wrap:wrap;max-width:260px}
+  .scroll-mark{display:none}
+  .manifesto-section,.about-section,.contact-section{display:block;padding:90px 20px}
+  .manifesto{margin-top:80px}
+  .manifesto h2{font-size:clamp(4rem,17vw,8rem)}
+  .manifesto-note{margin:80px 0 0 auto}
+  .exhibition-section{padding-top:80px}
+  .exhibition-section>.section-index{margin-left:20px}
+  .exhibition-header{padding-left:20px;padding-right:20px}
+  .gallery-track{padding-left:12vw;gap:12vw}
+  .art-slide{width:78vw;height:65vh}
+  .art-slide:nth-child(2n){width:62vw;height:52vh}
+  .gallery-interface{margin:0 20px}
+  .takeover-image{inset:10% 0 10%}
+  .takeover-title{left:20px;bottom:12vh;font-size:clamp(3.8rem,16vw,7rem)}
+  .takeover-data{right:20px;top:12vh}
+  .about-title{margin:75px 0;font-size:clamp(4rem,17vw,8rem)}
+  .about-copy{margin-left:auto}
+  .contact-big{margin:80px 0;font-size:clamp(4rem,18vw,9rem)}
+  .magnetic-button{width:145px;height:145px;margin-left:auto;margin-bottom:70px}
+  .contact-details{text-align:left;justify-self:start}
+  .archive-footer{padding:14px 18px;display:grid;gap:5px}
+  .viewer-image{inset:9vh 3vw 15vh}
 }
-.lede{
-  font-size:1rem;
-  max-width:34ch;
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
 }
-.proof{
-  font-size:.78rem;
-  max-width:39ch;
-  padding-top:18px;
-}
-.proof b{font-weight:700}
-
-.btn{
-  min-height:50px;
-  padding:0 22px;
-  background:var(--ink);
-  color:var(--on-ink);
-  font-size:.76rem;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  transition:.45s var(--ease);
-}
-.btn::before{
-  background:var(--accent);
-  transform:translateX(-101%);
-}
-.btn:hover::before{transform:none}
-.hint{
-  font-size:.7rem;
-}
-
-/* Artwork = architectural object */
-.mat{
-  padding:0 0 24px 24px;
-}
-.mat::before{
-  left:0;
-  top:24px;
-  right:24px;
-  bottom:0;
-  background:var(--yellow);
-}
-.mat::after{
-  content:"";
-  position:absolute;
-  width:72px;
-  height:72px;
-  right:-8px;
-  top:-28px;
-  border-radius:50%;
-  background:var(--accent);
-  z-index:0;
-}
-.frame{
-  background:var(--wall);
-  transition:width .9s var(--ease),height .9s var(--ease);
-}
-.frame::after{
-  border:1px solid rgba(0,0,0,.12);
-}
-.progress{
-  left:24px;
-  right:24px;
-  height:3px;
-}
-.progress i{background:var(--accent)}
-
-.meta{
-  margin-top:18px;
-}
-.label{
-  font-size:.68rem;
-}
-.label b{
-  font-size:.72rem;
-  font-weight:700;
-  letter-spacing:.045em;
-  text-transform:uppercase;
-}
-.count{
-  font-size:.62rem;
-}
-.ctl{
-  width:36px;
-  height:36px;
-}
-.ctl:hover{
-  background:var(--ink);
-  color:var(--wall);
-}
-
-/* Footer = typographic exhibition label */
-footer{
-  padding-top:15px;
-}
-.status{
-  font-size:.66rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-}
-.dot{background:var(--accent)}
-footer nav{gap:6px}
-footer nav a{
-  min-height:38px;
-  padding:0 12px;
-  border:1px solid transparent;
-  font-size:.66rem;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  background:none;
-}
-footer nav a:hover{
-  border-color:var(--line);
-  background:var(--ink);
-  color:var(--wall);
-}
-
-/* Remove the old underline treatment */
-footer nav a{
-  background-image:none;
-}
-
-/* Responsive Bauhaus composition */
-@media (max-width:860px){
-  .hero{
-    grid-template-columns:minmax(0,1fr);
-    gap:52px;
-    min-height:auto;
-  }
-  .work{order:-1}
-  .hero>div:first-child{
-    padding-left:0;
-  }
-  .hero>div:first-child::before{display:none}
-  h1{
-    font-size:clamp(3.3rem,12vw,6rem);
-    max-width:7ch;
-  }
-}
-@media (max-width:600px){
-  .page{
-    padding:20px 20px 24px;
-    gap:40px;
-  }
-  header{padding-bottom:13px}
-  .mark{
-    display:grid;
-    gap:4px;
-    font-size:.9rem;
-  }
-  .mark span{font-size:.58rem}
-  .soon{display:none}
-  .music{
-    width:40px;
-    padding:0;
-  }
-  .music-text{display:none}
-  .hero{gap:42px}
-  h1{
-    font-size:clamp(3.1rem,16vw,5rem);
-    margin-bottom:26px;
-  }
-  .cta{
-    flex-direction:column;
-    align-items:stretch;
-    gap:12px;
-  }
-  .btn{
-    width:100%;
-    justify-content:center;
-    min-height:52px;
-  }
-  .hint{
-    max-width:none;
-    text-align:center;
-  }
-  .mat{
-    padding:0 0 16px 16px;
-  }
-  .mat::before{
-    top:16px;
-    right:16px;
-  }
-  .mat::after{
-    width:52px;
-    height:52px;
-    right:-5px;
-    top:-18px;
-  }
-  .progress{
-    left:16px;
-    right:16px;
-  }
-  .meta{margin-top:14px}
-  .controls .count{display:none}
-  footer{
-    flex-direction:column;
-    align-items:stretch;
-    gap:6px;
-    padding-top:13px;
-  }
-  footer nav{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-  }
-  footer nav a{
-    justify-content:center;
-    min-height:42px;
-    font-size:.58rem;
-    padding:0 5px;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -640,303 +329,317 @@ footer nav a{
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="page">
-  <header>
-    <a class="mark" href="https://www.joychatterjee.art/">Joy Chatterjee<span>Hyper-realist portrait artist</span></a>
-    <div class="tools">
-      <span class="soon">Full portfolio arriving soon</span>
+<div class="cursor cursor-dot"></div>
+<div class="cursor cursor-ring"></div>
 
-      <!-- Ambient exhibition music -->
-      <button class="music" type="button" aria-label="Turn exhibition music on" aria-pressed="false">
-        <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span class="music-text">Sound</span>
-      </button>
+<main id="site">
+  <div class="noise" aria-hidden="true"></div>
 
-      <button class="theme" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
-      </button>
+  <header class="floating-ui">
+    <a class="wordmark" href="#top" aria-label="Joy Chatterjee home">
+      <span>JOY CHATTERJEE</span>
+      <small>ARTIST / INDIA · ITALY</small>
+    </a>
+
+    <div class="archive-code">
+      <span>JC—01</span>
+      <span>24° 49′ N / 88° 12′ E</span>
     </div>
+
+    <button class="sound-control" type="button" aria-label="Turn exhibition sound on" aria-pressed="false">
+      <span class="sound-bars"><i></i><i></i><i></i><i></i></span>
+      <span>SOUND</span>
+    </button>
+
+    <button class="menu-trigger" type="button" aria-expanded="false" aria-controls="overlay-nav">
+      <span>INDEX</span><i></i><i></i>
+    </button>
   </header>
 
-  <main class="hero">
-    <div>
-      <h1 class="reveal">A portrait to keep for generations.</h1>
-      <p class="lede reveal">Painted by hand from a single photograph, in such detail that people mistake it for one.</p>
-      <p class="proof reveal">Presented to <b>Kapil Dev, Sourav Ganguly and Shah Rukh Khan</b>. Held in the Boroline House collection and by private collectors in India and Italy.</p>
-      <div class="cta reveal">
-        <a class="btn" href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20commission%20a%20portrait." target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z"/></svg>
-          Commission a portrait
-        </a>
-        <span class="hint">Send a photograph on WhatsApp. Joy replies personally.</span>
+  <nav id="overlay-nav" class="overlay-nav" aria-hidden="true">
+    <div class="nav-number">00—05</div>
+    <div class="nav-links">
+      <a href="#work"><span>01</span>WORK</a>
+      <a href="#exhibitions"><span>02</span>EXHIBITIONS</a>
+      <a href="#portraits"><span>03</span>PORTRAITS</a>
+      <a href="#about"><span>04</span>ABOUT</a>
+      <a href="#contact"><span>05</span>CONTACT</a>
+    </div>
+    <div class="nav-footer">DIGITAL ARCHIVE / JOY CHATTERJEE</div>
+  </nav>
+
+  <section id="top" class="hero-installation">
+    <div class="hero-index">EXHIBITION 01<br><span>PORTRAIT / 2026</span></div>
+
+    <div class="hero-type" aria-label="Joy Chatterjee">
+      <div class="hero-line">JOY</div>
+      <div class="hero-line hero-line-offset">CHATTERJEE</div>
+    </div>
+
+    <div class="hero-image-wrap" id="heroArtwork">
+      <div class="hero-image-mask">
+        <img src="work-01.jpg" alt="A portrait of strength, movement, and quiet presence. Silverina captures the character of the horse through careful observation, layered brushwork, and an attention to light, texture, and expression. The familiar landscape and architecture in the background further place the subject within a sense of memory and place.">
+      </div>
+      <div class="hero-red-disc" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-caption">
+      <span>SELECTED WORK / 001</span>
+      <strong>Silverina</strong>
+      <span>Oil on Canvas</span>
+    </div>
+
+    <div class="hero-spec">
+      <span>HAND PAINTED</span>
+      <span>HYPER-REALISM</span>
+      <span>ONE PHOTOGRAPH → ONE PAINTING</span>
+    </div>
+
+    <div class="scroll-mark"><span></span> SCROLL TO ENTER</div>
+  </section>
+
+  <section id="work" class="manifesto-section">
+    <div class="section-index">01 / WORK</div>
+    <div class="manifesto">
+      <p class="eyebrow">OBSERVATION / DETAIL / MEMORY</p>
+      <h2>THE FACE<br>BECOMES<br><em>ARCHIVE.</em></h2>
+    </div>
+    <div class="manifesto-note">
+      <span>JC / STATEMENT</span>
+      <p>Over two decades of painting faces by hand. Every portrait begins with observation — expression, character and the details that make a person unmistakably themselves.</p>
+    </div>
+  </section>
+
+  <section id="exhibitions" class="exhibition-section">
+    <div class="section-index">02 / EXHIBITION</div>
+    <div class="exhibition-header">
+      <span>SELECTED PORTRAITS</span>
+      <span>01—05 / DRAG OR SCROLL</span>
+    </div>
+
+    <div class="horizontal-gallery" tabindex="0" aria-label="Portrait exhibition">
+      <div class="gallery-track">
+        <article class="art-slide is-active" data-index="0" data-title="Silverina" data-meta="Oil on Canvas">
+  <img src="work-01.jpg" alt="A portrait of strength, movement, and quiet presence. Silverina captures the character of the horse through careful observation, layered brushwork, and an attention to light, texture, and expression. The familiar landscape and architecture in the background further place the subject within a sense of memory and place." loading="eager" decoding="async">
+</article><article class="art-slide" data-index="1" data-title="Silverina — The Making" data-meta="Painted by hand, Silverina is a study in observation and detail.">
+  <img src="work-02.jpg" alt="The photograph records a moment from the painting process, while the finished canvas reveals the accumulated work of patient observation, layering, and brushwork." loading="lazy" decoding="async">
+</article><article class="art-slide" data-index="2" data-title="Charles Burton Barber — A Special Pleader" data-meta="Replica · Oil on canvas">
+  <img src="work-03.jpg" alt="A Special Pleader was reproduced as a colour print and quickly became the most popular selling print of 1983–1984" loading="lazy" decoding="async">
+</article><article class="art-slide" data-index="3" data-title="Jamshedji Tata" data-meta="Oil on canvas">
+  <img src="work-04.jpg" alt="A meticulously hand-painted portrait, capturing the dignity, expression, and timeless presence of a distinguished historical figure." loading="lazy" decoding="async">
+</article><article class="art-slide" data-index="4" data-title="A Moment of Recognition" data-meta="Portrait presentation">
+  <img src="work-05.jpg" alt="A memorable moment of appreciation for the portrait, presented before an audience as a celebration of artistic craftsmanship." loading="lazy" decoding="async">
+</article>
       </div>
     </div>
 
-    <figure class="work" aria-roledescription="carousel" aria-label="Selected portraits">
-      <div class="mat">
-        <div class="frame">
-          <!-- SLIDE 01: image file work-01.jpg -->
-          <div class="slide is-active" aria-hidden="false">
-            <span class="empty">Image 01 will appear here</span>
-            <img src="work-01.jpg" alt="A portrait of strength, movement, and quiet presence. Silverina captures the character of the horse through careful observation, layered brushwork, and an attention to light, texture, and expression. The familiar landscape and architecture in the background further place the subject within a sense of memory and place." loading="eager" decoding="async" onerror="this.remove()">
-          </div>
-          <!-- SLIDE 02: image file work-02.jpg -->
-          <div class="slide" aria-hidden="true">
-            <span class="empty">Image 02 will appear here</span>
-            <img src="work-02.jpg" alt="The photograph records a moment from the painting process, while the finished canvas reveals the accumulated work of patient observation, layering, and brushwork." loading="lazy" decoding="async" onerror="this.remove()">
-          </div>
-                    <!-- SLIDE 03: image file work-03.jpg -->
-          <div class="slide" aria-hidden="true">
-            <span class="empty">Image 03 will appear here</span>
-            <img src="work-03.jpg" alt="A Special Pleader was reproduced as a colour print and quickly became the most popular selling print of 1983–1984" loading="lazy" decoding="async" onerror="this.remove()">
-          </div>
-                    <!-- SLIDE 04 image file work-04.jpg -->
-          <div class="slide" aria-hidden="true">
-            <span class="empty">Image 04 will appear here</span>
-            <img src="work-04.jpg" alt="A meticulously hand-painted portrait, capturing the dignity, expression, and timeless presence of a distinguished historical figure." loading="lazy" decoding="async" onerror="this.remove()">
-          </div>
-                    <!-- SLIDE 05: image file work-05.jpg -->
-          <div class="slide" aria-hidden="true">
-            <span class="empty">Image 05 will appear here</span>
-            <img src="work-05.jpg" alt="A memorable moment of appreciation for the portrait, presented before an audience as a celebration of artistic craftsmanship." loading="lazy" decoding="async" onerror="this.remove()">
-          </div>
-        </div>
-        <span class="progress" aria-hidden="true"><i></i></span>
+    <div class="gallery-interface">
+      <div class="gallery-label">
+        <span class="gallery-current">01</span>
+        <span class="gallery-total">05</span>
+        <b class="gallery-title">Silverina</b>
+        <small class="gallery-meta">Oil on Canvas</small>
       </div>
-      <figcaption class="meta">
-        <span class="labels" aria-live="polite">
-          <!-- CAPTION 01 -->
-          <span class="label is-active"><b>Silverina</b><span>Oil on Canvas</span></span>
-          <!-- CAPTION 02 -->
-          <span class="label"><b>Silverina — The Making</b><span>Painted by hand, Silverina is a study in observation and detail.</span></span>
-          <!-- CAPTION 03 -->
-          <span class="label"><b>Charles Burton Barber - A Special Pleader</b><span>Replica, painted 25 years ago.! Oil on canvas.</span></span>
-          <!-- CAPTION 04 -->
-          <span class="label"><b>Jamshedji Tata</b><span>A Portrait of Strength and Character, Oil on canvas.</span></span>
-          <!-- CAPTION 05 -->
-          <span class="label"><b>A Moment of Recognition</b><span>A memorable moment of appreciation for the portrait, presented before an audience as a celebration of artistic craftsmanship.</span></span>
-        </span>
-        <span class="controls">
-          <span class="count"><b class="now">01</b> / 05</span>
-          <button class="ctl prev" type="button" aria-label="Previous portrait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
-          <button class="ctl play" type="button" aria-label="Pause slideshow"><svg class="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 6.5v11M15 6.5v11"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 6.5v11l9-5.5Z"/></svg></button>
-          <button class="ctl next" type="button" aria-label="Next portrait"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
-        </span>
-      </figcaption>
-    </figure>
-  </main>
+      <div class="gallery-arrows">
+        <button class="gallery-prev" type="button" aria-label="Previous artwork">←</button>
+        <button class="gallery-next" type="button" aria-label="Next artwork">→</button>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <span class="status"><span class="dot" aria-hidden="true"></span>Now accepting commissions</span>
-    <nav aria-label="Contact">
-      <!-- Replace 917478743149 with Joy's WhatsApp number: country code + number, digits only -->
-      <a href="https://wa.me/917478743149" target="_blank" rel="noopener">WhatsApp</a>
+  <section id="portraits" class="portrait-takeover">
+    <div class="takeover-image"><img src="work-04.jpg" alt="Jamshedji Tata"></div>
+    <div class="takeover-title">PORTRAIT<br><span>AS PRESENCE</span></div>
+    <div class="takeover-data">04 / 05<br>OIL ON CANVAS<br>PRIVATE COLLECTION</div>
+    <div class="takeover-cross">×</div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="section-index">04 / ABOUT</div>
+    <div class="about-title">A PAINTER<br>LOOKING<br><span>BACK.</span></div>
+    <div class="about-copy">
+      <p>Joy Chatterjee's practice is rooted in patient observation and hand-painted hyper-realism. The photograph is only the beginning; the painting is where the memory becomes physical.</p>
+      <div class="about-facts">
+        <span>20+ YEARS</span>
+        <span>INDIA / ITALY</span>
+        <span>PRIVATE COLLECTIONS</span>
+        <span>PORTRAITURE</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="section-index">05 / CONTACT</div>
+    <div class="contact-big">COMMISSION<br><span>A PORTRAIT.</span></div>
+    <a class="magnetic-button" href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20commission%20a%20portrait." target="_blank" rel="noopener">
+      <span>START A CONVERSATION</span><b>↗</b>
+    </a>
+    <div class="contact-details">
       <a href="mailto:joychatterjee.art@gmail.com">studio@joychatterjee.art</a>
-      <a href="https://instagram.com/joychatterjee.art" target="_blank" rel="noopener">Instagram</a>
-    </nav>
+      <a href="https://instagram.com/joychatterjee.art" target="_blank" rel="noopener">INSTAGRAM</a>
+    </div>
+  </section>
+
+  <footer class="archive-footer">
+    <span>JOY CHATTERJEE © 2026</span>
+    <span>NOW ACCEPTING COMMISSIONS</span>
+    <span>JC—END / DIGITAL EXHIBITION</span>
   </footer>
-</div>
+</main>
 
 <script>
-/* Exhibition music: user-initiated, persistent for the session, fades smoothly */
-(function(){
-  var audio=document.getElementById('exhibitionMusic'),
-      btn=document.querySelector('.music');
-  if(!audio||!btn) return;
+(() => {
+  const root = document.documentElement;
+  const menu = document.querySelector('.menu-trigger');
+  const nav = document.querySelector('#overlay-nav');
+  const sound = document.querySelector('.sound-control');
+  const audio = document.querySelector('#exhibitionMusic');
 
-  var targetVolume=.18, fadeTimer=null;
+  menu.addEventListener('click', () => {
+    const open = menu.getAttribute('aria-expanded') === 'true';
+    menu.setAttribute('aria-expanded', String(!open));
+    nav.setAttribute('aria-hidden', String(open));
+    nav.classList.toggle('is-open', !open);
+    document.body.classList.toggle('nav-open', !open);
+  });
 
-  audio.volume=0;
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.setAttribute('aria-expanded','false');
+    nav.setAttribute('aria-hidden','true');
+    nav.classList.remove('is-open');
+    document.body.classList.remove('nav-open');
+  }));
 
-  function setLabel(playing){
-    btn.classList.toggle('is-playing',playing);
-    btn.setAttribute('aria-pressed',String(playing));
-    btn.setAttribute('aria-label',playing?'Turn exhibition music off':'Turn exhibition music on');
-    btn.querySelector('.music-text').textContent=playing?'Sound on':'Sound';
+  let fade;
+  function musicState(on) {
+    sound.classList.toggle('is-playing', on);
+    sound.setAttribute('aria-pressed', String(on));
+    sound.setAttribute('aria-label', on ? 'Turn exhibition sound off' : 'Turn exhibition sound on');
   }
-
-  function fadeTo(target,done){
-    clearInterval(fadeTimer);
-    var start=audio.volume, distance=target-start, steps=18, n=0;
-    fadeTimer=setInterval(function(){
+  function fadeVolume(target, done) {
+    clearInterval(fade);
+    const start = audio.volume, delta = target - start;
+    let n = 0;
+    fade = setInterval(() => {
       n++;
-      audio.volume=Math.max(0,Math.min(1,start+distance*(n/steps)));
-      if(n>=steps){
-        clearInterval(fadeTimer);
-        fadeTimer=null;
-        if(done) done();
+      audio.volume = Math.max(0, Math.min(1, start + delta * n / 18));
+      if(n >= 18) { clearInterval(fade); if(done) done(); }
+    }, 35);
+  }
+  audio.volume = 0;
+  sound.addEventListener('click', () => {
+    if(audio.paused) {
+      audio.play().then(() => { fadeVolume(.16); musicState(true); }).catch(() => musicState(false));
+    } else {
+      fadeVolume(0, () => audio.pause());
+      musicState(false);
+    }
+  });
+
+  // Cursor: restrained, only on fine pointers.
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  if(window.matchMedia('(pointer:fine)').matches) {
+    let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+    window.addEventListener('pointermove', e => { mx=e.clientX; my=e.clientY; dot.style.transform=`translate3d(${mx}px,${my}px,0)`; });
+    const loop=()=>{ rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.transform=`translate3d(${rx}px,${ry}px,0)`; requestAnimationFrame(loop); };
+    loop();
+    document.querySelectorAll('a,button,.art-slide').forEach(el => {
+      el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-large'));
+      el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-large'));
+    });
+  } else {
+    dot.remove(); ring.remove();
+  }
+
+  // Hero parallax / typography drift.
+  const hero = document.querySelector('.hero-installation');
+  const heroImg = document.querySelector('.hero-image-wrap');
+  const heroType = document.querySelector('.hero-type');
+  let ticking=false;
+  function parallax() {
+    if(ticking) return; ticking=true;
+    requestAnimationFrame(()=>{
+      const y=scrollY;
+      if(y < innerHeight*1.3) {
+        heroImg.style.transform=`translate3d(0,${y*.12}px,0) scale(${1 + y*.00012})`;
+        heroType.style.transform=`translate3d(0,${-y*.035}px,0)`;
       }
-    },35);
-  }
-
-  function startMusic(){
-    audio.play().then(function(){
-      fadeTo(targetVolume);
-      setLabel(true);
-      try{sessionStorage.setItem('exhibitionMusic','on');}catch(e){}
-    }).catch(function(){
-      setLabel(false);
+      ticking=false;
     });
   }
+  addEventListener('scroll',parallax,{passive:true});
 
-  function stopMusic(){
-    fadeTo(0,function(){audio.pause();});
-    setLabel(false);
-    try{sessionStorage.setItem('exhibitionMusic','off');}catch(e){}
-  }
-
-  btn.addEventListener('click',function(){
-    if(audio.paused) startMusic();
-    else stopMusic();
-  });
-
-  audio.addEventListener('ended',function(){
-    setLabel(false);
-  });
-
-  /* Never force sound on page load: browsers require user interaction.
-     Restore the visual preference only if it was explicitly enabled earlier
-     in this browser session, then wait for the next interaction to start it. */
-  var remembered=false;
-  try{remembered=sessionStorage.getItem('exhibitionMusic')==='on';}catch(e){}
-  if(remembered){
-    setLabel(false);
-  }else{
-    setLabel(false);
-  }
-
-  /* Start only after a deliberate user gesture if the session preference was on. */
-  if(remembered){
-    var resumeOnce=function(){
-      startMusic();
-      window.removeEventListener('pointerdown',resumeOnce);
-      window.removeEventListener('keydown',resumeOnce);
-    };
-    window.addEventListener('pointerdown',resumeOnce,{once:true});
-    window.addEventListener('keydown',resumeOnce,{once:true});
-  }
-})();
-</script>
-<script>
-(function(){
-  var root=document.documentElement, btn=document.querySelector('.theme'),
-      meta=document.querySelector('meta[name="theme-color"]'),
-      mq=window.matchMedia('(prefers-color-scheme: dark)');
-  function current(){var t=root.getAttribute('data-theme');return t?t:(mq.matches?'dark':'light');}
-  function sync(){
-    var dark=current()==='dark';
-    btn.setAttribute('aria-pressed',String(dark));
-    btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
-    meta.setAttribute('content',dark?'#0E0E0E':'#FFFFFF');
-  }
-  btn.addEventListener('click',function(){
-    var next=current()==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next);
-    try{localStorage.setItem('theme',next);}catch(e){}
-    sync();
-  });
-  if(mq.addEventListener)mq.addEventListener('change',sync);
-  sync();
-})();
-</script>
-<script>
-/* Gallery: autoplay, swipe, arrows */
-(function(){
-  var work=document.querySelector('.work'); if(!work) return;
-  var slides=[].slice.call(work.querySelectorAll('.slide')),
-      labels=[].slice.call(work.querySelectorAll('.label')),
-      now=work.querySelector('.now'), bar=work.querySelector('.progress i'),
-      playBtn=work.querySelector('.play'),
-      DURATION=6000, i=0, timer=null, start=0, left=DURATION, hover=false,
-      calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-      paused=calm; /* no autoplay for people who prefer less motion */
-  var total=slides.length;
-  work.querySelector('.count').lastChild.nodeValue=' / '+String(total).padStart(2,'0');
-
-  function go(n,dir){
-    n=(n+total)%total; if(n===i) return;
-    var from=i; i=n;
-    slides.forEach(function(s,k){
-      s.classList.remove('is-active','is-leaving','fwd','back');
-      s.setAttribute('aria-hidden',k===i?'false':'true');
+  // Magnetic contact button.
+  document.querySelectorAll('.magnetic-button').forEach(btn => {
+    btn.addEventListener('pointermove',e=>{
+      const r=btn.getBoundingClientRect();
+      const x=(e.clientX-r.left-r.width/2)*.18;
+      const y=(e.clientY-r.top-r.height/2)*.18;
+      btn.style.transform=`translate(${x}px,${y}px)`;
     });
-    slides[from].classList.add('is-leaving');
-    void slides[i].offsetWidth;
-    slides[i].classList.add('is-active',dir<0?'back':'fwd');
-    labels.forEach(function(l){l.classList.remove('is-active','is-out','anim');});
-    labels[from].classList.add('is-out');
-    labels[i].classList.add('is-active','anim');
-    now.textContent=String(i+1).padStart(2,'0');
-    restart();
-  }
-  function tick(){
-    if(paused||hover){return;}
-    var p=Math.min(1,(DURATION-left+(Date.now()-start))/DURATION);
-    bar.style.transform='scaleX('+p+')';
-    if(p>=1){go(i+1,1);return;}
-    timer=requestAnimationFrame(tick);
-  }
-  function restart(){cancelAnimationFrame(timer);left=DURATION;start=Date.now();bar.style.transform='scaleX(0)';timer=requestAnimationFrame(tick);}
-  function hold(){ if(timer){cancelAnimationFrame(timer);timer=null;} left=Math.max(0,left-(Date.now()-start)); }
-  function resume(){ start=Date.now(); cancelAnimationFrame(timer); timer=requestAnimationFrame(tick); }
-  function setPaused(p){
-    paused=p; work.classList.toggle('paused',p);
-    playBtn.setAttribute('aria-label',p?'Play slideshow':'Pause slideshow');
-    p?hold():resume();
-  }
-
-  work.querySelector('.next').addEventListener('click',function(){go(i+1,1);});
-  work.querySelector('.prev').addEventListener('click',function(){go(i-1,-1);});
-  playBtn.addEventListener('click',function(){setPaused(!paused);});
-  work.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight'){go(i+1,1);} else if(e.key==='ArrowLeft'){go(i-1,-1);}
+    btn.addEventListener('pointerleave',()=>btn.style.transform='');
   });
-  work.addEventListener('mouseenter',function(){hover=true;hold();});
-  work.addEventListener('mouseleave',function(){hover=false;if(!paused)resume();});
-  document.addEventListener('visibilitychange',function(){document.hidden?hold():(!paused&&!hover&&resume());});
 
-  /* Swipe on phones */
-  var frame=work.querySelector('.frame'), x0=null;
-  frame.addEventListener('pointerdown',function(e){x0=e.clientX;});
-  frame.addEventListener('pointerup',function(e){
-    if(x0===null)return; var dx=e.clientX-x0; x0=null;
-    if(Math.abs(dx)>40){dx<0?go(i+1,1):go(i-1,-1);}
+  // Horizontal exhibition gallery with wheel-to-horizontal conversion.
+  const gallery=document.querySelector('.horizontal-gallery');
+  const track=document.querySelector('.gallery-track');
+  const cards=[...document.querySelectorAll('.art-slide')];
+  const current=document.querySelector('.gallery-current');
+  const title=document.querySelector('.gallery-title');
+  const meta=document.querySelector('.gallery-meta');
+  let index=0;
+  function updateGallery(n) {
+    index=(n+cards.length)%cards.length;
+    const card=cards[index];
+    track.style.transform=`translateX(calc(${-index} * min(72vw, 760px)))`;
+    cards.forEach((c,i)=>c.classList.toggle('is-focused',i===index));
+    current.textContent=String(index+1).padStart(2,'0');
+    title.textContent=card.dataset.title;
+    meta.textContent=card.dataset.meta;
+  }
+  gallery.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)) {
+      e.preventDefault();
+      gallery.scrollLeft += e.deltaY;
+    }
+  },{passive:false});
+  document.querySelector('.gallery-next').addEventListener('click',()=>updateGallery(index+1));
+  document.querySelector('.gallery-prev').addEventListener('click',()=>updateGallery(index-1));
+  gallery.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight') updateGallery(index+1);
+    if(e.key==='ArrowLeft') updateGallery(index-1);
   });
-  frame.addEventListener('pointercancel',function(){x0=null;});
+  updateGallery(0);
 
-  setPaused(paused); restart();
-})();
-</script>
-<script>
-/* Each painting fills its column, whole and uncropped */
-(function(){
-  var work=document.querySelector('.work'); if(!work) return;
-  var hero=document.querySelector('.hero'), text=hero.firstElementChild,
-      mat=work.querySelector('.mat'), frame=work.querySelector('.frame'),
-      meta=work.querySelector('.meta'), slides=[].slice.call(work.querySelectorAll('.slide'));
-  function ratio(slide){
-    var img=slide.querySelector('img');
-    return (img && img.naturalWidth) ? img.naturalWidth/img.naturalHeight : 1;
-  }
-  var MIN_CAPTION=360; /* caption row never narrower than this */
-  function fit(){
-    var active=work.querySelector('.slide.is-active')||slides[0];
-    var padR=parseFloat(getComputedStyle(mat).paddingRight);
-    var colW=work.clientWidth, availW=colW-padR, r=ratio(active);
-    var stacked=getComputedStyle(hero).gridTemplateColumns.trim().split(/\s+/).length===1;
-    /* fill the column; never taller than most of the screen, so the whole painting is always visible */
-    var maxH=stacked?window.innerHeight*0.7:Math.max(420,window.innerHeight-260);
-    var w=Math.min(availW,maxH*r), h=w/r;
-    frame.style.setProperty('--fw',Math.round(w)+'px');
-    frame.style.setProperty('--fh',Math.round(h)+'px');
-    meta.style.setProperty('--mw',Math.round(Math.min(colW,Math.max(w+padR,MIN_CAPTION)))+'px');
-  }
-  slides.forEach(function(s){var img=s.querySelector('img'); if(img&&!img.complete)img.addEventListener('load',fit);});
-  new MutationObserver(fit).observe(frame,{subtree:true,attributes:true,attributeFilter:['class']});
-  window.addEventListener('resize',fit);
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
-  fit();
+  // Artwork click -> fullscreen archive viewer.
+  const viewer=document.createElement('div');
+  viewer.className='art-viewer';
+  viewer.innerHTML=`<button class="viewer-close" aria-label="Close artwork">×</button>
+    <div class="viewer-image"></div>
+    <div class="viewer-data"><span class="v-title"></span><span class="v-meta"></span></div>`;
+  document.body.appendChild(viewer);
+  const vImage=viewer.querySelector('.viewer-image'), vTitle=viewer.querySelector('.v-title'), vMeta=viewer.querySelector('.v-meta');
+  cards.forEach(card=>card.addEventListener('click',()=>{
+    const img=card.querySelector('img');
+    vImage.innerHTML='';
+    const clone=img.cloneNode();
+    vImage.appendChild(clone);
+    vTitle.textContent=card.dataset.title;
+    vMeta.textContent=`${String(+card.dataset.index+1).padStart(2,'0')} / 05 · ${card.dataset.meta}`;
+    viewer.classList.add('is-open');
+    document.body.classList.add('viewer-open');
+  }));
+  function closeViewer(){viewer.classList.remove('is-open');document.body.classList.remove('viewer-open');}
+  viewer.querySelector('.viewer-close').addEventListener('click',closeViewer);
+  viewer.addEventListener('click',e=>{if(e.target===viewer)closeViewer()});
+  addEventListener('keydown',e=>{if(e.key==='Escape')closeViewer()});
+
+  // Subtle image reveal as sections enter viewport.
+  const observer=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('in-view');
+  }),{threshold:.12});
+  document.querySelectorAll('section').forEach(s=>observer.observe(s));
 })();
 </script>
 </body>
