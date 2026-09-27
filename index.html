@@ -1,744 +1,2290 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-4F3MFHFVDE');
   </script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
   <meta name="theme-color" content="#f5f3ee">
-  <title>Joy Chatterjee – Hyper-realist Portrait Artist</title>
-  <meta name="description" content="Hand-painted hyper-realist portraits by Joy Chatterjee, from a single photograph. Now accepting commissions.">
-  <meta property="og:title" content="Joy Chatterjee – Hyper-realist Portrait Artist">
-  <meta property="og:description" content="A portrait to keep for generations. Painted by hand, in such detail it's mistaken for a photograph.">
+
+  <title>Joy Chatterjee — Hyper-realistic Portrait Artist</title>
+
+  <meta
+    name="description"
+    content="Hand-painted hyper-realistic portraits by Joy Chatterjee. Portraits painted from observation, with extraordinary attention to detail."
+  >
+
+  <meta property="og:title" content="Joy Chatterjee — Hyper-realistic Portrait Artist">
+  <meta
+    property="og:description"
+    content="A portrait to keep for generations. Painted by hand."
+  >
   <meta property="og:image" content="work-01.jpg">
 
-  <script>
-    (function(){
-      try{
-        var t=localStorage.getItem('theme');
-        if(t==='light'||t==='dark') document.documentElement.setAttribute('data-theme',t);
-      }catch(e){}
-    })();
-  </script>
-
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --wall:#f5f3ee;
-  --ink:#11110f;
-  --muted:#68645c;
-  --faint:#8c887f;
-  --line:rgba(17,17,15,.17);
-  --block:#e8e4db;
-  --dark:#11110f;
-  --dark-text:#f3f0e9;
-  --serif:"Playfair Display",Georgia,serif;
-  --sans:"Inter","Helvetica Neue",Arial,sans-serif;
-  --mono:"DM Mono",monospace;
-  --ease:cubic-bezier(.19,1,.22,1);
-  color-scheme:light;
-}
-:root[data-theme="dark"]{
-  --wall:#10100f;
-  --ink:#f2efe8;
-  --muted:#aaa59b;
-  --faint:#77736b;
-  --line:rgba(242,239,232,.18);
-  --block:#1d1c19;
-  --dark:#f2efe8;
-  --dark-text:#10100f;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--wall);color:var(--ink);
-  font:400 15px/1.6 var(--sans);
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-  transition:background-color .45s var(--ease),color .45s var(--ease);
-}
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;
-  opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-body.viewer-open{overflow:hidden}
-a{color:inherit}
-button{font:inherit;color:inherit}
-img{display:block;max-width:100%}
-::selection{background:var(--ink);color:var(--wall)}
-:focus-visible{outline:1px solid var(--ink);outline-offset:5px}
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  >
 
-.site-header{
-  position:fixed;z-index:60;top:0;left:0;right:0;
-  height:76px;padding:0 clamp(20px,4vw,60px);
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  pointer-events:none;
-  color:var(--ink);
-}
-.site-header>*{pointer-events:auto}
-.brand{
-  font-family:var(--serif);font-size:16px;
-  text-decoration:none;letter-spacing:-.02em;
-}
-.brand small{
-  font-family:var(--mono);font-size:8px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--muted);margin-left:9px;
-}
-.header-center{
-  font:8px var(--mono);letter-spacing:.17em;text-transform:uppercase;color:var(--muted);
-}
-.header-nav{
-  justify-self:end;display:flex;align-items:center;gap:22px;
-  font:8px var(--mono);letter-spacing:.13em;text-transform:uppercase;
-}
-.header-nav a{text-decoration:none;position:relative}
-.header-nav a::after{
-  content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;
-  background:currentColor;transform:scaleX(0);transform-origin:right;
-  transition:transform .45s var(--ease);
-}
-.header-nav a:hover::after{transform:scaleX(1);transform-origin:left}
-.theme,.sound{
-  appearance:none;border:0;background:none;padding:0;cursor:pointer;
-  display:flex;align-items:center;gap:7px;
-  font:8px var(--mono);letter-spacing:.13em;text-transform:uppercase;
-}
-.control-dot{
-  width:6px;height:6px;border:1px solid currentColor;border-radius:50%;
-}
-.sound.playing .control-dot{background:currentColor}
+  <style>
 
-main{position:relative}
+    /* =========================================================
+       FOUNDATION
+    ========================================================= */
 
-.hero{
-  position:relative;height:100svh;min-height:650px;
-  overflow:hidden;background:#d8d3c9;
-}
-.hero-media{
-  position:absolute;inset:0;display:flex;justify-content:center;overflow:hidden;
-}
-.hero-media img{
-  width:min(76vw,1100px);height:100%;
-  object-fit:cover;object-position:center 25%;
-  transform:scale(1.035);
-  filter:saturate(.84) contrast(1.03);
-  transition:transform 1.6s var(--ease);
-}
-.hero::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.48),transparent 48%);
-  pointer-events:none;
-}
-.hero-meta{
-  position:absolute;z-index:2;left:clamp(20px,4vw,60px);top:112px;
-  color:#fff;font:8px/1.9 var(--mono);letter-spacing:.12em;text-transform:uppercase;
-}
-.hero-note{
-  position:absolute;z-index:2;right:clamp(20px,4vw,60px);top:112px;
-  max-width:190px;color:#fff;font:italic 13px/1.45 var(--serif);
-}
-.hero-title{
-  position:absolute;z-index:3;left:clamp(20px,4vw,60px);right:clamp(20px,4vw,60px);
-  bottom:5vh;color:#fff;pointer-events:none;
-}
-.hero-title div{
-  font:600 clamp(65px,12.5vw,185px)/.77 var(--sans);
-  letter-spacing:-.085em;text-transform:uppercase;
-}
-.hero-title div+div{margin-left:8vw}
+    :root {
+      --wall: #f5f3ee;
+      --ink: #11110f;
+      --muted: #77736b;
 
-.intro{
-  padding:17vh clamp(25px,8vw,130px) 19vh;
-  display:grid;grid-template-columns:1fr 1.25fr;gap:8vw;
-  border-bottom:1px solid var(--line);
-}
-.kicker{
-  font:8px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
-}
-.intro h1{
-  margin:22px 0 30px;max-width:850px;
-  font:400 clamp(38px,5.8vw,84px)/.98 var(--serif);
-  letter-spacing:-.055em;
-}
-.intro-copy{align-self:end;max-width:500px}
-.intro-copy p{font-size:17px;line-height:1.62;margin:0 0 28px}
-.note{
-  color:var(--muted);font:8px/1.8 var(--mono);
-  letter-spacing:.08em;text-transform:uppercase;
-}
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+      --mono: "DM Mono", monospace;
 
-.works{padding:9vh 0 13vh;overflow:hidden}
-.section-head{
-  margin:0 clamp(20px,4vw,60px) 7vh;
-  padding-bottom:14px;border-bottom:1px solid var(--line);
-  display:flex;justify-content:space-between;align-items:baseline;
-}
-.section-head h2{
-  margin:0;font:400 clamp(36px,5vw,72px)/1 var(--serif);
-  letter-spacing:-.055em;
-}
-.section-index{font:8px var(--mono);letter-spacing:.13em;color:var(--muted);text-transform:uppercase}
+      --ease: cubic-bezier(.19,1,.22,1);
 
-.gallery-track{
-  display:flex;width:max-content;gap:4vw;
-  padding:0 4vw 3vh;cursor:grab;
-}
-.gallery-track.dragging{cursor:grabbing}
-.artwork{
-  width:min(43vw,610px);flex:none;
-}
-.artwork:nth-child(2){margin-top:12vh}
-.artwork:nth-child(3){margin-top:-1vh}
-.artwork:nth-child(4){margin-top:16vh}
-.artwork:nth-child(5){margin-top:5vh}
-.art-image{
-  position:relative;overflow:hidden;background:var(--block);cursor:pointer;
-}
-.art-image::after{
-  content:"VIEW";position:absolute;right:13px;bottom:11px;
-  padding:5px 7px;border:1px solid rgba(255,255,255,.65);
-  color:#fff;font:7px var(--mono);letter-spacing:.13em;
-  opacity:0;transform:translateY(8px);
-  transition:.5s var(--ease);
-}
-.art-image:hover::after{opacity:1;transform:none}
-.art-image img{
-  width:100%;aspect-ratio:4/5;object-fit:cover;
-  transition:transform 1.25s var(--ease),filter 1.25s var(--ease);
-}
-.art-image:hover img{transform:scale(1.035);filter:contrast(1.04)}
-.art-caption{
-  display:grid;grid-template-columns:1fr auto;gap:15px;
-  padding-top:12px;margin-top:9px;border-top:1px solid var(--line);
-}
-.art-name{font:400 18px var(--serif)}
-.art-meta{
-  text-align:right;font:7px/1.7 var(--mono);
-  color:var(--muted);letter-spacing:.08em;text-transform:uppercase;
-}
-.drag-note{
-  margin:2vh 4vw 0;display:flex;align-items:center;gap:12px;
-  color:var(--muted);font:7px var(--mono);letter-spacing:.14em;text-transform:uppercase;
-}
-.drag-line{width:65px;height:1px;background:var(--line)}
+      color-scheme: light;
+    }
 
-.dark-section{
-  position:relative;background:var(--dark);color:var(--dark-text);
-  min-height:100svh;padding:11vh 4vw 13vh;overflow:hidden;
-  display:grid;grid-template-columns:minmax(0,42%) minmax(0,58%);align-items:center;
-}
-.dark-image{width:100%;max-height:82vh;object-fit:cover}
-.dark-copy{padding:7vw;position:relative;z-index:2}
-.dark-copy .kicker{color:#9e998f}
-.dark-copy h2{
-  margin:25px 0 35px;
-  font:400 clamp(46px,7vw,105px)/.91 var(--serif);
-  letter-spacing:-.06em;
-}
-.dark-copy p{max-width:400px;color:#c5c0b6;font-size:15px;line-height:1.7}
-.dark-mark{
-  position:absolute;right:-2vw;bottom:-5vw;
-  font:600 25vw/.7 var(--sans);letter-spacing:-.1em;
-  color:rgba(255,255,255,.035);pointer-events:none;
-}
+    :root[data-theme="dark"] {
+      --wall: #0f0f0e;
+      --ink: #f2efe8;
+      --muted: #9a968d;
 
-.archive{
-  padding:15vh clamp(25px,8vw,130px);
-}
-.archive-grid{
-  margin-top:8vh;display:grid;grid-template-columns:1fr 1fr;gap:0 8vw;
-}
-.archive-row{
-  display:grid;grid-template-columns:45px 1fr auto;gap:14px;
-  align-items:baseline;padding:18px 0;border-top:1px solid var(--line);
-}
-.archive-row:last-child{border-bottom:1px solid var(--line)}
-.archive-no,.archive-kind{
-  font:7px var(--mono);color:var(--muted);
-  letter-spacing:.08em;text-transform:uppercase;
-}
-.archive-name{font:400 18px var(--serif)}
+      color-scheme: dark;
+    }
 
-.about{
-  display:grid;grid-template-columns:1fr 1fr;
-  min-height:90vh;border-top:1px solid var(--line);
-}
-.about-photo{
-  min-height:70vh;background:url("work-04.jpg") center/cover;
-  filter:saturate(.72);
-}
-.about-copy{
-  padding:12vh clamp(30px,8vw,120px);
-  display:flex;flex-direction:column;justify-content:center;
-}
-.about-copy h2{
-  margin:20px 0 38px;
-  font:400 clamp(42px,6vw,88px)/.94 var(--serif);
-  letter-spacing:-.06em;
-}
-.about-copy p{max-width:480px;font-size:15px;line-height:1.75}
-.proof{
-  max-width:480px;margin-top:30px;padding-top:20px;
-  border-top:1px solid var(--line);
-  color:var(--muted);font:7px/1.9 var(--mono);
-  letter-spacing:.07em;text-transform:uppercase;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.contact{
-  min-height:78vh;padding:14vh 4vw 9vh;
-  background:var(--block);
-  display:flex;flex-direction:column;justify-content:space-between;
-}
-.contact-title{
-  font:400 clamp(60px,11vw,165px)/.82 var(--serif);
-  letter-spacing:-.08em;
-}
-.contact-bottom{
-  display:grid;grid-template-columns:1fr auto;align-items:end;gap:30px;
-}
-.contact-copy{max-width:400px;font-size:15px;line-height:1.65}
-.contact-links{
-  display:flex;flex-wrap:wrap;gap:25px;
-  font:8px var(--mono);letter-spacing:.12em;text-transform:uppercase;
-}
-.contact-links a{border-bottom:1px solid var(--line);padding-bottom:5px}
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
 
-footer{
-  padding:20px clamp(20px,4vw,60px);
-  border-top:1px solid var(--line);
-  display:flex;justify-content:space-between;gap:20px;
-  color:var(--muted);font:7px var(--mono);
-  letter-spacing:.11em;text-transform:uppercase;
-}
+    body {
+      margin: 0;
+      background: var(--wall);
+      color: var(--ink);
 
-.reveal{
-  opacity:0;transform:translateY(28px);
-  transition:opacity 1s var(--ease),transform 1s var(--ease);
-}
-.reveal.visible{opacity:1;transform:none}
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
 
-/* Immersive artwork viewer */
-.viewer{
-  position:fixed;inset:0;z-index:200;background:#0e0e0d;color:#f4f1ea;
-  display:none;opacity:0;
-}
-.viewer.open{display:block;animation:viewerIn .45s forwards}
-@keyframes viewerIn{to{opacity:1}}
-.viewer-img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:contain;padding:7vh 9vw;
-  transition:opacity .25s ease;
-}
-.viewer::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(to top,rgba(0,0,0,.76),transparent 36%);
-}
-.viewer-close{
-  position:absolute;right:4vw;top:28px;z-index:4;
-  border:0;background:none;color:#fff;cursor:pointer;
-  font:8px var(--mono);letter-spacing:.14em;text-transform:uppercase;
-}
-.viewer-arrow{
-  position:absolute;top:50%;z-index:4;transform:translateY(-50%);
-  border:0;background:none;color:#fff;cursor:pointer;font-size:30px;opacity:.7;
-}
-.viewer-arrow:hover{opacity:1}
-.viewer-prev{left:2vw}.viewer-next{right:2vw}
-.viewer-info{
-  position:absolute;z-index:4;left:4vw;right:4vw;bottom:28px;
-  display:flex;justify-content:space-between;align-items:end;gap:20px;
-}
-.viewer-title{font:400 clamp(30px,4vw,60px)/1 var(--serif)}
-.viewer-meta{
-  max-width:420px;text-align:right;
-  color:#bbb6ad;font:7px/1.8 var(--mono);
-  letter-spacing:.1em;text-transform:uppercase;
-}
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
 
-/* Desktop cursor: restrained, gallery-like rather than tech UI */
-.cursor-dot,.cursor-ring{
-  position:fixed;z-index:250;pointer-events:none;border-radius:50%;
-  opacity:0;transition:opacity .3s ease;
-}
-.cursor-dot{width:5px;height:5px;background:var(--ink);transform:translate(-50%,-50%)}
-.cursor-ring{
-  width:32px;height:32px;border:1px solid var(--ink);
-  transform:translate(-50%,-50%);transition:width .4s var(--ease),height .4s var(--ease),opacity .3s;
-}
-body.cursor-ready .cursor-dot,body.cursor-ready .cursor-ring{opacity:.7}
-body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
+      transition:
+        background-color .45s var(--ease),
+        color .45s var(--ease);
+    }
 
-@media(max-width:800px){
-  .site-header{height:67px;padding:0 5vw;grid-template-columns:1fr auto}
-  .header-center{display:none}
-  .header-nav{gap:14px}
-  .header-nav a:nth-child(-n+2){display:none}
-  .hero{min-height:100svh}
-  .hero-media img{width:100%;object-position:center 23%}
-  .hero-meta{left:5vw;top:88px}
-  .hero-note{display:none}
-  .hero-title{left:5vw;right:5vw;bottom:6vh}
-  .hero-title div{font-size:16vw}
-  .hero-title div+div{margin-left:4vw}
-  .intro{display:block;padding:13vh 7vw 14vh}
-  .intro-copy{margin-top:7vh}
-  .intro-copy p{font-size:16px}
-  .works{padding:8vh 0 10vh}
-  .section-head{margin-left:5vw;margin-right:5vw}
-  .gallery-track{
-    width:100%;display:grid;grid-template-columns:1fr;
-    gap:9vh;padding:0 5vw;cursor:auto;
-  }
-  .artwork,.artwork:nth-child(n){width:100%;margin-top:0}
-  .artwork:nth-child(even){padding-left:9vw}
-  .drag-note{display:none}
-  .dark-section{display:block;min-height:auto;padding:10vh 5vw 12vh}
-  .dark-image{max-height:none}
-  .dark-copy{padding:8vh 0 2vh}
-  .dark-copy h2{font-size:17vw}
-  .archive{padding:12vh 7vw}
-  .archive-grid{grid-template-columns:1fr}
-  .about{display:block}
-  .about-photo{min-height:65vh}
-  .about-copy{padding:12vh 8vw}
-  .contact{min-height:65vh;padding:12vh 5vw 8vh}
-  .contact-bottom{display:block}
-  .contact-links{margin-top:45px}
-  footer{padding:18px 5vw;flex-direction:column}
-  .viewer-img{padding:12vh 4vw 20vh}
-  .viewer-info{bottom:20px}
-  .viewer-meta{display:none}
-  .cursor-dot,.cursor-ring{display:none}
-}
+    body.viewer-open {
+      overflow: hidden;
+    }
 
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*:before,*:after{animation:none!important;transition:none!important}
-}
-</style>
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      background: var(--ink);
+      color: var(--wall);
+    }
+
+    :focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 5px;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .site-header {
+      position: fixed;
+      z-index: 50;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 74px;
+
+      padding: 0 clamp(20px, 4vw, 60px);
+
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+
+      pointer-events: none;
+    }
+
+    .site-header > * {
+      pointer-events: auto;
+    }
+
+    .brand {
+      text-decoration: none;
+
+      font-family: var(--serif);
+      font-size: 17px;
+
+      letter-spacing: -.025em;
+    }
+
+    .brand small {
+      margin-left: 8px;
+
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .12em;
+
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+    .header-center {
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .16em;
+
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .header-nav {
+      justify-self: end;
+
+      display: flex;
+      align-items: center;
+      gap: 22px;
+
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .13em;
+
+      text-transform: uppercase;
+    }
+
+    .header-nav a {
+      text-decoration: none;
+      transition: opacity .3s ease;
+    }
+
+    .header-nav a:hover {
+      opacity: .5;
+    }
+
+    .theme,
+    .sound {
+      appearance: none;
+      border: 0;
+      background: none;
+
+      padding: 0;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .13em;
+
+      text-transform: uppercase;
+    }
+
+    .control-dot {
+      width: 6px;
+      height: 6px;
+
+      border: 1px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .sound.playing .control-dot {
+      background: currentColor;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      position: relative;
+
+      height: 100svh;
+      min-height: 620px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      background: var(--wall);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        100px
+        clamp(30px, 10vw, 160px)
+        70px;
+    }
+
+    .hero-media img {
+      width: auto;
+      height: auto;
+
+      max-width: min(72vw, 900px);
+      max-height: 78vh;
+
+      object-fit: contain;
+
+      filter: saturate(.9) contrast(1.02);
+
+      transform: scale(1.01);
+
+      transition:
+        transform 1.4s var(--ease),
+        filter 1.2s var(--ease);
+    }
+
+    .hero:hover .hero-media img {
+      transform: scale(1.025);
+    }
+
+    .hero-meta {
+      position: absolute;
+
+      left: clamp(20px, 4vw, 60px);
+      top: 108px;
+
+      font-family: var(--mono);
+      font-size: 8px;
+      line-height: 1.9;
+
+      letter-spacing: .12em;
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+    .hero-note {
+      position: absolute;
+
+      right: clamp(20px, 4vw, 60px);
+      top: 108px;
+
+      max-width: 200px;
+
+      font-family: var(--serif);
+      font-size: 13px;
+      font-style: italic;
+      line-height: 1.45;
+
+      text-align: right;
+
+      color: var(--muted);
+    }
+
+    .hero-bottom {
+      position: absolute;
+
+      left: clamp(20px, 4vw, 60px);
+      right: clamp(20px, 4vw, 60px);
+      bottom: 34px;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3vw, 44px);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+
+    .hero-caption {
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+
+    /* =========================================================
+       INTRO
+    ========================================================= */
+
+    .intro {
+      padding:
+        18vh
+        clamp(25px, 8vw, 130px)
+        19vh;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1.25fr;
+      gap: 8vw;
+    }
+
+    .kicker {
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .16em;
+
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+    .intro h1 {
+      margin: 20px 0 30px;
+
+      max-width: 850px;
+
+      font-family: var(--serif);
+      font-size: clamp(40px, 5.8vw, 84px);
+      font-weight: 400;
+      line-height: .98;
+
+      letter-spacing: -.055em;
+    }
+
+    .intro-copy {
+      align-self: end;
+
+      max-width: 510px;
+    }
+
+    .intro-copy p {
+      margin: 0 0 28px;
+
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .note {
+      color: var(--muted);
+
+      font-family: var(--mono);
+      font-size: 8px;
+      line-height: 1.8;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       WORKS
+    ========================================================= */
+
+    .works {
+      padding: 10vh 0 15vh;
+
+      overflow: hidden;
+    }
+
+    .section-head {
+      margin: 0 clamp(20px, 4vw, 60px) 7vh;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+
+      gap: 20px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+
+      font-family: var(--serif);
+      font-size: clamp(38px, 5vw, 72px);
+      font-weight: 400;
+      line-height: 1;
+
+      letter-spacing: -.055em;
+    }
+
+    .section-index {
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .13em;
+
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .gallery-track {
+      display: flex;
+
+      width: max-content;
+
+      gap: 5vw;
+
+      padding: 0 4vw;
+
+      cursor: grab;
+    }
+
+    .gallery-track.dragging {
+      cursor: grabbing;
+    }
+
+    .artwork {
+      width: min(43vw, 610px);
+
+      flex: none;
+    }
+
+    .artwork:nth-child(2) {
+      margin-top: 12vh;
+    }
+
+    .artwork:nth-child(3) {
+      margin-top: -1vh;
+    }
+
+    .artwork:nth-child(4) {
+      margin-top: 16vh;
+    }
+
+    .artwork:nth-child(5) {
+      margin-top: 5vh;
+    }
+
+    .art-image {
+      overflow: hidden;
+
+      cursor: pointer;
+    }
+
+    .art-image img {
+      width: 100%;
+
+      aspect-ratio: 4 / 5;
+
+      object-fit: cover;
+
+      transition:
+        transform 1.25s var(--ease),
+        filter 1.25s var(--ease);
+    }
+
+    .art-image:hover img {
+      transform: scale(1.035);
+      filter: contrast(1.04);
+    }
+
+    .art-caption {
+      display: grid;
+
+      grid-template-columns: 1fr auto;
+
+      gap: 15px;
+
+      padding-top: 13px;
+    }
+
+    .art-name {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+
+    .art-meta {
+      text-align: right;
+
+      font-family: var(--mono);
+      font-size: 7px;
+      line-height: 1.7;
+
+      letter-spacing: .08em;
+
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+    .drag-note {
+      margin: 3vh 4vw 0;
+
+      color: var(--muted);
+
+      font-family: var(--mono);
+      font-size: 7px;
+
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       FEATURE / ARCHIVE WORK
+    ========================================================= */
+
+    .feature {
+      padding: 14vh 4vw 16vh;
+
+      display: grid;
+
+      grid-template-columns: minmax(0, 45%) minmax(0, 55%);
+
+      align-items: center;
+
+      gap: 5vw;
+    }
+
+    .feature-image {
+      width: 100%;
+      max-height: 82vh;
+
+      object-fit: contain;
+    }
+
+    .feature-copy {
+      max-width: 600px;
+
+      padding: 4vw;
+    }
+
+    .feature-copy h2 {
+      margin: 25px 0 35px;
+
+      font-family: var(--serif);
+      font-size: clamp(48px, 7vw, 105px);
+      font-weight: 400;
+      line-height: .91;
+
+      letter-spacing: -.06em;
+    }
+
+    .feature-copy p {
+      max-width: 430px;
+
+      font-size: 15px;
+      line-height: 1.75;
+
+      color: var(--muted);
+    }
+
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    .about {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      min-height: 90vh;
+    }
+
+    .about-photo {
+      min-height: 70vh;
+
+      background:
+        url("work-04.jpg")
+        center center /
+        cover
+        no-repeat;
+
+      filter: saturate(.78);
+    }
+
+    .about-copy {
+      padding:
+        12vh
+        clamp(30px, 8vw, 120px);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-copy h2 {
+      margin: 20px 0 38px;
+
+      font-family: var(--serif);
+      font-size: clamp(42px, 6vw, 88px);
+      font-weight: 400;
+      line-height: .94;
+
+      letter-spacing: -.06em;
+    }
+
+    .about-copy p {
+      max-width: 480px;
+
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .proof {
+      max-width: 480px;
+
+      margin-top: 30px;
+
+      color: var(--muted);
+
+      font-family: var(--mono);
+      font-size: 7px;
+      line-height: 1.9;
+
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact {
+      min-height: 78vh;
+
+      padding: 14vh 4vw 9vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-title {
+      margin-top: 25px;
+
+      font-family: var(--serif);
+      font-size: clamp(62px, 11vw, 165px);
+      font-weight: 400;
+      line-height: .82;
+
+      letter-spacing: -.08em;
+    }
+
+    .contact-bottom {
+      display: grid;
+
+      grid-template-columns: 1fr auto;
+
+      align-items: end;
+
+      gap: 30px;
+    }
+
+    .contact-copy {
+      max-width: 400px;
+
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 25px;
+
+      font-family: var(--mono);
+      font-size: 8px;
+
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+
+      transition: opacity .3s ease;
+    }
+
+    .contact-links a:hover {
+      opacity: .45;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding:
+        22px
+        clamp(20px, 4vw, 60px);
+
+      display: flex;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      color: var(--muted);
+
+      font-family: var(--mono);
+      font-size: 7px;
+
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(25px);
+
+      transition:
+        opacity 1s var(--ease),
+        transform 1s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+
+    /* =========================================================
+       FULLSCREEN ARTWORK VIEWER
+    ========================================================= */
+
+    .viewer {
+      position: fixed;
+      inset: 0;
+
+      z-index: 200;
+
+      display: none;
+
+      background: #0d0d0c;
+      color: #f4f1ea;
+
+      opacity: 0;
+    }
+
+    .viewer.open {
+      display: block;
+
+      animation: viewerIn .45s forwards;
+    }
+
+    @keyframes viewerIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .viewer-img {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      padding: 7vh 9vw;
+
+      transition: opacity .25s ease;
+    }
+
+    .viewer::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.75),
+          transparent 36%
+        );
+    }
+
+    .viewer-close {
+      position: absolute;
+
+      right: 4vw;
+      top: 28px;
+
+      z-index: 4;
+
+      border: 0;
+      background: none;
+
+      color: #fff;
+
+      cursor: pointer;
+
+      font-family: var(--mono);
+      font-size: 8px;
+
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .viewer-arrow {
+      position: absolute;
+
+      top: 50%;
+
+      z-index: 4;
+
+      transform: translateY(-50%);
+
+      border: 0;
+      background: none;
+
+      color: #fff;
+
+      cursor: pointer;
+
+      font-size: 30px;
+
+      opacity: .7;
+
+      transition: opacity .3s ease;
+    }
+
+    .viewer-arrow:hover {
+      opacity: 1;
+    }
+
+    .viewer-prev {
+      left: 2vw;
+    }
+
+    .viewer-next {
+      right: 2vw;
+    }
+
+    .viewer-info {
+      position: absolute;
+
+      z-index: 4;
+
+      left: 4vw;
+      right: 4vw;
+      bottom: 28px;
+
+      display: flex;
+
+      justify-content: space-between;
+      align-items: end;
+
+      gap: 20px;
+    }
+
+    .viewer-title {
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 60px);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .viewer-meta {
+      max-width: 420px;
+
+      text-align: right;
+
+      color: #bbb6ad;
+
+      font-family: var(--mono);
+      font-size: 7px;
+      line-height: 1.8;
+
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      .site-header {
+        height: 64px;
+
+        padding: 0 5vw;
+
+        grid-template-columns: 1fr auto;
+      }
+
+      .header-center {
+        display: none;
+      }
+
+      .header-nav {
+        gap: 14px;
+      }
+
+      .header-nav a:nth-child(-n+2) {
+        display: none;
+      }
+
+      .brand {
+        font-size: 16px;
+      }
+
+      .brand small {
+        display: none;
+      }
+
+
+      /* Hero */
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero-media {
+        padding:
+          95px
+          8vw
+          110px;
+      }
+
+      .hero-media img {
+        width: auto;
+        height: auto;
+
+        max-width: 88vw;
+        max-height: 68vh;
+
+        transform: none;
+      }
+
+      .hero:hover .hero-media img {
+        transform: none;
+      }
+
+      .hero-meta {
+        left: 5vw;
+        top: 86px;
+
+        font-size: 7px;
+      }
+
+      .hero-note {
+        display: none;
+      }
+
+      .hero-bottom {
+        left: 5vw;
+        right: 5vw;
+        bottom: 30px;
+      }
+
+      .hero-name {
+        font-size: 25px;
+      }
+
+      .hero-caption {
+        font-size: 7px;
+      }
+
+
+      /* Intro */
+
+      .intro {
+        display: block;
+
+        padding:
+          14vh
+          7vw
+          15vh;
+      }
+
+      .intro-copy {
+        margin-top: 7vh;
+      }
+
+      .intro h1 {
+        font-size: clamp(40px, 11vw, 62px);
+      }
+
+      .intro-copy p {
+        font-size: 16px;
+      }
+
+
+      /* Works */
+
+      .works {
+        padding: 9vh 0 12vh;
+      }
+
+      .section-head {
+        margin-left: 5vw;
+        margin-right: 5vw;
+
+        margin-bottom: 6vh;
+      }
+
+      .section-head h2 {
+        font-size: 42px;
+      }
+
+      .gallery-track {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 9vh;
+
+        padding: 0 5vw;
+
+        cursor: auto;
+      }
+
+      .artwork,
+      .artwork:nth-child(n) {
+        width: 100%;
+        margin-top: 0;
+      }
+
+      .artwork:nth-child(even) {
+        padding-left: 8vw;
+      }
+
+      .art-image img {
+        aspect-ratio: 4 / 5;
+      }
+
+      .art-name {
+        font-size: 18px;
+      }
+
+      .art-meta {
+        font-size: 6px;
+      }
+
+      .drag-note {
+        display: none;
+      }
+
+
+      /* Feature */
+
+      .feature {
+        display: block;
+
+        padding:
+          12vh
+          5vw
+          14vh;
+      }
+
+      .feature-image {
+        width: 100%;
+        max-height: none;
+      }
+
+      .feature-copy {
+        padding: 8vh 0 0;
+      }
+
+      .feature-copy h2 {
+        font-size: 17vw;
+      }
+
+      .feature-copy p {
+        font-size: 15px;
+      }
+
+
+      /* About */
+
+      .about {
+        display: block;
+
+        min-height: auto;
+      }
+
+      .about-photo {
+        min-height: 65vh;
+      }
+
+      .about-copy {
+        padding:
+          12vh
+          8vw
+          14vh;
+      }
+
+      .about-copy h2 {
+        font-size: 15vw;
+      }
+
+
+      /* Contact */
+
+      .contact {
+        min-height: 68vh;
+
+        padding:
+          12vh
+          5vw
+          8vh;
+      }
+
+      .contact-title {
+        font-size: 20vw;
+      }
+
+      .contact-bottom {
+        display: block;
+      }
+
+      .contact-links {
+        margin-top: 45px;
+
+        gap: 22px;
+      }
+
+
+      /* Footer */
+
+      footer {
+        padding: 20px 5vw;
+
+        flex-direction: column;
+
+        gap: 8px;
+      }
+
+
+      /* Viewer */
+
+      .viewer-img {
+        padding:
+          11vh
+          4vw
+          20vh;
+      }
+
+      .viewer-info {
+        left: 5vw;
+        right: 5vw;
+        bottom: 20px;
+      }
+
+      .viewer-title {
+        font-size: 30px;
+      }
+
+      .viewer-meta {
+        display: none;
+      }
+
+      .viewer-arrow {
+        font-size: 25px;
+      }
+
+      .viewer-prev {
+        left: 3vw;
+      }
+
+      .viewer-next {
+        right: 3vw;
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+    }
+
+  </style>
 </head>
 
+
 <body>
-<header class="site-header">
-  <a class="brand" href="#top">Joy Chatterjee <small>Portrait Artist</small></a>
-  <div class="header-center">Painted by hand / Seen slowly</div>
-  <nav class="header-nav" aria-label="Main navigation">
-    <a href="#works">Works</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <button class="sound" id="soundBtn" type="button" aria-label="Toggle sound">
-      <span class="control-dot"></span><span id="soundText">Sound</span>
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header class="site-header">
+
+    <a class="brand" href="#top">
+      Joy Chatterjee
+      <small>Portrait Artist</small>
+    </a>
+
+    <div class="header-center">
+      Painted by hand / Seen slowly
+    </div>
+
+    <nav class="header-nav" aria-label="Main navigation">
+
+      <a href="#works">Works</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+
+      <button
+        class="sound"
+        id="soundBtn"
+        type="button"
+        aria-label="Toggle sound"
+      >
+        <span class="control-dot"></span>
+        <span id="soundText">Sound</span>
+      </button>
+
+      <button
+        class="theme"
+        id="themeBtn"
+        type="button"
+        aria-label="Toggle theme"
+      >
+        <span class="control-dot"></span>
+        <span>Theme</span>
+      </button>
+
+    </nav>
+
+  </header>
+
+
+  <main id="top">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+      <div class="hero-media">
+
+        <img
+          id="heroImage"
+          src="work-01.jpg"
+          alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
+        >
+
+      </div>
+
+      <div class="hero-meta">
+
+        Exhibition 01<br>
+        Portrait / Oil on Canvas<br>
+        Selected Works / 01—05
+
+      </div>
+
+      <div class="hero-note">
+
+        A portrait is not only likeness.
+        It is attention, held on canvas.
+
+      </div>
+
+      <div class="hero-bottom">
+
+        <div class="hero-name">
+          Silverina
+        </div>
+
+        <div class="hero-caption">
+          Oil on Canvas / 01
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
+
+    <section class="intro reveal">
+
+      <div>
+
+        <div class="kicker">
+          The practice
+        </div>
+
+      </div>
+
+      <div class="intro-copy">
+
+        <h1>
+          A portrait to keep for generations.
+        </h1>
+
+        <p>
+          Painted by hand from a single photograph,
+          in such detail that people mistake it for one.
+        </p>
+
+        <div class="note">
+          Over two decades of hyper-realistic portraiture /
+          West Bengal — India — Italy
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SELECTED WORKS
+    ====================================================== -->
+
+    <section class="works" id="works">
+
+      <div class="section-head reveal">
+
+        <h2>
+          Selected Works
+        </h2>
+
+        <div class="section-index">
+          01—05
+        </div>
+
+      </div>
+
+
+      <div class="gallery-track" id="galleryTrack">
+
+
+        <article
+          class="artwork reveal"
+          data-index="0"
+        >
+
+          <div class="art-image">
+
+            <img
+              src="work-01.jpg"
+              alt="Silverina"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="art-caption">
+
+            <div class="art-name">
+              Silverina
+            </div>
+
+            <div class="art-meta">
+              01 / Oil on Canvas
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="artwork reveal"
+          data-index="1"
+        >
+
+          <div class="art-image">
+
+            <img
+              src="work-02.jpg"
+              alt="Silverina — The Making"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="art-caption">
+
+            <div class="art-name">
+              Silverina — The Making
+            </div>
+
+            <div class="art-meta">
+              02 / Process
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="artwork reveal"
+          data-index="2"
+        >
+
+          <div class="art-image">
+
+            <img
+              src="work-03.jpg"
+              alt="Charles Burton Barber — A Special Pleader"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="art-caption">
+
+            <div class="art-name">
+              Charles Burton Barber — A Special Pleader
+            </div>
+
+            <div class="art-meta">
+              03 / Oil on Canvas / Replica
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="artwork reveal"
+          data-index="3"
+        >
+
+          <div class="art-image">
+
+            <img
+              src="work-04.jpg"
+              alt="Jamshedji Tata"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="art-caption">
+
+            <div class="art-name">
+              Jamshedji Tata
+            </div>
+
+            <div class="art-meta">
+              04 / Oil on Canvas
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="artwork reveal"
+          data-index="4"
+        >
+
+          <div class="art-image">
+
+            <img
+              src="work-05.jpg"
+              alt="A Moment of Recognition"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="art-caption">
+
+            <div class="art-name">
+              A Moment of Recognition
+            </div>
+
+            <div class="art-meta">
+              05 / Portrait
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+
+      <div class="drag-note">
+        Drag / scroll through the exhibition
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FEATURE
+    ====================================================== -->
+
+    <section class="feature">
+
+      <div>
+
+        <img
+          class="feature-image"
+          src="work-03.jpg"
+          alt="A Special Pleader by Joy Chatterjee"
+          loading="lazy"
+        >
+
+      </div>
+
+
+      <div class="feature-copy reveal">
+
+        <div class="kicker">
+          Archive / After Charles Burton Barber
+        </div>
+
+        <h2>
+          Time<br>
+          in the<br>
+          surface.
+        </h2>
+
+        <p>
+          A replica of Charles Burton Barber's
+          <em>A Special Pleader</em>, painted approximately
+          twenty-five years ago.
+        </p>
+
+        <p>
+          The work reflects a practice grounded in
+          observation, patience and the physical act of painting.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section class="about" id="about">
+
+      <div class="about-photo"></div>
+
+
+      <div class="about-copy reveal">
+
+        <div class="kicker">
+          The artist
+        </div>
+
+        <h2>
+          Every face<br>
+          begins with<br>
+          observation.
+        </h2>
+
+        <p>
+          Over two decades of painting faces by hand.
+          Every portrait begins with observation —
+          capturing the expression, character and details
+          that make a person unmistakably themselves.
+        </p>
+
+        <p>
+          A journey in hyper-realistic portraiture,
+          from West Bengal to India and Italy.
+        </p>
+
+        <div class="proof">
+          Presented to Kapil Dev, Sourav Ganguly and Shah Rukh Khan.
+          Held in the Boroline House collection and by private
+          collectors in India and Italy.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section class="contact" id="contact">
+
+      <div>
+
+        <div class="kicker">
+          Studio / Commissions
+        </div>
+
+        <div class="contact-title">
+          Begin<br>
+          a portrait.
+        </div>
+
+      </div>
+
+
+      <div class="contact-bottom">
+
+        <div class="contact-copy">
+          For portrait commissions, private works and enquiries,
+          contact the studio directly.
+        </div>
+
+
+        <div class="contact-links">
+
+          <a
+            href="https://wa.me/917478743149"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp
+          </a>
+
+          <a href="mailto:joychatterjee.art@gmail.com">
+            Email
+          </a>
+
+          <a
+            href="https://instagram.com/joychatterjee.art"
+            target="_blank"
+            rel="noopener"
+          >
+            Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <span>
+      © Joy Chatterjee
+    </span>
+
+    <span>
+      Hyper-realistic portraiture / India — Italy
+    </span>
+
+    <span>
+      Painted by hand
+    </span>
+
+  </footer>
+
+
+  <!-- =======================================================
+       FULLSCREEN VIEWER
+  ======================================================== -->
+
+  <div
+    class="viewer"
+    id="viewer"
+    aria-hidden="true"
+  >
+
+    <button
+      class="viewer-close"
+      id="viewerClose"
+      type="button"
+    >
+      Close ×
     </button>
-    <button class="theme" id="themeBtn" type="button" aria-label="Toggle theme">
-      <span class="control-dot"></span><span>Theme</span>
+
+
+    <button
+      class="viewer-arrow viewer-prev"
+      id="viewerPrev"
+      type="button"
+      aria-label="Previous artwork"
+    >
+      ←
     </button>
-  </nav>
-</header>
 
-<main id="top">
 
-<section class="hero">
-  <div class="hero-media">
-    <img id="heroImage" src="work-01.jpg" alt="Silverina, hyper-realistic portrait by Joy Chatterjee">
-  </div>
-  <div class="hero-meta">
-    Exhibition 01<br>
-    Portrait / Oil on Canvas<br>
-    Selected Works / 01—05
-  </div>
-  <div class="hero-note">A portrait is not only likeness. It is attention, held on canvas.</div>
-  <div class="hero-title">
-    <div>Joy</div>
-    <div>Chatterjee</div>
-  </div>
-</section>
+    <button
+      class="viewer-arrow viewer-next"
+      id="viewerNext"
+      type="button"
+      aria-label="Next artwork"
+    >
+      →
+    </button>
 
-<section class="intro reveal">
-  <div>
-    <div class="kicker">The practice / 01</div>
-  </div>
-  <div class="intro-copy">
-    <h1>A portrait to keep for generations.</h1>
-    <p>Painted by hand from a single photograph, in such detail that people mistake it for one.</p>
-    <div class="note">Over two decades of hyper-realistic portraiture / West Bengal — India — Italy</div>
-  </div>
-</section>
 
-<section class="works" id="works">
-  <div class="section-head reveal">
-    <h2>Selected Works</h2>
-    <div class="section-index">Exhibition / 01—05</div>
-  </div>
+    <img
+      class="viewer-img"
+      id="viewerImg"
+      src=""
+      alt=""
+    >
 
-  <div class="gallery-track" id="galleryTrack">
-    <article class="artwork reveal" data-index="0">
-      <div class="art-image"><img src="work-01.jpg" alt="Silverina"></div>
-      <div class="art-caption">
-        <div class="art-name">Silverina</div>
-        <div class="art-meta">01 / Oil on Canvas</div>
-      </div>
-    </article>
 
-    <article class="artwork reveal" data-index="1">
-      <div class="art-image"><img src="work-02.jpg" alt="Silverina — The Making"></div>
-      <div class="art-caption">
-        <div class="art-name">Silverina — The Making</div>
-        <div class="art-meta">02 / Process</div>
-      </div>
-    </article>
+    <div class="viewer-info">
 
-    <article class="artwork reveal" data-index="2">
-      <div class="art-image"><img src="work-03.jpg" alt="Charles Burton Barber — A Special Pleader"></div>
-      <div class="art-caption">
-        <div class="art-name">Charles Burton Barber — A Special Pleader</div>
-        <div class="art-meta">03 / Oil on Canvas / Replica</div>
-      </div>
-    </article>
+      <div
+        class="viewer-title"
+        id="viewerTitle"
+      ></div>
 
-    <article class="artwork reveal" data-index="3">
-      <div class="art-image"><img src="work-04.jpg" alt="Jamshedji Tata"></div>
-      <div class="art-caption">
-        <div class="art-name">Jamshedji Tata</div>
-        <div class="art-meta">04 / Oil on Canvas</div>
-      </div>
-    </article>
+      <div
+        class="viewer-meta"
+        id="viewerMeta"
+      ></div>
 
-    <article class="artwork reveal" data-index="4">
-      <div class="art-image"><img src="work-05.jpg" alt="A Moment of Recognition"></div>
-      <div class="art-caption">
-        <div class="art-name">A Moment of Recognition</div>
-        <div class="art-meta">05 / Portrait</div>
-      </div>
-    </article>
-  </div>
-
-  <div class="drag-note"><span class="drag-line"></span> Drag / scroll through the exhibition</div>
-</section>
-
-<section class="dark-section">
-  <div><img class="dark-image" src="work-03.jpg" alt="A Special Pleader by Joy Chatterjee"></div>
-  <div class="dark-copy reveal">
-    <div class="kicker">Archive / After Charles Burton Barber</div>
-    <h2>Time<br>in the<br>surface.</h2>
-    <p>A replica of Charles Burton Barber's <em>A Special Pleader</em>, painted approximately twenty-five years ago. The work reflects a practice grounded in observation, patience and the physical act of painting.</p>
-  </div>
-  <div class="dark-mark">JC</div>
-</section>
-
-<section class="archive">
-  <div class="section-head reveal">
-    <h2>Archive</h2>
-    <div class="section-index">A partial record</div>
-  </div>
-  <div class="archive-grid reveal">
-    <div>
-      <div class="archive-row"><span class="archive-no">01</span><span class="archive-name">Silverina</span><span class="archive-kind">Portrait</span></div>
-      <div class="archive-row"><span class="archive-no">02</span><span class="archive-name">Silverina — The Making</span><span class="archive-kind">Process</span></div>
-      <div class="archive-row"><span class="archive-no">03</span><span class="archive-name">A Special Pleader</span><span class="archive-kind">Replica</span></div>
     </div>
-    <div>
-      <div class="archive-row"><span class="archive-no">04</span><span class="archive-name">Jamshedji Tata</span><span class="archive-kind">Portrait</span></div>
-      <div class="archive-row"><span class="archive-no">05</span><span class="archive-name">A Moment of Recognition</span><span class="archive-kind">Portrait</span></div>
-      <div class="archive-row"><span class="archive-no">—</span><span class="archive-name">More works in the studio</span><span class="archive-kind">By request</span></div>
-    </div>
+
   </div>
-</section>
 
-<section class="about" id="about">
-  <div class="about-photo"></div>
-  <div class="about-copy reveal">
-    <div class="kicker">The artist / 02</div>
-    <h2>Every face<br>begins with<br>observation.</h2>
-    <p>Over two decades of painting faces by hand. Every portrait begins with observation — capturing the expression, character and details that make a person unmistakably themselves.</p>
-    <p>A journey in hyper-realistic portraiture, from West Bengal to India and Italy.</p>
-    <div class="proof">Presented to Kapil Dev, Sourav Ganguly and Shah Rukh Khan. Held in the Boroline House collection and by private collectors in India and Italy.</div>
-  </div>
-</section>
 
-<section class="contact" id="contact">
-  <div>
-    <div class="kicker">Studio / Commissions</div>
-    <div class="contact-title">Begin<br>a portrait.</div>
-  </div>
-  <div class="contact-bottom">
-    <div class="contact-copy">For portrait commissions, private works and enquiries, contact the studio directly.</div>
-    <div class="contact-links">
-      <a href="https://wa.me/917478743149" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="mailto:joychatterjee.art@gmail.com">Email</a>
-      <a href="https://instagram.com/joychatterjee.art" target="_blank" rel="noopener">Instagram</a>
-    </div>
-  </div>
-</section>
+  <!-- =======================================================
+       AUDIO
+  ======================================================== -->
 
-</main>
+  <audio
+    id="music"
+    src="music.mp3"
+    loop
+    preload="none"
+  ></audio>
 
-<footer>
-  <span>© Joy Chatterjee</span>
-  <span>Hyper-realistic portraiture / India — Italy</span>
-  <span>Painted by hand</span>
-</footer>
 
-<div class="viewer" id="viewer" aria-hidden="true">
-  <button class="viewer-close" id="viewerClose">Close ×</button>
-  <button class="viewer-arrow viewer-prev" id="viewerPrev" aria-label="Previous artwork">←</button>
-  <button class="viewer-arrow viewer-next" id="viewerNext" aria-label="Next artwork">→</button>
-  <img class="viewer-img" id="viewerImg" src="" alt="">
-  <div class="viewer-info">
-    <div class="viewer-title" id="viewerTitle"></div>
-    <div class="viewer-meta" id="viewerMeta"></div>
-  </div>
-</div>
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
 
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+  <script>
 
-<audio id="music" src="music.mp3" loop preload="none"></audio>
+    /* =====================================================
+       THEME
+    ====================================================== */
 
-<script>
-/* Theme */
-const root=document.documentElement;
-const themeBtn=document.getElementById("themeBtn");
-themeBtn.addEventListener("click",()=>{
-  const next=root.getAttribute("data-theme")==="dark"?"light":"dark";
-  root.setAttribute("data-theme",next);
-  try{localStorage.setItem("theme",next)}catch(e){}
-});
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
 
-/* Sound */
-const audio=document.getElementById("music");
-const soundBtn=document.getElementById("soundBtn");
-const soundText=document.getElementById("soundText");
-soundBtn.addEventListener("click",async()=>{
-  if(audio.paused){
-    try{
-      await audio.play();
-      soundBtn.classList.add("playing");
-      soundText.textContent="Sound on";
-    }catch(e){soundText.textContent="Tap again"}
-  }else{
-    audio.pause();
-    soundBtn.classList.remove("playing");
-    soundText.textContent="Sound";
-  }
-});
+    try {
+      const savedTheme = localStorage.getItem("theme");
 
-/* Reveals */
-const revealObserver=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target);
+      if (savedTheme === "dark" || savedTheme === "light") {
+        root.setAttribute("data-theme", savedTheme);
+      }
+    } catch (e) {}
+
+
+    themeBtn.addEventListener("click", () => {
+
+      const current =
+        root.getAttribute("data-theme") === "dark"
+          ? "dark"
+          : "light";
+
+      const next =
+        current === "dark"
+          ? "light"
+          : "dark";
+
+      root.setAttribute("data-theme", next);
+
+      try {
+        localStorage.setItem("theme", next);
+      } catch (e) {}
+
+    });
+
+
+    /* =====================================================
+       SOUND
+    ====================================================== */
+
+    const audio = document.getElementById("music");
+    const soundBtn = document.getElementById("soundBtn");
+    const soundText = document.getElementById("soundText");
+
+    soundBtn.addEventListener("click", async () => {
+
+      if (audio.paused) {
+
+        try {
+
+          await audio.play();
+
+          soundBtn.classList.add("playing");
+          soundText.textContent = "Sound on";
+
+        } catch (e) {
+
+          soundText.textContent = "Tap again";
+
+        }
+
+      } else {
+
+        audio.pause();
+
+        soundBtn.classList.remove("playing");
+        soundText.textContent = "Sound";
+
+      }
+
+    });
+
+
+    /* =====================================================
+       REVEAL
+    ====================================================== */
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: .12
+        }
+      );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach(element => {
+        revealObserver.observe(element);
+      });
+
+
+    /* =====================================================
+       SUBTLE HERO MOVEMENT
+    ====================================================== */
+
+    const hero = document.querySelector(".hero");
+    const heroImage = document.getElementById("heroImage");
+
+    if (
+      window.matchMedia("(pointer:fine)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+
+      hero.addEventListener("pointermove", event => {
+
+        const x =
+          (event.clientX / window.innerWidth - .5) * 2;
+
+        const y =
+          (event.clientY / window.innerHeight - .5) * 1.5;
+
+        heroImage.style.transform =
+          `scale(1.025) translate(${x}px, ${y}px)`;
+
+      });
+
+
+      hero.addEventListener("pointerleave", () => {
+
+        heroImage.style.transform =
+          "scale(1.01)";
+
+      });
+
     }
-  });
-},{threshold:.12});
-document.querySelectorAll(".reveal").forEach(el=>revealObserver.observe(el));
 
-/* Restrained hero movement */
-const hero=document.querySelector(".hero");
-const heroImage=document.getElementById("heroImage");
-if(window.matchMedia("(pointer:fine)").matches){
-  hero.addEventListener("pointermove",e=>{
-    const x=(e.clientX/window.innerWidth-.5)*4;
-    const y=(e.clientY/window.innerHeight-.5)*2.5;
-    heroImage.style.transform=`scale(1.05) translate(xpx,{y}px)`;
-  });
-  hero.addEventListener("pointerleave",()=>{
-    heroImage.style.transform="scale(1.035)";
-  });
-}
 
-/* Horizontal gallery on desktop */
-const track=document.getElementById("galleryTrack");
-let down=false,startX=0,startY=0,startScroll=0;
-if(window.matchMedia("(min-width:801px)").matches){
-  track.addEventListener("pointerdown",e=>{
-    down=true;startX=e.clientX;startY=e.clientY;startScroll=window.scrollY;
-    track.classList.add("dragging");track.setPointerCapture(e.pointerId);
-  });
-  track.addEventListener("pointermove",e=>{
-    if(!down)return;
-    const dx=e.clientX-startX;
-    window.scrollTo({top:startScroll-dx,behavior:"auto"});
-  });
-  track.addEventListener("pointerup",()=>{down=false;track.classList.remove("dragging")});
-  track.addEventListener("pointercancel",()=>{down=false;track.classList.remove("dragging")});
-}
+    /* =====================================================
+       DESKTOP GALLERY DRAG
+    ====================================================== */
 
-/* Fullscreen artwork viewer */
-const artworks=[
-  {src:"work-01.jpg",title:"Silverina",meta:"01 / Oil on Canvas"},
-  {src:"work-02.jpg",title:"Silverina — The Making",meta:"02 / Process"},
-  {src:"work-03.jpg",title:"Charles Burton Barber — A Special Pleader",meta:"03 / Oil on Canvas / Replica painted approximately 25 years ago"},
-  {src:"work-04.jpg",title:"Jamshedji Tata",meta:"04 / Oil on Canvas"},
-  {src:"work-05.jpg",title:"A Moment of Recognition",meta:"05 / Portrait"}
-];
-const viewer=document.getElementById("viewer");
-const viewerImg=document.getElementById("viewerImg");
-const viewerTitle=document.getElementById("viewerTitle");
-const viewerMeta=document.getElementById("viewerMeta");
-let current=0;
+    const track =
+      document.getElementById("galleryTrack");
 
-function showArtwork(i){
-  current=(i+artworks.length)%artworks.length;
-  const a=artworks[current];
-  viewerImg.style.opacity=".25";
-  viewerImg.src=a.src;
-  viewerImg.alt=a.title;
-  viewerTitle.textContent=a.title;
-  viewerMeta.textContent=a.meta;
-  viewerImg.onload=()=>viewerImg.style.opacity="1";
-}
-function openViewer(i){
-  showArtwork(i);
-  viewer.classList.add("open");
-  viewer.setAttribute("aria-hidden","false");
-  document.body.classList.add("viewer-open");
-}
-function closeViewer(){
-  viewer.classList.remove("open");
-  viewer.setAttribute("aria-hidden","true");
-  document.body.classList.remove("viewer-open");
-}
-document.querySelectorAll(".artwork").forEach(el=>{
-  el.addEventListener("click",()=>openViewer(Number(el.dataset.index)));
-});
-document.getElementById("viewerClose").addEventListener("click",closeViewer);
-document.getElementById("viewerPrev").addEventListener("click",()=>showArtwork(current-1));
-document.getElementById("viewerNext").addEventListener("click",()=>showArtwork(current+1));
-document.addEventListener("keydown",e=>{
-  if(!viewer.classList.contains("open"))return;
-  if(e.key==="Escape")closeViewer();
-  if(e.key==="ArrowLeft")showArtwork(current-1);
-  if(e.key==="ArrowRight")showArtwork(current+1);
-});
+    let dragging = false;
+    let startX = 0;
+    let startScroll = 0;
 
-/* Gallery cursor */
-const dot=document.getElementById("cursorDot");
-const ring=document.getElementById("cursorRing");
-if(window.matchMedia("(pointer:fine)").matches){
-  document.body.classList.add("cursor-ready");
-  window.addEventListener("pointermove",e=>{
-    dot.style.left=e.clientX+"px";dot.style.top=e.clientY+"px";
-    ring.style.left=e.clientX+"px";ring.style.top=e.clientY+"px";
-  });
-  document.querySelectorAll("a,button,.art-image").forEach(el=>{
-    el.addEventListener("mouseenter",()=>document.body.classList.add("cursor-hover"));
-    el.addEventListener("mouseleave",()=>document.body.classList.remove("cursor-hover"));
-  });
-}
-</script>
+
+    if (
+      window.matchMedia("(min-width:801px)").matches
+    ) {
+
+      track.addEventListener("pointerdown", event => {
+
+        dragging = true;
+
+        startX = event.clientX;
+        startScroll = window.scrollY;
+
+        track.classList.add("dragging");
+
+        track.setPointerCapture(event.pointerId);
+
+      });
+
+
+      track.addEventListener("pointermove", event => {
+
+        if (!dragging) return;
+
+        const distance =
+          event.clientX - startX;
+
+        window.scrollTo({
+          top: startScroll - distance,
+          behavior: "auto"
+        });
+
+      });
+
+
+      track.addEventListener("pointerup", () => {
+
+        dragging = false;
+
+        track.classList.remove("dragging");
+
+      });
+
+
+      track.addEventListener("pointercancel", () => {
+
+        dragging = false;
+
+        track.classList.remove("dragging");
+
+      });
+
+    }
+
+
+    /* =====================================================
+       ARTWORK VIEWER
+    ====================================================== */
+
+    const artworks = [
+
+      {
+        src: "work-01.jpg",
+        title: "Silverina",
+        meta: "01 / Oil on Canvas"
+      },
+
+      {
+        src: "work-02.jpg",
+        title: "Silverina — The Making",
+        meta: "02 / Process"
+      },
+
+      {
+        src: "work-03.jpg",
+        title: "Charles Burton Barber — A Special Pleader",
+        meta: "03 / Oil on Canvas / Replica painted approximately 25 years ago"
+      },
+
+      {
+        src: "work-04.jpg",
+        title: "Jamshedji Tata",
+        meta: "04 / Oil on Canvas"
+      },
+
+      {
+        src: "work-05.jpg",
+        title: "A Moment of Recognition",
+        meta: "05 / Portrait"
+      }
+
+    ];
+
+
+    const viewer =
+      document.getElementById("viewer");
+
+    const viewerImg =
+      document.getElementById("viewerImg");
+
+    const viewerTitle =
+      document.getElementById("viewerTitle");
+
+    const viewerMeta =
+      document.getElementById("viewerMeta");
+
+    let currentArtwork = 0;
+
+
+    function showArtwork(index) {
+
+      currentArtwork =
+        (index + artworks.length) %
+        artworks.length;
+
+      const artwork =
+        artworks[currentArtwork];
+
+      viewerImg.style.opacity = ".25";
+
+      viewerImg.src = artwork.src;
+      viewerImg.alt = artwork.title;
+
+      viewerTitle.textContent =
+        artwork.title;
+
+      viewerMeta.textContent =
+        artwork.meta;
+
+      viewerImg.onload = () => {
+        viewerImg.style.opacity = "1";
+      };
+
+    }
+
+
+    function openViewer(index) {
+
+      showArtwork(index);
+
+      viewer.classList.add("open");
+
+      viewer.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.classList.add(
+        "viewer-open"
+      );
+
+    }
+
+
+    function closeViewer() {
+
+      viewer.classList.remove("open");
+
+      viewer.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.classList.remove(
+        "viewer-open"
+      );
+
+    }
+
+
+    document
+      .querySelectorAll(".artwork")
+      .forEach(artwork => {
+
+        artwork.addEventListener("click", () => {
+
+          openViewer(
+            Number(
+              artwork.dataset.index
+            )
+          );
+
+        });
+
+      });
+
+
+    document
+      .getElementById("viewerClose")
+      .addEventListener(
+        "click",
+        closeViewer
+      );
+
+
+    document
+      .getElementById("viewerPrev")
+      .addEventListener(
+        "click",
+        () => showArtwork(
+          currentArtwork - 1
+        )
+      );
+
+
+    document
+      .getElementById("viewerNext")
+      .addEventListener(
+        "click",
+        () => showArtwork(
+          currentArtwork + 1
+        )
+      );
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          !viewer.classList.contains("open")
+        ) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeViewer();
+        }
+
+        if (event.key === "ArrowLeft") {
+          showArtwork(
+            currentArtwork - 1
+          );
+        }
+
+        if (event.key === "ArrowRight") {
+          showArtwork(
+            currentArtwork + 1
+          );
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       MOBILE SWIPE IN VIEWER
+    ====================================================== */
+
+    let touchStartX = 0;
+
+
+    viewer.addEventListener(
+      "touchstart",
+      event => {
+
+        touchStartX =
+          event.changedTouches[0].screenX;
+
+      },
+      { passive: true }
+    );
+
+
+    viewer.addEventListener(
+      "touchend",
+      event => {
+
+        const touchEndX =
+          event.changedTouches[0].screenX;
+
+        const distance =
+          touchEndX - touchStartX;
+
+        if (Math.abs(distance) < 50) {
+          return;
+        }
+
+        if (distance < 0) {
+          showArtwork(
+            currentArtwork + 1
+          );
+        } else {
+          showArtwork(
+            currentArtwork - 1
+          );
+        }
+
+      },
+      { passive: true }
+    );
+
+  </script>
+
 </body>
 </html>
-
