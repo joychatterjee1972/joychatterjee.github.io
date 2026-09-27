@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Deployment structure: index.html / assets/images/* / assets/audio/music.mp3 -->
+  <!-- Deployment structure: index.html / root JPG files / music.mp3 -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE"></script>
   <script>
@@ -14,11 +14,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f5f3ee">
-  <title>Joy Chatterjee – Hyper-realist Portrait Artist</title>
+  <title>Joy Chatterjee — Hyper-realist Portrait Artist</title>
   <meta name="description" content="Hand-painted hyper-realist portraits by Joy Chatterjee, from a single photograph. Now accepting commissions.">
   <meta property="og:title" content="Joy Chatterjee – Hyper-realist Portrait Artist">
   <meta property="og:description" content="A portrait to keep for generations. Painted by hand, in such detail it's mistaken for a photograph.">
-  <meta property="og:image" content="assets/images/work-01.jpg">
+  <meta property="og:image" content="work-01.jpg">
 
   <script>
     (function(){
@@ -277,7 +277,7 @@ main{position:relative}
   min-height:90vh;border-top:1px solid var(--line);
 }
 .about-photo{
-  min-height:70vh;background:url("assets/images/work-04.jpg") center/cover;
+  min-height:70vh;background:url("work-04.jpg") center/cover;
   filter:saturate(.72);
 }
 .about-copy{
@@ -870,6 +870,13 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
 }
 
 </style>
+
+  <noscript>
+    <style>
+      .reveal{opacity:1!important;transform:none!important}
+    </style>
+  </noscript>
+
 </head>
 
 <body>
@@ -893,7 +900,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
 
 <section class="hero">
   <div class="hero-media">
-    <img id="heroImage" src="assets/images/work-01.jpg" alt="Silverina, hyper-realistic portrait by Joy Chatterjee">
+    <img id="heroImage" src="work-01.jpg" alt="Silverina, hyper-realistic portrait by Joy Chatterjee">
   </div>
   <div class="hero-meta">
     Exhibition 01<br>
@@ -926,7 +933,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
 
   <div class="gallery-track" id="galleryTrack">
     <article class="artwork reveal" data-index="0">
-      <div class="art-image"><img src="assets/images/work-01.jpg" alt="Silverina"></div>
+      <div class="art-image"><img src="work-01.jpg" alt="Silverina"></div>
       <div class="art-caption">
         <div class="art-name">Silverina</div>
         <div class="art-meta">01 / Oil on Canvas</div>
@@ -934,7 +941,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
     </article>
 
     <article class="artwork reveal" data-index="1">
-      <div class="art-image"><img src="assets/images/work-02.jpg" alt="Silverina — The Making"></div>
+      <div class="art-image"><img src="work-02.jpg" alt="Silverina — The Making"></div>
       <div class="art-caption">
         <div class="art-name">Silverina — The Making</div>
         <div class="art-meta">02 / Process</div>
@@ -942,7 +949,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
     </article>
 
     <article class="artwork reveal" data-index="2">
-      <div class="art-image"><img src="assets/images/work-03.jpg" alt="Charles Burton Barber — A Special Pleader"></div>
+      <div class="art-image"><img src="work-03.jpg" alt="Charles Burton Barber — A Special Pleader"></div>
       <div class="art-caption">
         <div class="art-name">Charles Burton Barber — A Special Pleader</div>
         <div class="art-meta">03 / Oil on Canvas / Replica</div>
@@ -950,7 +957,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
     </article>
 
     <article class="artwork reveal" data-index="3">
-      <div class="art-image"><img src="assets/images/work-04.jpg" alt="Jamshedji Tata"></div>
+      <div class="art-image"><img src="work-04.jpg" alt="Jamshedji Tata"></div>
       <div class="art-caption">
         <div class="art-name">Jamshedji Tata</div>
         <div class="art-meta">04 / Oil on Canvas</div>
@@ -958,7 +965,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
     </article>
 
     <article class="artwork reveal" data-index="4">
-      <div class="art-image"><img src="assets/images/work-05.jpg" alt="A Moment of Recognition"></div>
+      <div class="art-image"><img src="work-05.jpg" alt="A Moment of Recognition"></div>
       <div class="art-caption">
         <div class="art-name">A Moment of Recognition</div>
         <div class="art-meta">05 / Portrait</div>
@@ -970,7 +977,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
 </section>
 
 <section class="dark-section" aria-label="Featured work">
-  <div><img class="dark-image" src="assets/images/work-03.jpg" alt="A Special Pleader by Joy Chatterjee"></div>
+  <div><img class="dark-image" src="work-03.jpg" alt="A Special Pleader by Joy Chatterjee"></div>
   <div class="dark-copy reveal">
     <div class="kicker">Archive / After Charles Burton Barber</div>
     <h2>Time<br>in the<br>surface.</h2>
@@ -1028,7 +1035,7 @@ body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:.45}
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<audio id="music" src="assets/audio/music.mp3" loop preload="none"></audio>
+<audio id="music" src="music.mp3" loop preload="none"></audio>
 
 <script>
 /* Theme */
@@ -1102,11 +1109,11 @@ if(window.matchMedia("(min-width:801px)").matches){
 
 /* Fullscreen artwork viewer */
 const artworks=[
-  {src:"assets/images/work-01.jpg",title:"Silverina",meta:"01 / Oil on Canvas"},
-  {src:"assets/images/work-02.jpg",title:"Silverina — The Making",meta:"02 / Process"},
-  {src:"assets/images/work-03.jpg",title:"Charles Burton Barber — A Special Pleader",meta:"03 / Oil on Canvas / Replica painted approximately 25 years ago"},
-  {src:"assets/images/work-04.jpg",title:"Jamshedji Tata",meta:"04 / Oil on Canvas"},
-  {src:"assets/images/work-05.jpg",title:"A Moment of Recognition",meta:"05 / Portrait"}
+  {src:"work-01.jpg",title:"Silverina",meta:"01 / Oil on Canvas"},
+  {src:"work-02.jpg",title:"Silverina — The Making",meta:"02 / Process"},
+  {src:"work-03.jpg",title:"Charles Burton Barber — A Special Pleader",meta:"03 / Oil on Canvas / Replica painted approximately 25 years ago"},
+  {src:"work-04.jpg",title:"Jamshedji Tata",meta:"04 / Oil on Canvas"},
+  {src:"work-05.jpg",title:"A Moment of Recognition",meta:"05 / Portrait"}
 ];
 const viewer=document.getElementById("viewer");
 const viewerImg=document.getElementById("viewerImg");
