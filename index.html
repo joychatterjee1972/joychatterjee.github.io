@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Joy Chatterjee — Portrait Artist</title>
+  <title>Joy Chatterjee — Hyper-Realistic Portraiture</title>
 
   <meta
     name="description"
-    content="Joy Chatterjee — hyper-realistic portrait artist. Painted by hand."
+    content="Joy Chatterjee — hyper-realistic portrait artist. Hand-painted portraits from a single photograph, created to remain for generations."
   >
 
   <meta name="theme-color" content="#f6f5f0">
@@ -17,15 +17,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500&family=Playfair+Display:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:wght@400;500&display=swap"
     rel="stylesheet"
   >
 
   <style>
 
-    /* =====================================================
+    /* =========================================================
        ROOT
-    ===================================================== */
+       ========================================================= */
 
     :root {
       --wall: #f6f5f0;
@@ -63,17 +63,15 @@
       color: var(--ink);
 
       font-family: var(--sans);
-      font-weight: 400;
 
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+
+      overflow-x: hidden;
 
       transition:
-        background .5s ease,
-        color .5s ease;
-    }
-
-    body.viewer-open {
-      overflow: hidden;
+        background-color .45s ease,
+        color .45s ease;
     }
 
     a {
@@ -91,9 +89,9 @@
     }
 
 
-    /* =====================================================
-       NAVIGATION — FULLY TRANSPARENT
-    ===================================================== */
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
 
     .nav {
       position: fixed;
@@ -116,136 +114,159 @@
 
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
+
+      pointer-events: none;
     }
 
-    .brand {
-      font-family: var(--serif);
-      font-size: 20px;
-      letter-spacing: -.02em;
-      white-space: nowrap;
+    .nav > * {
+      pointer-events: auto;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+
+      font-size: 10px;
+      font-weight: 500;
+
+      letter-spacing: .12em;
+      text-transform: uppercase;
     }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 28px;
+
+      gap: 22px;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-    }
-
-    .nav-link,
-    .nav-control {
-      border: 0;
-      background: transparent;
-      padding: 0;
-
+    .nav-link {
       font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .08em;
+
+      font-size: 9px;
+
+      letter-spacing: .09em;
       text-transform: uppercase;
 
-      cursor: pointer;
       opacity: .72;
 
-      transition: opacity .25s ease;
+      transition: opacity .3s ease;
     }
 
-    .nav-link:hover,
-    .nav-control:hover {
+    .nav-link:hover {
       opacity: 1;
     }
 
+    .theme-toggle {
+      width: 32px;
+      height: 32px;
 
-    /* =====================================================
-       HERO
-    ===================================================== */
+      padding: 0;
 
-    .hero {
-      position: relative;
-
-      width: 100%;
-      height: 100svh;
-      min-height: 620px;
+      border: 0;
+      background: transparent;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
+      cursor: pointer;
+
+      opacity: .7;
+
+      transition:
+        opacity .3s ease,
+        transform .4s var(--ease);
+    }
+
+    .theme-toggle:hover {
+      opacity: 1;
+      transform: rotate(12deg);
+    }
+
+    .theme-icon {
+      width: 12px;
+      height: 12px;
+
+      border: 1px solid currentColor;
+      border-radius: 50%;
+
+      position: relative;
+    }
+
+    .theme-icon::after {
+      content: "";
+
+      position: absolute;
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: currentColor;
+
+      right: -3px;
+      top: -3px;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      position: relative;
+
+      min-height: 100svh;
+      height: 100svh;
+
       overflow: hidden;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       background: var(--wall);
     }
 
 
-    /* =====================================================
-       SMALLER + STRONGER COLOUR GLOW
-    ===================================================== */
+    /* =========================================================
+       HERO GLOW
+       ONLY THIS PART HAS BEEN CHANGED
+       ========================================================= */
 
     .hero-light {
       position: absolute;
 
-      /*
-        Smaller than before:
-        colour stays closer to artwork.
-      */
+      width: 64%;
+      height: 64%;
 
-      inset: -10%;
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
 
       z-index: 0;
-
       pointer-events: none;
 
-      filter: blur(58px);
-
-      opacity: .92;
-
       background:
         radial-gradient(
-          ellipse at 50% 48%,
-          rgba(255, 230, 165, .78) 0%,
-          rgba(255, 210, 180, .40) 17%,
-          rgba(218, 190, 255, .20) 34%,
-          transparent 58%
+          ellipse at center,
+          rgba(255, 248, 220, .96) 0%,
+          rgba(255, 239, 195, .62) 20%,
+          rgba(220, 210, 185, .22) 42%,
+          transparent 68%
         );
 
-      animation:
-        mainLight 15s ease-in-out infinite alternate;
-    }
+      filter: blur(38px);
 
+      opacity: 1;
+
+      animation:
+        monochromeGlow 12s ease-in-out infinite alternate;
+    }
 
     .hero-light::before {
-      content: "";
-
-      position: absolute;
-
-      width: 52%;
-      height: 52%;
-
-      left: 8%;
-      top: 16%;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(120, 190, 255, .52) 0%,
-          rgba(120, 190, 255, .24) 25%,
-          transparent 67%
-        );
-
-      filter: blur(65px);
-
-      animation:
-        blueLight 18s ease-in-out infinite alternate;
-    }
-
-
-    .hero-light::after {
       content: "";
 
       position: absolute;
@@ -253,44 +274,44 @@
       width: 54%;
       height: 54%;
 
-      right: 7%;
-      bottom: 8%;
+      left: 23%;
+      top: 23%;
 
       border-radius: 50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(255, 135, 190, .46) 0%,
-          rgba(210, 150, 255, .26) 27%,
-          transparent 68%
+          rgba(255, 253, 235, .95) 0%,
+          rgba(255, 244, 210, .48) 30%,
+          transparent 67%
         );
 
-      filter: blur(70px);
+      filter: blur(28px);
 
       animation:
-        pinkLight 20s ease-in-out infinite alternate;
+        innerGlow 8s ease-in-out infinite alternate;
     }
 
-
-    /* concentrated warm centre */
+    .hero-light::after {
+      display: none;
+    }
 
     .hero::before {
       content: "";
 
       position: absolute;
 
-      width: 42vw;
-      height: 42vw;
+      width: 28vw;
+      height: 28vw;
 
-      max-width: 680px;
-      max-height: 680px;
+      max-width: 440px;
+      max-height: 440px;
 
       left: 50%;
       top: 50%;
 
-      transform:
-        translate(-50%, -50%);
+      transform: translate(-50%, -50%);
 
       border-radius: 50%;
 
@@ -301,107 +322,33 @@
       background:
         radial-gradient(
           circle,
-          rgba(255, 247, 214, .70) 0%,
-          rgba(255, 215, 165, .32) 22%,
-          rgba(220, 190, 255, .14) 42%,
+          rgba(255, 250, 225, .68) 0%,
+          rgba(238, 226, 195, .24) 34%,
           transparent 68%
         );
 
-      filter: blur(48px);
+      filter: blur(30px);
 
       animation:
-        warmPulse 10s ease-in-out infinite alternate;
+        centralGlow 9s ease-in-out infinite alternate;
     }
 
-
-    @keyframes mainLight {
+    @keyframes monochromeGlow {
 
       0% {
         transform:
-          translate(-3%, -2%)
-          scale(.88)
-          rotate(-3deg);
-      }
-
-      50% {
-        transform:
-          translate(3%, 3%)
-          scale(1.02)
-          rotate(2deg);
-      }
-
-      100% {
-        transform:
-          translate(-2%, 4%)
-          scale(.94)
-          rotate(-1deg);
-      }
-
-    }
-
-
-    @keyframes blueLight {
-
-      0% {
-        transform:
-          translate(-7%, 5%)
-          scale(.86);
-      }
-
-      50% {
-        transform:
-          translate(10%, -7%)
-          scale(1.08);
-      }
-
-      100% {
-        transform:
-          translate(3%, 8%)
-          scale(.94);
-      }
-
-    }
-
-
-    @keyframes pinkLight {
-
-      0% {
-        transform:
-          translate(7%, 6%)
+          translate(-50%, -50%)
           scale(.88);
-      }
 
-      50% {
-        transform:
-          translate(-10%, -5%)
-          scale(1.08);
-      }
-
-      100% {
-        transform:
-          translate(-3%, 7%)
-          scale(.94);
-      }
-
-    }
-
-
-    @keyframes warmPulse {
-
-      0% {
-        transform:
-          translate(-50%, -50%)
-          scale(.80);
-
-        opacity: .60;
+        opacity: .82;
       }
 
       50% {
         transform:
           translate(-50%, -50%)
-          scale(1.05);
+          scale(.98);
 
-        opacity: .95;
+        opacity: 1;
       }
 
       100% {
@@ -409,33 +356,59 @@
           translate(-50%, -50%)
           scale(.91);
 
+        opacity: .9;
+      }
+    }
+
+    @keyframes innerGlow {
+
+      0% {
+        transform: scale(.88);
         opacity: .72;
       }
 
+      50% {
+        transform: scale(1.06);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(.93);
+        opacity: .8;
+      }
+    }
+
+    @keyframes centralGlow {
+
+      0% {
+        transform:
+          translate(-50%, -50%)
+          scale(.84);
+
+        opacity: .62;
+      }
+
+      50% {
+        transform:
+          translate(-50%, -50%)
+          scale(1);
+
+        opacity: .9;
+      }
+
+      100% {
+        transform:
+          translate(-50%, -50%)
+          scale(.9);
+
+        opacity: .7;
+      }
     }
 
 
-    html.dark .hero-light {
-      opacity: .65;
-
-      background:
-        radial-gradient(
-          ellipse at 50% 48%,
-          rgba(255, 220, 165, .34) 0%,
-          rgba(255, 170, 140, .18) 20%,
-          rgba(190, 160, 255, .13) 40%,
-          transparent 60%
-        );
-    }
-
-    html.dark .hero::before {
-      opacity: .55;
-    }
-
-
-    /* =====================================================
+    /* =========================================================
        HERO IMAGE
-    ===================================================== */
+       ========================================================= */
 
     .hero-media {
       position: absolute;
@@ -484,202 +457,117 @@
 
     .hero-media img.is-changing {
       opacity: 0;
-
-      transform:
-        scale(.985);
+      transform: scale(.985);
     }
 
-
-    /* =====================================================
-       HERO INFORMATION
-    ===================================================== */
-
-    .hero-meta {
+    .hero-caption {
       position: absolute;
 
       left: 32px;
       bottom: 30px;
 
       z-index: 5;
-    }
-
-    .hero-number {
-      display: block;
-
-      margin-bottom: 8px;
 
       font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: .1em;
+
+      font-size: 8px;
+      line-height: 1.5;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
 
       color: var(--muted);
     }
 
-    .hero-title {
-      font-family: var(--serif);
-
-      font-size:
-        clamp(
-          24px,
-          3vw,
-          42px
-        );
-
-      line-height: 1.05;
-
-      letter-spacing: -.025em;
-    }
-
-    .hero-note {
+    .hero-index {
       position: absolute;
 
       right: 32px;
-      bottom: 32px;
-
-      z-index: 5;
-
-      text-align: right;
-
-      font-family: var(--mono);
-
-      font-size: 10px;
-      line-height: 1.7;
-
-      letter-spacing: .06em;
-
-      text-transform: uppercase;
-
-      color: var(--muted);
-    }
-
-    .scroll-hint {
-      position: absolute;
-
-      bottom: 32px;
-      left: 50%;
-
-      transform:
-        translateX(-50%);
+      bottom: 30px;
 
       z-index: 5;
 
       font-family: var(--mono);
 
-      font-size: 9px;
+      font-size: 8px;
 
-      letter-spacing: .12em;
-
-      text-transform: uppercase;
+      letter-spacing: .08em;
 
       color: var(--muted);
     }
 
 
-    /* =====================================================
-       GENERAL
-    ===================================================== */
-
-    section {
-      position: relative;
-    }
+    /* =========================================================
+       GENERAL SECTIONS
+       ========================================================= */
 
     .section-inner {
-      width:
-        min(
-          1280px,
-          calc(100% - 64px)
-        );
+      width: min(
+        1400px,
+        calc(100% - 64px)
+      );
 
       margin: 0 auto;
     }
 
-
-    /* =====================================================
-       INTRO
-    ===================================================== */
-
-    .intro {
-      min-height: 70vh;
-
-      display: flex;
-      align-items: center;
-
-      padding:
-        150px 0;
-    }
-
-    .intro-copy {
-      width:
-        min(
-          850px,
-          100%
-        );
-    }
-
     .eyebrow {
-      margin-bottom: 28px;
-
       font-family: var(--mono);
 
-      font-size: 10px;
+      font-size: 9px;
+      line-height: 1.4;
 
       letter-spacing: .12em;
-
       text-transform: uppercase;
 
       color: var(--muted);
     }
 
-    .intro h1 {
-      margin: 0;
+
+    /* =========================================================
+       INTRO
+       ========================================================= */
+
+    .intro {
+      padding: 150px 0;
+    }
+
+    .intro-inner {
+      max-width: 980px;
+    }
+
+    .intro-title {
+      margin: 28px 0 0;
 
       font-family: var(--serif);
 
       font-weight: 400;
 
       font-size:
-        clamp(
-          42px,
-          7vw,
-          94px
-        );
+        clamp(46px, 7vw, 104px);
 
       line-height: .98;
 
       letter-spacing: -.045em;
     }
 
-    .intro p {
-      width:
-        min(
-          650px,
-          100%
-        );
+    .intro-copy {
+      max-width: 620px;
 
-      margin:
-        42px 0 0;
+      margin-top: 46px;
 
-      font-size:
-        clamp(
-          17px,
-          1.5vw,
-          22px
-        );
-
-      line-height: 1.65;
+      font-size: 17px;
+      line-height: 1.7;
 
       color: var(--muted);
     }
 
 
-    /* =====================================================
-       WORKS — 4 COLUMNS DESKTOP
-    ===================================================== */
+    /* =========================================================
+       WORKS
+       ========================================================= */
 
     .works {
-      padding:
-        120px 0
-        160px;
+      padding: 120px 0 160px;
     }
 
     .section-heading {
@@ -687,18 +575,14 @@
     }
 
     .section-heading h2 {
-      margin: 0;
+      margin: 18px 0 0;
 
       font-family: var(--serif);
 
       font-weight: 400;
 
       font-size:
-        clamp(
-          38px,
-          5vw,
-          68px
-        );
+        clamp(38px, 5vw, 68px);
 
       line-height: 1;
 
@@ -709,25 +593,20 @@
       display: grid;
 
       grid-template-columns:
-        repeat(
-          4,
-          minmax(0, 1fr)
-        );
+        repeat(4, minmax(0, 1fr));
 
       column-gap: 28px;
-
       row-gap: 90px;
     }
 
     .work {
-      margin: 0;
+      min-width: 0;
     }
 
     .work-image {
       width: 100%;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -755,8 +634,7 @@
     }
 
     .work-image:hover img {
-      transform:
-        scale(1.025);
+      transform: scale(1.025);
     }
 
     .work-info {
@@ -767,7 +645,6 @@
       font-family: var(--serif);
 
       font-size: 20px;
-
       line-height: 1.2;
 
       letter-spacing: -.02em;
@@ -779,202 +656,154 @@
       font-family: var(--mono);
 
       font-size: 9px;
-
       line-height: 1.6;
 
       letter-spacing: .06em;
-
       text-transform: uppercase;
 
       color: var(--muted);
     }
 
 
-    /* =====================================================
+    /* =========================================================
        STATEMENT
-    ===================================================== */
+       ========================================================= */
 
     .statement {
-      min-height: 75vh;
-
-      display: flex;
-
-      align-items: center;
-
-      padding:
-        150px 0;
+      padding: 160px 0;
     }
 
-    .statement p {
-      max-width: 1050px;
-
-      margin: 0;
+    .statement-text {
+      max-width: 1080px;
 
       font-family: var(--serif);
 
+      font-weight: 400;
+
       font-size:
-        clamp(
-          34px,
-          5.3vw,
-          78px
-        );
+        clamp(42px, 6.2vw, 92px);
 
-      line-height: 1.08;
+      line-height: 1.02;
 
-      letter-spacing: -.04em;
+      letter-spacing: -.045em;
     }
 
 
-    /* =====================================================
+    /* =========================================================
        ABOUT
-    ===================================================== */
+       ========================================================= */
 
     .about {
-      padding:
-        140px 0
-        170px;
+      padding: 120px 0 180px;
     }
 
     .about-grid {
       display: grid;
 
       grid-template-columns:
-        1fr 1.4fr;
+        minmax(0, 1fr)
+        minmax(0, 1.2fr);
 
       gap: 100px;
     }
 
-    .about-title {
+    .about-heading {
       font-family: var(--serif);
 
       font-size:
-        clamp(
-          38px,
-          4vw,
-          60px
-        );
+        clamp(40px, 5vw, 68px);
 
       line-height: 1;
 
-      letter-spacing: -.035em;
+      letter-spacing: -.04em;
     }
 
     .about-copy {
-      max-width: 720px;
+      max-width: 680px;
 
       font-size: 17px;
-
       line-height: 1.8;
 
       color: var(--muted);
     }
 
     .about-copy p {
-      margin:
-        0 0 28px;
+      margin: 0 0 28px;
     }
 
-    .about-copy strong {
-      color: var(--ink);
+    .about-location {
+      margin-top: 55px;
 
-      font-weight: 400;
+      font-family: var(--mono);
+
+      font-size: 9px;
+
+      letter-spacing: .1em;
+      text-transform: uppercase;
+
+      color: var(--soft);
     }
 
 
-    /* =====================================================
+    /* =========================================================
        CONTACT
-    ===================================================== */
+       ========================================================= */
 
     .contact {
-      min-height: 80vh;
-
-      display: flex;
-
-      align-items: center;
-
-      padding:
-        150px 0;
+      padding: 150px 0 170px;
     }
 
     .contact-title {
-      max-width: 900px;
+      margin-top: 24px;
 
       font-family: var(--serif);
 
       font-size:
-        clamp(
-          48px,
-          8vw,
-          110px
-        );
+        clamp(50px, 8vw, 120px);
 
-      line-height: .94;
+      line-height: .92;
 
-      letter-spacing: -.055em;
+      letter-spacing: -.05em;
     }
 
     .contact-copy {
-      max-width: 620px;
+      max-width: 580px;
 
-      margin-top: 40px;
+      margin-top: 42px;
 
-      font-size: 18px;
-
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.75;
 
       color: var(--muted);
     }
 
     .contact-links {
-      display: flex;
-
-      align-items: center;
-
-      margin-top: 60px;
-    }
-
-    .contact-links a {
-      display: inline-flex;
-
-      align-items: center;
-      justify-content: center;
-
-      min-height: 50px;
-
-      padding:
-        0 28px;
-
-      font-size: 10px;
-
-      letter-spacing: .09em;
-
-      text-transform: uppercase;
-
-      transition:
-        background .3s ease,
-        color .3s ease,
-        transform .3s ease,
-        box-shadow .3s ease;
+      margin-top: 48px;
     }
 
     .commission-link {
-      background: var(--ink);
+      display: inline-flex;
+      align-items: center;
 
-      color: var(--wall);
+      padding-bottom: 9px;
 
-      border:
-        1px solid var(--ink);
+      border-bottom: 1px solid currentColor;
+
+      font-family: var(--mono);
+
+      font-size: 10px;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      transition:
+        opacity .3s ease,
+        transform .4s var(--ease);
     }
 
     .commission-link:hover {
-      transform:
-        translateY(-2px);
-
-      opacity: .88;
-
-      box-shadow:
-        0 12px 30px
-        rgba(0,0,0,.08);
+      opacity: .65;
+      transform: translateX(4px);
     }
 
     .contact-email {
@@ -982,16 +811,15 @@
 
       font-family: var(--mono);
 
-      font-size: 11px;
+      font-size: 10px;
 
-      letter-spacing: .04em;
+      letter-spacing: .05em;
 
       color: var(--muted);
     }
 
     .contact-email a {
-      transition:
-        color .25s ease;
+      transition: color .3s ease;
     }
 
     .contact-email a:hover {
@@ -999,193 +827,38 @@
     }
 
 
-    /* =====================================================
+    /* =========================================================
        FOOTER
-    ===================================================== */
+       ========================================================= */
 
     footer {
-      padding:
-        40px 32px
-        50px;
+      padding: 0 0 32px;
+    }
 
+    .footer-inner {
       display: flex;
-
-      align-items: flex-end;
-      justify-content: space-between;
-
-      gap: 30px;
-
-      font-family: var(--mono);
-
-      font-size: 9px;
-
-      line-height: 1.7;
-
-      letter-spacing: .08em;
-
-      text-transform: uppercase;
-
-      color: var(--muted);
-    }
-
-
-    /* =====================================================
-       FULLSCREEN VIEWER
-    ===================================================== */
-
-    .viewer {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 100;
-
-      display: none;
-
-      background: var(--wall);
-    }
-
-    .viewer.open {
-      display: block;
-    }
-
-    .viewer-top {
-      position: absolute;
-
-      top: 0;
-      left: 0;
-      right: 0;
-
-      height: 70px;
-
-      z-index: 5;
-
-      display: flex;
-
       align-items: center;
       justify-content: space-between;
 
-      padding:
-        0 25px;
-    }
-
-    .viewer-label {
       font-family: var(--mono);
 
-      font-size: 10px;
+      font-size: 8px;
 
       letter-spacing: .08em;
-
       text-transform: uppercase;
 
-      color: var(--muted);
-    }
-
-    .viewer-close {
-      border: 0;
-
-      background: transparent;
-
-      padding: 10px;
-
-      cursor: pointer;
-
-      font-size: 25px;
-
-      line-height: 1;
-
-      opacity: .7;
-    }
-
-    .viewer-close:hover {
-      opacity: 1;
-    }
-
-    .viewer-image-wrap {
-      width: 100%;
-      height: 100%;
-
-      padding:
-        70px 80px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-    }
-
-    .viewer-img {
-      display: block;
-
-      width: auto;
-      height: auto;
-
-      max-width: 100%;
-      max-height: 100%;
-
-      object-fit: contain;
-      object-position: center;
-
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    .viewer-arrow {
-      position: absolute;
-
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      z-index: 5;
-
-      width: 60px;
-      height: 100px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      border: 0;
-
-      background: transparent;
-
-      cursor: pointer;
-
-      font-family: var(--serif);
-
-      font-size: 38px;
-
-      opacity: .55;
-
-      transition:
-        opacity .25s ease;
-    }
-
-    .viewer-arrow:hover {
-      opacity: 1;
-    }
-
-    .viewer-prev {
-      left: 0;
-    }
-
-    .viewer-next {
-      right: 0;
+      color: var(--soft);
     }
 
 
-    /* =====================================================
+    /* =========================================================
        REVEAL
-    ===================================================== */
+       ========================================================= */
 
     .reveal {
       opacity: 0;
 
-      transform:
-        translateY(25px);
+      transform: translateY(28px);
 
       transition:
         opacity .9s var(--ease),
@@ -1194,247 +867,448 @@
 
     .reveal.visible {
       opacity: 1;
-
-      transform:
-        translateY(0);
+      transform: translateY(0);
     }
 
 
-    /* =====================================================
+    /* =========================================================
+       FULLSCREEN VIEWER
+       ========================================================= */
+
+    .viewer {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 100;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 35px;
+
+      background: rgba(15,15,13,.96);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity .4s ease,
+        visibility .4s ease;
+    }
+
+    .viewer.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .viewer-image {
+      display: block;
+
+      width: auto;
+      height: auto;
+
+      max-width: 94vw;
+      max-height: 92vh;
+
+      object-fit: contain;
+
+      user-select: none;
+      -webkit-user-drag: none;
+
+      cursor: zoom-out;
+
+      transition:
+        opacity .3s ease,
+        transform .4s var(--ease);
+    }
+
+    .viewer-close,
+    .viewer-prev,
+    .viewer-next {
+      position: absolute;
+
+      z-index: 3;
+
+      border: 0;
+      background: transparent;
+
+      color: #f5f4ef;
+
+      cursor: pointer;
+
+      opacity: .65;
+
+      transition:
+        opacity .25s ease,
+        transform .35s var(--ease);
+    }
+
+    .viewer-close:hover,
+    .viewer-prev:hover,
+    .viewer-next:hover {
+      opacity: 1;
+    }
+
+    .viewer-close {
+      top: 24px;
+      right: 28px;
+
+      font-family: var(--mono);
+
+      font-size: 18px;
+    }
+
+    .viewer-prev,
+    .viewer-next {
+      top: 50%;
+
+      width: 50px;
+      height: 70px;
+
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .viewer-prev {
+      left: 15px;
+    }
+
+    .viewer-next {
+      right: 15px;
+    }
+
+    .viewer-prev:hover {
+      transform: translateX(-3px);
+    }
+
+    .viewer-next:hover {
+      transform: translateX(3px);
+    }
+
+    .viewer-counter {
+      position: absolute;
+
+      left: 28px;
+      bottom: 25px;
+
+      font-family: var(--mono);
+
+      font-size: 8px;
+
+      letter-spacing: .08em;
+
+      color: rgba(255,255,255,.55);
+    }
+
+
+    /* =========================================================
+       SOUND
+       ========================================================= */
+
+    .sound-toggle {
+      position: fixed;
+
+      right: 28px;
+      bottom: 25px;
+
+      z-index: 60;
+
+      width: 34px;
+      height: 34px;
+
+      border: 0;
+      background: transparent;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      opacity: .65;
+
+      transition:
+        opacity .3s ease,
+        transform .4s var(--ease);
+    }
+
+    .sound-toggle:hover {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+
+    .sound-bars {
+      display: flex;
+
+      align-items: center;
+
+      gap: 2px;
+
+      height: 14px;
+    }
+
+    .sound-bars span {
+      display: block;
+
+      width: 1px;
+      height: 5px;
+
+      background: currentColor;
+
+      transition: height .25s ease;
+    }
+
+    .sound-toggle.playing
+    .sound-bars span:nth-child(1) {
+      animation:
+        soundOne .8s ease-in-out infinite alternate;
+    }
+
+    .sound-toggle.playing
+    .sound-bars span:nth-child(2) {
+      animation:
+        soundTwo .65s ease-in-out infinite alternate;
+    }
+
+    .sound-toggle.playing
+    .sound-bars span:nth-child(3) {
+      animation:
+        soundThree .9s ease-in-out infinite alternate;
+    }
+
+    .sound-toggle.playing
+    .sound-bars span:nth-child(4) {
+      animation:
+        soundTwo .7s ease-in-out infinite alternate;
+    }
+
+    @keyframes soundOne {
+      from {
+        height: 4px;
+      }
+
+      to {
+        height: 12px;
+      }
+    }
+
+    @keyframes soundTwo {
+      from {
+        height: 7px;
+      }
+
+      to {
+        height: 13px;
+      }
+    }
+
+    @keyframes soundThree {
+      from {
+        height: 3px;
+      }
+
+      to {
+        height: 10px;
+      }
+    }
+
+
+    /* =========================================================
        MOBILE
-       2 COLUMN GALLERY
-    ===================================================== */
+       ========================================================= */
 
     @media (max-width: 800px) {
 
       :root {
-        --nav-height: 66px;
+        --nav-height: 64px;
       }
-
 
       .nav {
-        padding:
-          0 18px;
-
-        background: transparent;
-
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
+        padding: 0 18px;
       }
-
-
-      .brand {
-        font-size: 18px;
-      }
-
 
       .nav-right {
-        gap: 14px;
+        gap: 12px;
       }
 
-
-      .nav-links {
+      .nav-link {
         display: none;
       }
-
-
-      .hero {
-        min-height: 600px;
-      }
-
-
-      .hero-light {
-        /*
-          Even tighter on mobile.
-        */
-
-        inset: -20%;
-
-        filter: blur(48px);
-
-        opacity: .88;
-      }
-
-
-      .hero-light::before {
-        width: 62%;
-        height: 62%;
-
-        filter: blur(55px);
-      }
-
-
-      .hero-light::after {
-        width: 62%;
-        height: 62%;
-
-        filter: blur(58px);
-      }
-
-
-      .hero::before {
-        width: 70vw;
-        height: 70vw;
-
-        filter: blur(42px);
-      }
-
-
-      .hero-media {
-        padding:
-          calc(var(--nav-height) + 20px)
-          18px
-          130px;
-      }
-
-
-      .hero-meta {
-        left: 18px;
-        bottom: 25px;
-      }
-
-
-      .hero-note {
-        right: 18px;
-        bottom: 27px;
-      }
-
-
-      .scroll-hint {
-        display: none;
-      }
-
 
       .section-inner {
         width:
           min(
-            calc(100% - 36px),
-            1280px
+            100% - 36px,
+            1400px
           );
       }
 
+      .hero-media {
+        padding:
+          calc(var(--nav-height) + 15px)
+          18px
+          75px;
+      }
+
+      .hero-caption {
+        left: 18px;
+        bottom: 22px;
+      }
+
+      .hero-index {
+        right: 18px;
+        bottom: 22px;
+      }
+
+      /* Only glow sizing changes on mobile */
+
+      .hero-light {
+        width: 78%;
+        height: 60%;
+
+        filter: blur(32px);
+      }
+
+      .hero-light::before {
+        filter: blur(24px);
+      }
+
+      .hero::before {
+        width: 46vw;
+        height: 46vw;
+
+        filter: blur(27px);
+      }
 
       .intro {
-        min-height: auto;
-
-        padding:
-          120px 0
-          140px;
+        padding: 105px 0;
       }
 
-
-      .intro p {
-        margin-top: 30px;
+      .intro-copy {
+        font-size: 15px;
+        margin-top: 32px;
       }
-
-
-      /* 2 COLUMN GALLERY */
 
       .works {
-        padding:
-          100px 0
-          120px;
+        padding: 90px 0 115px;
       }
-
 
       .section-heading {
-        margin-bottom: 55px;
+        margin-bottom: 48px;
       }
-
 
       .works-grid {
         grid-template-columns:
-          repeat(
-            2,
-            minmax(0, 1fr)
-          );
+          repeat(2, minmax(0, 1fr));
 
         column-gap: 16px;
-
         row-gap: 55px;
       }
 
-
       .work-title {
-        font-size: 17px;
+        font-size: 16px;
       }
-
 
       .work-meta {
         font-size: 8px;
       }
 
-
       .statement {
-        min-height: auto;
-
-        padding:
-          120px 0;
+        padding: 100px 0;
       }
-
 
       .about {
-        padding:
-          110px 0
-          130px;
+        padding: 90px 0 120px;
       }
-
 
       .about-grid {
         grid-template-columns: 1fr;
-
         gap: 45px;
       }
 
+      .about-copy {
+        font-size: 15px;
+      }
 
       .contact {
-        min-height: auto;
-
-        padding:
-          120px 0
-          130px;
+        padding: 100px 0 120px;
       }
 
-
-      .contact-links {
-        width: 100%;
+      .contact-copy {
+        font-size: 15px;
+        margin-top: 30px;
       }
 
-
-      .contact-links a {
-        width: 100%;
+      .sound-toggle {
+        right: 12px;
+        bottom: 17px;
       }
 
-
-      footer {
-        padding:
-          30px 18px
-          40px;
-
-        flex-direction: column;
-
-        align-items: flex-start;
+      .viewer {
+        padding: 18px;
       }
 
-
-      .viewer-image-wrap {
-        padding:
-          65px 25px;
+      .viewer-image {
+        max-width: 94vw;
+        max-height: 84vh;
       }
 
-
-      .viewer-arrow {
-        width: 45px;
-
-        font-size: 30px;
+      .viewer-prev,
+      .viewer-next {
+        width: 38px;
       }
 
+      .viewer-prev {
+        left: 3px;
+      }
+
+      .viewer-next {
+        right: 3px;
+      }
     }
 
 
-    /* =====================================================
+    /* =========================================================
+       VERY SMALL SCREENS
+       ========================================================= */
+
+    @media (max-width: 480px) {
+
+      .works-grid {
+        column-gap: 13px;
+        row-gap: 45px;
+      }
+
+      .work-info {
+        padding-top: 12px;
+      }
+
+      .work-title {
+        font-size: 14px;
+      }
+
+      .work-meta {
+        font-size: 7px;
+        letter-spacing: .04em;
+      }
+
+      .hero-light {
+        width: 84%;
+        height: 56%;
+      }
+
+      .hero::before {
+        width: 52vw;
+        height: 52vw;
+      }
+    }
+
+
+    /* =========================================================
        REDUCED MOTION
-    ===================================================== */
+       ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -1445,24 +1319,1062 @@
       *,
       *::before,
       *::after {
-        animation-duration:
-          .01ms !important;
-
-        animation-iteration-count:
-          1 !important;
-
-        transition-duration:
-          .01ms !important;
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
       }
 
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
 
   </style>
+</head>
 
 
-  <!-- =====================================================
+<body>
+
+
+  <!-- =======================================================
+       NAVIGATION
+       ======================================================= -->
+
+  <nav class="nav">
+
+    <a
+      href="#top"
+      class="nav-logo">
+      Joy Chatterjee
+    </a>
+
+    <div class="nav-right">
+
+      <a
+        href="#works"
+        class="nav-link">
+        Works
+      </a>
+
+      <a
+        href="#about"
+        class="nav-link">
+        About
+      </a>
+
+      <a
+        href="#contact"
+        class="nav-link">
+        Commission
+      </a>
+
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Toggle light and dark mode">
+
+        <span class="theme-icon"></span>
+
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =======================================================
+       MAIN
+       ======================================================= -->
+
+  <main id="top">
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section
+      class="hero"
+      id="hero">
+
+      <div class="hero-light"></div>
+
+      <div class="hero-media">
+
+        <img
+          id="heroImage"
+          src="work-01.jpg"
+          alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
+          draggable="false">
+
+      </div>
+
+      <div
+        class="hero-caption"
+        id="heroCaption">
+        Silverina · Oil on Canvas
+      </div>
+
+      <div
+        class="hero-index"
+        id="heroIndex">
+        01 / 05
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INTRO
+         ===================================================== -->
+
+    <section class="intro">
+
+      <div class="section-inner">
+
+        <div class="intro-inner">
+
+          <div class="eyebrow reveal">
+            Hyper-Realistic Portraiture
+          </div>
+
+          <h1 class="intro-title reveal">
+            A portrait to keep<br>
+            for generations.
+          </h1>
+
+          <div class="intro-copy reveal">
+            Painted by hand from a single photograph,
+            in such detail that people mistake it for one.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WORKS
+         ===================================================== -->
+
+    <section
+      class="works"
+      id="works">
+
+      <div class="section-inner">
+
+        <div class="section-heading reveal">
+
+          <div class="eyebrow">
+            Selected Works
+          </div>
+
+          <h2>
+            Works
+          </h2>
+
+        </div>
+
+
+        <div class="works-grid">
+
+
+          <article class="work reveal">
+
+            <div class="work-image">
+
+              <img
+                src="work-01.jpg"
+                alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
+                data-index="0"
+                draggable="false">
+
+            </div>
+
+            <div class="work-info">
+
+              <div class="work-title">
+                Silverina
+              </div>
+
+              <div class="work-meta">
+                Oil on Canvas · Painted by hand
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="work reveal">
+
+            <div class="work-image">
+
+              <img
+                src="work-02.jpg"
+                alt="Silverina — The Making, portrait process by Joy Chatterjee"
+                data-index="1"
+                draggable="false">
+
+            </div>
+
+            <div class="work-info">
+
+              <div class="work-title">
+                Silverina — The Making
+              </div>
+
+              <div class="work-meta">
+                Process · Painted by hand
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="work reveal">
+
+            <div class="work-image">
+
+              <img
+                src="work-03.jpg"
+                alt="Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
+                data-index="2"
+                draggable="false">
+
+            </div>
+
+            <div class="work-info">
+
+              <div class="work-title">
+                A Special Pleader
+              </div>
+
+              <div class="work-meta">
+                Oil on Canvas · Replica
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="work reveal">
+
+            <div class="work-image">
+
+              <img
+                src="work-04.jpg"
+                alt="Jamshedji Tata portrait by Joy Chatterjee"
+                data-index="3"
+                draggable="false">
+
+            </div>
+
+            <div class="work-info">
+
+              <div class="work-title">
+                Jamshedji Tata
+              </div>
+
+              <div class="work-meta">
+                Oil on Canvas · Painted by hand
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="work reveal">
+
+            <div class="work-image">
+
+              <img
+                src="work-05.jpg"
+                alt="A Moment of Recognition, portrait by Joy Chatterjee"
+                data-index="4"
+                draggable="false">
+
+            </div>
+
+            <div class="work-info">
+
+              <div class="work-title">
+                A Moment of Recognition
+              </div>
+
+              <div class="work-meta">
+                Portrait · Painted by hand
+              </div>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STATEMENT
+         ===================================================== -->
+
+    <section class="statement">
+
+      <div class="section-inner">
+
+        <div class="statement-text reveal">
+          Every face begins with observation.
+          The painting begins where the photograph ends.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+         ===================================================== -->
+
+    <section
+      class="about"
+      id="about">
+
+      <div class="section-inner">
+
+        <div class="about-grid">
+
+          <div class="about-heading reveal">
+            About the artist
+          </div>
+
+          <div class="about-copy reveal">
+
+            <p>
+              Every face begins with observation.
+            </p>
+
+            <p>
+              For over two decades, Joy Chatterjee has
+              dedicated his practice to hyper-realistic
+              portraiture — studying expression,
+              character and the smallest details that
+              make a person unmistakably themselves.
+            </p>
+
+            <p>
+              Each portrait is painted by hand from a
+              photograph, with the intention of creating
+              something that feels less like an image
+              and more like a presence.
+            </p>
+
+            <p>
+              Presented to Kapil Dev, Sourav Ganguly
+              and Shah Rukh Khan. Held in the Boroline
+              House collection and by private collectors
+              in India and Italy.
+            </p>
+
+            <div class="about-location">
+              West Bengal — India — Italy
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+         ===================================================== -->
+
+    <section
+      class="contact"
+      id="contact">
+
+      <div class="section-inner">
+
+        <div class="eyebrow reveal">
+          Private Commissions
+        </div>
+
+        <div class="contact-title reveal">
+          Begin a portrait.
+        </div>
+
+        <div class="contact-copy reveal">
+          A portrait painted by hand, from your photograph,
+          created to remain in your family for generations.
+        </div>
+
+        <div class="contact-links reveal">
+
+          <a
+            class="commission-link"
+            href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I%27d%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
+            target="_blank"
+            rel="noopener">
+
+            Commission Art
+
+          </a>
+
+        </div>
+
+        <div class="contact-email reveal">
+
+          <a href="mailto:studio@joychatterjee.art">
+            studio@joychatterjee.art
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer>
+
+    <div class="section-inner footer-inner">
+
+      <span>
+        © <span id="year"></span> Joy Chatterjee
+      </span>
+
+      <span>
+        Hand-painted portraiture
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       SOUND
+       ======================================================= -->
+
+  <button
+    class="sound-toggle"
+    id="soundToggle"
+    type="button"
+    aria-label="Toggle ambient sound">
+
+    <span class="sound-bars">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+  </button>
+
+  <audio
+    id="ambientAudio"
+    src="music.mp3"
+    loop
+    preload="none">
+  </audio>
+
+
+  <!-- =======================================================
+       FULLSCREEN VIEWER
+       ======================================================= -->
+
+  <div
+    class="viewer"
+    id="viewer"
+    aria-hidden="true">
+
+    <button
+      class="viewer-close"
+      id="viewerClose"
+      type="button"
+      aria-label="Close">
+      ×
+    </button>
+
+    <button
+      class="viewer-prev"
+      id="viewerPrev"
+      type="button"
+      aria-label="Previous image">
+      ‹
+    </button>
+
+    <img
+      class="viewer-image"
+      id="viewerImage"
+      src=""
+      alt=""
+      draggable="false">
+
+    <button
+      class="viewer-next"
+      id="viewerNext"
+      type="button"
+      aria-label="Next image">
+      ›
+    </button>
+
+    <div
+      class="viewer-counter"
+      id="viewerCounter">
+      01 / 05
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
+
+  <script>
+
+    /* =========================================================
+       ARTWORK DATA
+       ========================================================= */
+
+    const artworks = [
+
+      {
+        src: "work-01.jpg",
+        alt: "Silverina, hyper-realistic portrait by Joy Chatterjee",
+        caption: "Silverina · Oil on Canvas"
+      },
+
+      {
+        src: "work-02.jpg",
+        alt: "Silverina — The Making, portrait process by Joy Chatterjee",
+        caption: "Silverina — The Making · Process"
+      },
+
+      {
+        src: "work-03.jpg",
+        alt: "Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee",
+        caption: "A Special Pleader · Oil on Canvas"
+      },
+
+      {
+        src: "work-04.jpg",
+        alt: "Jamshedji Tata portrait by Joy Chatterjee",
+        caption: "Jamshedji Tata · Oil on Canvas"
+      },
+
+      {
+        src: "work-05.jpg",
+        alt: "A Moment of Recognition, portrait by Joy Chatterjee",
+        caption: "A Moment of Recognition · Portrait"
+      }
+
+    ];
+
+
+    /* =========================================================
+       YEAR
+       ========================================================= */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================================================
+       THEME
+       ========================================================= */
+
+    const themeToggle =
+      document.getElementById("themeToggle");
+
+    const savedTheme =
+      localStorage.getItem("joy-theme");
+
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+
+    themeToggle.addEventListener("click", () => {
+
+      document.documentElement.classList.toggle("dark");
+
+      const isDark =
+        document.documentElement.classList.contains("dark");
+
+      localStorage.setItem(
+        "joy-theme",
+        isDark ? "dark" : "light"
+      );
+
+    });
+
+
+    /* =========================================================
+       HERO SLIDESHOW
+       ========================================================= */
+
+    const heroImage =
+      document.getElementById("heroImage");
+
+    const heroCaption =
+      document.getElementById("heroCaption");
+
+    const heroIndex =
+      document.getElementById("heroIndex");
+
+    let heroCurrent = 0;
+
+    function showHero(index) {
+
+      heroCurrent =
+        (index + artworks.length) % artworks.length;
+
+      heroImage.classList.add("is-changing");
+
+      setTimeout(() => {
+
+        heroImage.src =
+          artworks[heroCurrent].src;
+
+        heroImage.alt =
+          artworks[heroCurrent].alt;
+
+        heroCaption.textContent =
+          artworks[heroCurrent].caption;
+
+        heroIndex.textContent =
+          String(heroCurrent + 1).padStart(2, "0")
+          + " / "
+          + String(artworks.length).padStart(2, "0");
+
+        requestAnimationFrame(() => {
+
+          heroImage.classList.remove(
+            "is-changing"
+          );
+
+        });
+
+      }, 400);
+
+    }
+
+    setInterval(() => {
+
+      showHero(heroCurrent + 1);
+
+    }, 5000);
+
+
+    /* =========================================================
+       FULLSCREEN VIEWER
+       ========================================================= */
+
+    const viewer =
+      document.getElementById("viewer");
+
+    const viewerImage =
+      document.getElementById("viewerImage");
+
+    const viewerCounter =
+      document.getElementById("viewerCounter");
+
+    const viewerClose =
+      document.getElementById("viewerClose");
+
+    const viewerPrev =
+      document.getElementById("viewerPrev");
+
+    const viewerNext =
+      document.getElementById("viewerNext");
+
+    let viewerCurrent = 0;
+
+
+    function openViewer(index) {
+
+      viewerCurrent =
+        (index + artworks.length)
+        % artworks.length;
+
+      viewerImage.src =
+        artworks[viewerCurrent].src;
+
+      viewerImage.alt =
+        artworks[viewerCurrent].alt;
+
+      updateViewerCounter();
+
+      viewer.classList.add("open");
+
+      viewer.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    function closeViewer() {
+
+      viewer.classList.remove("open");
+
+      viewer.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    function updateViewerCounter() {
+
+      viewerCounter.textContent =
+        String(viewerCurrent + 1).padStart(2, "0")
+        + " / "
+        + String(artworks.length).padStart(2, "0");
+
+    }
+
+
+    function viewerNextImage() {
+
+      viewerCurrent =
+        (viewerCurrent + 1)
+        % artworks.length;
+
+      viewerImage.style.opacity = "0";
+
+      setTimeout(() => {
+
+        viewerImage.src =
+          artworks[viewerCurrent].src;
+
+        viewerImage.alt =
+          artworks[viewerCurrent].alt;
+
+        updateViewerCounter();
+
+        viewerImage.style.opacity = "1";
+
+      }, 150);
+
+    }
+
+
+    function viewerPreviousImage() {
+
+      viewerCurrent =
+        (viewerCurrent - 1 + artworks.length)
+        % artworks.length;
+
+      viewerImage.style.opacity = "0";
+
+      setTimeout(() => {
+
+        viewerImage.src =
+          artworks[viewerCurrent].src;
+
+        viewerImage.alt =
+          artworks[viewerCurrent].alt;
+
+        updateViewerCounter();
+
+        viewerImage.style.opacity = "1";
+
+      }, 150);
+
+    }
+
+
+    document
+      .querySelectorAll(".work-image img")
+      .forEach(img => {
+
+        img.addEventListener("click", () => {
+
+          openViewer(
+            Number(img.dataset.index)
+          );
+
+        });
+
+      });
+
+
+    heroImage.addEventListener(
+      "click",
+      () => {
+
+        openViewer(heroCurrent);
+
+      }
+    );
+
+
+    viewerClose.addEventListener(
+      "click",
+      closeViewer
+    );
+
+    viewerPrev.addEventListener(
+      "click",
+      viewerPreviousImage
+    );
+
+    viewerNext.addEventListener(
+      "click",
+      viewerNextImage
+    );
+
+
+    viewer.addEventListener(
+      "click",
+      event => {
+
+        if (event.target === viewer) {
+          closeViewer();
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       KEYBOARD
+       ========================================================= */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          !viewer.classList.contains("open")
+        ) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeViewer();
+        }
+
+        if (event.key === "ArrowRight") {
+          viewerNextImage();
+        }
+
+        if (event.key === "ArrowLeft") {
+          viewerPreviousImage();
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       TOUCH SWIPE
+       ========================================================= */
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    viewer.addEventListener(
+      "touchstart",
+      event => {
+
+        touchStartX =
+          event.changedTouches[0].screenX;
+
+      },
+      { passive: true }
+    );
+
+
+    viewer.addEventListener(
+      "touchend",
+      event => {
+
+        touchEndX =
+          event.changedTouches[0].screenX;
+
+        const distance =
+          touchEndX - touchStartX;
+
+        if (Math.abs(distance) < 45) {
+          return;
+        }
+
+        if (distance < 0) {
+          viewerNextImage();
+        } else {
+          viewerPreviousImage();
+        }
+
+      },
+      { passive: true }
+    );
+
+
+    /* =========================================================
+       REVEAL ANIMATIONS
+       ========================================================= */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    if ("IntersectionObserver" in window) {
+
+      const observer =
+        new IntersectionObserver(
+          entries => {
+
+            entries.forEach(entry => {
+
+              if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            });
+
+          },
+          {
+            threshold: .08,
+
+            rootMargin:
+              "0px 0px -50px 0px"
+          }
+        );
+
+
+      revealElements.forEach(element => {
+
+        observer.observe(element);
+
+      });
+
+    } else {
+
+      revealElements.forEach(element => {
+
+        element.classList.add(
+          "visible"
+        );
+
+      });
+
+    }
+
+
+    /* =========================================================
+       SOUND
+       ========================================================= */
+
+    const soundToggle =
+      document.getElementById("soundToggle");
+
+    const ambientAudio =
+      document.getElementById("ambientAudio");
+
+    let soundPlaying = false;
+
+
+    soundToggle.addEventListener(
+      "click",
+      async () => {
+
+        try {
+
+          if (!soundPlaying) {
+
+            await ambientAudio.play();
+
+            soundPlaying = true;
+
+            soundToggle.classList.add(
+              "playing"
+            );
+
+          } else {
+
+            ambientAudio.pause();
+
+            soundPlaying = false;
+
+            soundToggle.classList.remove(
+              "playing"
+            );
+
+          }
+
+        } catch (error) {
+
+          console.log(
+            "Audio could not be started:",
+            error
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       PRELOAD IMAGES
+       ========================================================= */
+
+    artworks.forEach(artwork => {
+
+      const image =
+        new Image();
+
+      image.src =
+        artwork.src;
+
+    });
+
+  </script>
+
+
+  <!-- =======================================================
        GOOGLE ANALYTICS
-  ===================================================== -->
+       ======================================================= -->
 
   <script
     async
@@ -1487,1323 +2399,6 @@
       "config",
       "G-4F3MFHFVDE"
     );
-
-  </script>
-
-</head>
-
-
-<body>
-
-
-  <!-- =====================================================
-       NAVIGATION
-  ===================================================== -->
-
-  <nav class="nav">
-
-    <a
-      class="brand"
-      href="#top">
-
-      Joy Chatterjee
-
-    </a>
-
-
-    <div class="nav-right">
-
-      <div class="nav-links">
-
-        <a
-          class="nav-link"
-          href="#works">
-
-          Works
-
-        </a>
-
-        <a
-          class="nav-link"
-          href="#about">
-
-          About
-
-        </a>
-
-        <a
-          class="nav-link"
-          href="#contact">
-
-          Contact
-
-        </a>
-
-      </div>
-
-
-      <button
-        class="nav-control"
-        id="soundToggle"
-        type="button">
-
-        Sound
-
-      </button>
-
-
-      <button
-        class="nav-control"
-        id="themeToggle"
-        type="button">
-
-        Theme
-
-      </button>
-
-    </div>
-
-  </nav>
-
-
-  <!-- =====================================================
-       MAIN
-  ===================================================== -->
-
-  <main id="top">
-
-
-    <!-- ===================================================
-         HERO
-    =================================================== -->
-
-    <section class="hero">
-
-      <div class="hero-light"></div>
-
-
-      <div class="hero-media">
-
-        <img
-          id="heroImage"
-          src="work-01.jpg"
-          alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
-          draggable="false">
-
-      </div>
-
-
-      <div class="hero-meta">
-
-        <span
-          class="hero-number"
-          id="heroNumber">
-
-          01 / 05
-
-        </span>
-
-
-        <div
-          class="hero-title"
-          id="heroTitle">
-
-          Silverina
-
-        </div>
-
-      </div>
-
-
-      <div
-        class="hero-note"
-        id="heroNote">
-
-        Oil on Canvas<br>
-        Painted by hand
-
-      </div>
-
-
-      <div class="scroll-hint">
-
-        Scroll to enter
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         INTRO
-    =================================================== -->
-
-    <section class="intro">
-
-      <div class="section-inner">
-
-        <div class="intro-copy reveal">
-
-          <div class="eyebrow">
-
-            Portrait Artist · India / Italy
-
-          </div>
-
-
-          <h1>
-
-            A portrait to keep for generations.
-
-          </h1>
-
-
-          <p>
-
-            Painted by hand from a single photograph,
-            in such detail that people mistake it for one.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         WORKS
-    =================================================== -->
-
-    <section
-      class="works"
-      id="works">
-
-      <div class="section-inner">
-
-
-        <div class="section-heading reveal">
-
-          <div class="eyebrow">
-
-            Selected Works
-
-          </div>
-
-
-          <h2>
-
-            Works
-
-          </h2>
-
-        </div>
-
-
-        <div class="works-grid">
-
-
-          <article class="work reveal">
-
-            <div class="work-image">
-
-              <img
-                src="work-01.jpg"
-                alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
-                data-index="0"
-                draggable="false">
-
-            </div>
-
-
-            <div class="work-info">
-
-              <div class="work-title">
-
-                Silverina
-
-              </div>
-
-
-              <div class="work-meta">
-
-                Oil on Canvas · Painted by hand
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="work reveal">
-
-            <div class="work-image">
-
-              <img
-                src="work-02.jpg"
-                alt="Silverina — The Making, portrait process by Joy Chatterjee"
-                data-index="1"
-                draggable="false">
-
-            </div>
-
-
-            <div class="work-info">
-
-              <div class="work-title">
-
-                Silverina — The Making
-
-              </div>
-
-
-              <div class="work-meta">
-
-                Process · Painted by hand
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="work reveal">
-
-            <div class="work-image">
-
-              <img
-                src="work-03.jpg"
-                alt="Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
-                data-index="2"
-                draggable="false">
-
-            </div>
-
-
-            <div class="work-info">
-
-              <div class="work-title">
-
-                A Special Pleader
-
-              </div>
-
-
-              <div class="work-meta">
-
-                Oil on Canvas · Replica
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="work reveal">
-
-            <div class="work-image">
-
-              <img
-                src="work-04.jpg"
-                alt="Jamshedji Tata portrait by Joy Chatterjee"
-                data-index="3"
-                draggable="false">
-
-            </div>
-
-
-            <div class="work-info">
-
-              <div class="work-title">
-
-                Jamshedji Tata
-
-              </div>
-
-
-              <div class="work-meta">
-
-                Oil on Canvas · Painted by hand
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="work reveal">
-
-            <div class="work-image">
-
-              <img
-                src="work-05.jpg"
-                alt="A Moment of Recognition, portrait by Joy Chatterjee"
-                data-index="4"
-                draggable="false">
-
-            </div>
-
-
-            <div class="work-info">
-
-              <div class="work-title">
-
-                A Moment of Recognition
-
-              </div>
-
-
-              <div class="work-meta">
-
-                Portrait · Painted by hand
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         STATEMENT
-    =================================================== -->
-
-    <section class="statement">
-
-      <div class="section-inner">
-
-        <p class="reveal">
-
-          Every face begins with observation.
-          The painting begins where the photograph ends.
-
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         ABOUT
-    =================================================== -->
-
-    <section
-      class="about"
-      id="about">
-
-      <div class="section-inner">
-
-        <div class="about-grid">
-
-
-          <div class="about-title reveal">
-
-            Every face begins with observation.
-
-          </div>
-
-
-          <div class="about-copy reveal">
-
-            <p>
-
-              For over two decades, I have painted faces by hand —
-              studying expression, character, light and the smallest
-              details that make a person unmistakably themselves.
-
-            </p>
-
-
-            <p>
-
-              My practice has developed across
-              <strong>West Bengal — India — Italy</strong>,
-              with a focus on hyper-realistic portraiture.
-
-            </p>
-
-
-            <p>
-
-              My portraits have been presented to
-              <strong>Kapil Dev, Sourav Ganguly and Shah Rukh Khan</strong>.
-              The work is held in the <strong>Boroline House</strong>
-              collection and by private collectors in India and Italy.
-
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         CONTACT
-    =================================================== -->
-
-    <section
-      class="contact"
-      id="contact">
-
-      <div class="section-inner">
-
-
-        <div class="eyebrow reveal">
-
-          Private Commissions
-
-        </div>
-
-
-        <div class="contact-title reveal">
-
-          Begin a portrait.
-
-        </div>
-
-
-        <div class="contact-copy reveal">
-
-          A portrait painted by hand, from your photograph,
-          created to remain in your family for generations.
-
-        </div>
-
-
-        <div class="contact-links reveal">
-
-          <a
-            class="commission-link"
-            href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I%27d%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
-            target="_blank"
-            rel="noopener">
-
-            Commission Art
-
-          </a>
-
-        </div>
-
-
-        <div class="contact-email reveal">
-
-          <a
-            href="mailto:studio@joychatterjee.art">
-
-            studio@joychatterjee.art
-
-          </a>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-
-  <!-- =====================================================
-       FOOTER
-  ===================================================== -->
-
-  <footer>
-
-    <div>
-
-      © <span id="year"></span>
-      Joy Chatterjee
-
-    </div>
-
-
-    <div>
-
-      Painted by hand / Seen slowly
-
-    </div>
-
-  </footer>
-
-
-  <!-- =====================================================
-       FULLSCREEN VIEWER
-  ===================================================== -->
-
-  <div
-    class="viewer"
-    id="viewer"
-    aria-hidden="true">
-
-
-    <div class="viewer-top">
-
-      <div
-        class="viewer-label"
-        id="viewerLabel">
-
-        01 / 05
-
-      </div>
-
-
-      <button
-        class="viewer-close"
-        id="viewerClose"
-        type="button"
-        aria-label="Close">
-
-        ×
-
-      </button>
-
-    </div>
-
-
-    <button
-      class="viewer-arrow viewer-prev"
-      id="viewerPrev"
-      type="button"
-      aria-label="Previous">
-
-      ‹
-
-    </button>
-
-
-    <div class="viewer-image-wrap">
-
-      <img
-        class="viewer-img"
-        id="viewerImage"
-        src=""
-        alt=""
-        draggable="false">
-
-    </div>
-
-
-    <button
-      class="viewer-arrow viewer-next"
-      id="viewerNext"
-      type="button"
-      aria-label="Next">
-
-      ›
-
-    </button>
-
-  </div>
-
-
-  <!-- =====================================================
-       AUDIO
-  ===================================================== -->
-
-  <audio
-    id="siteAudio"
-    src="music.mp3"
-    loop
-    preload="none">
-  </audio>
-
-
-  <script>
-
-    /* =====================================================
-       HERO SLIDES
-    ===================================================== */
-
-    const heroSlides = [
-
-      {
-        src: "work-01.jpg",
-        title: "Silverina",
-        note: "Oil on Canvas<br>Painted by hand",
-        alt: "Silverina, hyper-realistic portrait by Joy Chatterjee"
-      },
-
-      {
-        src: "work-02.jpg",
-        title: "Silverina — The Making",
-        note: "Process<br>Painted by hand",
-        alt: "Silverina — The Making, portrait process by Joy Chatterjee"
-      },
-
-      {
-        src: "work-03.jpg",
-        title: "A Special Pleader",
-        note: "Oil on Canvas<br>Replica",
-        alt: "Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
-      },
-
-      {
-        src: "work-04.jpg",
-        title: "Jamshedji Tata",
-        note: "Oil on Canvas<br>Painted by hand",
-        alt: "Jamshedji Tata portrait by Joy Chatterjee"
-      },
-
-      {
-        src: "work-05.jpg",
-        title: "A Moment of Recognition",
-        note: "Portrait<br>Painted by hand",
-        alt: "A Moment of Recognition, portrait by Joy Chatterjee"
-      }
-
-    ];
-
-
-    const heroImage =
-      document.getElementById(
-        "heroImage"
-      );
-
-
-    const heroTitle =
-      document.getElementById(
-        "heroTitle"
-      );
-
-
-    const heroNumber =
-      document.getElementById(
-        "heroNumber"
-      );
-
-
-    const heroNote =
-      document.getElementById(
-        "heroNote"
-      );
-
-
-    let heroIndex = 0;
-
-
-    /* PRELOAD ARTWORK */
-
-    heroSlides.forEach(
-      slide => {
-
-        const image =
-          new Image();
-
-        image.src =
-          slide.src;
-
-      }
-    );
-
-
-    /* =====================================================
-       HERO ROTATION
-    ===================================================== */
-
-    function changeHero() {
-
-      const nextIndex =
-        (heroIndex + 1) %
-        heroSlides.length;
-
-
-      const nextSlide =
-        heroSlides[nextIndex];
-
-
-      heroImage.classList.add(
-        "is-changing"
-      );
-
-
-      setTimeout(
-        () => {
-
-          heroImage.src =
-            nextSlide.src;
-
-          heroImage.alt =
-            nextSlide.alt;
-
-          heroTitle.textContent =
-            nextSlide.title;
-
-          heroNumber.textContent =
-            String(
-              nextIndex + 1
-            ).padStart(
-              2,
-              "0"
-            ) +
-            " / 05";
-
-          heroNote.innerHTML =
-            nextSlide.note;
-
-
-          requestAnimationFrame(
-            () => {
-
-              heroImage.classList.remove(
-                "is-changing"
-              );
-
-            }
-          );
-
-
-          heroIndex =
-            nextIndex;
-
-        },
-        650
-      );
-
-    }
-
-
-    setInterval(
-      changeHero,
-      5000
-    );
-
-
-    /* =====================================================
-       VIEWER
-    ===================================================== */
-
-    const viewer =
-      document.getElementById(
-        "viewer"
-      );
-
-
-    const viewerImage =
-      document.getElementById(
-        "viewerImage"
-      );
-
-
-    const viewerLabel =
-      document.getElementById(
-        "viewerLabel"
-      );
-
-
-    const viewerClose =
-      document.getElementById(
-        "viewerClose"
-      );
-
-
-    const viewerPrev =
-      document.getElementById(
-        "viewerPrev"
-      );
-
-
-    const viewerNext =
-      document.getElementById(
-        "viewerNext"
-      );
-
-
-    let viewerIndex = 0;
-
-
-    function updateViewer() {
-
-      const slide =
-        heroSlides[
-          viewerIndex
-        ];
-
-
-      viewerImage.src =
-        slide.src;
-
-
-      viewerImage.alt =
-        slide.alt;
-
-
-      viewerLabel.textContent =
-        String(
-          viewerIndex + 1
-        ).padStart(
-          2,
-          "0"
-        ) +
-        " / 05";
-
-    }
-
-
-    function openViewer(index) {
-
-      viewerIndex =
-        index;
-
-
-      updateViewer();
-
-
-      viewer.classList.add(
-        "open"
-      );
-
-
-      viewer.setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-
-      document.body.classList.add(
-        "viewer-open"
-      );
-
-    }
-
-
-    function closeViewer() {
-
-      viewer.classList.remove(
-        "open"
-      );
-
-
-      viewer.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-
-      document.body.classList.remove(
-        "viewer-open"
-      );
-
-    }
-
-
-    function nextViewer() {
-
-      viewerIndex =
-        (viewerIndex + 1) %
-        heroSlides.length;
-
-
-      updateViewer();
-
-    }
-
-
-    function previousViewer() {
-
-      viewerIndex =
-        (
-          viewerIndex -
-          1 +
-          heroSlides.length
-        ) %
-        heroSlides.length;
-
-
-      updateViewer();
-
-    }
-
-
-    /* WORK IMAGE CLICK */
-
-    document
-      .querySelectorAll(
-        ".work-image img"
-      )
-      .forEach(
-        image => {
-
-          image.addEventListener(
-            "click",
-            () => {
-
-              openViewer(
-                Number(
-                  image.dataset.index
-                )
-              );
-
-            }
-          );
-
-        }
-      );
-
-
-    /* HERO IMAGE CLICK */
-
-    heroImage.addEventListener(
-      "click",
-      () => {
-
-        openViewer(
-          heroIndex
-        );
-
-      }
-    );
-
-
-    viewerClose.addEventListener(
-      "click",
-      closeViewer
-    );
-
-
-    viewerNext.addEventListener(
-      "click",
-      nextViewer
-    );
-
-
-    viewerPrev.addEventListener(
-      "click",
-      previousViewer
-    );
-
-
-    /* =====================================================
-       KEYBOARD
-    ===================================================== */
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          !viewer.classList.contains(
-            "open"
-          )
-        ) {
-
-          return;
-
-        }
-
-
-        if (
-          event.key ===
-          "Escape"
-        ) {
-
-          closeViewer();
-
-        }
-
-
-        if (
-          event.key ===
-          "ArrowRight"
-        ) {
-
-          nextViewer();
-
-        }
-
-
-        if (
-          event.key ===
-          "ArrowLeft"
-        ) {
-
-          previousViewer();
-
-        }
-
-      }
-    );
-
-
-    /* =====================================================
-       TOUCH SWIPE
-    ===================================================== */
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-
-    viewer.addEventListener(
-      "touchstart",
-      event => {
-
-        touchStartX =
-          event.changedTouches[0]
-            .screenX;
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    viewer.addEventListener(
-      "touchend",
-      event => {
-
-        touchEndX =
-          event.changedTouches[0]
-            .screenX;
-
-
-        const distance =
-          touchEndX -
-          touchStartX;
-
-
-        if (
-          Math.abs(distance) < 50
-        ) {
-
-          return;
-
-        }
-
-
-        if (
-          distance < 0
-        ) {
-
-          nextViewer();
-
-        } else {
-
-          previousViewer();
-
-        }
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    /* =====================================================
-       SOUND
-    ===================================================== */
-
-    const soundToggle =
-      document.getElementById(
-        "soundToggle"
-      );
-
-
-    const siteAudio =
-      document.getElementById(
-        "siteAudio"
-      );
-
-
-    let soundOn = false;
-
-
-    soundToggle.addEventListener(
-      "click",
-      async () => {
-
-        if (!soundOn) {
-
-          try {
-
-            await siteAudio.play();
-
-            soundOn = true;
-
-            soundToggle.textContent =
-              "Sound On";
-
-          } catch (error) {
-
-            soundToggle.textContent =
-              "Sound";
-
-          }
-
-        } else {
-
-          siteAudio.pause();
-
-          soundOn = false;
-
-          soundToggle.textContent =
-            "Sound";
-
-        }
-
-      }
-    );
-
-
-    /* =====================================================
-       THEME
-    ===================================================== */
-
-    const themeToggle =
-      document.getElementById(
-        "themeToggle"
-      );
-
-
-    function setTheme(theme) {
-
-      if (
-        theme === "dark"
-      ) {
-
-        document.documentElement
-          .classList.add(
-            "dark"
-          );
-
-        localStorage.setItem(
-          "joy-theme",
-          "dark"
-        );
-
-      } else {
-
-        document.documentElement
-          .classList.remove(
-            "dark"
-          );
-
-        localStorage.setItem(
-          "joy-theme",
-          "light"
-        );
-
-      }
-
-    }
-
-
-    const savedTheme =
-      localStorage.getItem(
-        "joy-theme"
-      );
-
-
-    if (
-      savedTheme === "dark"
-    ) {
-
-      setTheme("dark");
-
-    }
-
-
-    themeToggle.addEventListener(
-      "click",
-      () => {
-
-        const isDark =
-          document.documentElement
-            .classList.contains(
-              "dark"
-            );
-
-
-        setTheme(
-          isDark
-            ? "light"
-            : "dark"
-        );
-
-      }
-    );
-
-
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
-
-    const revealElements =
-      document.querySelectorAll(
-        ".reveal"
-      );
-
-
-    const revealObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(
-            entry => {
-
-              if (
-                entry.isIntersecting
-              ) {
-
-                entry.target.classList.add(
-                  "visible"
-                );
-
-
-                revealObserver.unobserve(
-                  entry.target
-                );
-
-              }
-
-            }
-          );
-
-        },
-        {
-          threshold: .12
-        }
-      );
-
-
-    revealElements.forEach(
-      element => {
-
-        revealObserver.observe(
-          element
-        );
-
-      }
-    );
-
-
-    /* =====================================================
-       YEAR
-    ===================================================== */
-
-    document.getElementById(
-      "year"
-    ).textContent =
-      new Date().getFullYear();
 
   </script>
 
