@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+  <title>Joy Chatterjee — Portraits, Painted by Hand</title>
   <meta
     name="description"
-    content="Joy Chatterjee — hyper-realistic portrait artist. Hand-painted portraits from West Bengal, India and Italy.">
+    content="Joy Chatterjee creates hyper-realistic portraits painted by hand from photographs. A portrait practice spanning West Bengal, India and Italy."
+  />
 
-  <meta name="theme-color" content="#f6f5f0">
-
-  <title>Joy Chatterjee — Portrait Artist</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Inter:wght@400;500&family=Playfair+Display:wght@400;500&display=swap"
-    rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-4F3MFHFVDE");
+  </script>
 
   <style>
     :root {
@@ -60,12 +64,10 @@
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      transition:
-        background-color .45s ease,
-        color .45s ease;
+      transition: background-color .5s ease, color .5s ease;
     }
 
-    body.viewer-open {
+    body.is-locked {
       overflow: hidden;
     }
 
@@ -83,9 +85,14 @@
       max-width: 100%;
     }
 
-    /* =========================
+    ::selection {
+      background: var(--ink);
+      color: var(--wall);
+    }
+
+    /* ------------------------------
        NAVIGATION
-    ========================= */
+    ------------------------------ */
 
     .nav {
       position: fixed;
@@ -102,9 +109,6 @@
       padding: 0 32px;
 
       background: transparent;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-
       pointer-events: none;
     }
 
@@ -127,10 +131,16 @@
     }
 
     .nav-name {
-      font-family: var(--serif);
-      font-size: 17px;
+      font-family: var(--mono);
+      font-size: 10px;
       line-height: 1;
-      letter-spacing: -.025em;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      transition: opacity .3s ease;
+    }
+
+    .nav-name:hover {
+      opacity: .55;
     }
 
     .nav-link {
@@ -143,22 +153,18 @@
       text-transform: uppercase;
 
       opacity: .68;
-
-      transition:
-        opacity .3s ease,
-        transform .3s var(--ease);
+      transition: opacity .3s ease;
     }
 
     .nav-link:hover {
       opacity: 1;
-      transform: translateY(-1px);
     }
 
-    /* =========================
-       SOUND ICON
-    ========================= */
+    /* Sound */
 
     .sound-toggle {
+      position: relative;
+
       width: 30px;
       height: 30px;
 
@@ -175,21 +181,26 @@
       cursor: pointer;
       color: currentColor;
 
-      opacity: .68;
+      opacity: .62;
 
       transition:
-        opacity .3s ease,
-        transform .35s var(--ease);
+        opacity .35s ease,
+        transform .45s var(--ease);
     }
 
     .sound-toggle:hover {
       opacity: 1;
-      transform: scale(1.08);
+      transform: scale(1.06);
+    }
+
+    .sound-toggle:focus-visible {
+      outline: 1px solid currentColor;
+      outline-offset: 5px;
     }
 
     .sound-icon {
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
 
       display: flex;
       align-items: center;
@@ -205,10 +216,13 @@
       height: 5px;
 
       background: currentColor;
+      opacity: .9;
+
+      transform-origin: center;
 
       transition:
-        height .25s ease,
-        opacity .25s ease;
+        height .35s var(--ease),
+        opacity .35s ease;
     }
 
     .sound-icon span:nth-child(1) {
@@ -224,56 +238,41 @@
     }
 
     .sound-toggle.playing .sound-icon span:nth-child(1) {
-      animation: soundBar1 .8s ease-in-out infinite alternate;
+      animation: soundBarOne 1.15s ease-in-out infinite alternate;
     }
 
     .sound-toggle.playing .sound-icon span:nth-child(2) {
-      animation: soundBar2 .65s ease-in-out infinite alternate;
+      animation: soundBarTwo .9s ease-in-out infinite alternate;
     }
 
     .sound-toggle.playing .sound-icon span:nth-child(3) {
-      animation: soundBar3 .9s ease-in-out infinite alternate;
+      animation: soundBarThree 1.3s ease-in-out infinite alternate;
     }
 
-    @keyframes soundBar1 {
-      from {
-        height: 3px;
-      }
-
-      to {
-        height: 9px;
-      }
+    @keyframes soundBarOne {
+      0% { height: 3px; }
+      100% { height: 8px; }
     }
 
-    @keyframes soundBar2 {
-      from {
-        height: 5px;
-      }
-
-      to {
-        height: 13px;
-      }
+    @keyframes soundBarTwo {
+      0% { height: 5px; }
+      100% { height: 13px; }
     }
 
-    @keyframes soundBar3 {
-      from {
-        height: 4px;
-      }
-
-      to {
-        height: 10px;
-      }
+    @keyframes soundBarThree {
+      0% { height: 4px; }
+      100% { height: 9px; }
     }
 
-    /* =========================
-       THEME TOGGLE
-    ========================= */
+    /* Theme */
 
     .theme-toggle {
       width: 30px;
       height: 30px;
 
       padding: 0;
+      margin: 0;
+
       border: 0;
       background: transparent;
 
@@ -283,11 +282,11 @@
 
       cursor: pointer;
 
-      opacity: .68;
+      opacity: .62;
 
       transition:
-        opacity .3s ease,
-        transform .35s var(--ease);
+        opacity .35s ease,
+        transform .45s var(--ease);
     }
 
     .theme-toggle:hover {
@@ -295,7 +294,14 @@
       transform: rotate(12deg);
     }
 
+    .theme-toggle:focus-visible {
+      outline: 1px solid currentColor;
+      outline-offset: 5px;
+    }
+
     .theme-icon {
+      position: relative;
+
       width: 13px;
       height: 13px;
 
@@ -304,28 +310,48 @@
       border: 1px solid currentColor;
       border-radius: 50%;
 
-      position: relative;
+      overflow: hidden;
     }
 
     .theme-icon::after {
       content: "";
 
       position: absolute;
-
-      width: 9px;
-      height: 9px;
-
       top: -2px;
       right: -2px;
 
-      border-radius: 50%;
+      width: 10px;
+      height: 10px;
 
+      background: var(--wall);
+      border-radius: 50%;
+    }
+
+    html.dark .theme-icon::after {
       background: var(--wall);
     }
 
-    /* =========================
+    /* ------------------------------
+       COMMON
+    ------------------------------ */
+
+    .section-inner {
+      width: min(1240px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 9px;
+      line-height: 1.5;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ------------------------------
        HERO
-    ========================= */
+    ------------------------------ */
 
     .hero {
       position: relative;
@@ -345,7 +371,6 @@
     .hero-media {
       position: absolute;
       inset: 0;
-
       z-index: 3;
 
       display: flex;
@@ -375,8 +400,7 @@
       user-select: none;
       -webkit-user-drag: none;
 
-      filter:
-        drop-shadow(0 24px 38px rgba(0,0,0,.09));
+      filter: drop-shadow(0 24px 38px rgba(0, 0, 0, .09));
 
       transition:
         opacity .65s ease,
@@ -391,54 +415,60 @@
 
     .hero-caption {
       position: absolute;
-
-      z-index: 6;
+      z-index: 5;
 
       left: 32px;
       bottom: 30px;
 
+      pointer-events: none;
+    }
+
+    .hero-caption-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+    }
+
+    .hero-caption-meta {
+      margin-top: 7px;
+
       font-family: var(--mono);
-      font-size: 9px;
+      font-size: 8px;
       line-height: 1.5;
 
       letter-spacing: .06em;
       text-transform: uppercase;
 
       color: var(--muted);
+    }
+
+    .hero-counter {
+      position: absolute;
+      right: 32px;
+      bottom: 30px;
+
+      z-index: 5;
+
+      font-family: var(--mono);
+      font-size: 8px;
+      letter-spacing: .08em;
+
+      color: var(--muted);
 
       pointer-events: none;
     }
 
-    .hero-caption span {
-      transition: opacity .35s ease;
-    }
-
-    /* =========================
+    /* ------------------------------
        INTRO
-    ========================= */
+    ------------------------------ */
 
     .intro {
       padding: 180px 0 150px;
     }
 
-    .section-inner {
-      width: min(1240px, calc(100% - 64px));
-      margin: 0 auto;
-    }
-
     .intro-inner {
       max-width: 1040px;
-    }
-
-    .eyebrow {
-      font-family: var(--mono);
-      font-size: 9px;
-      line-height: 1.5;
-
-      letter-spacing: .08em;
-      text-transform: uppercase;
-
-      color: var(--muted);
     }
 
     .intro-title {
@@ -451,24 +481,23 @@
 
       font-size: clamp(48px, 7vw, 96px);
       line-height: .98;
-
       letter-spacing: -.045em;
     }
 
     .intro-copy {
-      max-width: 580px;
+      max-width: 600px;
 
       margin-top: 42px;
 
       font-size: 15px;
-      line-height: 1.75;
+      line-height: 1.8;
 
       color: var(--muted);
     }
 
-    /* =========================
+    /* ------------------------------
        WORKS
-    ========================= */
+    ------------------------------ */
 
     .works {
       padding: 120px 0 160px;
@@ -493,8 +522,7 @@
     .works-grid {
       display: grid;
 
-      grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
 
       column-gap: 28px;
       row-gap: 90px;
@@ -534,8 +562,7 @@
       user-select: none;
       -webkit-user-drag: none;
 
-      transition:
-        transform .9s var(--ease);
+      transition: transform .9s var(--ease);
     }
 
     .work-image:hover img {
@@ -550,7 +577,6 @@
       font-family: var(--serif);
       font-size: 20px;
       line-height: 1.2;
-
       letter-spacing: -.02em;
     }
 
@@ -567,16 +593,16 @@
       color: var(--muted);
     }
 
-    /* =========================
+    /* ------------------------------
        STATEMENT
-    ========================= */
+    ------------------------------ */
 
     .statement {
       padding: 80px 0 180px;
     }
 
     .statement-text {
-      max-width: 1040px;
+      max-width: 1050px;
 
       font-family: var(--serif);
       font-weight: 400;
@@ -587,9 +613,9 @@
       letter-spacing: -.04em;
     }
 
-    /* =========================
+    /* ------------------------------
        ABOUT
-    ========================= */
+    ------------------------------ */
 
     .about {
       padding: 140px 0 170px;
@@ -635,16 +661,16 @@
 
       font-family: var(--mono);
       font-size: 9px;
-
       letter-spacing: .08em;
+
       text-transform: uppercase;
 
       color: var(--soft);
     }
 
-    /* =========================
+    /* ------------------------------
        CONTACT
-    ========================= */
+    ------------------------------ */
 
     .contact {
       padding: 120px 0 170px;
@@ -663,12 +689,12 @@
     }
 
     .contact-copy {
-      max-width: 560px;
+      max-width: 580px;
 
       margin-top: 40px;
 
       font-size: 15px;
-      line-height: 1.75;
+      line-height: 1.8;
 
       color: var(--muted);
     }
@@ -708,7 +734,6 @@
     .contact-email a {
       font-family: var(--mono);
       font-size: 10px;
-
       letter-spacing: .05em;
 
       color: var(--muted);
@@ -720,12 +745,12 @@
       color: var(--ink);
     }
 
-    /* =========================
+    /* ------------------------------
        FOOTER
-    ========================= */
+    ------------------------------ */
 
     footer {
-      padding: 0 0 34px;
+      padding: 0 0 32px;
     }
 
     .footer-inner {
@@ -735,16 +760,17 @@
 
       font-family: var(--mono);
       font-size: 8px;
+      line-height: 1.5;
 
-      letter-spacing: .07em;
+      letter-spacing: .06em;
       text-transform: uppercase;
 
       color: var(--soft);
     }
 
-    /* =========================
+    /* ------------------------------
        FULLSCREEN VIEWER
-    ========================= */
+    ------------------------------ */
 
     .viewer {
       position: fixed;
@@ -752,18 +778,18 @@
 
       z-index: 100;
 
-      background: var(--wall);
-
       display: flex;
       align-items: center;
       justify-content: center;
+
+      background: var(--wall);
 
       opacity: 0;
       visibility: hidden;
 
       transition:
-        opacity .4s ease,
-        visibility .4s ease;
+        opacity .45s ease,
+        visibility .45s ease;
     }
 
     .viewer.open {
@@ -772,17 +798,21 @@
     }
 
     .viewer-image-wrap {
-      position: absolute;
-      inset: 0;
+      position: relative;
+
+      width: 100%;
+      height: 100%;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      padding: 70px;
+      padding: 80px;
     }
 
     .viewer-image {
+      display: block;
+
       max-width: 100%;
       max-height: 100%;
 
@@ -794,12 +824,10 @@
       user-select: none;
       -webkit-user-drag: none;
 
-      transition:
-        opacity .35s ease,
-        transform .5s var(--ease);
+      transition: opacity .35s ease, transform .45s var(--ease);
     }
 
-    .viewer-image.changing {
+    .viewer.is-switching .viewer-image {
       opacity: 0;
       transform: scale(.985);
     }
@@ -809,25 +837,20 @@
     .viewer-next {
       position: absolute;
 
-      z-index: 4;
-
-      width: 44px;
-      height: 44px;
+      z-index: 3;
 
       border: 0;
       background: transparent;
 
-      cursor: pointer;
+      padding: 10px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      cursor: pointer;
 
       opacity: .55;
 
       transition:
         opacity .3s ease,
-        transform .3s var(--ease);
+        transform .35s var(--ease);
     }
 
     .viewer-close:hover,
@@ -837,28 +860,11 @@
     }
 
     .viewer-close {
-      top: 20px;
-      right: 22px;
-    }
+      top: 22px;
+      right: 25px;
 
-    .viewer-prev {
-      left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .viewer-next {
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .viewer-prev:hover {
-      transform: translateY(-50%) translateX(-3px);
-    }
-
-    .viewer-next:hover {
-      transform: translateY(-50%) translateX(3px);
+      width: 40px;
+      height: 40px;
     }
 
     .viewer-close::before,
@@ -867,7 +873,10 @@
 
       position: absolute;
 
-      width: 18px;
+      top: 19px;
+      left: 10px;
+
+      width: 20px;
       height: 1px;
 
       background: currentColor;
@@ -881,30 +890,66 @@
       transform: rotate(-45deg);
     }
 
+    .viewer-prev,
+    .viewer-next {
+      top: 50%;
+
+      width: 55px;
+      height: 55px;
+
+      margin-top: -27px;
+    }
+
+    .viewer-prev {
+      left: 15px;
+    }
+
+    .viewer-next {
+      right: 15px;
+    }
+
     .viewer-prev::before,
     .viewer-next::before {
       content: "";
 
-      width: 11px;
-      height: 11px;
+      position: absolute;
+
+      top: 20px;
+
+      width: 14px;
+      height: 14px;
 
       border-top: 1px solid currentColor;
       border-left: 1px solid currentColor;
     }
 
     .viewer-prev::before {
+      left: 20px;
       transform: rotate(-45deg);
     }
 
     .viewer-next::before {
+      right: 20px;
       transform: rotate(135deg);
     }
 
     .viewer-caption {
       position: absolute;
 
-      left: 28px;
-      bottom: 24px;
+      left: 30px;
+      bottom: 25px;
+
+      z-index: 3;
+    }
+
+    .viewer-caption-title {
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .viewer-caption-meta {
+      margin-top: 7px;
 
       font-family: var(--mono);
       font-size: 8px;
@@ -918,20 +963,22 @@
     .viewer-counter {
       position: absolute;
 
-      right: 28px;
-      bottom: 24px;
+      right: 30px;
+      bottom: 27px;
+
+      z-index: 3;
 
       font-family: var(--mono);
       font-size: 8px;
 
-      letter-spacing: .06em;
+      letter-spacing: .08em;
 
       color: var(--muted);
     }
 
-    /* =========================
-       REVEAL
-    ========================= */
+    /* ------------------------------
+       REVEALS
+    ------------------------------ */
 
     .reveal {
       opacity: 0;
@@ -947,21 +994,46 @@
       transform: translateY(0);
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* ------------------------------
+       RESPONSIVE
+    ------------------------------ */
 
     @media (max-width: 900px) {
+      :root {
+        --nav-height: 66px;
+      }
+
       .nav {
         padding: 0 20px;
       }
 
+      .nav-left {
+        min-width: auto;
+      }
+
       .nav-right {
-        gap: 16px;
+        gap: 17px;
       }
 
       .nav-link {
         display: none;
+      }
+
+      .hero-media {
+        padding:
+          calc(var(--nav-height) + 20px)
+          18px
+          90px;
+      }
+
+      .hero-caption {
+        left: 20px;
+        bottom: 24px;
+      }
+
+      .hero-counter {
+        right: 20px;
+        bottom: 24px;
       }
 
       .section-inner {
@@ -973,7 +1045,7 @@
       }
 
       .works {
-        padding: 90px 0 120px;
+        padding: 90px 0 110px;
       }
 
       .section-heading {
@@ -981,15 +1053,17 @@
       }
 
       .works-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: 16px;
         row-gap: 55px;
       }
 
       .work:nth-child(5) {
         grid-column: span 2;
+      }
+
+      .work-title {
+        font-size: 17px;
       }
 
       .statement {
@@ -1009,41 +1083,68 @@
         padding: 90px 0 120px;
       }
 
+      .contact-email {
+        margin-top: 55px;
+      }
+
       .viewer-image-wrap {
-        padding: 55px 25px;
+        padding: 65px 35px 90px;
+      }
+
+      .viewer-prev {
+        left: 2px;
+      }
+
+      .viewer-next {
+        right: 2px;
+      }
+
+      .viewer-caption {
+        left: 20px;
+        bottom: 22px;
+      }
+
+      .viewer-counter {
+        right: 20px;
+        bottom: 24px;
       }
     }
 
-    @media (max-width: 600px) {
-      :root {
-        --nav-height: 64px;
-      }
-
-      .nav-left {
-        min-width: 0;
-      }
-
+    @media (max-width: 560px) {
       .nav-name {
-        font-size: 15px;
+        font-size: 9px;
+      }
+
+      .sound-toggle,
+      .theme-toggle {
+        width: 27px;
+        height: 27px;
       }
 
       .hero-media {
         padding:
-          calc(var(--nav-height) + 15px)
-          18px
-          75px;
+          calc(var(--nav-height) + 10px)
+          14px
+          82px;
       }
 
-      .hero-caption {
-        left: 18px;
-        bottom: 20px;
+      .hero-caption-title,
+      .viewer-caption-title {
+        font-size: 15px;
+      }
+
+      .hero-caption-meta,
+      .viewer-caption-meta {
+        font-size: 7px;
       }
 
       .intro-title {
-        font-size: clamp(43px, 13vw, 68px);
+        font-size: clamp(45px, 13vw, 68px);
       }
 
-      .intro-copy {
+      .intro-copy,
+      .about-copy,
+      .contact-copy {
         font-size: 14px;
       }
 
@@ -1051,51 +1152,30 @@
         row-gap: 45px;
       }
 
+      .work-info {
+        padding-top: 13px;
+      }
+
       .work-title {
-        font-size: 17px;
+        font-size: 16px;
       }
 
       .work-meta {
-        font-size: 8px;
+        font-size: 7px;
       }
 
       .statement-text {
-        font-size: clamp(38px, 11vw, 58px);
+        font-size: clamp(36px, 10vw, 54px);
       }
 
       .contact-title {
-        font-size: clamp(55px, 15vw, 88px);
+        font-size: clamp(52px, 14vw, 78px);
       }
 
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
-      }
-
-      .viewer-prev,
-      .viewer-next {
-        width: 36px;
-        height: 36px;
-      }
-
-      .viewer-prev {
-        left: 5px;
-      }
-
-      .viewer-next {
-        right: 5px;
-      }
-
-      .viewer-caption {
-        left: 18px;
-        bottom: 18px;
-        max-width: 65%;
-      }
-
-      .viewer-counter {
-        right: 18px;
-        bottom: 18px;
+        gap: 8px;
       }
     }
 
@@ -1120,16 +1200,16 @@
   </style>
 </head>
 
-<body>
+<body id="top">
 
-  <!-- =========================
+  <!-- ==============================
        NAVIGATION
-  ========================= -->
+  =============================== -->
 
   <nav class="nav" aria-label="Main navigation">
 
     <div class="nav-left">
-      <a href="#" class="nav-name">
+      <a href="#top" class="nav-name">
         Joy Chatterjee
       </a>
     </div>
@@ -1153,92 +1233,90 @@
         id="soundToggle"
         type="button"
         aria-label="Play ambient sound"
-        aria-pressed="false">
-
-        <span
-          class="sound-icon"
-          aria-hidden="true">
-
+        aria-pressed="false"
+      >
+        <span class="sound-icon" aria-hidden="true">
           <span></span>
           <span></span>
           <span></span>
-
         </span>
-
       </button>
 
       <button
         class="theme-toggle"
         id="themeToggle"
         type="button"
-        aria-label="Toggle light and dark mode">
-
-        <span
-          class="theme-icon"
-          aria-hidden="true">
-        </span>
-
+        aria-label="Toggle light and dark mode"
+      >
+        <span class="theme-icon" aria-hidden="true"></span>
       </button>
 
     </div>
-
   </nav>
 
 
-  <!-- =========================
+  <!-- ==============================
        HERO
-  ========================= -->
+  =============================== -->
+
+  <header class="hero" aria-label="Featured portrait">
+
+    <div class="hero-media">
+      <img
+        id="heroImage"
+        src="work-01.jpg"
+        alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
+      />
+    </div>
+
+    <div class="hero-caption">
+      <div class="hero-caption-title" id="heroTitle">
+        Silverina
+      </div>
+
+      <div class="hero-caption-meta" id="heroMeta">
+        Oil on Canvas · Painted by hand
+      </div>
+    </div>
+
+    <div class="hero-counter" id="heroCounter">
+      01 / 05
+    </div>
+
+  </header>
+
 
   <main>
 
-    <section class="hero" id="top">
-
-      <div class="hero-media">
-        <img
-          id="heroImage"
-          src="work-01.jpg"
-          alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
-          draggable="false">
-      </div>
-
-      <div class="hero-caption">
-        <span id="heroCaption">
-          Silverina · Oil on Canvas
-        </span>
-      </div>
-
-    </section>
-
-
-    <!-- =========================
+    <!-- ==============================
          INTRO
-    ========================= -->
+    =============================== -->
 
     <section class="intro">
+      <div class="section-inner intro-inner reveal">
 
-      <div class="section-inner intro-inner">
-
-        <div class="eyebrow reveal">
-          Hyper-realistic portraiture
+        <div class="eyebrow">
+          The Portrait
         </div>
 
-        <h1 class="intro-title reveal">
+        <h1 class="intro-title">
           A portrait to keep for generations.
         </h1>
 
-        <div class="intro-copy reveal">
-          Painted by hand from a single photograph,
-          in such detail that people mistake it for one.
-        </div>
+        <p class="intro-copy">
+          Each portrait is painted by hand from a photograph, with close
+          attention to expression, character and detail. The aim is not simply
+          to reproduce an image, but to preserve the presence of the person
+          within it.
+        </p>
 
       </div>
-
     </section>
 
 
-    <!-- =========================
+    <!-- ==============================
          WORKS
-    ========================= -->
+    =============================== -->
 
     <section class="works" id="works">
 
@@ -1251,7 +1329,7 @@
           </div>
 
           <h2>
-            Works
+            Portraiture
           </h2>
 
         </div>
@@ -1259,14 +1337,22 @@
 
         <div class="works-grid">
 
+          <!-- Work 01 -->
+
           <article class="work reveal">
 
-            <div class="work-image">
+            <div
+              class="work-image"
+              data-index="0"
+              role="button"
+              tabindex="0"
+              aria-label="View Silverina fullscreen"
+            >
               <img
                 src="work-01.jpg"
                 alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
-                data-index="0"
-                draggable="false">
+                loading="lazy"
+              />
             </div>
 
             <div class="work-info">
@@ -1284,14 +1370,22 @@
           </article>
 
 
+          <!-- Work 02 -->
+
           <article class="work reveal">
 
-            <div class="work-image">
+            <div
+              class="work-image"
+              data-index="1"
+              role="button"
+              tabindex="0"
+              aria-label="View Silverina — The Making fullscreen"
+            >
               <img
                 src="work-02.jpg"
-                alt="Silverina — The Making, portrait process by Joy Chatterjee"
-                data-index="1"
-                draggable="false">
+                alt="Silverina — The Making, portrait painting process by Joy Chatterjee"
+                loading="lazy"
+              />
             </div>
 
             <div class="work-info">
@@ -1309,14 +1403,22 @@
           </article>
 
 
+          <!-- Work 03 -->
+
           <article class="work reveal">
 
-            <div class="work-image">
+            <div
+              class="work-image"
+              data-index="2"
+              role="button"
+              tabindex="0"
+              aria-label="View A Special Pleader fullscreen"
+            >
               <img
                 src="work-03.jpg"
-                alt="Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee"
-                data-index="2"
-                draggable="false">
+                alt="A Special Pleader, oil portrait by Joy Chatterjee"
+                loading="lazy"
+              />
             </div>
 
             <div class="work-info">
@@ -1334,14 +1436,22 @@
           </article>
 
 
+          <!-- Work 04 -->
+
           <article class="work reveal">
 
-            <div class="work-image">
+            <div
+              class="work-image"
+              data-index="3"
+              role="button"
+              tabindex="0"
+              aria-label="View Jamshedji Tata fullscreen"
+            >
               <img
                 src="work-04.jpg"
-                alt="Jamshedji Tata portrait by Joy Chatterjee"
-                data-index="3"
-                draggable="false">
+                alt="Jamshedji Tata, oil portrait by Joy Chatterjee"
+                loading="lazy"
+              />
             </div>
 
             <div class="work-info">
@@ -1359,14 +1469,22 @@
           </article>
 
 
+          <!-- Work 05 -->
+
           <article class="work reveal">
 
-            <div class="work-image">
+            <div
+              class="work-image"
+              data-index="4"
+              role="button"
+              tabindex="0"
+              aria-label="View A Moment of Recognition fullscreen"
+            >
               <img
                 src="work-05.jpg"
                 alt="A Moment of Recognition, portrait by Joy Chatterjee"
-                data-index="4"
-                draggable="false">
+                loading="lazy"
+              />
             </div>
 
             <div class="work-info">
@@ -1386,13 +1504,12 @@
         </div>
 
       </div>
-
     </section>
 
 
-    <!-- =========================
+    <!-- ==============================
          STATEMENT
-    ========================= -->
+    =============================== -->
 
     <section class="statement">
 
@@ -1408,54 +1525,48 @@
     </section>
 
 
-    <!-- =========================
+    <!-- ==============================
          ABOUT
-    ========================= -->
+    =============================== -->
 
     <section class="about" id="about">
 
-      <div class="section-inner">
+      <div class="section-inner about-grid">
 
-        <div class="about-grid">
+        <div class="reveal">
 
-          <div>
-
-            <div class="eyebrow reveal">
-              The Practice
-            </div>
-
-            <div class="about-title reveal">
-              Every face begins with observation.
-            </div>
-
+          <div class="eyebrow">
+            The Practice
           </div>
 
+          <div class="about-title">
+            Twenty years of looking closely.
+          </div>
 
-          <div class="about-copy">
+        </div>
 
-            <p class="reveal">
-              For over two decades, Joy Chatterjee has dedicated
-              his practice to hyper-realistic portraiture —
-              studying expression, character and the smallest
-              details that make a person unmistakably themselves.
-            </p>
 
-            <p class="reveal">
-              Each portrait is painted by hand from a photograph,
-              with the intention of creating something that feels
-              less like an image and more like a presence.
-            </p>
+        <div class="about-copy reveal">
 
-            <p class="reveal">
-              Presented to Kapil Dev, Sourav Ganguly and Shah Rukh Khan.
-              Held in the Boroline House collection and by private
-              collectors in India and Italy.
-            </p>
+          <p>
+            For over two decades, Joy Chatterjee has devoted his practice to
+            hyper-realistic portraiture, studying expression, character and
+            the details that make a person unmistakably themselves.
+          </p>
 
-            <div class="about-location reveal">
-              West Bengal — India — Italy
-            </div>
+          <p>
+            Working from photographs, he paints each portrait by hand,
+            translating a captured moment into a lasting presence on canvas.
+          </p>
 
+          <p>
+            His portraits have been presented to Kapil Dev, Sourav Ganguly
+            and Shah Rukh Khan, and are held in the Boroline House collection
+            and by private collectors in India and Italy.
+          </p>
+
+          <div class="about-location">
+            West Bengal — India — Italy
           </div>
 
         </div>
@@ -1465,9 +1576,9 @@
     </section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================= -->
+    <!-- ==============================
+         CONTACT / COMMISSION
+    =============================== -->
 
     <section class="contact" id="contact">
 
@@ -1477,37 +1588,33 @@
           Private Commissions
         </div>
 
-        <div class="contact-title reveal">
+        <h2 class="contact-title reveal">
           Begin a portrait.
-        </div>
+        </h2>
 
-        <div class="contact-copy reveal">
-          A portrait painted by hand, from your photograph,
-          created to remain in your family for generations.
-        </div>
-
+        <p class="contact-copy reveal">
+          A portrait painted by hand from your photograph, created with the
+          care and permanence of something meant to remain in your family
+          for generations.
+        </p>
 
         <div class="contact-links reveal">
 
           <a
             class="commission-link"
-            href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I%27d%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
+            href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I'd%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I'd%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
             target="_blank"
-            rel="noopener">
-
+            rel="noopener noreferrer"
+          >
             Commission Art
-
           </a>
 
         </div>
 
-
         <div class="contact-email reveal">
-
           <a href="mailto:studio@joychatterjee.art">
             studio@joychatterjee.art
           </a>
-
         </div>
 
       </div>
@@ -1517,9 +1624,9 @@
   </main>
 
 
-  <!-- =========================
+  <!-- ==============================
        FOOTER
-  ========================= -->
+  =============================== -->
 
   <footer>
 
@@ -1538,30 +1645,37 @@
   </footer>
 
 
-  <!-- =========================
+  <!-- ==============================
        FULLSCREEN VIEWER
-  ========================= -->
+  =============================== -->
 
   <div
     class="viewer"
     id="viewer"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Artwork viewer">
+    aria-hidden="true"
+  >
 
     <button
       class="viewer-close"
       id="viewerClose"
       type="button"
-      aria-label="Close artwork viewer">
-    </button>
+      aria-label="Close image viewer"
+    ></button>
 
     <button
       class="viewer-prev"
       id="viewerPrev"
       type="button"
-      aria-label="Previous artwork">
-    </button>
+      aria-label="Previous artwork"
+    ></button>
+
+    <button
+      class="viewer-next"
+      id="viewerNext"
+      type="button"
+      aria-label="Next artwork"
+    ></button>
+
 
     <div class="viewer-image-wrap">
 
@@ -1570,146 +1684,152 @@
         id="viewerImage"
         src=""
         alt=""
-        draggable="false">
+      />
 
     </div>
 
-    <button
-      class="viewer-next"
-      id="viewerNext"
-      type="button"
-      aria-label="Next artwork">
-    </button>
 
-    <div
-      class="viewer-caption"
-      id="viewerCaption">
+    <div class="viewer-caption">
+
+      <div
+        class="viewer-caption-title"
+        id="viewerTitle"
+      ></div>
+
+      <div
+        class="viewer-caption-meta"
+        id="viewerMeta"
+      ></div>
+
     </div>
+
 
     <div
       class="viewer-counter"
-      id="viewerCounter">
-    </div>
+      id="viewerCounter"
+    ></div>
 
   </div>
 
 
-  <!-- =========================
+  <!-- ==============================
        AUDIO
-  ========================= -->
+  =============================== -->
 
   <audio
     id="ambientAudio"
     src="music.mp3"
     loop
-    preload="none">
-  </audio>
+    preload="none"
+  ></audio>
 
-
-  <!-- =========================
-       GOOGLE ANALYTICS
-  ========================= -->
-
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE">
-  </script>
 
   <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-    gtag("config", "G-4F3MFHFVDE");
-  </script>
-
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
-
-  <script>
-    /* =========================
+    /* --------------------------------
        ARTWORK DATA
-    ========================= */
+    -------------------------------- */
 
     const artworks = [
       {
         src: "work-01.jpg",
-        alt: "Silverina, hyper-realistic portrait by Joy Chatterjee",
-        caption: "Silverina · Oil on Canvas"
+        title: "Silverina",
+        meta: "Oil on Canvas · Painted by hand",
+        alt: "Silverina, hyper-realistic portrait by Joy Chatterjee"
       },
       {
         src: "work-02.jpg",
-        alt: "Silverina — The Making, portrait process by Joy Chatterjee",
-        caption: "Silverina — The Making · Process"
+        title: "Silverina — The Making",
+        meta: "Process · Painted by hand",
+        alt: "Silverina — The Making, portrait painting process by Joy Chatterjee"
       },
       {
         src: "work-03.jpg",
-        alt: "Charles Burton Barber — A Special Pleader, replica by Joy Chatterjee",
-        caption: "A Special Pleader · Oil on Canvas"
+        title: "A Special Pleader",
+        meta: "Oil on Canvas · Replica",
+        alt: "A Special Pleader, oil portrait by Joy Chatterjee"
       },
       {
         src: "work-04.jpg",
-        alt: "Jamshedji Tata portrait by Joy Chatterjee",
-        caption: "Jamshedji Tata · Oil on Canvas"
+        title: "Jamshedji Tata",
+        meta: "Oil on Canvas · Painted by hand",
+        alt: "Jamshedji Tata, oil portrait by Joy Chatterjee"
       },
       {
         src: "work-05.jpg",
-        alt: "A Moment of Recognition, portrait by Joy Chatterjee",
-        caption: "A Moment of Recognition · Portrait"
+        title: "A Moment of Recognition",
+        meta: "Portrait · Painted by hand",
+        alt: "A Moment of Recognition, portrait by Joy Chatterjee"
       }
     ];
 
 
-    /* =========================
+    /* --------------------------------
+       YEAR
+    -------------------------------- */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* --------------------------------
        HERO SLIDESHOW
-    ========================= */
+    -------------------------------- */
 
     const heroImage =
       document.getElementById("heroImage");
 
-    const heroCaption =
-      document.getElementById("heroCaption");
+    const heroTitle =
+      document.getElementById("heroTitle");
+
+    const heroMeta =
+      document.getElementById("heroMeta");
+
+    const heroCounter =
+      document.getElementById("heroCounter");
 
     let heroIndex = 0;
 
-    function changeHero(index) {
-
-      heroIndex =
-        (index + artworks.length) % artworks.length;
+    function updateHero(index) {
 
       heroImage.classList.add("is-changing");
 
       setTimeout(() => {
 
-        const artwork =
-          artworks[heroIndex];
+        const artwork = artworks[index];
 
         heroImage.src = artwork.src;
         heroImage.alt = artwork.alt;
 
-        heroCaption.textContent =
-          artwork.caption;
+        heroTitle.textContent = artwork.title;
+        heroMeta.textContent = artwork.meta;
+
+        heroCounter.textContent =
+          String(index + 1).padStart(2, "0") +
+          " / " +
+          String(artworks.length).padStart(2, "0");
 
         requestAnimationFrame(() => {
-          heroImage.classList.remove("is-changing");
+          requestAnimationFrame(() => {
+            heroImage.classList.remove("is-changing");
+          });
         });
 
-      }, 350);
+      }, 420);
     }
 
     setInterval(() => {
-      changeHero(heroIndex + 1);
+
+      heroIndex =
+        (heroIndex + 1) % artworks.length;
+
+      updateHero(heroIndex);
+
     }, 5000);
 
 
-    /* =========================
+    /* --------------------------------
        FULLSCREEN VIEWER
-    ========================= */
+    -------------------------------- */
 
     const viewer =
       document.getElementById("viewer");
@@ -1717,8 +1837,11 @@
     const viewerImage =
       document.getElementById("viewerImage");
 
-    const viewerCaption =
-      document.getElementById("viewerCaption");
+    const viewerTitle =
+      document.getElementById("viewerTitle");
+
+    const viewerMeta =
+      document.getElementById("viewerMeta");
 
     const viewerCounter =
       document.getElementById("viewerCounter");
@@ -1735,7 +1858,7 @@
     let viewerIndex = 0;
 
 
-    function updateViewer(index) {
+    function showViewerImage(index) {
 
       viewerIndex =
         (index + artworks.length) % artworks.length;
@@ -1743,23 +1866,28 @@
       const artwork =
         artworks[viewerIndex];
 
-      viewerImage.classList.add("changing");
+      viewer.classList.add("is-switching");
 
       setTimeout(() => {
 
         viewerImage.src = artwork.src;
         viewerImage.alt = artwork.alt;
 
-        viewerCaption.textContent =
-          artwork.caption;
+        viewerTitle.textContent =
+          artwork.title;
+
+        viewerMeta.textContent =
+          artwork.meta;
 
         viewerCounter.textContent =
-          String(viewerIndex + 1).padStart(2, "0")
-          + " / "
-          + String(artworks.length).padStart(2, "0");
+          String(viewerIndex + 1).padStart(2, "0") +
+          " / " +
+          String(artworks.length).padStart(2, "0");
 
         requestAnimationFrame(() => {
-          viewerImage.classList.remove("changing");
+          requestAnimationFrame(() => {
+            viewer.classList.remove("is-switching");
+          });
         });
 
       }, 180);
@@ -1768,53 +1896,48 @@
 
     function openViewer(index) {
 
-      updateViewer(index);
+      showViewerImage(index);
 
       viewer.classList.add("open");
+      viewer.setAttribute("aria-hidden", "false");
 
-      document.body.classList.add("viewer-open");
-
-      viewerClose.focus();
+      document.body.classList.add("is-locked");
     }
 
 
     function closeViewer() {
 
       viewer.classList.remove("open");
+      viewer.setAttribute("aria-hidden", "true");
 
-      document.body.classList.remove("viewer-open");
-    }
-
-
-    function previousArtwork() {
-      updateViewer(viewerIndex - 1);
-    }
-
-
-    function nextArtwork() {
-      updateViewer(viewerIndex + 1);
+      document.body.classList.remove("is-locked");
     }
 
 
     document
-      .querySelectorAll(".work-image img")
-      .forEach(image => {
+      .querySelectorAll(".work-image")
+      .forEach((element) => {
 
-        image.addEventListener("click", () => {
+        element.addEventListener("click", () => {
+          openViewer(Number(element.dataset.index));
+        });
 
-          const index =
-            Number(image.dataset.index);
+        element.addEventListener("keydown", (event) => {
 
-          openViewer(index);
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+            event.preventDefault();
+
+            openViewer(
+              Number(element.dataset.index)
+            );
+          }
 
         });
 
       });
-
-
-    heroImage.addEventListener("click", () => {
-      openViewer(heroIndex);
-    });
 
 
     viewerClose.addEventListener(
@@ -1825,62 +1948,84 @@
 
     viewerPrev.addEventListener(
       "click",
-      previousArtwork
+      () => {
+        showViewerImage(viewerIndex - 1);
+      }
     );
 
 
     viewerNext.addEventListener(
       "click",
-      nextArtwork
+      () => {
+        showViewerImage(viewerIndex + 1);
+      }
     );
 
 
-    viewer.addEventListener("click", event => {
+    viewer.addEventListener(
+      "click",
+      (event) => {
 
-      if (event.target === viewer) {
-        closeViewer();
+        if (
+          event.target === viewer ||
+          event.target ===
+            document.querySelector(".viewer-image-wrap")
+        ) {
+          closeViewer();
+        }
+
       }
+    );
 
-    });
 
+    document.addEventListener(
+      "keydown",
+      (event) => {
 
-    document.addEventListener("keydown", event => {
+        if (!viewer.classList.contains("open")) {
+          return;
+        }
 
-      if (!viewer.classList.contains("open")) {
-        return;
+        if (event.key === "Escape") {
+          closeViewer();
+        }
+
+        if (
+          event.key === "ArrowLeft"
+        ) {
+          showViewerImage(viewerIndex - 1);
+        }
+
+        if (
+          event.key === "ArrowRight"
+        ) {
+          showViewerImage(viewerIndex + 1);
+        }
+
       }
-
-      if (event.key === "Escape") {
-        closeViewer();
-      }
-
-      if (event.key === "ArrowLeft") {
-        previousArtwork();
-      }
-
-      if (event.key === "ArrowRight") {
-        nextArtwork();
-      }
-
-    });
+    );
 
 
-    /* =========================
+    /* --------------------------------
        TOUCH SWIPE
-    ========================= */
+    -------------------------------- */
 
     let touchStartX = 0;
     let touchStartY = 0;
 
     viewer.addEventListener(
       "touchstart",
-      event => {
+      (event) => {
 
-        const touch =
-          event.changedTouches[0];
+        if (!event.touches.length) {
+          return;
+        }
 
-        touchStartX = touch.clientX;
-        touchStartY = touch.clientY;
+        touchStartX =
+          event.touches[0].clientX;
+
+        touchStartY =
+          event.touches[0].clientY;
 
       },
       { passive: true }
@@ -1889,16 +2034,23 @@
 
     viewer.addEventListener(
       "touchend",
-      event => {
+      (event) => {
 
-        const touch =
-          event.changedTouches[0];
+        if (!event.changedTouches.length) {
+          return;
+        }
+
+        const touchEndX =
+          event.changedTouches[0].clientX;
+
+        const touchEndY =
+          event.changedTouches[0].clientY;
 
         const deltaX =
-          touch.clientX - touchStartX;
+          touchEndX - touchStartX;
 
         const deltaY =
-          touch.clientY - touchStartY;
+          touchEndY - touchStartY;
 
         if (
           Math.abs(deltaX) > 50 &&
@@ -1906,9 +2058,9 @@
         ) {
 
           if (deltaX < 0) {
-            nextArtwork();
+            showViewerImage(viewerIndex + 1);
           } else {
-            previousArtwork();
+            showViewerImage(viewerIndex - 1);
           }
 
         }
@@ -1918,76 +2070,61 @@
     );
 
 
-    /* =========================
+    /* --------------------------------
        THEME
-    ========================= */
+    -------------------------------- */
 
     const themeToggle =
       document.getElementById("themeToggle");
 
-
-    function applyTheme(theme) {
-
-      if (theme === "dark") {
-
-        document.documentElement
-          .classList.add("dark");
-
-      } else {
-
-        document.documentElement
-          .classList.remove("dark");
-
-      }
-
-    }
-
-
     const savedTheme =
       localStorage.getItem("joy-theme");
 
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
 
-    if (savedTheme) {
 
-      applyTheme(savedTheme);
+    function updateThemeLabel() {
 
-    } else if (
-      window.matchMedia &&
-      window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches
-    ) {
+      const isDark =
+        document.documentElement.classList.contains("dark");
 
-      applyTheme("dark");
+      themeToggle.setAttribute(
+        "aria-label",
+        isDark
+          ? "Switch to light mode"
+          : "Switch to dark mode"
+      );
 
     }
+
+    updateThemeLabel();
 
 
     themeToggle.addEventListener(
       "click",
       () => {
 
+        document.documentElement.classList.toggle("dark");
+
         const isDark =
-          document.documentElement
-            .classList.contains("dark");
-
-        const nextTheme =
-          isDark ? "light" : "dark";
-
-        applyTheme(nextTheme);
+          document.documentElement.classList.contains("dark");
 
         localStorage.setItem(
           "joy-theme",
-          nextTheme
+          isDark ? "dark" : "light"
         );
+
+        updateThemeLabel();
 
       }
     );
 
 
-    /* =========================
+    /* --------------------------------
        AMBIENT SOUND
-    ========================= */
+    -------------------------------- */
 
     const ambientAudio =
       document.getElementById("ambientAudio");
@@ -2006,13 +2143,13 @@
 
           if (!soundPlaying) {
 
+            ambientAudio.volume = 0;
+
             await ambientAudio.play();
 
             soundPlaying = true;
 
-            soundToggle.classList.add(
-              "playing"
-            );
+            soundToggle.classList.add("playing");
 
             soundToggle.setAttribute(
               "aria-label",
@@ -2024,9 +2161,52 @@
               "true"
             );
 
+
+            let volume = 0;
+
+            const fadeIn =
+              setInterval(() => {
+
+                volume += .04;
+
+                ambientAudio.volume =
+                  Math.min(volume, .72);
+
+                if (volume >= .72) {
+                  clearInterval(fadeIn);
+                }
+
+              }, 45);
+
           } else {
 
-            ambientAudio.pause();
+            const startingVolume =
+              ambientAudio.volume;
+
+            let volume =
+              startingVolume;
+
+
+            const fadeOut =
+              setInterval(() => {
+
+                volume -= .05;
+
+                ambientAudio.volume =
+                  Math.max(volume, 0);
+
+                if (volume <= 0) {
+
+                  clearInterval(fadeOut);
+
+                  ambientAudio.pause();
+
+                  ambientAudio.volume =
+                    startingVolume;
+                }
+
+              }, 40);
+
 
             soundPlaying = false;
 
@@ -2059,9 +2239,9 @@
     );
 
 
-    /* =========================
+    /* --------------------------------
        REVEAL ANIMATIONS
-    ========================= */
+    -------------------------------- */
 
     const revealElements =
       document.querySelectorAll(".reveal");
@@ -2073,21 +2253,21 @@
 
       const revealObserver =
         new IntersectionObserver(
-          entries => {
+          (entries, observer) => {
 
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
 
-              if (entry.isIntersecting) {
-
-                entry.target.classList.add(
-                  "visible"
-                );
-
-                revealObserver.unobserve(
-                  entry.target
-                );
-
+              if (!entry.isIntersecting) {
+                return;
               }
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
 
             });
 
@@ -2099,42 +2279,21 @@
         );
 
 
-      revealElements.forEach(element => {
-        revealObserver.observe(element);
-      });
+      revealElements.forEach(
+        (element) => {
+          revealObserver.observe(element);
+        }
+      );
 
     } else {
 
-      revealElements.forEach(element => {
-        element.classList.add("visible");
-      });
+      revealElements.forEach(
+        (element) => {
+          element.classList.add("visible");
+        }
+      );
 
     }
-
-
-    /* =========================
-       FOOTER YEAR
-    ========================= */
-
-    document.getElementById("year")
-      .textContent =
-      new Date().getFullYear();
-
-
-    /* =========================
-       PRELOAD ARTWORKS
-    ========================= */
-
-    artworks.forEach(artwork => {
-
-      const image =
-        new Image();
-
-      image.src =
-        artwork.src;
-
-    });
-
   </script>
 
 </body>
