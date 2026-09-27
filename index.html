@@ -59,7 +59,6 @@
 
     body {
       margin: 0;
-
       background: var(--wall);
       color: var(--ink);
 
@@ -93,8 +92,7 @@
 
 
     /* =====================================================
-       NAVIGATION
-       COMPLETELY TRANSPARENT
+       NAVIGATION — FULLY TRANSPARENT
     ===================================================== */
 
     .nav {
@@ -114,13 +112,6 @@
 
       padding: 0 32px;
 
-      /*
-        Completely transparent.
-        No background.
-        No blur.
-        No glass effect.
-      */
-
       background: transparent;
 
       backdrop-filter: none;
@@ -129,52 +120,38 @@
 
     .brand {
       font-family: var(--serif);
-
       font-size: 20px;
-
       letter-spacing: -.02em;
-
       white-space: nowrap;
     }
 
     .nav-right {
       display: flex;
-
       align-items: center;
-
       gap: 28px;
     }
 
     .nav-links {
       display: flex;
-
       align-items: center;
-
       gap: 26px;
     }
 
     .nav-link,
     .nav-control {
       border: 0;
-
       background: transparent;
-
       padding: 0;
 
       font-family: var(--mono);
-
       font-size: 10px;
-
       letter-spacing: .08em;
-
       text-transform: uppercase;
 
       cursor: pointer;
-
       opacity: .72;
 
-      transition:
-        opacity .25s ease;
+      transition: opacity .25s ease;
     }
 
     .nav-link:hover,
@@ -191,13 +168,10 @@
       position: relative;
 
       width: 100%;
-
       height: 100svh;
-
       min-height: 620px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -208,33 +182,38 @@
 
 
     /* =====================================================
-       ANIMATED COLOUR LIGHT
-       No visible background shape.
+       SMALLER + STRONGER COLOUR GLOW
     ===================================================== */
 
     .hero-light {
       position: absolute;
 
-      inset: -25%;
+      /*
+        Smaller than before:
+        colour stays closer to artwork.
+      */
+
+      inset: -10%;
 
       z-index: 0;
 
       pointer-events: none;
 
-      filter: blur(75px);
+      filter: blur(58px);
 
-      opacity: .72;
+      opacity: .92;
 
       background:
         radial-gradient(
-          ellipse at 48% 48%,
-          rgba(255, 235, 180, .62) 0%,
-          rgba(255, 235, 180, .18) 20%,
-          transparent 43%
+          ellipse at 50% 48%,
+          rgba(255, 230, 165, .78) 0%,
+          rgba(255, 210, 180, .40) 17%,
+          rgba(218, 190, 255, .20) 34%,
+          transparent 58%
         );
 
       animation:
-        mainLight 16s ease-in-out infinite alternate;
+        mainLight 15s ease-in-out infinite alternate;
     }
 
 
@@ -243,26 +222,26 @@
 
       position: absolute;
 
-      width: 65%;
-      height: 65%;
+      width: 52%;
+      height: 52%;
 
-      left: 2%;
-      top: 10%;
+      left: 8%;
+      top: 16%;
 
       border-radius: 50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(155, 205, 255, .38) 0%,
-          rgba(155, 205, 255, .16) 24%,
+          rgba(120, 190, 255, .52) 0%,
+          rgba(120, 190, 255, .24) 25%,
           transparent 67%
         );
 
-      filter: blur(80px);
+      filter: blur(65px);
 
       animation:
-        blueLight 19s ease-in-out infinite alternate;
+        blueLight 18s ease-in-out infinite alternate;
     }
 
 
@@ -271,39 +250,41 @@
 
       position: absolute;
 
-      width: 68%;
-      height: 68%;
+      width: 54%;
+      height: 54%;
 
-      right: -4%;
-      bottom: 2%;
+      right: 7%;
+      bottom: 8%;
 
       border-radius: 50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(255, 160, 205, .34) 0%,
-          rgba(214, 173, 255, .18) 28%,
+          rgba(255, 135, 190, .46) 0%,
+          rgba(210, 150, 255, .26) 27%,
           transparent 68%
         );
 
-      filter: blur(90px);
+      filter: blur(70px);
 
       animation:
-        pinkLight 21s ease-in-out infinite alternate;
+        pinkLight 20s ease-in-out infinite alternate;
     }
 
+
+    /* concentrated warm centre */
 
     .hero::before {
       content: "";
 
       position: absolute;
 
-      width: 55vw;
-      height: 55vw;
+      width: 42vw;
+      height: 42vw;
 
-      max-width: 850px;
-      max-height: 850px;
+      max-width: 680px;
+      max-height: 680px;
 
       left: 50%;
       top: 50%;
@@ -320,15 +301,16 @@
       background:
         radial-gradient(
           circle,
-          rgba(255, 246, 215, .38) 0%,
-          rgba(255, 220, 175, .14) 26%,
+          rgba(255, 247, 214, .70) 0%,
+          rgba(255, 215, 165, .32) 22%,
+          rgba(220, 190, 255, .14) 42%,
           transparent 68%
         );
 
-      filter: blur(65px);
+      filter: blur(48px);
 
       animation:
-        warmPulse 11s ease-in-out infinite alternate;
+        warmPulse 10s ease-in-out infinite alternate;
     }
 
 
@@ -336,22 +318,22 @@
 
       0% {
         transform:
-          translate(-5%, -3%)
-          scale(.92)
+          translate(-3%, -2%)
+          scale(.88)
           rotate(-3deg);
       }
 
       50% {
         transform:
-          translate(4%, 3%)
-          scale(1.04)
+          translate(3%, 3%)
+          scale(1.02)
           rotate(2deg);
       }
 
       100% {
         transform:
-          translate(-2%, 5%)
-          scale(.98)
+          translate(-2%, 4%)
+          scale(.94)
           rotate(-1deg);
       }
 
@@ -362,20 +344,20 @@
 
       0% {
         transform:
-          translate(-8%, 4%)
-          scale(.85);
+          translate(-7%, 5%)
+          scale(.86);
       }
 
       50% {
         transform:
-          translate(12%, -8%)
-          scale(1.12);
+          translate(10%, -7%)
+          scale(1.08);
       }
 
       100% {
         transform:
-          translate(4%, 12%)
-          scale(.95);
+          translate(3%, 8%)
+          scale(.94);
       }
 
     }
@@ -385,20 +367,20 @@
 
       0% {
         transform:
-          translate(8%, 7%)
+          translate(7%, 6%)
           scale(.88);
       }
 
       50% {
         transform:
-          translate(-12%, -6%)
-          scale(1.12);
+          translate(-10%, -5%)
+          scale(1.08);
       }
 
       100% {
         transform:
-          translate(-4%, 8%)
-          scale(.98);
+          translate(-3%, 7%)
+          scale(.94);
       }
 
     }
@@ -409,49 +391,50 @@
       0% {
         transform:
           translate(-50%, -50%)
-          scale(.82);
+          scale(.80);
 
-        opacity: .45;
+        opacity: .60;
       }
 
       50% {
         transform:
           translate(-50%, -50%)
-          scale(1.08);
+          scale(1.05);
 
-        opacity: .75;
+        opacity: .95;
       }
 
       100% {
         transform:
           translate(-50%, -50%)
-          scale(.94);
+          scale(.91);
 
-        opacity: .55;
+        opacity: .72;
       }
 
     }
 
 
     html.dark .hero-light {
-      opacity: .52;
+      opacity: .65;
 
       background:
         radial-gradient(
-          ellipse at 48% 48%,
-          rgba(255, 215, 155, .25) 0%,
-          rgba(255, 215, 155, .07) 24%,
-          transparent 46%
+          ellipse at 50% 48%,
+          rgba(255, 220, 165, .34) 0%,
+          rgba(255, 170, 140, .18) 20%,
+          rgba(190, 160, 255, .13) 40%,
+          transparent 60%
         );
     }
 
     html.dark .hero::before {
-      opacity: .4;
+      opacity: .55;
     }
 
 
     /* =====================================================
-       HERO ART
+       HERO IMAGE
     ===================================================== */
 
     .hero-media {
@@ -462,7 +445,6 @@
       z-index: 3;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
@@ -471,7 +453,6 @@
         30px
         100px;
     }
-
 
     .hero-media img {
       display: block;
@@ -488,7 +469,6 @@
       cursor: zoom-in;
 
       user-select: none;
-
       -webkit-user-drag: none;
 
       filter:
@@ -501,7 +481,6 @@
         transform 1.2s var(--ease),
         filter .8s ease;
     }
-
 
     .hero-media img.is-changing {
       opacity: 0;
@@ -524,21 +503,17 @@
       z-index: 5;
     }
 
-
     .hero-number {
       display: block;
 
       margin-bottom: 8px;
 
       font-family: var(--mono);
-
       font-size: 10px;
-
       letter-spacing: .1em;
 
       color: var(--muted);
     }
-
 
     .hero-title {
       font-family: var(--serif);
@@ -555,7 +530,6 @@
       letter-spacing: -.025em;
     }
 
-
     .hero-note {
       position: absolute;
 
@@ -569,7 +543,6 @@
       font-family: var(--mono);
 
       font-size: 10px;
-
       line-height: 1.7;
 
       letter-spacing: .06em;
@@ -579,12 +552,10 @@
       color: var(--muted);
     }
 
-
     .scroll-hint {
       position: absolute;
 
       bottom: 32px;
-
       left: 50%;
 
       transform:
@@ -612,7 +583,6 @@
       position: relative;
     }
 
-
     .section-inner {
       width:
         min(
@@ -632,13 +602,11 @@
       min-height: 70vh;
 
       display: flex;
-
       align-items: center;
 
       padding:
         150px 0;
     }
-
 
     .intro-copy {
       width:
@@ -647,7 +615,6 @@
           100%
         );
     }
-
 
     .eyebrow {
       margin-bottom: 28px;
@@ -662,7 +629,6 @@
 
       color: var(--muted);
     }
-
 
     .intro h1 {
       margin: 0;
@@ -682,7 +648,6 @@
 
       letter-spacing: -.045em;
     }
-
 
     .intro p {
       width:
@@ -708,9 +673,7 @@
 
 
     /* =====================================================
-       WORKS — GALLERY
-       4 COLUMNS DESKTOP
-       2 COLUMNS MOBILE
+       WORKS — 4 COLUMNS DESKTOP
     ===================================================== */
 
     .works {
@@ -719,11 +682,9 @@
         160px;
     }
 
-
     .section-heading {
       margin-bottom: 80px;
     }
-
 
     .section-heading h2 {
       margin: 0;
@@ -744,7 +705,6 @@
       letter-spacing: -.035em;
     }
 
-
     .works-grid {
       display: grid;
 
@@ -759,11 +719,9 @@
       row-gap: 90px;
     }
 
-
     .work {
       margin: 0;
     }
-
 
     .work-image {
       width: 100%;
@@ -778,39 +736,32 @@
       cursor: zoom-in;
     }
 
-
     .work-image img {
       display: block;
 
       width: 100%;
-
       height: auto;
 
       max-width: 100%;
 
       object-fit: contain;
-
       object-position: center;
 
       user-select: none;
-
       -webkit-user-drag: none;
 
       transition:
         transform .9s var(--ease);
     }
 
-
     .work-image:hover img {
       transform:
         scale(1.025);
     }
 
-
     .work-info {
       padding-top: 18px;
     }
-
 
     .work-title {
       font-family: var(--serif);
@@ -821,7 +772,6 @@
 
       letter-spacing: -.02em;
     }
-
 
     .work-meta {
       margin-top: 8px;
@@ -855,7 +805,6 @@
         150px 0;
     }
 
-
     .statement p {
       max-width: 1050px;
 
@@ -886,7 +835,6 @@
         170px;
     }
 
-
     .about-grid {
       display: grid;
 
@@ -895,7 +843,6 @@
 
       gap: 100px;
     }
-
 
     .about-title {
       font-family: var(--serif);
@@ -912,7 +859,6 @@
       letter-spacing: -.035em;
     }
 
-
     .about-copy {
       max-width: 720px;
 
@@ -923,12 +869,10 @@
       color: var(--muted);
     }
 
-
     .about-copy p {
       margin:
         0 0 28px;
     }
-
 
     .about-copy strong {
       color: var(--ink);
@@ -952,7 +896,6 @@
         150px 0;
     }
 
-
     .contact-title {
       max-width: 900px;
 
@@ -970,7 +913,6 @@
       letter-spacing: -.055em;
     }
 
-
     .contact-copy {
       max-width: 620px;
 
@@ -983,7 +925,6 @@
       color: var(--muted);
     }
 
-
     .contact-links {
       display: flex;
 
@@ -992,12 +933,10 @@
       margin-top: 60px;
     }
 
-
     .contact-links a {
       display: inline-flex;
 
       align-items: center;
-
       justify-content: center;
 
       min-height: 50px;
@@ -1018,7 +957,6 @@
         box-shadow .3s ease;
     }
 
-
     .commission-link {
       background: var(--ink);
 
@@ -1027,7 +965,6 @@
       border:
         1px solid var(--ink);
     }
-
 
     .commission-link:hover {
       transform:
@@ -1039,7 +976,6 @@
         0 12px 30px
         rgba(0,0,0,.08);
     }
-
 
     .contact-email {
       margin-top: 24px;
@@ -1053,12 +989,10 @@
       color: var(--muted);
     }
 
-
     .contact-email a {
       transition:
         color .25s ease;
     }
-
 
     .contact-email a:hover {
       color: var(--ink);
@@ -1077,7 +1011,6 @@
       display: flex;
 
       align-items: flex-end;
-
       justify-content: space-between;
 
       gap: 30px;
@@ -1112,11 +1045,9 @@
       background: var(--wall);
     }
 
-
     .viewer.open {
       display: block;
     }
-
 
     .viewer-top {
       position: absolute;
@@ -1132,13 +1063,11 @@
       display: flex;
 
       align-items: center;
-
       justify-content: space-between;
 
       padding:
         0 25px;
     }
-
 
     .viewer-label {
       font-family: var(--mono);
@@ -1151,7 +1080,6 @@
 
       color: var(--muted);
     }
-
 
     .viewer-close {
       border: 0;
@@ -1169,15 +1097,12 @@
       opacity: .7;
     }
 
-
     .viewer-close:hover {
       opacity: 1;
     }
 
-
     .viewer-image-wrap {
       width: 100%;
-
       height: 100%;
 
       padding:
@@ -1186,31 +1111,24 @@
       display: flex;
 
       align-items: center;
-
       justify-content: center;
     }
-
 
     .viewer-img {
       display: block;
 
       width: auto;
-
       height: auto;
 
       max-width: 100%;
-
       max-height: 100%;
 
       object-fit: contain;
-
       object-position: center;
 
       user-select: none;
-
       -webkit-user-drag: none;
     }
-
 
     .viewer-arrow {
       position: absolute;
@@ -1223,13 +1141,11 @@
       z-index: 5;
 
       width: 60px;
-
       height: 100px;
 
       display: flex;
 
       align-items: center;
-
       justify-content: center;
 
       border: 0;
@@ -1248,16 +1164,13 @@
         opacity .25s ease;
     }
 
-
     .viewer-arrow:hover {
       opacity: 1;
     }
 
-
     .viewer-prev {
       left: 0;
     }
-
 
     .viewer-next {
       right: 0;
@@ -1279,7 +1192,6 @@
         transform .9s var(--ease);
     }
 
-
     .reveal.visible {
       opacity: 1;
 
@@ -1300,8 +1212,6 @@
       }
 
 
-      /* TRANSPARENT MOBILE NAV */
-
       .nav {
         padding:
           0 18px;
@@ -1309,7 +1219,6 @@
         background: transparent;
 
         backdrop-filter: none;
-
         -webkit-backdrop-filter: none;
       }
 
@@ -1335,20 +1244,39 @@
 
 
       .hero-light {
-        inset: -45%;
+        /*
+          Even tighter on mobile.
+        */
+
+        inset: -20%;
+
+        filter: blur(48px);
+
+        opacity: .88;
+      }
+
+
+      .hero-light::before {
+        width: 62%;
+        height: 62%;
 
         filter: blur(55px);
+      }
 
-        opacity: .68;
+
+      .hero-light::after {
+        width: 62%;
+        height: 62%;
+
+        filter: blur(58px);
       }
 
 
       .hero::before {
-        width: 100vw;
+        width: 70vw;
+        height: 70vw;
 
-        height: 100vw;
-
-        filter: blur(55px);
+        filter: blur(42px);
       }
 
 
@@ -1362,14 +1290,12 @@
 
       .hero-meta {
         left: 18px;
-
         bottom: 25px;
       }
 
 
       .hero-note {
         right: 18px;
-
         bottom: 27px;
       }
 
@@ -1402,9 +1328,7 @@
       }
 
 
-      /* =================================
-         2 COLUMN MOBILE GALLERY
-      ================================= */
+      /* 2 COLUMN GALLERY */
 
       .works {
         padding:
@@ -1518,7 +1442,6 @@
         scroll-behavior: auto;
       }
 
-
       *,
       *::before,
       *::after {
@@ -1590,7 +1513,6 @@
 
     <div class="nav-right">
 
-
       <div class="nav-links">
 
         <a
@@ -1601,7 +1523,6 @@
 
         </a>
 
-
         <a
           class="nav-link"
           href="#about">
@@ -1609,7 +1530,6 @@
           About
 
         </a>
-
 
         <a
           class="nav-link"
@@ -1641,7 +1561,6 @@
 
       </button>
 
-
     </div>
 
   </nav>
@@ -1659,7 +1578,6 @@
     =================================================== -->
 
     <section class="hero">
-
 
       <div class="hero-light"></div>
 
@@ -1713,7 +1631,6 @@
 
       </div>
 
-
     </section>
 
 
@@ -1726,7 +1643,6 @@
       <div class="section-inner">
 
         <div class="intro-copy reveal">
-
 
           <div class="eyebrow">
 
@@ -1748,7 +1664,6 @@
             in such detail that people mistake it for one.
 
           </p>
-
 
         </div>
 
@@ -1789,8 +1704,6 @@
         <div class="works-grid">
 
 
-          <!-- WORK 01 -->
-
           <article class="work reveal">
 
             <div class="work-image">
@@ -1823,8 +1736,6 @@
 
           </article>
 
-
-          <!-- WORK 02 -->
 
           <article class="work reveal">
 
@@ -1859,8 +1770,6 @@
           </article>
 
 
-          <!-- WORK 03 -->
-
           <article class="work reveal">
 
             <div class="work-image">
@@ -1894,8 +1803,6 @@
           </article>
 
 
-          <!-- WORK 04 -->
-
           <article class="work reveal">
 
             <div class="work-image">
@@ -1928,8 +1835,6 @@
 
           </article>
 
-
-          <!-- WORK 05 -->
 
           <article class="work reveal">
 
@@ -2013,7 +1918,6 @@
 
           <div class="about-copy reveal">
 
-
             <p>
 
               For over two decades, I have painted faces by hand —
@@ -2040,7 +1944,6 @@
               collection and by private collectors in India and Italy.
 
             </p>
-
 
           </div>
 
@@ -2086,7 +1989,6 @@
 
         <div class="contact-links reveal">
 
-
           <a
             class="commission-link"
             href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I%27d%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
@@ -2096,7 +1998,6 @@
             Commission Art
 
           </a>
-
 
         </div>
 
@@ -2127,7 +2028,6 @@
 
   <footer>
 
-
     <div>
 
       © <span id="year"></span>
@@ -2142,12 +2042,11 @@
 
     </div>
 
-
   </footer>
 
 
   <!-- =====================================================
-       FULLSCREEN ARTWORK VIEWER
+       FULLSCREEN VIEWER
   ===================================================== -->
 
   <div
@@ -2157,7 +2056,6 @@
 
 
     <div class="viewer-top">
-
 
       <div
         class="viewer-label"
@@ -2178,7 +2076,6 @@
 
       </button>
 
-
     </div>
 
 
@@ -2195,14 +2092,12 @@
 
     <div class="viewer-image-wrap">
 
-
       <img
         class="viewer-img"
         id="viewerImage"
         src=""
         alt=""
         draggable="false">
-
 
     </div>
 
@@ -2216,7 +2111,6 @@
       ›
 
     </button>
-
 
   </div>
 
@@ -2306,7 +2200,7 @@
     let heroIndex = 0;
 
 
-    /* PRELOAD */
+    /* PRELOAD ARTWORK */
 
     heroSlides.forEach(
       slide => {
@@ -2347,14 +2241,11 @@
           heroImage.src =
             nextSlide.src;
 
-
           heroImage.alt =
             nextSlide.alt;
 
-
           heroTitle.textContent =
             nextSlide.title;
-
 
           heroNumber.textContent =
             String(
@@ -2364,7 +2255,6 @@
               "0"
             ) +
             " / 05";
-
 
           heroNote.innerHTML =
             nextSlide.note;
@@ -2398,7 +2288,7 @@
 
 
     /* =====================================================
-       FULLSCREEN VIEWER
+       VIEWER
     ===================================================== */
 
     const viewer =
@@ -2658,7 +2548,6 @@
     ===================================================== */
 
     let touchStartX = 0;
-
     let touchEndX = 0;
 
 
@@ -2692,8 +2581,7 @@
 
 
         if (
-          Math.abs(distance) <
-          50
+          Math.abs(distance) < 50
         ) {
 
           return;
@@ -2749,9 +2637,7 @@
 
             await siteAudio.play();
 
-
             soundOn = true;
-
 
             soundToggle.textContent =
               "Sound On";
@@ -2767,9 +2653,7 @@
 
           siteAudio.pause();
 
-
           soundOn = false;
-
 
           soundToggle.textContent =
             "Sound";
@@ -2801,7 +2685,6 @@
             "dark"
           );
 
-
         localStorage.setItem(
           "joy-theme",
           "dark"
@@ -2813,7 +2696,6 @@
           .classList.remove(
             "dark"
           );
-
 
         localStorage.setItem(
           "joy-theme",
@@ -2835,9 +2717,7 @@
       savedTheme === "dark"
     ) {
 
-      setTheme(
-        "dark"
-      );
+      setTheme("dark");
 
     }
 
