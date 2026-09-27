@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
     name="description"
@@ -30,9 +27,7 @@
       --ink: #11110f;
       --muted: #77756f;
       --soft: #aaa8a1;
-
       --ease: cubic-bezier(.2,.65,.25,1);
-
       --nav-height: 76px;
     }
 
@@ -60,6 +55,7 @@
       font-weight: 400;
       line-height: 1.5;
       overflow-x: hidden;
+
       transition:
         background-color .5s ease,
         color .5s ease;
@@ -93,8 +89,10 @@
     .nav {
       position: fixed;
       z-index: 100;
+
       top: 0;
       left: 0;
+
       width: 100%;
       height: var(--nav-height);
 
@@ -105,8 +103,6 @@
       padding: 0 34px;
 
       background: transparent;
-
-      mix-blend-mode: normal;
       pointer-events: none;
     }
 
@@ -138,6 +134,7 @@
       letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--muted);
+
       transition: color .3s ease;
     }
 
@@ -167,12 +164,6 @@
       background: var(--wall);
     }
 
-
-    /*
-      Large soft gallery light behind the painting.
-      It is deliberately blurred and does not crop the artwork.
-    */
-
     .hero-light {
       position: absolute;
 
@@ -189,14 +180,13 @@
       background:
         radial-gradient(
           circle,
-          rgba(255, 255, 255, .95) 0%,
-          rgba(255, 255, 255, .72) 28%,
-          rgba(255, 255, 255, .32) 52%,
-          rgba(255, 255, 255, 0) 74%
+          rgba(255,255,255,.95) 0%,
+          rgba(255,255,255,.72) 28%,
+          rgba(255,255,255,.32) 52%,
+          rgba(255,255,255,0) 74%
         );
 
       filter: blur(22px);
-
       opacity: .95;
 
       pointer-events: none;
@@ -210,20 +200,14 @@
       background:
         radial-gradient(
           circle,
-          rgba(255, 250, 230, .22) 0%,
-          rgba(255, 245, 220, .12) 30%,
-          rgba(255, 245, 220, .05) 52%,
-          rgba(255, 245, 220, 0) 74%
+          rgba(255,250,230,.22) 0%,
+          rgba(255,245,220,.12) 30%,
+          rgba(255,245,220,.05) 52%,
+          rgba(255,245,220,0) 74%
         );
 
       opacity: 1;
     }
-
-
-    /*
-      A second tighter pool of light gives the painting
-      a subtle museum / gallery spotlight.
-    */
 
     .hero-light::after {
       content: "";
@@ -259,7 +243,6 @@
         );
     }
 
-
     .hero-media {
       position: absolute;
       inset: 0;
@@ -293,8 +276,6 @@
       user-select: none;
       -webkit-user-drag: none;
 
-      opacity: 1;
-
       filter:
         drop-shadow(
           0 22px 34px rgba(0,0,0,.08)
@@ -318,7 +299,6 @@
       transform: scale(.985);
     }
 
-
     .hero-meta {
       position: absolute;
 
@@ -336,15 +316,19 @@
 
     .hero-number {
       font-family: "DM Mono", monospace;
+
       font-size: 10px;
       letter-spacing: .08em;
+
       color: var(--muted);
       white-space: nowrap;
     }
 
     .hero-title {
       font-family: "Playfair Display", serif;
+
       font-size: clamp(19px, 2vw, 27px);
+
       font-weight: 400;
       line-height: 1.1;
     }
@@ -395,9 +379,10 @@
       margin-bottom: 32px;
 
       font-family: "DM Mono", monospace;
-      font-size: 9px;
 
+      font-size: 9px;
       letter-spacing: .1em;
+
       text-transform: uppercase;
 
       color: var(--muted);
@@ -456,6 +441,7 @@
 
       font-size: 9px;
       letter-spacing: .1em;
+
       text-transform: uppercase;
 
       color: var(--muted);
@@ -587,8 +573,7 @@
     ======================================== */
 
     .about {
-      padding:
-        8vw;
+      padding: 8vw;
 
       display: grid;
 
@@ -603,8 +588,8 @@
       font-family: "DM Mono", monospace;
 
       font-size: 9px;
-
       letter-spacing: .1em;
+
       text-transform: uppercase;
 
       color: var(--muted);
@@ -710,11 +695,14 @@
 
       color: var(--muted);
 
-      transition: color .3s ease;
+      transition:
+        color .3s ease,
+        transform .3s ease;
     }
 
     .contact-links a:hover {
       color: var(--ink);
+      transform: translateY(-2px);
     }
 
 
@@ -864,7 +852,7 @@
 
 
     /* ========================================
-       SOUND BUTTON
+       SOUND
     ======================================== */
 
     .sound-indicator {
@@ -960,14 +948,12 @@
       .hero-light {
         width: 110vw;
         height: 110vw;
-
         filter: blur(18px);
       }
 
       .hero-meta {
         left: 18px;
         bottom: 20px;
-
         gap: 14px;
       }
 
@@ -982,10 +968,8 @@
       .hero-note {
         right: 18px;
         bottom: 20px;
-
         font-size: 7px;
       }
-
 
       .intro {
         min-height: auto;
@@ -1007,7 +991,6 @@
         font-size: 14px;
       }
 
-
       .works {
         padding:
           18vw 6vw
@@ -1020,7 +1003,6 @@
 
       .works-grid {
         grid-template-columns: 1fr;
-
         row-gap: 25vw;
       }
 
@@ -1046,7 +1028,6 @@
         margin-top: 8px;
       }
 
-
       .statement {
         padding:
           20vw 8vw
@@ -1060,7 +1041,6 @@
           55px
         );
       }
-
 
       .about {
         padding:
@@ -1080,7 +1060,6 @@
         font-size: 14px;
       }
 
-
       .contact {
         min-height: 70vh;
 
@@ -1099,14 +1078,12 @@
 
       .contact-links {
         margin-top: 45px;
-
         gap: 18px;
       }
 
       .contact-links a {
         font-size: 10px;
       }
-
 
       footer {
         padding:
@@ -1116,7 +1093,6 @@
       footer span {
         font-size: 7px;
       }
-
 
       .viewer-image-wrap {
         padding:
@@ -1142,14 +1118,18 @@
 
   </style>
 
+
   <!-- Google Analytics -->
+
   <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE">
   </script>
 
   <script>
-    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer =
+      window.dataLayer || [];
 
     function gtag() {
       dataLayer.push(arguments);
@@ -1164,6 +1144,7 @@
       "config",
       "G-4F3MFHFVDE"
     );
+
   </script>
 
 </head>
@@ -1240,9 +1221,7 @@
     class="hero"
     id="top">
 
-
     <div class="hero-light"></div>
-
 
     <div class="hero-media">
 
@@ -1337,8 +1316,6 @@
     <div class="works-grid">
 
 
-      <!-- WORK 02 -->
-
       <article class="work reveal">
 
         <div
@@ -1370,8 +1347,6 @@
       </article>
 
 
-
-      <!-- WORK 03 -->
 
       <article class="work reveal">
 
@@ -1406,8 +1381,6 @@
 
 
 
-      <!-- WORK 04 -->
-
       <article class="work reveal">
 
         <div
@@ -1439,8 +1412,6 @@
       </article>
 
 
-
-      <!-- WORK 05 -->
 
       <article class="work reveal">
 
@@ -1557,19 +1528,43 @@
       Begin a portrait.
     </h2>
 
+
     <div class="contact-links">
+
+
+      <!-- WHATSAPP CTA -->
+
+      <a
+        href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I%27d%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I%27d%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
+        target="_blank"
+        rel="noopener">
+
+        WhatsApp
+
+      </a>
+
+
+      <!-- EMAIL -->
 
       <a
         href="mailto:joychatterjee.art@gmail.com">
+
         Email
+
       </a>
+
+
+      <!-- INSTAGRAM -->
 
       <a
         href="https://www.instagram.com/"
         target="_blank"
         rel="noopener">
+
         Instagram
+
       </a>
+
 
     </div>
 
@@ -1604,11 +1599,14 @@
     id="viewer"
     aria-hidden="true">
 
+
     <button
       class="viewer-close"
       id="viewerClose"
       aria-label="Close">
+
       ×
+
     </button>
 
 
@@ -1616,7 +1614,9 @@
       class="viewer-prev"
       id="viewerPrev"
       aria-label="Previous image">
+
       ‹
+
     </button>
 
 
@@ -1637,7 +1637,9 @@
       class="viewer-next"
       id="viewerNext"
       aria-label="Next image">
+
       ›
+
     </button>
 
 
@@ -1665,8 +1667,9 @@
 
   <script>
 
+
     /* ======================================
-       HERO IMAGE LOOP
+       HERO LOOP
     ======================================= */
 
     const heroSlides = [
@@ -1724,11 +1727,6 @@
 
     let heroIndex = 0;
 
-
-    /*
-      Preload all hero images first.
-      This makes the automatic transition much smoother.
-    */
 
     heroSlides.forEach(slide => {
 
@@ -1789,10 +1787,6 @@
     }
 
 
-    /*
-      Five-second gallery rotation.
-    */
-
     setInterval(
       changeHero,
       5000
@@ -1808,11 +1802,9 @@
       document.getElementById("themeButton");
 
 
-    const savedTheme =
-      localStorage.getItem("joy-theme");
-
-
-    if (savedTheme === "dark") {
+    if (
+      localStorage.getItem("joy-theme") === "dark"
+    ) {
 
       document.documentElement.classList.add(
         "dark"
@@ -1902,7 +1894,7 @@
 
 
     /* ======================================
-       FULLSCREEN ART VIEWER
+       FULLSCREEN VIEWER
     ======================================= */
 
     const viewer =
@@ -1942,6 +1934,7 @@
       const item =
         artworks[viewerIndex];
 
+
       viewerImage.src =
         item.dataset.image;
 
@@ -1955,6 +1948,7 @@
       viewer.classList.add(
         "active"
       );
+
 
       viewer.setAttribute(
         "aria-hidden",
@@ -1974,6 +1968,7 @@
         "active"
       );
 
+
       viewer.setAttribute(
         "aria-hidden",
         "true"
@@ -1991,6 +1986,7 @@
       viewerIndex =
         (index + artworks.length) %
         artworks.length;
+
 
       const item =
         artworks[viewerIndex];
@@ -2079,7 +2075,9 @@
             "active"
           )
         ) {
+
           return;
+
         }
 
 
@@ -2119,7 +2117,7 @@
 
 
     /* ======================================
-       SWIPE SUPPORT
+       SWIPE
     ======================================= */
 
     let touchStartX = 0;
@@ -2153,7 +2151,9 @@
         if (
           Math.abs(distance) < 50
         ) {
+
           return;
+
         }
 
 
@@ -2203,6 +2203,7 @@
                 "visible"
               );
 
+
               revealObserver.unobserve(
                 entry.target
               );
@@ -2228,8 +2229,8 @@
       }
     );
 
-  </script>
 
+  </script>
 
 </body>
 </html>
