@@ -11,6 +11,48 @@
     content="Joy Chatterjee creates hyper-realistic portraits painted by hand from photographs. A portrait practice spanning West Bengal, India and Italy."
   />
 
+  <!-- Canonical + social sharing previews (WhatsApp, Facebook, Instagram, X) -->
+  <link rel="canonical" href="https://www.joychatterjee.art/" />
+  <meta name="theme-color" content="#f6f5f0" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Joy Chatterjee" />
+  <meta property="og:url" content="https://www.joychatterjee.art/" />
+  <meta property="og:title" content="Joy Chatterjee — Portraits, Painted by Hand" />
+  <meta property="og:description" content="Hyper-realistic portraits painted by hand from your photograph. Private commissions, India and international." />
+  <meta property="og:image" content="https://www.joychatterjee.art/work-01.jpg" />
+  <meta property="og:image:alt" content="Silverina, hyper-realistic portrait by Joy Chatterjee" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Joy Chatterjee — Portraits, Painted by Hand" />
+  <meta name="twitter:description" content="Hyper-realistic portraits painted by hand from your photograph. Private commissions, India and international." />
+  <meta name="twitter:image" content="https://www.joychatterjee.art/work-01.jpg" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Joy Chatterjee",
+    "jobTitle": "Hyper-realistic portrait artist",
+    "url": "https://www.joychatterjee.art/",
+    "email": "mailto:studio@joychatterjee.art",
+    "image": "https://www.joychatterjee.art/work-01.jpg",
+    "sameAs": ["https://instagram.com/joychatterjee.art"],
+    "knowsAbout": ["Portrait painting", "Hyper-realistic portraits", "Oil portraits", "Portrait commissions"]
+  }
+  </script>
+
+  <!-- Apply the saved theme before the page paints (prevents a light flash in dark mode) -->
+  <script>
+    try {
+      if (localStorage.getItem("joy-theme") === "dark") {
+        document.documentElement.classList.add("dark");
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#11110f");
+      }
+    } catch (e) {}
+  </script>
+
+  <link rel="preload" as="image" href="work-01.jpg" fetchpriority="high" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -92,6 +134,14 @@
     ::selection {
       background: var(--ink);
       color: var(--wall);
+    }
+
+    /* Keyboard focus is visible everywhere (mouse clicks are unaffected) */
+    a:focus-visible,
+    .work-image:focus-visible,
+    .viewer button:focus-visible {
+      outline: 1px solid currentColor;
+      outline-offset: 5px;
     }
 
     /* =================================
@@ -1112,6 +1162,11 @@
         display: none;
       }
 
+      /* Keep the commission link reachable on phones */
+      .nav-link.nav-link--commission {
+        display: inline;
+      }
+
       .hero-media {
         padding:
           calc(var(--nav-height) + 20px)
@@ -1321,7 +1376,7 @@
         About
       </a>
 
-      <a href="#contact" class="nav-link">
+      <a href="#contact" class="nav-link nav-link--commission">
         Commission
       </a>
 
@@ -1365,6 +1420,8 @@
         id="heroImage"
         src="work-01.jpg"
         alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
+        fetchpriority="high"
+        decoding="async"
       />
 
     </div>
@@ -1467,6 +1524,7 @@
                 src="work-01.jpg"
                 alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
                 loading="lazy"
+                decoding="async"
               />
 
             </div>
@@ -1500,6 +1558,7 @@
                 src="work-02.jpg"
                 alt="Silverina — The Making, portrait painting process by Joy Chatterjee"
                 loading="lazy"
+                decoding="async"
               />
 
             </div>
@@ -1533,6 +1592,7 @@
                 src="work-03.jpg"
                 alt="A Special Pleader, oil portrait by Joy Chatterjee"
                 loading="lazy"
+                decoding="async"
               />
 
             </div>
@@ -1566,6 +1626,7 @@
                 src="work-04.jpg"
                 alt="Jamshedji Tata, oil portrait by Joy Chatterjee"
                 loading="lazy"
+                decoding="async"
               />
 
             </div>
@@ -1599,6 +1660,7 @@
                 src="work-05.jpg"
                 alt="A Moment of Recognition, portrait by Joy Chatterjee"
                 loading="lazy"
+                decoding="async"
               />
 
             </div>
@@ -1777,6 +1839,9 @@
   <div
     class="viewer"
     id="viewer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Artwork viewer"
     aria-hidden="true"
   >
 
@@ -1832,6 +1897,7 @@
     <div
       class="viewer-counter"
       id="viewerCounter"
+      aria-live="polite"
     ></div>
 
   </div>
@@ -1888,6 +1954,9 @@
       }
     ];
 
+    const prefersReducedMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 
     /* =================================
        YEAR
@@ -1895,6 +1964,20 @@
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+
+    /* =================================
+       PRELOAD ARTWORKS (after the page has loaded)
+       Makes the slideshow and viewer switch without a blank moment.
+    ================================= */
+
+    window.addEventListener("load", () => {
+      artworks.slice(1).forEach((artwork) => {
+        const img = new Image();
+        img.decoding = "async";
+        img.src = artwork.src;
+      });
+    });
 
 
     /* =================================
@@ -1914,6 +1997,7 @@
       document.getElementById("heroCounter");
 
     let heroIndex = 0;
+    let heroPaused = false;
 
 
     function updateHero(index) {
@@ -1959,15 +2043,37 @@
     }
 
 
-    setInterval(() => {
+    /* Advances every 5 s; pauses while hovered, while the viewer is open,
+       when the tab is hidden, and never runs for reduced-motion visitors */
+    if (!prefersReducedMotion) {
 
-      heroIndex =
-        (heroIndex + 1) %
-        artworks.length;
+      setInterval(() => {
 
-      updateHero(heroIndex);
+        if (
+          heroPaused ||
+          document.hidden ||
+          viewer.classList.contains("open")
+        ) {
+          return;
+        }
 
-    }, 5000);
+        heroIndex =
+          (heroIndex + 1) %
+          artworks.length;
+
+        updateHero(heroIndex);
+
+      }, 5000);
+
+    }
+
+    heroImage.addEventListener("mouseenter", () => { heroPaused = true; });
+    heroImage.addEventListener("mouseleave", () => { heroPaused = false; });
+
+    /* The hero image shows a zoom cursor: clicking it now opens the viewer */
+    heroImage.addEventListener("click", () => {
+      openViewer(heroIndex, heroImage);
+    });
 
 
     /* =================================
@@ -1999,6 +2105,7 @@
       document.getElementById("viewerNext");
 
     let viewerIndex = 0;
+    let viewerOpener = null;
 
 
     function showViewerImage(index) {
@@ -2051,7 +2158,10 @@
     }
 
 
-    function openViewer(index) {
+    function openViewer(index, opener) {
+
+      viewerOpener =
+        opener || document.activeElement;
 
       showViewerImage(index);
 
@@ -2065,6 +2175,15 @@
       document.body.classList.add(
         "is-locked"
       );
+
+      /* Move keyboard focus into the viewer (once it is visible) */
+      setTimeout(() => {
+        viewerClose.focus({ preventScroll: true });
+      }, 60);
+
+      gtag("event", "view_artwork", {
+        artwork: artworks[viewerIndex].title
+      });
     }
 
 
@@ -2080,6 +2199,14 @@
       document.body.classList.remove(
         "is-locked"
       );
+
+      /* Return focus to the painting that opened the viewer */
+      if (
+        viewerOpener &&
+        typeof viewerOpener.focus === "function"
+      ) {
+        viewerOpener.focus({ preventScroll: true });
+      }
     }
 
 
@@ -2091,7 +2218,8 @@
           "click",
           () => {
             openViewer(
-              Number(element.dataset.index)
+              Number(element.dataset.index),
+              element
             );
           }
         );
@@ -2109,7 +2237,8 @@
               event.preventDefault();
 
               openViewer(
-                Number(element.dataset.index)
+                Number(element.dataset.index),
+                element
               );
 
             }
@@ -2199,6 +2328,40 @@
           showViewerImage(
             viewerIndex + 1
           );
+        }
+
+
+        /* Keep Tab inside the viewer while it is open */
+        if (event.key === "Tab") {
+
+          const focusable = [
+            viewerClose,
+            viewerPrev,
+            viewerNext
+          ];
+
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (
+            event.shiftKey &&
+            document.activeElement === first
+          ) {
+            event.preventDefault();
+            last.focus();
+          } else if (
+            !event.shiftKey &&
+            document.activeElement === last
+          ) {
+            event.preventDefault();
+            first.focus();
+          } else if (
+            !focusable.includes(document.activeElement)
+          ) {
+            event.preventDefault();
+            first.focus();
+          }
+
         }
 
       }
@@ -2291,6 +2454,7 @@
 
     /* =================================
        THEME
+       (the saved theme is applied in <head> so there is no flash)
     ================================= */
 
     const themeToggle =
@@ -2298,22 +2462,10 @@
         "themeToggle"
       );
 
-
-    const savedTheme =
-      localStorage.getItem(
-        "joy-theme"
+    const themeColorMeta =
+      document.querySelector(
+        'meta[name="theme-color"]'
       );
-
-
-    if (
-      savedTheme === "dark"
-    ) {
-
-      document.documentElement
-        .classList
-        .add("dark");
-
-    }
 
 
     function updateThemeLabel() {
@@ -2329,6 +2481,11 @@
         isDark
           ? "Switch to light mode"
           : "Switch to dark mode"
+      );
+
+      themeColorMeta.setAttribute(
+        "content",
+        isDark ? "#11110f" : "#f6f5f0"
       );
 
     }
@@ -2352,12 +2509,14 @@
             .contains("dark");
 
 
-        localStorage.setItem(
-          "joy-theme",
-          isDark
-            ? "dark"
-            : "light"
-        );
+        try {
+          localStorage.setItem(
+            "joy-theme",
+            isDark
+              ? "dark"
+              : "light"
+          );
+        } catch (e) {}
 
 
         updateThemeLabel();
@@ -2381,11 +2540,16 @@
       );
 
     let soundPlaying = false;
+    let soundFade = null;
+    const SOUND_VOLUME = .72;
 
 
     soundToggle.addEventListener(
       "click",
       async () => {
+
+        /* Stop any fade still running, so fast double-clicks can't clash */
+        clearInterval(soundFade);
 
         try {
 
@@ -2415,7 +2579,7 @@
             let volume = 0;
 
 
-            const fadeIn =
+            soundFade =
               setInterval(() => {
 
                 volume += .04;
@@ -2423,15 +2587,15 @@
                 ambientAudio.volume =
                   Math.min(
                     volume,
-                    .72
+                    SOUND_VOLUME
                   );
 
 
                 if (
-                  volume >= .72
+                  volume >= SOUND_VOLUME
                 ) {
                   clearInterval(
-                    fadeIn
+                    soundFade
                   );
                 }
 
@@ -2440,14 +2604,11 @@
 
           } else {
 
-            const startingVolume =
+            let volume =
               ambientAudio.volume;
 
-            let volume =
-              startingVolume;
 
-
-            const fadeOut =
+            soundFade =
               setInterval(() => {
 
                 volume -= .05;
@@ -2464,13 +2625,13 @@
                 ) {
 
                   clearInterval(
-                    fadeOut
+                    soundFade
                   );
 
                   ambientAudio.pause();
 
                   ambientAudio.volume =
-                    startingVolume;
+                    SOUND_VOLUME;
 
                 }
 
@@ -2506,6 +2667,34 @@
 
       }
     );
+
+
+    /* =================================
+       ANALYTICS: commission enquiries
+       Shows up in Google Analytics as the "commission_click" event.
+    ================================= */
+
+    document
+      .querySelectorAll('a[href*="wa.me"], a[href^="mailto:"]')
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            gtag("event", "commission_click", {
+              method: link.href.includes("wa.me")
+                ? "whatsapp"
+                : "email",
+              link_location: link.closest("section, footer, nav")
+                ? (link.closest("section, footer, nav").id || link.closest("section, footer, nav").tagName.toLowerCase())
+                : "page"
+            });
+
+          }
+        );
+
+      });
 
 
     /* =================================
