@@ -2,16 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
   <title>Joy Chatterjee — Portraits, Painted by Hand</title>
+  <meta name="description" content="Joy Chatterjee creates hyper-realistic portraits painted by hand from photographs. A portrait practice spanning West Bengal, India and Italy." />
 
-  <meta
-    name="description"
-    content="Joy Chatterjee creates hyper-realistic portraits painted by hand from photographs. A portrait practice spanning West Bengal, India and Italy."
-  />
-
-  <!-- Canonical + social sharing previews (WhatsApp, Facebook, Instagram, X) -->
   <link rel="canonical" href="https://www.joychatterjee.art/" />
   <meta name="theme-color" content="#f6f5f0" />
   <meta property="og:type" content="website" />
@@ -25,24 +20,12 @@
   <meta name="twitter:title" content="Joy Chatterjee — Portraits, Painted by Hand" />
   <meta name="twitter:description" content="Hyper-realistic portraits painted by hand from your photograph. Private commissions, India and international." />
   <meta name="twitter:image" content="https://www.joychatterjee.art/work-01.jpg" />
-
-  <!-- Structured data for search engines -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Joy Chatterjee",
-    "jobTitle": "Hyper-realistic portrait artist",
-    "url": "https://www.joychatterjee.art/",
-    "email": "mailto:studio@joychatterjee.art",
-    "image": "https://www.joychatterjee.art/work-01.jpg",
-    "sameAs": ["https://instagram.com/joychatterjee.art"],
-    "knowsAbout": ["Portrait painting", "Hyper-realistic portraits", "Oil portraits", "Portrait commissions"]
-  }
+  {"@context":"https://schema.org","@type":"Person","name":"Joy Chatterjee","jobTitle":"Hyper-realistic portrait artist","url":"https://www.joychatterjee.art/","email":"mailto:studio@joychatterjee.art","image":"https://www.joychatterjee.art/work-01.jpg","sameAs":["https://instagram.com/joychatterjee.art"],"knowsAbout":["Portrait painting","Hyper-realistic portraits","Oil portraits","Portrait commissions"]}
   </script>
 
-  <!-- Apply the saved theme before the page paints (prevents a light flash in dark mode) -->
   <script>
+    document.documentElement.classList.add("js");
     try {
       if (localStorage.getItem("joy-theme") === "dark") {
         document.documentElement.classList.add("dark");
@@ -52,14 +35,9 @@
   </script>
 
   <link rel="preload" as="image" href="work-01.jpg" fetchpriority="high" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4F3MFHFVDE"></script>
@@ -71,36 +49,37 @@
   </script>
 
   <style>
+    /* =================================
+       TOKENS
+    ================================= */
     :root {
       --wall: #f6f5f0;
+      --wall-2: #eceae3;
       --ink: #11110f;
-      --muted: #77756f;
-      --soft: #aaa8a1;
+      --muted: #6f6d67;
+      --soft: #a3a19a;
+      --line: rgba(17, 17, 15, .12);
 
       --serif: "Playfair Display", Georgia, serif;
       --sans: "Inter", Arial, sans-serif;
-      --mono: "DM Mono", monospace;
+      --mono: "DM Mono", ui-monospace, monospace;
 
       --nav-height: 76px;
+      --gutter: clamp(20px, 3.4vw, 48px);
       --ease: cubic-bezier(.22, .61, .36, 1);
+      --ease-out: cubic-bezier(.16, 1, .3, 1);
     }
-
     html.dark {
       --wall: #11110f;
+      --wall-2: #1b1b18;
       --ink: #f4f3ee;
-      --muted: #96948d;
-      --soft: #67655f;
+      --muted: #9a988f;
+      --soft: #5f5d57;
+      --line: rgba(244, 243, 238, .12);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--wall);
-    }
-
+    * { box-sizing: border-box; }
+    html { background: var(--wall); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     body {
       margin: 0;
       background: var(--wall);
@@ -108,2670 +87,857 @@
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      transition:
-        background-color .5s ease,
-        color .5s ease;
+      transition: background-color .6s ease, color .6s ease;
     }
+    body.is-locked { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ::selection { background: var(--ink); color: var(--wall); }
+    :focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
+    [tabindex="-1"]:focus { outline: none; }
 
-    body.is-locked {
-      overflow: hidden;
+    .mono {
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.5;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-    }
-
-    ::selection {
-      background: var(--ink);
-      color: var(--wall);
-    }
-
-    /* Keyboard focus is visible everywhere (mouse clicks are unaffected) */
-    a:focus-visible,
-    .work-image:focus-visible,
-    .viewer button:focus-visible {
-      outline: 1px solid currentColor;
-      outline-offset: 5px;
-    }
+    .muted { color: var(--muted); }
+    .wrap { width: min(1280px, calc(100% - var(--gutter) * 2 - 40px)); margin: 0 auto; }
 
     /* =================================
        NAVIGATION
     ================================= */
-
     .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-
-      height: var(--nav-height);
-
-      z-index: 50;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 32px;
-
-      background: transparent;
-
-      pointer-events: none;
-    }
-
-    .nav > * {
-      pointer-events: auto;
-    }
-
-    .nav-left,
-    .nav-right {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-left {
-      min-width: 120px;
-    }
-
-    .nav-right {
-      gap: 25px;
-    }
-
-    .nav-name {
-      font-family: var(--mono);
-      font-size: 10px;
-      line-height: 1;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-
-      transition: opacity .3s ease;
-    }
-
-    .nav-name:hover {
-      opacity: .55;
-    }
-
-    .nav-link {
-      font-family: var(--mono);
-      font-size: 9px;
-      line-height: 1;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-
-      opacity: .68;
-
-      transition: opacity .3s ease;
-    }
-
-    .nav-link:hover {
-      opacity: 1;
-    }
-
-    /* =================================
-       SOUND ICON
-    ================================= */
-
-    .sound-toggle {
-      position: relative;
-
-      width: 30px;
-      height: 30px;
-
-      padding: 0;
-      margin: 0;
-
-      border: 0;
-      background: transparent;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      cursor: pointer;
-
-      color: currentColor;
-      opacity: .62;
-
-      transition:
-        opacity .35s ease,
-        transform .45s var(--ease);
-    }
-
-    .sound-toggle:hover {
-      opacity: 1;
-      transform: scale(1.06);
-    }
-
-    .sound-toggle:focus-visible {
-      outline: 1px solid currentColor;
-      outline-offset: 5px;
-    }
-
-    .sound-icon {
-      width: 15px;
-      height: 15px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 2px;
-    }
-
-    .sound-icon span {
-      display: block;
-
-      width: 1px;
-      height: 5px;
-
-      background: currentColor;
-
-      opacity: .9;
-
-      transform-origin: center;
-
-      transition:
-        height .35s var(--ease),
-        opacity .35s ease;
-    }
-
-    .sound-icon span:nth-child(1) {
-      height: 4px;
-    }
-
-    .sound-icon span:nth-child(2) {
-      height: 8px;
-    }
-
-    .sound-icon span:nth-child(3) {
-      height: 5px;
-    }
-
-    .sound-toggle.playing .sound-icon span:nth-child(1) {
-      animation: soundBarOne 1.15s ease-in-out infinite alternate;
-    }
-
-    .sound-toggle.playing .sound-icon span:nth-child(2) {
-      animation: soundBarTwo .9s ease-in-out infinite alternate;
-    }
-
-    .sound-toggle.playing .sound-icon span:nth-child(3) {
-      animation: soundBarThree 1.3s ease-in-out infinite alternate;
-    }
-
-    @keyframes soundBarOne {
-      0% { height: 3px; }
-      100% { height: 8px; }
-    }
-
-    @keyframes soundBarTwo {
-      0% { height: 5px; }
-      100% { height: 13px; }
-    }
-
-    @keyframes soundBarThree {
-      0% { height: 4px; }
-      100% { height: 9px; }
-    }
-
-    /* =================================
-       THEME ICON
-    ================================= */
-
-    .theme-toggle {
-      position: relative;
-
-      width: 30px;
-      height: 30px;
-
-      padding: 0;
-      margin: 0;
-
-      border: 0;
-      background: transparent;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      cursor: pointer;
-
-      color: currentColor;
-      opacity: .62;
-
-      transition:
-        opacity .35s ease,
-        transform .45s var(--ease);
-    }
-
-    .theme-toggle:hover {
-      opacity: 1;
-      transform: scale(1.06);
-    }
-
-    .theme-toggle:focus-visible {
-      outline: 1px solid currentColor;
-      outline-offset: 5px;
-    }
-
-    /*
-      Minimal sun / moon symbol.
-      Light mode = moon icon.
-      Dark mode = sun icon.
-    */
-
-    .theme-icon {
-      position: relative;
-
-      width: 14px;
-      height: 14px;
-
-      display: block;
-
-      border: 1px solid currentColor;
-      border-radius: 50%;
-
-      transition:
-        transform .55s var(--ease),
-        border-color .35s ease;
-    }
-
-    /* Moon cut */
-
-    .theme-icon::before {
-      content: "";
-
-      position: absolute;
-
-      width: 12px;
-      height: 12px;
-
-      top: -3px;
-      right: -3px;
-
-      border-radius: 50%;
-
-      background: var(--wall);
-
-      transition:
-        opacity .35s ease,
-        transform .45s var(--ease);
-    }
-
-    /* Sun rays */
-
-    .theme-icon::after {
-      content: "";
-
-      position: absolute;
-
-      inset: -5px;
-
-      background:
-        linear-gradient(currentColor, currentColor)
-          center top / 1px 3px no-repeat,
-        linear-gradient(currentColor, currentColor)
-          center bottom / 1px 3px no-repeat,
-        linear-gradient(currentColor, currentColor)
-          left center / 3px 1px no-repeat,
-        linear-gradient(currentColor, currentColor)
-          right center / 3px 1px no-repeat;
-
-      opacity: 0;
-
-      transform: rotate(0deg);
-
-      transition:
-        opacity .35s ease,
-        transform .55s var(--ease);
-    }
-
-    html.dark .theme-icon {
-      transform: rotate(45deg);
-    }
-
-    html.dark .theme-icon::before {
-      opacity: 0;
-    }
-
-    html.dark .theme-icon::after {
-      opacity: .9;
-      transform: rotate(-45deg);
-    }
-
-    /* =================================
-       COMMON
-    ================================= */
-
-    .section-inner {
-      width: min(1240px, calc(100% - 64px));
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      font-family: var(--mono);
-      font-size: 9px;
-      line-height: 1.5;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* =================================
-       HERO
-    ================================= */
-
-    .hero {
-      position: relative;
-
-      min-height: 100svh;
-      height: 100svh;
-
+      position: fixed; z-index: 50;
+      top: calc(env(safe-area-inset-top, 0px) + 14px);
+      left: var(--gutter); right: var(--gutter);
+      height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 12px 0 24px;
+      border-radius: 999px;
       overflow: hidden;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: var(--wall);
+      transition: background-color .5s ease;
     }
-
-    .hero-media {
-      position: absolute;
-      inset: 0;
-
-      z-index: 3;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding:
-        calc(var(--nav-height) + 25px)
-        30px
-        100px;
+    .nav.is-scrolled {
+      background: color-mix(in srgb, var(--wall) 82%, transparent);
+      -webkit-backdrop-filter: blur(16px) saturate(1.3);
+      backdrop-filter: blur(16px) saturate(1.3);
     }
+    .nav-progress { display: none; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; overflow: hidden; pointer-events: none; }
+    .nav-progress i { position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: left; }
+    .nav-name { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; transition: opacity .3s; }
+    .nav-name:hover { opacity: .55; }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-link { position: relative; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .62; transition: opacity .3s; padding: 8px 0; }
+    .nav-link:hover, .nav-link[aria-current="true"] { opacity: 1; }
+    .nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease-out); }
+    .nav-link[aria-current="true"]::after { transform: scaleX(1); }
 
-    .hero-media img {
-      display: block;
+    .icon-btn { width: 32px; height: 32px; padding: 0; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer; opacity: .62; transition: opacity .35s, transform .45s var(--ease); }
+    .icon-btn:hover { opacity: 1; transform: scale(1.06); }
+    .sound-icon { width: 15px; height: 15px; display: flex; align-items: center; justify-content: center; gap: 2px; }
+    .sound-icon span { display: block; width: 1px; background: currentColor; transition: height .35s var(--ease); }
+    .sound-icon span:nth-child(1) { height: 4px; } .sound-icon span:nth-child(2) { height: 8px; } .sound-icon span:nth-child(3) { height: 5px; }
+    .playing .sound-icon span:nth-child(1) { animation: s1 1.15s ease-in-out infinite alternate; }
+    .playing .sound-icon span:nth-child(2) { animation: s2 .9s ease-in-out infinite alternate; }
+    .playing .sound-icon span:nth-child(3) { animation: s3 1.3s ease-in-out infinite alternate; }
+    @keyframes s1 { from { height: 3px; } to { height: 8px; } }
+    @keyframes s2 { from { height: 5px; } to { height: 13px; } }
+    @keyframes s3 { from { height: 4px; } to { height: 9px; } }
+    .theme-icon { position: relative; width: 14px; height: 14px; display: block; border: 1px solid currentColor; border-radius: 50%; transition: transform .55s var(--ease); }
+    .theme-icon::before { content: ""; position: absolute; width: 12px; height: 12px; top: -3px; right: -3px; border-radius: 50%; background: var(--wall); transition: opacity .35s, background-color .6s; }
+    .theme-icon::after { content: ""; position: absolute; inset: -5px; opacity: 0; transition: opacity .35s, transform .55s var(--ease);
+      background: linear-gradient(currentColor,currentColor) center top/1px 3px no-repeat, linear-gradient(currentColor,currentColor) center bottom/1px 3px no-repeat, linear-gradient(currentColor,currentColor) left center/3px 1px no-repeat, linear-gradient(currentColor,currentColor) right center/3px 1px no-repeat; }
+    html.dark .theme-icon { transform: rotate(45deg); }
+    html.dark .theme-icon::before { opacity: 0; }
+    html.dark .theme-icon::after { opacity: .9; transform: rotate(-45deg); }
 
-      width: auto;
-      height: auto;
-
-      max-width: 100%;
-      max-height: 100%;
-
-      object-fit: contain;
-      object-position: center;
-
-      cursor: zoom-in;
-
-      user-select: none;
-      -webkit-user-drag: none;
-
-      filter:
-        drop-shadow(
-          0 24px 38px rgba(0, 0, 0, .09)
-        );
-
-      transition:
-        opacity .65s ease,
-        transform 1.2s var(--ease),
-        filter .8s ease;
+    /* =================================
+       HERO: a catalogue index beside the painting
+    ================================= */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(240px, .34fr) minmax(0, 1fr);
+      gap: clamp(40px, 6vw, 120px);
+      padding: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 40px) calc(var(--gutter) + 20px) 44px;
     }
-
-    .hero-media img.is-changing {
-      opacity: 0;
-      transform: scale(.985);
+    .hero-side { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding-bottom: 6px; }
+    .hero-kicker { display: grid; gap: 14px; }
+    .hero-kicker p { margin: 0; font-family: var(--serif); font-size: clamp(26px, 2.4vw, 36px); line-height: 1.1; letter-spacing: -.02em; max-width: 12ch; }
+    .hero-kicker p em { font-style: italic; }
+    .index { list-style: none; margin: 0; padding: 0; }
+    .index button {
+      position: relative; width: 100%; display: grid; grid-template-columns: 34px 1fr; align-items: baseline; gap: 10px;
+      padding: 14px 0 15px; border: 0; background: none; cursor: pointer; text-align: left; color: var(--muted);
+      transition: color .4s ease;
     }
+    .index button:hover { color: var(--ink); }
+    .index button[aria-current="true"] { color: var(--ink); }
+    .index .n { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; }
+    .index .t { font-family: var(--serif); font-size: 19px; line-height: 1.2; letter-spacing: -.015em; }
+    .index .bar { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; overflow: hidden; }
+    .index .bar i { position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: left; }
 
-    .hero-caption {
-      position: absolute;
-
-      z-index: 5;
-
-      left: 32px;
-      bottom: 30px;
-
-      pointer-events: none;
+    .hero-stage { position: relative; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 18px; min-height: 0; }
+    .hero-frame { position: relative; min-height: 0; display: grid; place-items: center; }
+    .hero-frame .slot { grid-area: 1 / 1; display: grid; place-items: center; width: 100%; height: 100%; opacity: 0; transition: opacity 1.1s var(--ease), transform 1.6s var(--ease-out); transform: scale(1.015); pointer-events: none; }
+    .hero-frame .slot.is-active { opacity: 1; transform: none; pointer-events: auto; }
+    .hero-frame img {
+      width: auto; height: auto; max-width: 100%;
+      max-height: calc(100svh - var(--nav-height) - env(safe-area-inset-top, 0px) - 190px);
+      object-fit: contain; cursor: zoom-in; user-select: none; -webkit-user-drag: none;
+      border-radius: 6px;
+      filter: drop-shadow(0 30px 44px rgba(0, 0, 0, .10));
     }
-
-    .hero-caption-title {
-      font-family: var(--serif);
-
-      font-size: 17px;
-      line-height: 1.2;
-
-      letter-spacing: -.02em;
-    }
-
-    .hero-caption-meta {
-      margin-top: 7px;
-
-      font-family: var(--mono);
-
-      font-size: 8px;
-      line-height: 1.5;
-
-      letter-spacing: .06em;
-      text-transform: uppercase;
-
-      color: var(--muted);
-    }
-
-    .hero-counter {
-      position: absolute;
-
-      right: 32px;
-      bottom: 30px;
-
-      z-index: 5;
-
-      font-family: var(--mono);
-      font-size: 8px;
-      letter-spacing: .08em;
-
-      color: var(--muted);
-
-      pointer-events: none;
-    }
+    .hero-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
+    .caption-title { font-family: var(--serif); font-size: 20px; line-height: 1.2; letter-spacing: -.015em; }
+    .caption-meta { margin-top: 6px; }
+    .hero-foot .right { display: flex; align-items: center; gap: 22px; }
+    .text-btn { border: 0; background: transparent; min-height: 44px; padding: 0 22px; margin-right: -22px; border-radius: 999px; cursor: pointer; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; transition: background-color .35s, color .35s, border-color .35s; }
+    .text-btn:hover { background: var(--ink); color: var(--wall); border-color: var(--ink); }
 
     /* =================================
        INTRO
     ================================= */
-
-    .intro {
-      padding: 180px 0 150px;
-    }
-
-    .intro-inner {
-      max-width: 1040px;
-    }
-
-    .intro-title {
-      margin: 28px 0 0;
-
-      max-width: 1050px;
-
-      font-family: var(--serif);
-      font-weight: 400;
-
-      font-size: clamp(48px, 7vw, 96px);
-      line-height: .98;
-
-      letter-spacing: -.045em;
-    }
-
-    .intro-copy {
-      max-width: 600px;
-
-      margin-top: 42px;
-
-      font-size: 15px;
-      line-height: 1.8;
-
-      color: var(--muted);
-    }
+    .intro { padding: clamp(150px, 17vw, 260px) 0 clamp(120px, 13vw, 200px); }
+    .intro-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: 40px clamp(40px, 6vw, 110px); align-items: end; }
+    .intro-title { margin: 22px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(48px, 7.2vw, 112px); line-height: .96; letter-spacing: -.045em; }
+    .intro-title em { font-style: italic; }
+    .intro-copy { margin: 0; font-size: 16px; line-height: 1.85; color: var(--muted); max-width: 38ch; }
+    .scroll-cue { display: inline-flex; align-items: center; gap: 12px; margin-top: 40px; margin-left: -22px; min-height: 46px; padding: 0 22px; border-radius: 999px; transition: background-color .35s, color .35s, border-color .35s; }
+    .scroll-cue::after { content: "↓"; font-family: var(--sans); }
+    .scroll-cue:hover { background: var(--ink); color: var(--wall); border-color: var(--ink); }
 
     /* =================================
-       WORKS
+       WORKS: a horizontal gallery wall
     ================================= */
+    .works { padding: 40px 0 clamp(140px, 15vw, 230px); }
+    .works-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(56px, 6vw, 88px); }
+    .works-head h2 { margin: 16px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5.4vw, 76px); line-height: 1; letter-spacing: -.035em; }
+    .rail-ctl { display: flex; align-items: center; gap: 10px; }
+    .rail-ctl .count { margin-right: 10px; }
+    .circle-btn { width: 46px; height: 46px; border-radius: 50%; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer; transition: border-color .3s, background-color .3s, color .3s; }
+    .circle-btn:hover { border-color: var(--ink); background: var(--ink); color: var(--wall); }
+    .circle-btn svg { width: 16px; height: 16px; }
+    .circle-btn:disabled { opacity: .3; pointer-events: none; }
 
-    .works {
-      padding: 120px 0 160px;
+    .rail {
+      display: flex; gap: clamp(40px, 5.5vw, 96px);
+      overflow-x: auto; overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory; scroll-behavior: smooth;
+      /* line the first painting up with the page content, at any screen width */
+      padding: 0 max(calc(var(--gutter) + 20px), calc((100% - 1280px) / 2)) 22px;
+      scroll-padding-inline: max(calc(var(--gutter) + 20px), calc((100% - 1280px) / 2));
+      scrollbar-width: none; cursor: grab;
     }
-
-    .section-heading {
-      margin-bottom: 80px;
-    }
-
-    .section-heading h2 {
-      margin: 18px 0 0;
-
-      font-family: var(--serif);
-      font-weight: 400;
-
-      font-size: clamp(38px, 5vw, 68px);
-      line-height: 1;
-
-      letter-spacing: -.035em;
-    }
-
-    .works-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-      column-gap: 28px;
-      row-gap: 90px;
-    }
-
-    .work {
-      min-width: 0;
-    }
-
-    .work:nth-child(5) {
-      grid-column: span 2;
-    }
-
-    .work-image {
-      width: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-
-      cursor: zoom-in;
-    }
-
-    .work-image img {
-      display: block;
-
-      width: 100%;
-      height: auto;
-
-      max-width: 100%;
-
-      object-fit: contain;
-      object-position: center;
-
-      user-select: none;
-      -webkit-user-drag: none;
-
-      transition:
-        transform .9s var(--ease);
-    }
-
-    .work-image:hover img {
-      transform: scale(1.025);
-    }
-
-    .work-info {
-      padding-top: 18px;
-    }
-
-    .work-title {
-      font-family: var(--serif);
-
-      font-size: 20px;
-      line-height: 1.2;
-
-      letter-spacing: -.02em;
-    }
-
-    .work-meta {
-      margin-top: 8px;
-
-      font-family: var(--mono);
-
-      font-size: 9px;
-      line-height: 1.6;
-
-      letter-spacing: .06em;
-      text-transform: uppercase;
-
-      color: var(--muted);
-    }
+    .rail::-webkit-scrollbar { display: none; }
+    .rail.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+    .rail.is-dragging * { pointer-events: none; }
+    .work { flex: none; scroll-snap-align: start; margin: 0; }
+    .work-image { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; height: clamp(340px, 62vh, 660px); }
+    .work-image img { height: 100%; width: auto; max-width: none; border-radius: 6px; user-select: none; -webkit-user-drag: none; transition: transform 1.2s var(--ease-out), filter .8s ease; filter: drop-shadow(0 22px 34px rgba(0,0,0,.08)); }
+    .work-image:hover img { transform: scale(1.018); }
+    .work-image .ph { height: 100%; aspect-ratio: 4 / 5; display: grid; place-items: center; background: var(--wall); color: var(--muted); padding: 20px; text-align: center; }
+    .work-info { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; padding-top: 18px; max-width: 460px; }
+    .work-info .n { grid-row: span 2; padding-top: 5px; }
+    .work-title { font-family: var(--serif); font-size: 22px; line-height: 1.2; letter-spacing: -.02em; }
+    .rail-track { position: relative; height: 1px; background: transparent; margin-top: 26px; overflow: hidden; }
+    .rail-track i { position: absolute; top: 0; bottom: 0; left: 0; width: 20%; background: var(--ink); transition: transform .25s linear, width .25s linear; }
 
     /* =================================
-       STATEMENT
+       STATEMENT: words fill with ink as you read
     ================================= */
-
-    .statement {
-      padding: 80px 0 180px;
-    }
-
-    .statement-text {
-      max-width: 1050px;
-
-      font-family: var(--serif);
-      font-weight: 400;
-
-      font-size: clamp(38px, 6vw, 76px);
-      line-height: 1.04;
-
-      letter-spacing: -.04em;
-    }
+    .statement { padding: 60px 0 clamp(150px, 16vw, 250px); }
+    .statement-text { margin: 0; max-width: 18ch; font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 6.4vw, 96px); line-height: 1.04; letter-spacing: -.04em; }
+    .statement-text .w { color: var(--soft); transition: color .5s ease; }
+    .statement-text .w.lit { color: var(--ink); }
+    html:not(.js) .statement-text .w { color: var(--ink); }
 
     /* =================================
        ABOUT
     ================================= */
-
-    .about {
-      padding: 140px 0 170px;
-    }
-
-    .about-grid {
-      display: grid;
-
-      grid-template-columns:
-        minmax(180px, .65fr)
-        minmax(0, 1.35fr);
-
-      gap: 80px;
-    }
-
-    .about-title {
-      margin-top: 20px;
-
-      font-family: var(--serif);
-      font-weight: 400;
-
-      font-size: clamp(38px, 5vw, 64px);
-      line-height: 1;
-
-      letter-spacing: -.035em;
-    }
-
-    .about-copy {
-      max-width: 680px;
-
-      font-size: 15px;
-      line-height: 1.85;
-
-      color: var(--muted);
-    }
-
-    .about-copy p {
-      margin: 0 0 28px;
-    }
-
-    .about-location {
-      margin-top: 55px;
-
-      font-family: var(--mono);
-
-      font-size: 9px;
-      letter-spacing: .08em;
-
-      text-transform: uppercase;
-
-      color: var(--soft);
-    }
+    .about { padding: clamp(130px, 14vw, 220px) 0; }
+    .about-grid { display: grid; grid-template-columns: minmax(200px, .7fr) minmax(0, 1.3fr); gap: 48px clamp(40px, 7vw, 120px); }
+    .about-title { margin: 20px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5vw, 68px); line-height: 1; letter-spacing: -.035em; }
+    .about-copy { font-size: 16px; line-height: 1.85; color: var(--muted); max-width: 62ch; }
+    .about-copy p { margin: 0 0 24px; }
+    .honours { display: grid; grid-template-columns: minmax(200px, .7fr) minmax(0, 1.3fr); gap: 24px clamp(40px, 7vw, 120px); margin-top: clamp(90px, 10vw, 150px); }
+    .names { list-style: none; margin: 0; padding: 0; }
+    .names li { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 12px 0; }
+    .names b { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.6vw, 52px); line-height: 1.05; letter-spacing: -.03em; transition: transform .7s var(--ease-out); }
+    .names li:hover b { transform: translateX(10px); }
+    .held { margin-top: 26px; font-size: 15px; line-height: 1.7; color: var(--muted); max-width: 56ch; }
 
     /* =================================
-       CONTACT
+       PROCESS
     ================================= */
+    .process { padding: clamp(130px, 14vw, 220px) 0; }
+    .process h2 { margin: 16px 0 clamp(64px, 8vw, 120px); font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5.4vw, 76px); line-height: 1; letter-spacing: -.035em; max-width: 14ch; }
+    .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px clamp(24px, 3vw, 48px); counter-reset: s; }
+    .steps li { counter-increment: s; }
+    .steps li::before { content: "0" counter(s); display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--muted); margin-bottom: 64px; }
+    .steps h3 { margin: 0 0 10px; font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.15; letter-spacing: -.02em; }
+    .steps p { margin: 0; font-size: 15px; line-height: 1.7; color: var(--muted); }
 
-    .contact {
-      padding: 120px 0 170px;
-    }
-
-    .contact-title {
-      margin-top: 25px;
-
-      font-family: var(--serif);
-      font-weight: 400;
-
-      font-size: clamp(58px, 8vw, 110px);
-      line-height: .95;
-
-      letter-spacing: -.05em;
-    }
-
-    .contact-copy {
-      max-width: 580px;
-
-      margin-top: 40px;
-
-      font-size: 15px;
-      line-height: 1.8;
-
-      color: var(--muted);
-    }
-
-    .contact-links {
-      margin-top: 55px;
-    }
-
+    /* =================================
+       COMMISSION
+    ================================= */
+    .contact { padding: clamp(140px, 15vw, 240px) 0 clamp(140px, 15vw, 230px); }
+    .contact-title { margin: 22px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(64px, 11vw, 176px); line-height: .9; letter-spacing: -.055em; }
+    .contact-title em { font-style: italic; }
+    .contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px clamp(40px, 7vw, 120px); margin-top: clamp(56px, 6vw, 88px); align-items: end; }
+    .contact-copy { margin: 0; font-size: 16px; line-height: 1.8; color: var(--muted); max-width: 46ch; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .commission-link {
-      display: inline-flex;
-      align-items: center;
-
-      padding-bottom: 8px;
-
-      border-bottom: 1px solid currentColor;
-
-      font-family: var(--mono);
-
-      font-size: 10px;
-      letter-spacing: .08em;
-
-      text-transform: uppercase;
-
-      transition:
-        opacity .3s ease,
-        transform .3s var(--ease);
+      display: inline-flex; align-items: center; gap: 18px;
+      min-height: 60px; padding: 0 12px 0 30px; border-radius: 999px;
+      background: var(--ink); color: var(--wall);
+      font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out), background-color .6s, color .6s;
     }
-
-    .commission-link:hover {
-      opacity: .65;
-      transform: translateX(4px);
-    }
-
-    .contact-email {
-      margin-top: 70px;
-    }
-
-    .contact-email a {
-      font-family: var(--mono);
-
-      font-size: 10px;
-      letter-spacing: .05em;
-
-      color: var(--muted);
-
-      transition:
-        color .3s ease;
-    }
-
-    .contact-email a:hover {
-      color: var(--ink);
-    }
+    .commission-link:hover { transform: translateY(-2px); box-shadow: 0 18px 34px -18px rgba(0, 0, 0, .45); }
+    .commission-link .arr { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--wall); color: var(--ink); font-family: var(--sans); transition: transform .5s var(--ease-out), background-color .6s, color .6s; }
+    .commission-link:hover .arr { transform: translateX(3px); }
+    .email-link { display: inline-flex; align-items: center; min-height: 60px; padding: 0 20px; border: 0; border-radius: 999px; font-family: var(--mono); font-size: 12px; letter-spacing: .05em; color: var(--muted); transition: color .3s, border-color .3s; }
+    .email-link:hover { color: var(--ink); }
 
     /* =================================
        FOOTER
     ================================= */
-
-    footer {
-      padding: 0 0 32px;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      font-family: var(--mono);
-
-      font-size: 8px;
-      line-height: 1.5;
-
-      letter-spacing: .06em;
-      text-transform: uppercase;
-
-      color: var(--soft);
-    }
+    footer { padding: 28px 0 calc(32px + env(safe-area-inset-bottom, 0px)); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--soft); }
+    .footer-inner a:hover { color: var(--ink); }
 
     /* =================================
-       FULLSCREEN VIEWER
+       VIEWER: full screen, with zoom into the brushwork
     ================================= */
+    .viewer { position: fixed; inset: 0; z-index: 100; background: var(--wall); opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility .45s ease; }
+    .viewer.open { opacity: 1; visibility: visible; }
+    .viewer-stage { position: absolute; inset: 0; display: grid; place-items: center; padding: 84px 90px 100px; overflow: hidden; cursor: zoom-in; }
+    .viewer-stage.is-zoomed { cursor: zoom-out; }
+    .viewer-image { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 4px; user-select: none; -webkit-user-drag: none; transform-origin: 50% 50%; transition: opacity .35s ease, transform .6s var(--ease-out); }
+    .viewer.is-switching .viewer-image { opacity: 0; transform: scale(.985); }
+    .viewer-stage.is-zoomed .viewer-image { transform: scale(2.4); }
+    .viewer-close, .viewer-prev, .viewer-next { position: absolute; z-index: 3; border: 0; background: transparent; padding: 10px; cursor: pointer; opacity: .55; transition: opacity .3s; }
+    .viewer-close:hover, .viewer-prev:hover, .viewer-next:hover { opacity: 1; }
+    .viewer-close { top: 22px; right: 25px; width: 44px; height: 44px; }
+    .viewer-close::before, .viewer-close::after { content: ""; position: absolute; top: 21px; left: 11px; width: 22px; height: 1px; background: currentColor; }
+    .viewer-close::before { transform: rotate(45deg); } .viewer-close::after { transform: rotate(-45deg); }
+    .viewer-prev, .viewer-next { top: 50%; width: 56px; height: 56px; margin-top: -28px; }
+    .viewer-prev { left: 15px; } .viewer-next { right: 15px; }
+    .viewer-prev::before, .viewer-next::before { content: ""; position: absolute; top: 21px; width: 14px; height: 14px; border-top: 1px solid currentColor; border-left: 1px solid currentColor; }
+    .viewer-prev::before { left: 22px; transform: rotate(-45deg); } .viewer-next::before { right: 22px; transform: rotate(135deg); }
+    .viewer-foot { position: absolute; left: 30px; right: 30px; bottom: 26px; z-index: 3; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; pointer-events: none; }
+    .viewer-hint { transition: opacity .4s; }
 
-    .viewer {
-      position: fixed;
-      inset: 0;
-
-      z-index: 100;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: var(--wall);
-
-      opacity: 0;
-      visibility: hidden;
-
-      transition:
-        opacity .45s ease,
-        visibility .45s ease;
-    }
-
-    .viewer.open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .viewer-image-wrap {
-      position: relative;
-
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 80px;
-    }
-
-    .viewer-image {
-      display: block;
-
-      max-width: 100%;
-      max-height: 100%;
-
-      width: auto;
-      height: auto;
-
-      object-fit: contain;
-
-      user-select: none;
-      -webkit-user-drag: none;
-
-      transition:
-        opacity .35s ease,
-        transform .45s var(--ease);
-    }
-
-    .viewer.is-switching .viewer-image {
-      opacity: 0;
-      transform: scale(.985);
-    }
-
-    .viewer-close,
-    .viewer-prev,
-    .viewer-next {
-      position: absolute;
-
-      z-index: 3;
-
-      border: 0;
-      background: transparent;
-
-      padding: 10px;
-
-      cursor: pointer;
-
-      opacity: .55;
-
-      transition:
-        opacity .3s ease,
-        transform .35s var(--ease);
-    }
-
-    .viewer-close:hover,
-    .viewer-prev:hover,
-    .viewer-next:hover {
-      opacity: 1;
-    }
-
-    .viewer-close {
-      top: 22px;
-      right: 25px;
-
-      width: 40px;
-      height: 40px;
-    }
-
-    .viewer-close::before,
-    .viewer-close::after {
-      content: "";
-
-      position: absolute;
-
-      top: 19px;
-      left: 10px;
-
-      width: 20px;
-      height: 1px;
-
-      background: currentColor;
-    }
-
-    .viewer-close::before {
-      transform: rotate(45deg);
-    }
-
-    .viewer-close::after {
-      transform: rotate(-45deg);
-    }
-
-    .viewer-prev,
-    .viewer-next {
-      top: 50%;
-
-      width: 55px;
-      height: 55px;
-
-      margin-top: -27px;
-    }
-
-    .viewer-prev {
-      left: 15px;
-    }
-
-    .viewer-next {
-      right: 15px;
-    }
-
-    .viewer-prev::before,
-    .viewer-next::before {
-      content: "";
-
-      position: absolute;
-
-      top: 20px;
-
-      width: 14px;
-      height: 14px;
-
-      border-top: 1px solid currentColor;
-      border-left: 1px solid currentColor;
-    }
-
-    .viewer-prev::before {
-      left: 20px;
-      transform: rotate(-45deg);
-    }
-
-    .viewer-next::before {
-      right: 20px;
-      transform: rotate(135deg);
-    }
-
-    .viewer-caption {
-      position: absolute;
-
-      left: 30px;
-      bottom: 25px;
-
-      z-index: 3;
-    }
-
-    .viewer-caption-title {
-      font-family: var(--serif);
-
-      font-size: 17px;
-      line-height: 1.2;
-    }
-
-    .viewer-caption-meta {
-      margin-top: 7px;
-
-      font-family: var(--mono);
-
-      font-size: 8px;
-
-      letter-spacing: .06em;
-      text-transform: uppercase;
-
-      color: var(--muted);
-    }
-
-    .viewer-counter {
-      position: absolute;
-
-      right: 30px;
-      bottom: 27px;
-
-      z-index: 3;
-
-      font-family: var(--mono);
-
-      font-size: 8px;
-      letter-spacing: .08em;
-
-      color: var(--muted);
-    }
+    /* =================================
+       CURSOR LABEL (desktop only)
+    ================================= */
+    .cursor { position: fixed; left: 0; top: 0; z-index: 90; pointer-events: none; height: 38px; padding: 0 16px; margin: -19px 0 0 14px; border-radius: 999px; background: var(--ink); color: var(--wall); display: grid; place-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; opacity: 0; transform: scale(.7); transition: transform .35s var(--ease-out), opacity .25s, background-color .6s, color .6s; }
+    .cursor.on { opacity: 1; transform: scale(1); }
+    @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
 
     /* =================================
        REVEALS
     ================================= */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-
-      transition:
-        opacity .9s ease,
-        transform 1s var(--ease);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 1s ease, transform 1.1s var(--ease-out); }
+    .js .reveal.visible { opacity: 1; transform: none; }
 
     /* =================================
        RESPONSIVE
     ================================= */
-
+    @media (max-width: 1000px) {
+      .hero { grid-template-columns: minmax(0, 1fr); gap: 22px; min-height: 0; }
+      .hero-side { order: 2; gap: 24px; }
+      .hero-kicker { display: none; }
+      .index { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+      .index button { display: block; padding: 10px 0 12px; }
+      .index .t { display: none; }
+      .index .bar { top: -1px; bottom: auto; }
+      .hero-frame img { max-height: 66svh; }
+      .intro-grid, .about-grid, .honours, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
     @media (max-width: 900px) {
-
-      :root {
-        --nav-height: 66px;
-      }
-
-      .nav {
-        padding: 0 20px;
-      }
-
-      .nav-left {
-        min-width: auto;
-      }
-
-      .nav-right {
-        gap: 17px;
-      }
-
-      .nav-link {
-        display: none;
-      }
-
-      /* Keep the commission link reachable on phones */
-      .nav-link.nav-link--commission {
-        display: inline;
-      }
-
-      .hero-media {
-        padding:
-          calc(var(--nav-height) + 20px)
-          18px
-          90px;
-      }
-
-      .hero-caption {
-        left: 20px;
-        bottom: 24px;
-      }
-
-      .hero-counter {
-        right: 20px;
-        bottom: 24px;
-      }
-
-      .section-inner {
-        width: min(100% - 40px, 1240px);
-      }
-
-      .intro {
-        padding: 130px 0 110px;
-      }
-
-      .works {
-        padding: 90px 0 110px;
-      }
-
-      .section-heading {
-        margin-bottom: 50px;
-      }
-
-      .works-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-
-        column-gap: 16px;
-        row-gap: 55px;
-      }
-
-      .work:nth-child(5) {
-        grid-column: span 2;
-      }
-
-      .work-title {
-        font-size: 17px;
-      }
-
-      .statement {
-        padding: 50px 0 120px;
-      }
-
-      .about {
-        padding: 100px 0 120px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .contact {
-        padding: 90px 0 120px;
-      }
-
-      .contact-email {
-        margin-top: 55px;
-      }
-
-      .viewer-image-wrap {
-        padding: 65px 35px 90px;
-      }
-
-      .viewer-prev {
-        left: 2px;
-      }
-
-      .viewer-next {
-        right: 2px;
-      }
-
-      .viewer-caption {
-        left: 20px;
-        bottom: 22px;
-      }
-
-      .viewer-counter {
-        right: 20px;
-        bottom: 24px;
-      }
+      :root { --nav-height: 64px; }
+      .nav { top: calc(env(safe-area-inset-top, 0px) + 10px); left: 10px; right: 10px; height: 54px; padding: 0 8px 0 18px; }
+      .hero { padding-left: var(--gutter); padding-right: var(--gutter); }
+      .wrap { width: calc(100% - var(--gutter) * 2); }
+      .rail { padding: 0 var(--gutter) 22px; scroll-padding-inline: var(--gutter); }
+      .nav-right { gap: 18px; }
+      .nav-link { display: none; }
+      .nav-link.nav-link--commission { display: inline; }
     }
-
     @media (max-width: 560px) {
-
-      .nav-name {
-        font-size: 9px;
-      }
-
-      .sound-toggle,
-      .theme-toggle {
-        width: 27px;
-        height: 27px;
-      }
-
-      .hero-media {
-        padding:
-          calc(var(--nav-height) + 10px)
-          14px
-          82px;
-      }
-
-      .hero-caption-title,
-      .viewer-caption-title {
-        font-size: 15px;
-      }
-
-      .hero-caption-meta,
-      .viewer-caption-meta {
-        font-size: 7px;
-      }
-
-      .intro-title {
-        font-size: clamp(45px, 13vw, 68px);
-      }
-
-      .intro-copy,
-      .about-copy,
-      .contact-copy {
-        font-size: 14px;
-      }
-
-      .works-grid {
-        row-gap: 45px;
-      }
-
-      .work-info {
-        padding-top: 13px;
-      }
-
-      .work-title {
-        font-size: 16px;
-      }
-
-      .work-meta {
-        font-size: 7px;
-      }
-
-      .statement-text {
-        font-size: clamp(36px, 10vw, 54px);
-      }
-
-      .contact-title {
-        font-size: clamp(52px, 14vw, 78px);
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
+      .hero-foot { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .work-image { height: 58vh; }
+      .rail-ctl .circle-btn { display: none; }
+      .steps { grid-template-columns: minmax(0, 1fr); }
+      .steps li::before { margin-bottom: 18px; }
+      .names li { flex-direction: column; gap: 4px; }
+      .viewer-stage { padding: 70px 18px 110px; }
+      .viewer-prev, .viewer-next { top: auto; bottom: 70px; margin: 0; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
     }
-
     @media (prefers-reduced-motion: reduce) {
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .rail { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 
 <body id="top">
 
-  <!-- =================================
-       NAVIGATION
-  ================================= -->
-
-  <nav class="nav" aria-label="Main navigation">
-
-    <div class="nav-left">
-      <a href="#top" class="nav-name">
-        Joy Chatterjee
-      </a>
-    </div>
-
+  <!-- ================= NAVIGATION ================= -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <a href="#top" class="nav-name">Joy Chatterjee</a>
     <div class="nav-right">
-
-      <a href="#works" class="nav-link">
-        Works
-      </a>
-
-      <a href="#about" class="nav-link">
-        About
-      </a>
-
-      <a href="#contact" class="nav-link nav-link--commission">
-        Commission
-      </a>
-
-      <button
-        class="sound-toggle"
-        id="soundToggle"
-        type="button"
-        aria-label="Play ambient sound"
-        aria-pressed="false"
-      >
-        <span class="sound-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
+      <a href="#works" class="nav-link">Works</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#contact" class="nav-link nav-link--commission">Commission</a>
+      <button class="icon-btn" id="soundToggle" type="button" aria-label="Play ambient sound" aria-pressed="false">
+        <span class="sound-icon" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
-
-      <button
-        class="theme-toggle"
-        id="themeToggle"
-        type="button"
-        aria-label="Toggle light and dark mode"
-      >
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark mode">
         <span class="theme-icon" aria-hidden="true"></span>
       </button>
-
     </div>
-
+    <span class="nav-progress" aria-hidden="true"><i id="navProgress"></i></span>
   </nav>
 
-
-  <!-- =================================
-       HERO
-  ================================= -->
-
-  <header class="hero" aria-label="Featured portrait">
-
-    <div class="hero-media">
-
-      <img
-        id="heroImage"
-        src="work-01.jpg"
-        alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
-        fetchpriority="high"
-        decoding="async"
-      />
-
-    </div>
-
-    <div class="hero-caption">
-
-      <div
-        class="hero-caption-title"
-        id="heroTitle"
-      >
-        Silverina
+  <!-- ================= HERO ================= -->
+  <header class="hero" aria-label="Featured portraits">
+    <div class="hero-side">
+      <div class="hero-kicker">
+        <span class="mono muted">Hyper-realistic portraiture</span>
+        <p>Portraits, <em>painted by hand.</em></p>
       </div>
+      <ol class="index" id="heroIndex" aria-label="Featured works"></ol>
+    </div>
 
-      <div
-        class="hero-caption-meta"
-        id="heroMeta"
-      >
-        Oil on Canvas · Painted by hand
+    <div class="hero-stage">
+      <div class="hero-frame" id="heroFrame"></div>
+      <div class="hero-foot">
+        <div aria-live="polite">
+          <div class="caption-title" id="heroTitle">Silverina</div>
+          <div class="caption-meta mono muted" id="heroMeta">Oil on Canvas · Painted by hand</div>
+        </div>
+        <div class="right">
+          <span class="mono muted" id="heroCounter">01 / 05</span>
+          <button class="text-btn" id="heroView" type="button">View artwork</button>
+        </div>
       </div>
-
     </div>
-
-    <div
-      class="hero-counter"
-      id="heroCounter"
-    >
-      01 / 05
-    </div>
-
   </header>
-
 
   <main>
 
-    <!-- =================================
-         INTRO
-    ================================= -->
-
+    <!-- ================= INTRO ================= -->
     <section class="intro">
-
-      <div class="section-inner intro-inner reveal">
-
-        <div class="eyebrow">
-          The Portrait
-        </div>
-
-        <h1 class="intro-title">
-          A portrait to keep for generations.
-        </h1>
-
-        <p class="intro-copy">
-          Each portrait is painted by hand from a photograph, with close
-          attention to expression, character and detail. The aim is not simply
-          to reproduce an image, but to preserve the presence of the person
-          within it.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================
-         WORKS
-    ================================= -->
-
-    <section
-      class="works"
-      id="works"
-    >
-
-      <div class="section-inner">
-
-        <div class="section-heading reveal">
-
-          <div class="eyebrow">
-            Selected Works
-          </div>
-
-          <h2>
-            Portraiture
-          </h2>
-
-        </div>
-
-
-        <div class="works-grid">
-
-          <article class="work reveal">
-
-            <div
-              class="work-image"
-              data-index="0"
-              role="button"
-              tabindex="0"
-              aria-label="View Silverina fullscreen"
-            >
-
-              <img
-                src="work-01.jpg"
-                alt="Silverina, hyper-realistic portrait by Joy Chatterjee"
-                loading="lazy"
-                decoding="async"
-              />
-
-            </div>
-
-            <div class="work-info">
-
-              <div class="work-title">
-                Silverina
-              </div>
-
-              <div class="work-meta">
-                Oil on Canvas · Painted by hand
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="work reveal">
-
-            <div
-              class="work-image"
-              data-index="1"
-              role="button"
-              tabindex="0"
-              aria-label="View Silverina — The Making fullscreen"
-            >
-
-              <img
-                src="work-02.jpg"
-                alt="Silverina — The Making, portrait painting process by Joy Chatterjee"
-                loading="lazy"
-                decoding="async"
-              />
-
-            </div>
-
-            <div class="work-info">
-
-              <div class="work-title">
-                Silverina — The Making
-              </div>
-
-              <div class="work-meta">
-                Process · Painted by hand
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="work reveal">
-
-            <div
-              class="work-image"
-              data-index="2"
-              role="button"
-              tabindex="0"
-              aria-label="View A Special Pleader fullscreen"
-            >
-
-              <img
-                src="work-03.jpg"
-                alt="A Special Pleader, oil portrait by Joy Chatterjee"
-                loading="lazy"
-                decoding="async"
-              />
-
-            </div>
-
-            <div class="work-info">
-
-              <div class="work-title">
-                A Special Pleader
-              </div>
-
-              <div class="work-meta">
-                Oil on Canvas · Replica
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="work reveal">
-
-            <div
-              class="work-image"
-              data-index="3"
-              role="button"
-              tabindex="0"
-              aria-label="View Jamshedji Tata fullscreen"
-            >
-
-              <img
-                src="work-04.jpg"
-                alt="Jamshedji Tata, oil portrait by Joy Chatterjee"
-                loading="lazy"
-                decoding="async"
-              />
-
-            </div>
-
-            <div class="work-info">
-
-              <div class="work-title">
-                Jamshedji Tata
-              </div>
-
-              <div class="work-meta">
-                Oil on Canvas · Painted by hand
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="work reveal">
-
-            <div
-              class="work-image"
-              data-index="4"
-              role="button"
-              tabindex="0"
-              aria-label="View A Moment of Recognition fullscreen"
-            >
-
-              <img
-                src="work-05.jpg"
-                alt="A Moment of Recognition, portrait by Joy Chatterjee"
-                loading="lazy"
-                decoding="async"
-              />
-
-            </div>
-
-            <div class="work-info">
-
-              <div class="work-title">
-                A Moment of Recognition
-              </div>
-
-              <div class="work-meta">
-                Portrait · Painted by hand
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================
-         STATEMENT
-    ================================= -->
-
-    <section class="statement">
-
-      <div class="section-inner">
-
-        <div class="statement-text reveal">
-          Every face begins with observation.
-          The painting begins where the photograph ends.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =================================
-         ABOUT
-    ================================= -->
-
-    <section
-      class="about"
-      id="about"
-    >
-
-      <div class="section-inner about-grid">
-
+      <div class="wrap intro-grid">
         <div class="reveal">
-
-          <div class="eyebrow">
-            The Practice
-          </div>
-
-          <div class="about-title">
-            Twenty years of looking closely.
-          </div>
-
+          <div class="mono muted">The Portrait</div>
+          <h1 class="intro-title">A portrait to keep for <em>generations.</em></h1>
         </div>
-
-
-        <div class="about-copy reveal">
-
-          <p>
-            For over two decades, Joy Chatterjee has devoted his practice to
-            hyper-realistic portraiture, studying expression, character and
-            the details that make a person unmistakably themselves.
-          </p>
-
-          <p>
-            Working from photographs, he paints each portrait by hand,
-            translating a captured moment into a lasting presence on canvas.
-          </p>
-
-          <p>
-            His portraits have been presented to Kapil Dev, Sourav Ganguly
-            and Shah Rukh Khan, and are held in the Boroline House collection
-            and by private collectors in India and Italy.
-          </p>
-
-          <div class="about-location">
-            West Bengal — India — Italy
-          </div>
-
+        <div class="reveal">
+          <p class="intro-copy">Each portrait is painted by hand from a photograph, with close attention to expression, character and detail. The aim is not simply to reproduce an image, but to preserve the presence of the person within it.</p>
+          <a class="scroll-cue mono" href="#works">View the works</a>
         </div>
-
       </div>
-
     </section>
 
-
-    <!-- =================================
-         COMMISSION
-    ================================= -->
-
-    <section
-      class="contact"
-      id="contact"
-    >
-
-      <div class="section-inner">
-
-        <div class="eyebrow reveal">
-          Private Commissions
+    <!-- ================= WORKS ================= -->
+    <section class="works" id="works" aria-labelledby="works-title">
+      <div class="wrap works-head reveal">
+        <div>
+          <div class="mono muted">Selected Works</div>
+          <h2 id="works-title">Portraiture</h2>
         </div>
-
-        <h2 class="contact-title reveal">
-          Begin a portrait.
-        </h2>
-
-        <p class="contact-copy reveal">
-          A portrait painted by hand from your photograph, created with the
-          care and permanence of something meant to remain in your family
-          for generations.
-        </p>
-
-        <div class="contact-links reveal">
-
-          <a
-            class="commission-link"
-            href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I'd%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I'd%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Commission Art
-          </a>
-
+        <div class="rail-ctl">
+          <span class="mono muted count" id="railCount">01 / 05</span>
+          <button class="circle-btn" id="railPrev" type="button" aria-label="Previous work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="circle-btn" id="railNext" type="button" aria-label="Next work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
         </div>
-
-        <div class="contact-email reveal">
-
-          <a href="mailto:studio@joychatterjee.art">
-            studio@joychatterjee.art
-          </a>
-
-        </div>
-
       </div>
-
+      <div class="rail" id="rail" tabindex="0" aria-label="Selected works. Use arrow keys or drag to browse."></div>
+      <div class="wrap"><div class="rail-track" aria-hidden="true"><i id="railBar"></i></div></div>
     </section>
 
+    <!-- ================= STATEMENT ================= -->
+    <section class="statement" aria-label="Statement">
+      <div class="wrap">
+        <p class="statement-text" id="statement">Every face begins with observation. The painting begins where the photograph ends.</p>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="reveal">
+            <div class="mono muted">The Practice</div>
+            <h2 class="about-title" id="about-title">Twenty years of looking closely.</h2>
+          </div>
+          <div class="about-copy reveal">
+            <p>For over two decades, Joy Chatterjee has devoted his practice to hyper-realistic portraiture, studying expression, character and the details that make a person unmistakably themselves.</p>
+            <p>Working from photographs, he paints each portrait by hand, translating a captured moment into a lasting presence on canvas.</p>
+            <div class="mono" style="color:var(--soft);margin-top:40px">West Bengal — India — Italy</div>
+          </div>
+        </div>
+
+        <div class="honours">
+          <div class="mono muted reveal">Portraits presented to</div>
+          <div class="reveal">
+            <ul class="names">
+              <li><b>Kapil Dev</b></li>
+              <li><b>Sourav Ganguly</b></li>
+              <li><b>Shah Rukh Khan</b></li>
+            </ul>
+            <p class="held">Held in the Boroline House collection and by private collectors in India and Italy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section class="process" id="process" aria-labelledby="process-title">
+      <div class="wrap">
+        <div class="reveal">
+          <div class="mono muted">The Process</div>
+          <h2 id="process-title">From photograph to portrait.</h2>
+        </div>
+        <ol class="steps reveal">
+          <li><h3>Send a photograph</h3><p>Share the photo you’d like painted on WhatsApp or email. Joy will tell you honestly whether it has enough detail.</p></li>
+          <li><h3>Discuss the portrait</h3><p>Agree the size together. You receive a written quote and timeline, and an advance reserves your place.</p></li>
+          <li><h3>Watch it take shape</h3><p>Progress photos as the portrait develops, with a chance to share thoughts before the final details.</p></li>
+          <li><h3>Receive the original</h3><p>Collected, delivered, or carefully packed and shipped, including overseas.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= COMMISSION ================= -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="mono muted reveal">Private Commissions</div>
+        <h2 class="contact-title reveal" id="contact-title">Begin a <em>portrait.</em></h2>
+        <div class="contact-grid">
+          <p class="contact-copy reveal">A portrait painted by hand from your photograph, created with the care and permanence of something meant to remain in your family for generations.</p>
+          <div class="contact-actions reveal">
+            <a class="commission-link" href="https://wa.me/917478743149?text=Hello%20Joy%2C%20I'd%20like%20to%20enquire%20about%20commissioning%20a%20portrait.%20I'd%20love%20to%20know%20more%20about%20the%20process%2C%20size%20options%20and%20pricing." target="_blank" rel="noopener noreferrer" data-cursor="Begin">Commission Art <span class="arr" aria-hidden="true">→</span></a>
+            <a class="email-link" href="mailto:studio@joychatterjee.art">studio@joychatterjee.art</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-
-  <!-- =================================
-       FOOTER
-  ================================= -->
-
+  <!-- ================= FOOTER ================= -->
   <footer>
-
-    <div class="section-inner footer-inner">
-
-      <div>
-        © <span id="year"></span> Joy Chatterjee
-      </div>
-
-      <div>
-        Portraits painted by hand
-      </div>
-
+    <div class="wrap footer-inner mono">
+      <div>© <span id="year"></span> Joy Chatterjee</div>
+      <div>Portraits painted by hand</div>
+      <a href="#top">Back to top ↑</a>
     </div>
-
   </footer>
 
-
-  <!-- =================================
-       FULLSCREEN VIEWER
-  ================================= -->
-
-  <div
-    class="viewer"
-    id="viewer"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Artwork viewer"
-    aria-hidden="true"
-  >
-
-    <button
-      class="viewer-close"
-      id="viewerClose"
-      type="button"
-      aria-label="Close image viewer"
-    ></button>
-
-    <button
-      class="viewer-prev"
-      id="viewerPrev"
-      type="button"
-      aria-label="Previous artwork"
-    ></button>
-
-    <button
-      class="viewer-next"
-      id="viewerNext"
-      type="button"
-      aria-label="Next artwork"
-    ></button>
-
-
-    <div class="viewer-image-wrap">
-
-      <img
-        class="viewer-image"
-        id="viewerImage"
-        src=""
-        alt=""
-      />
-
+  <!-- ================= VIEWER ================= -->
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Artwork viewer" aria-hidden="true">
+    <button class="viewer-close" id="viewerClose" type="button" aria-label="Close image viewer"></button>
+    <button class="viewer-prev" id="viewerPrev" type="button" aria-label="Previous artwork"></button>
+    <button class="viewer-next" id="viewerNext" type="button" aria-label="Next artwork"></button>
+    <div class="viewer-stage" id="viewerStage"><img class="viewer-image" id="viewerImage" src="" alt="" /></div>
+    <div class="viewer-foot">
+      <div>
+        <div class="caption-title" id="viewerTitle"></div>
+        <div class="caption-meta mono muted" id="viewerMeta"></div>
+      </div>
+      <div style="text-align:right">
+        <div class="mono muted viewer-hint" id="viewerHint">Click to look closer</div>
+        <div class="mono muted" id="viewerCounter" aria-live="polite" style="margin-top:6px"></div>
+      </div>
     </div>
-
-
-    <div class="viewer-caption">
-
-      <div
-        class="viewer-caption-title"
-        id="viewerTitle"
-      ></div>
-
-      <div
-        class="viewer-caption-meta"
-        id="viewerMeta"
-      ></div>
-
-    </div>
-
-
-    <div
-      class="viewer-counter"
-      id="viewerCounter"
-      aria-live="polite"
-    ></div>
-
   </div>
 
-
-  <!-- =================================
-       AUDIO
-  ================================= -->
-
-  <audio
-    id="ambientAudio"
-    src="music.mp3"
-    loop
-    preload="none"
-  ></audio>
-
+  <div class="cursor" id="cursor" aria-hidden="true">View</div>
+  <audio id="ambientAudio" src="music.mp3" loop preload="none"></audio>
 
   <script>
-
     /* =================================
-       ARTWORK DATA
+       ARTWORK DATA (edit here)
     ================================= */
-
     const artworks = [
-      {
-        src: "work-01.jpg",
-        title: "Silverina",
-        meta: "Oil on Canvas · Painted by hand",
-        alt: "Silverina, hyper-realistic portrait by Joy Chatterjee"
-      },
-      {
-        src: "work-02.jpg",
-        title: "Silverina — The Making",
-        meta: "Process · Painted by hand",
-        alt: "Silverina — The Making, portrait painting process by Joy Chatterjee"
-      },
-      {
-        src: "work-03.jpg",
-        title: "A Special Pleader",
-        meta: "Oil on Canvas · Replica",
-        alt: "A Special Pleader, oil portrait by Joy Chatterjee"
-      },
-      {
-        src: "work-04.jpg",
-        title: "Jamshedji Tata",
-        meta: "Oil on Canvas · Painted by hand",
-        alt: "Jamshedji Tata, oil portrait by Joy Chatterjee"
-      },
-      {
-        src: "work-05.jpg",
-        title: "A Moment of Recognition",
-        meta: "Portrait · Painted by hand",
-        alt: "A Moment of Recognition, portrait by Joy Chatterjee"
-      }
+      { src: "work-01.jpg", title: "Silverina", meta: "Oil on Canvas · Painted by hand", alt: "Silverina, hyper-realistic portrait by Joy Chatterjee" },
+      { src: "work-02.jpg", title: "Silverina — The Making", meta: "Process · Painted by hand", alt: "Silverina — The Making, portrait painting process by Joy Chatterjee" },
+      { src: "work-03.jpg", title: "A Special Pleader", meta: "Oil on Canvas · Replica", alt: "A Special Pleader, oil portrait by Joy Chatterjee" },
+      { src: "work-04.jpg", title: "Jamshedji Tata", meta: "Oil on Canvas · Painted by hand", alt: "Jamshedji Tata, oil portrait by Joy Chatterjee" },
+      { src: "work-05.jpg", title: "A Moment of Recognition", meta: "Portrait · Painted by hand", alt: "A Moment of Recognition, portrait by Joy Chatterjee" }
     ];
 
-    const prefersReducedMotion =
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const pad = (n) => String(n).padStart(2, "0");
+    const total = pad(artworks.length);
+    document.getElementById("year").textContent = new Date().getFullYear();
 
+    function safeImage(img, label) {
+      img.addEventListener("error", () => {
+        const ph = document.createElement("div");
+        ph.className = "ph mono";
+        ph.textContent = label;
+        img.replaceWith(ph);
+      }, { once: true });
+    }
 
     /* =================================
-       YEAR
+       HERO: catalogue index + painting
     ================================= */
+    const heroFrame = document.getElementById("heroFrame");
+    const heroIndexEl = document.getElementById("heroIndex");
+    const heroTitle = document.getElementById("heroTitle");
+    const heroMeta = document.getElementById("heroMeta");
+    const heroCounter = document.getElementById("heroCounter");
+    const HERO_TIME = 6000;
+    let heroIndex = 0, heroStart = performance.now(), heroHeld = 0, heroPaused = false;
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    artworks.forEach((a, i) => {
+      const slot = document.createElement("div");
+      slot.className = "slot" + (i === 0 ? " is-active" : "");
+      slot.innerHTML = `<img src="${a.src}" alt="${a.alt}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" data-cursor="View">`;
+      heroFrame.appendChild(slot);
+      safeImage(slot.querySelector("img"), a.title);
 
+      const li = document.createElement("li");
+      li.innerHTML = `<button type="button" aria-label="Show ${a.title}"><span class="n">${pad(i + 1)}</span><span class="t">${a.title}</span><span class="bar"><i></i></span></button>`;
+      li.querySelector("button").addEventListener("click", () => { setHero(i); heroHeld = performance.now() + 12000; });
+      heroIndexEl.appendChild(li);
+    });
+    const heroSlots = [...heroFrame.children];
+    const heroButtons = [...heroIndexEl.querySelectorAll("button")];
 
-    /* =================================
-       PRELOAD ARTWORKS (after the page has loaded)
-       Makes the slideshow and viewer switch without a blank moment.
-    ================================= */
-
-    window.addEventListener("load", () => {
-      artworks.slice(1).forEach((artwork) => {
-        const img = new Image();
-        img.decoding = "async";
-        img.src = artwork.src;
+    function setHero(i) {
+      heroIndex = (i + artworks.length) % artworks.length;
+      const a = artworks[heroIndex];
+      heroSlots.forEach((s, k) => s.classList.toggle("is-active", k === heroIndex));
+      heroButtons.forEach((b, k) => {
+        b.setAttribute("aria-current", k === heroIndex ? "true" : "false");
+        b.querySelector("i").style.transform = "scaleX(0)";
       });
-    });
+      heroTitle.textContent = a.title;
+      heroMeta.textContent = a.meta;
+      heroCounter.textContent = pad(heroIndex + 1) + " / " + total;
+      heroStart = performance.now();
+    }
+    setHero(0);
 
+    function heroTick(now) {
+      requestAnimationFrame(heroTick);
+      if (reduceMotion) return;
+      const blocked = heroPaused || document.hidden || viewer.classList.contains("open") || now < heroHeld;
+      if (blocked) { heroStart = now - (heroStart ? Math.min(now - heroStart, HERO_TIME) : 0); return; }
+      const p = Math.min(1, (now - heroStart) / HERO_TIME);
+      heroButtons[heroIndex].querySelector("i").style.transform = `scaleX(${p})`;
+      if (p >= 1) setHero(heroIndex + 1);
+    }
+    requestAnimationFrame(heroTick);
+    heroFrame.addEventListener("mouseenter", () => { heroPaused = true; });
+    heroFrame.addEventListener("mouseleave", () => { heroPaused = false; heroStart = performance.now() - 0; });
+    heroFrame.addEventListener("click", (e) => { if (e.target.tagName === "IMG") openViewer(heroIndex, e.target); });
+    document.getElementById("heroView").addEventListener("click", (e) => openViewer(heroIndex, e.currentTarget));
 
     /* =================================
-       HERO SLIDESHOW
+       WORKS: horizontal gallery wall
     ================================= */
-
-    const heroImage =
-      document.getElementById("heroImage");
-
-    const heroTitle =
-      document.getElementById("heroTitle");
-
-    const heroMeta =
-      document.getElementById("heroMeta");
-
-    const heroCounter =
-      document.getElementById("heroCounter");
-
-    let heroIndex = 0;
-    let heroPaused = false;
-
-
-    function updateHero(index) {
-
-      heroImage.classList.add("is-changing");
-
-      setTimeout(() => {
-
-        const artwork =
-          artworks[index];
-
-        heroImage.src =
-          artwork.src;
-
-        heroImage.alt =
-          artwork.alt;
-
-        heroTitle.textContent =
-          artwork.title;
-
-        heroMeta.textContent =
-          artwork.meta;
-
-        heroCounter.textContent =
-          String(index + 1).padStart(2, "0") +
-          " / " +
-          String(artworks.length).padStart(2, "0");
-
-
-        requestAnimationFrame(() => {
-
-          requestAnimationFrame(() => {
-
-            heroImage.classList.remove(
-              "is-changing"
-            );
-
-          });
-
-        });
-
-      }, 420);
-    }
-
-
-    /* Advances every 5 s; pauses while hovered, while the viewer is open,
-       when the tab is hidden, and never runs for reduced-motion visitors */
-    if (!prefersReducedMotion) {
-
-      setInterval(() => {
-
-        if (
-          heroPaused ||
-          document.hidden ||
-          viewer.classList.contains("open")
-        ) {
-          return;
-        }
-
-        heroIndex =
-          (heroIndex + 1) %
-          artworks.length;
-
-        updateHero(heroIndex);
-
-      }, 5000);
-
-    }
-
-    heroImage.addEventListener("mouseenter", () => { heroPaused = true; });
-    heroImage.addEventListener("mouseleave", () => { heroPaused = false; });
-
-    /* The hero image shows a zoom cursor: clicking it now opens the viewer */
-    heroImage.addEventListener("click", () => {
-      openViewer(heroIndex, heroImage);
+    const rail = document.getElementById("rail");
+    artworks.forEach((a, i) => {
+      const fig = document.createElement("figure");
+      fig.className = "work";
+      fig.innerHTML = `
+        <button class="work-image" type="button" data-index="${i}" data-cursor="View" aria-label="View ${a.title} fullscreen">
+          <img src="${a.src}" alt="${a.alt}" loading="lazy" decoding="async" draggable="false">
+        </button>
+        <figcaption class="work-info">
+          <span class="n mono muted">${pad(i + 1)}</span>
+          <span class="work-title">${a.title}</span>
+          <span class="mono muted">${a.meta}</span>
+        </figcaption>`;
+      rail.appendChild(fig);
+      safeImage(fig.querySelector("img"), a.title);
     });
+    const railItems = [...rail.children];
+    const railCount = document.getElementById("railCount");
+    const railBar = document.getElementById("railBar");
+    const railPrev = document.getElementById("railPrev");
+    const railNext = document.getElementById("railNext");
 
+    function railCurrent() {
+      const left = rail.scrollLeft + parseFloat(getComputedStyle(rail).scrollPaddingLeft || 0) + 4;
+      let idx = 0;
+      railItems.forEach((it, k) => { if (it.offsetLeft - rail.offsetLeft <= left) idx = k; });
+      if (rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4) idx = railItems.length - 1;
+      return idx;
+    }
+    function railUpdate() {
+      const max = rail.scrollWidth - rail.clientWidth;
+      const visible = rail.clientWidth / rail.scrollWidth;
+      railBar.style.width = (visible * 100) + "%";
+      railBar.style.transform = `translateX(${max > 0 ? (rail.scrollLeft / max) * ((1 - visible) / visible) * 100 : 0}%)`;
+      railCount.textContent = pad(railCurrent() + 1) + " / " + total;
+      railPrev.disabled = rail.scrollLeft < 4;
+      railNext.disabled = rail.scrollLeft > max - 4;
+    }
+    function railGo(dir) {
+      const i = Math.max(0, Math.min(railItems.length - 1, railCurrent() + dir));
+      rail.scrollTo({ left: railItems[i].offsetLeft - rail.offsetLeft - parseFloat(getComputedStyle(rail).paddingLeft), behavior: reduceMotion ? "auto" : "smooth" });
+    }
+    rail.addEventListener("scroll", () => requestAnimationFrame(railUpdate), { passive: true });
+    window.addEventListener("resize", railUpdate);
+    rail.querySelectorAll("img").forEach((img) => img.addEventListener("load", railUpdate));
+    railPrev.addEventListener("click", () => railGo(-1));
+    railNext.addEventListener("click", () => railGo(1));
+    rail.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); railGo(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); railGo(-1); }
+    });
+    railUpdate();
+
+    /* drag to browse with a mouse; a drag never opens the viewer */
+    let drag = null, dragged = false;
+    rail.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      drag = { x: e.clientX, left: rail.scrollLeft }; dragged = false;
+    });
+    window.addEventListener("pointermove", (e) => {
+      if (!drag) return;
+      const dx = e.clientX - drag.x;
+      if (!dragged && Math.abs(dx) > 6) { dragged = true; rail.classList.add("is-dragging"); }
+      if (dragged) rail.scrollLeft = drag.left - dx;
+    });
+    window.addEventListener("pointerup", () => {
+      if (!drag) return;
+      drag = null;
+      if (dragged) { rail.classList.remove("is-dragging"); const i = railCurrent(); setTimeout(() => railGo(0), 0); }
+    });
+    rail.addEventListener("click", (e) => {
+      if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; return; }
+      const b = e.target.closest(".work-image");
+      if (b) openViewer(Number(b.dataset.index), b);
+    }, true);
 
     /* =================================
-       FULLSCREEN VIEWER
+       STATEMENT: words fill with ink
     ================================= */
+    const statement = document.getElementById("statement");
+    const words = statement.textContent.trim().split(/\s+/);
+    statement.innerHTML = words.map((w) => `<span class="w">${w}</span>`).join(" ");
+    const wordEls = [...statement.querySelectorAll(".w")];
+    if (reduceMotion) wordEls.forEach((w) => w.classList.add("lit"));
 
-    const viewer =
-      document.getElementById("viewer");
+    /* =================================
+       NAV: backdrop, progress, current section
+    ================================= */
+    const nav = document.getElementById("nav");
+    const navProgress = document.getElementById("navProgress");
+    let ticking = false;
+    function onScroll() {
+      ticking = false;
+      nav.classList.toggle("is-scrolled", window.scrollY > 30);
+      const max = document.documentElement.scrollHeight - innerHeight;
+      navProgress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+      if (!reduceMotion) {
+        const r = statement.getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.3)));
+        const n = Math.round(p * wordEls.length);
+        wordEls.forEach((w, k) => w.classList.toggle("lit", k < n));
+      }
+    }
+    window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+    onScroll();
 
-    const viewerImage =
-      document.getElementById("viewerImage");
+    const navLinks = [...document.querySelectorAll(".nav-link")];
+    if ("IntersectionObserver" in window) {
+      const spy = new IntersectionObserver((entries) => entries.forEach((en) => {
+        if (en.isIntersecting) navLinks.forEach((a) => a.setAttribute("aria-current", a.getAttribute("href") === "#" + en.target.id ? "true" : "false"));
+      }), { rootMargin: "-45% 0px -50% 0px" });
+      navLinks.forEach((a) => { const s = document.querySelector(a.getAttribute("href")); if (s) spy.observe(s); });
+    }
 
-    const viewerTitle =
-      document.getElementById("viewerTitle");
+    /* =================================
+       VIEWER
+    ================================= */
+    const viewer = document.getElementById("viewer");
+    const viewerStage = document.getElementById("viewerStage");
+    const viewerImage = document.getElementById("viewerImage");
+    const viewerTitle = document.getElementById("viewerTitle");
+    const viewerMeta = document.getElementById("viewerMeta");
+    const viewerCounter = document.getElementById("viewerCounter");
+    const viewerHint = document.getElementById("viewerHint");
+    const viewerClose = document.getElementById("viewerClose");
+    const viewerPrev = document.getElementById("viewerPrev");
+    const viewerNext = document.getElementById("viewerNext");
+    let viewerIndex = 0, viewerOpener = null;
 
-    const viewerMeta =
-      document.getElementById("viewerMeta");
-
-    const viewerCounter =
-      document.getElementById("viewerCounter");
-
-    const viewerClose =
-      document.getElementById("viewerClose");
-
-    const viewerPrev =
-      document.getElementById("viewerPrev");
-
-    const viewerNext =
-      document.getElementById("viewerNext");
-
-    let viewerIndex = 0;
-    let viewerOpener = null;
-
-
+    function unzoom() { viewerStage.classList.remove("is-zoomed"); viewerImage.style.transformOrigin = "50% 50%"; viewerHint.textContent = "Click to look closer"; }
     function showViewerImage(index) {
-
-      viewerIndex =
-        (index + artworks.length) %
-        artworks.length;
-
-      const artwork =
-        artworks[viewerIndex];
-
-      viewer.classList.add(
-        "is-switching"
-      );
-
-
+      viewerIndex = (index + artworks.length) % artworks.length;
+      const a = artworks[viewerIndex];
+      unzoom();
+      viewer.classList.add("is-switching");
       setTimeout(() => {
-
-        viewerImage.src =
-          artwork.src;
-
-        viewerImage.alt =
-          artwork.alt;
-
-        viewerTitle.textContent =
-          artwork.title;
-
-        viewerMeta.textContent =
-          artwork.meta;
-
-        viewerCounter.textContent =
-          String(viewerIndex + 1).padStart(2, "0") +
-          " / " +
-          String(artworks.length).padStart(2, "0");
-
-
-        requestAnimationFrame(() => {
-
-          requestAnimationFrame(() => {
-
-            viewer.classList.remove(
-              "is-switching"
-            );
-
-          });
-
-        });
-
+        viewerImage.src = a.src; viewerImage.alt = a.alt;
+        viewerTitle.textContent = a.title; viewerMeta.textContent = a.meta;
+        viewerCounter.textContent = pad(viewerIndex + 1) + " / " + total;
+        requestAnimationFrame(() => requestAnimationFrame(() => viewer.classList.remove("is-switching")));
       }, 180);
     }
-
-
     function openViewer(index, opener) {
-
-      viewerOpener =
-        opener || document.activeElement;
-
+      viewerOpener = opener || document.activeElement;
       showViewerImage(index);
-
       viewer.classList.add("open");
-
-      viewer.setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-      document.body.classList.add(
-        "is-locked"
-      );
-
-      /* Move keyboard focus into the viewer (once it is visible) */
-      setTimeout(() => {
-        viewerClose.focus({ preventScroll: true });
-      }, 60);
-
-      gtag("event", "view_artwork", {
-        artwork: artworks[viewerIndex].title
-      });
+      viewer.setAttribute("aria-hidden", "false");
+      document.body.classList.add("is-locked");
+      setTimeout(() => viewerClose.focus({ preventScroll: true }), 60);
+      gtag("event", "view_artwork", { artwork: artworks[viewerIndex].title });
     }
-
-
     function closeViewer() {
-
       viewer.classList.remove("open");
-
-      viewer.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-      document.body.classList.remove(
-        "is-locked"
-      );
-
-      /* Return focus to the painting that opened the viewer */
-      if (
-        viewerOpener &&
-        typeof viewerOpener.focus === "function"
-      ) {
-        viewerOpener.focus({ preventScroll: true });
-      }
+      viewer.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("is-locked");
+      unzoom();
+      if (viewerOpener && typeof viewerOpener.focus === "function") viewerOpener.focus({ preventScroll: true });
     }
+    function originAt(x, y) {
+      const r = viewerImage.getBoundingClientRect();
+      const px = Math.min(100, Math.max(0, ((x - r.left) / r.width) * 100));
+      const py = Math.min(100, Math.max(0, ((y - r.top) / r.height) * 100));
+      viewerImage.style.transformOrigin = `${px}% ${py}%`;
+    }
+    viewerStage.addEventListener("click", (e) => {
+      if (e.target !== viewerImage) { if (!viewerStage.classList.contains("is-zoomed")) closeViewer(); else unzoom(); return; }
+      if (viewerStage.classList.contains("is-zoomed")) { unzoom(); return; }
+      originAt(e.clientX, e.clientY);
+      viewerStage.classList.add("is-zoomed");
+      viewerHint.textContent = "Move to explore · click to return";
+      gtag("event", "zoom_artwork", { artwork: artworks[viewerIndex].title });
+    });
+    viewerStage.addEventListener("pointermove", (e) => { if (viewerStage.classList.contains("is-zoomed")) originAt(e.clientX, e.clientY); });
+    viewerClose.addEventListener("click", closeViewer);
+    viewerPrev.addEventListener("click", () => showViewerImage(viewerIndex - 1));
+    viewerNext.addEventListener("click", () => showViewerImage(viewerIndex + 1));
 
-
-    document
-      .querySelectorAll(".work-image")
-      .forEach((element) => {
-
-        element.addEventListener(
-          "click",
-          () => {
-            openViewer(
-              Number(element.dataset.index),
-              element
-            );
-          }
-        );
-
-
-        element.addEventListener(
-          "keydown",
-          (event) => {
-
-            if (
-              event.key === "Enter" ||
-              event.key === " "
-            ) {
-
-              event.preventDefault();
-
-              openViewer(
-                Number(element.dataset.index),
-                element
-              );
-
-            }
-
-          }
-        );
-
-      });
-
-
-    viewerClose.addEventListener(
-      "click",
-      closeViewer
-    );
-
-
-    viewerPrev.addEventListener(
-      "click",
-      () => {
-        showViewerImage(
-          viewerIndex - 1
-        );
+    document.addEventListener("keydown", (e) => {
+      if (!viewer.classList.contains("open")) return;
+      if (e.key === "Escape") closeViewer();
+      if (e.key === "ArrowLeft") showViewerImage(viewerIndex - 1);
+      if (e.key === "ArrowRight") showViewerImage(viewerIndex + 1);
+      if (e.key === "Tab") {
+        const f = [viewerClose, viewerPrev, viewerNext];
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[2].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[2]) { e.preventDefault(); f[0].focus(); }
+        else if (!f.includes(document.activeElement)) { e.preventDefault(); f[0].focus(); }
       }
-    );
+    });
 
-
-    viewerNext.addEventListener(
-      "click",
-      () => {
-        showViewerImage(
-          viewerIndex + 1
-        );
-      }
-    );
-
-
-    viewer.addEventListener(
-      "click",
-      (event) => {
-
-        if (
-          event.target === viewer ||
-          event.target ===
-            document.querySelector(
-              ".viewer-image-wrap"
-            )
-        ) {
-          closeViewer();
-        }
-
-      }
-    );
-
+    let tx = 0, ty = 0;
+    viewer.addEventListener("touchstart", (e) => { if (e.touches.length) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; } }, { passive: true });
+    viewer.addEventListener("touchend", (e) => {
+      if (!e.changedTouches.length || viewerStage.classList.contains("is-zoomed")) return;
+      const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showViewerImage(viewerIndex + (dx < 0 ? 1 : -1));
+    }, { passive: true });
 
     /* =================================
-       KEYBOARD CONTROLS
+       CURSOR LABEL
     ================================= */
-
-    document.addEventListener(
-      "keydown",
-      (event) => {
-
-        if (
-          !viewer.classList.contains("open")
-        ) {
-          return;
-        }
-
-
-        if (event.key === "Escape") {
-          closeViewer();
-        }
-
-
-        if (
-          event.key === "ArrowLeft"
-        ) {
-          showViewerImage(
-            viewerIndex - 1
-          );
-        }
-
-
-        if (
-          event.key === "ArrowRight"
-        ) {
-          showViewerImage(
-            viewerIndex + 1
-          );
-        }
-
-
-        /* Keep Tab inside the viewer while it is open */
-        if (event.key === "Tab") {
-
-          const focusable = [
-            viewerClose,
-            viewerPrev,
-            viewerNext
-          ];
-
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-
-          if (
-            event.shiftKey &&
-            document.activeElement === first
-          ) {
-            event.preventDefault();
-            last.focus();
-          } else if (
-            !event.shiftKey &&
-            document.activeElement === last
-          ) {
-            event.preventDefault();
-            first.focus();
-          } else if (
-            !focusable.includes(document.activeElement)
-          ) {
-            event.preventDefault();
-            first.focus();
-          }
-
-        }
-
-      }
-    );
-
-
-    /* =================================
-       TOUCH SWIPE
-    ================================= */
-
-    let touchStartX = 0;
-    let touchStartY = 0;
-
-
-    viewer.addEventListener(
-      "touchstart",
-      (event) => {
-
-        if (
-          !event.touches.length
-        ) {
-          return;
-        }
-
-        touchStartX =
-          event.touches[0].clientX;
-
-        touchStartY =
-          event.touches[0].clientY;
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    viewer.addEventListener(
-      "touchend",
-      (event) => {
-
-        if (
-          !event.changedTouches.length
-        ) {
-          return;
-        }
-
-
-        const touchEndX =
-          event.changedTouches[0].clientX;
-
-        const touchEndY =
-          event.changedTouches[0].clientY;
-
-        const deltaX =
-          touchEndX - touchStartX;
-
-        const deltaY =
-          touchEndY - touchStartY;
-
-
-        if (
-          Math.abs(deltaX) > 50 &&
-          Math.abs(deltaX) >
-            Math.abs(deltaY)
-        ) {
-
-          if (deltaX < 0) {
-
-            showViewerImage(
-              viewerIndex + 1
-            );
-
-          } else {
-
-            showViewerImage(
-              viewerIndex - 1
-            );
-
-          }
-
-        }
-
-      },
-      {
-        passive: true
-      }
-    );
-
+    const cursor = document.getElementById("cursor");
+    if (finePointer && !reduceMotion) {
+      window.addEventListener("pointermove", (e) => {
+        cursor.style.left = e.clientX + "px"; cursor.style.top = e.clientY + "px";
+        const t = e.target.closest && e.target.closest("[data-cursor]");
+        const show = t && !viewer.classList.contains("open") && !rail.classList.contains("is-dragging");
+        if (show) cursor.textContent = t.dataset.cursor;
+        cursor.classList.toggle("on", !!show);
+      }, { passive: true });
+      document.addEventListener("pointerleave", () => cursor.classList.remove("on"));
+    }
 
     /* =================================
        THEME
-       (the saved theme is applied in <head> so there is no flash)
     ================================= */
-
-    const themeToggle =
-      document.getElementById(
-        "themeToggle"
-      );
-
-    const themeColorMeta =
-      document.querySelector(
-        'meta[name="theme-color"]'
-      );
-
-
-    function updateThemeLabel() {
-
-      const isDark =
-        document.documentElement
-          .classList
-          .contains("dark");
-
-
-      themeToggle.setAttribute(
-        "aria-label",
-        isDark
-          ? "Switch to light mode"
-          : "Switch to dark mode"
-      );
-
-      themeColorMeta.setAttribute(
-        "content",
-        isDark ? "#11110f" : "#f6f5f0"
-      );
-
+    const themeToggle = document.getElementById("themeToggle");
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    function syncTheme() {
+      const dark = document.documentElement.classList.contains("dark");
+      themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      themeMeta.setAttribute("content", dark ? "#11110f" : "#f6f5f0");
     }
-
-
-    updateThemeLabel();
-
-
-    themeToggle.addEventListener(
-      "click",
-      () => {
-
-        document.documentElement
-          .classList
-          .toggle("dark");
-
-
-        const isDark =
-          document.documentElement
-            .classList
-            .contains("dark");
-
-
-        try {
-          localStorage.setItem(
-            "joy-theme",
-            isDark
-              ? "dark"
-              : "light"
-          );
-        } catch (e) {}
-
-
-        updateThemeLabel();
-
-      }
-    );
-
+    syncTheme();
+    themeToggle.addEventListener("click", () => {
+      const dark = document.documentElement.classList.toggle("dark");
+      try { localStorage.setItem("joy-theme", dark ? "dark" : "light"); } catch (e) {}
+      syncTheme();
+    });
 
     /* =================================
        AMBIENT SOUND
     ================================= */
-
-    const ambientAudio =
-      document.getElementById(
-        "ambientAudio"
-      );
-
-    const soundToggle =
-      document.getElementById(
-        "soundToggle"
-      );
-
-    let soundPlaying = false;
-    let soundFade = null;
-    const SOUND_VOLUME = .72;
-
-
-    soundToggle.addEventListener(
-      "click",
-      async () => {
-
-        /* Stop any fade still running, so fast double-clicks can't clash */
-        clearInterval(soundFade);
-
-        try {
-
-          if (!soundPlaying) {
-
-            ambientAudio.volume = 0;
-
-            await ambientAudio.play();
-
-            soundPlaying = true;
-
-            soundToggle.classList.add(
-              "playing"
-            );
-
-            soundToggle.setAttribute(
-              "aria-label",
-              "Pause ambient sound"
-            );
-
-            soundToggle.setAttribute(
-              "aria-pressed",
-              "true"
-            );
-
-
-            let volume = 0;
-
-
-            soundFade =
-              setInterval(() => {
-
-                volume += .04;
-
-                ambientAudio.volume =
-                  Math.min(
-                    volume,
-                    SOUND_VOLUME
-                  );
-
-
-                if (
-                  volume >= SOUND_VOLUME
-                ) {
-                  clearInterval(
-                    soundFade
-                  );
-                }
-
-              }, 45);
-
-
-          } else {
-
-            let volume =
-              ambientAudio.volume;
-
-
-            soundFade =
-              setInterval(() => {
-
-                volume -= .05;
-
-                ambientAudio.volume =
-                  Math.max(
-                    volume,
-                    0
-                  );
-
-
-                if (
-                  volume <= 0
-                ) {
-
-                  clearInterval(
-                    soundFade
-                  );
-
-                  ambientAudio.pause();
-
-                  ambientAudio.volume =
-                    SOUND_VOLUME;
-
-                }
-
-              }, 40);
-
-
-            soundPlaying = false;
-
-            soundToggle.classList.remove(
-              "playing"
-            );
-
-            soundToggle.setAttribute(
-              "aria-label",
-              "Play ambient sound"
-            );
-
-            soundToggle.setAttribute(
-              "aria-pressed",
-              "false"
-            );
-
-          }
-
-        } catch (error) {
-
-          console.log(
-            "Audio could not be started:",
-            error
-          );
-
+    const ambientAudio = document.getElementById("ambientAudio");
+    const soundToggle = document.getElementById("soundToggle");
+    const VOL = .72;
+    let soundPlaying = false, soundFade = null;
+    soundToggle.addEventListener("click", async () => {
+      clearInterval(soundFade);
+      try {
+        if (!soundPlaying) {
+          ambientAudio.volume = 0;
+          await ambientAudio.play();
+          soundPlaying = true;
+          soundToggle.classList.add("playing");
+          soundToggle.setAttribute("aria-label", "Pause ambient sound");
+          soundToggle.setAttribute("aria-pressed", "true");
+          let v = 0;
+          soundFade = setInterval(() => { v += .04; ambientAudio.volume = Math.min(v, VOL); if (v >= VOL) clearInterval(soundFade); }, 45);
+        } else {
+          let v = ambientAudio.volume;
+          soundFade = setInterval(() => { v -= .05; ambientAudio.volume = Math.max(v, 0); if (v <= 0) { clearInterval(soundFade); ambientAudio.pause(); ambientAudio.volume = VOL; } }, 40);
+          soundPlaying = false;
+          soundToggle.classList.remove("playing");
+          soundToggle.setAttribute("aria-label", "Play ambient sound");
+          soundToggle.setAttribute("aria-pressed", "false");
         }
-
-      }
-    );
-
+      } catch (err) { console.log("Audio could not be started:", err); }
+    });
 
     /* =================================
        ANALYTICS: commission enquiries
-       Shows up in Google Analytics as the "commission_click" event.
     ================================= */
-
-    document
-      .querySelectorAll('a[href*="wa.me"], a[href^="mailto:"]')
-      .forEach((link) => {
-
-        link.addEventListener(
-          "click",
-          () => {
-
-            gtag("event", "commission_click", {
-              method: link.href.includes("wa.me")
-                ? "whatsapp"
-                : "email",
-              link_location: link.closest("section, footer, nav")
-                ? (link.closest("section, footer, nav").id || link.closest("section, footer, nav").tagName.toLowerCase())
-                : "page"
-            });
-
-          }
-        );
-
+    document.querySelectorAll('a[href*="wa.me"], a[href^="mailto:"]').forEach((link) => {
+      link.addEventListener("click", () => {
+        const where = link.closest("section, footer, nav");
+        gtag("event", "commission_click", { method: link.href.includes("wa.me") ? "whatsapp" : "email", link_location: where ? (where.id || where.tagName.toLowerCase()) : "page" });
       });
-
+    });
 
     /* =================================
-       REVEAL ANIMATIONS
+       PRELOAD REMAINING ARTWORK
     ================================= */
+    window.addEventListener("load", () => artworks.slice(1).forEach((a) => { const i = new Image(); i.decoding = "async"; i.src = a.src; }));
 
-    const revealElements =
-      document.querySelectorAll(
-        ".reveal"
-      );
-
-
-    if (
-      "IntersectionObserver" in window
-    ) {
-
-      const revealObserver =
-        new IntersectionObserver(
-          (entries, observer) => {
-
-            entries.forEach(
-              (entry) => {
-
-                if (
-                  !entry.isIntersecting
-                ) {
-                  return;
-                }
-
-
-                entry.target.classList.add(
-                  "visible"
-                );
-
-
-                observer.unobserve(
-                  entry.target
-                );
-
-              }
-            );
-
-          },
-          {
-            threshold: .12,
-            rootMargin:
-              "0px 0px -40px 0px"
-          }
-        );
-
-
-      revealElements.forEach(
-        (element) => {
-
-          revealObserver.observe(
-            element
-          );
-
-        }
-      );
-
-
-    } else {
-
-      revealElements.forEach(
-        (element) => {
-
-          element.classList.add(
-            "visible"
-          );
-
-        }
-      );
-
-    }
-
+    /* =================================
+       REVEALS
+    ================================= */
+    const revealEls = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      const ro = new IntersectionObserver((entries, obs) => entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add("visible"); obs.unobserve(en.target); }
+      }), { threshold: .12, rootMargin: "0px 0px -40px 0px" });
+      revealEls.forEach((el) => ro.observe(el));
+    } else revealEls.forEach((el) => el.classList.add("visible"));
   </script>
-
 </body>
 </html>
